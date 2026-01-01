@@ -1,0 +1,114 @@
+2025-10-27 11:06:27,882 - root - INFO - Logging de entrenamiento iniciado. Guardando en: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\training_log.txt
+2025-10-27 11:06:27,882 - root - INFO - --- Iniciando Experimento ST-AE (Sin GNN) ---
+2025-10-27 11:06:27,882 - root - INFO - Directorio de datos: D:\descargas 2025\limpiar-20250619T152105Z-1-001\limpiar
+2025-10-27 11:06:27,882 - root - INFO - Directorio de salida: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627
+2025-10-27 11:06:27,882 - root - INFO - Hiperparámetros (hp): {'window_size': 64, 'stride': 32, 'epochs': 50, 'batch_size': 32, 'learning_rate': 0.001, 'patience': 10, 'rnn_hidden': 96, 'rnn_layers': 2, 'scheduler_patience': 5, 'scheduler_factor': 0.5}
+2025-10-27 11:06:27,883 - root - INFO - Esperando datos de 5 sensores.
+2025-10-27 11:06:27,883 - root - INFO - Procesando 15 archivos encontrados...
+2025-10-27 11:06:59,269 - root - INFO - Carga inicial completa. Archivos procesados: 15, Omitidos: 0
+2025-10-27 11:06:59,275 - root - INFO - Sensor 1: 3 archivos concatenados -> (3801106, 1)
+2025-10-27 11:06:59,283 - root - INFO - Sensor 2: 3 archivos concatenados -> (3806266, 1)
+2025-10-27 11:06:59,291 - root - INFO - Sensor 3: 3 archivos concatenados -> (3834853, 1)
+2025-10-27 11:06:59,300 - root - INFO - Sensor 4: 3 archivos concatenados -> (3608927, 1)
+2025-10-27 11:06:59,308 - root - INFO - Sensor 5: 3 archivos concatenados -> (3184310, 1)
+2025-10-27 11:06:59,308 - root - INFO - Escalando datos...
+2025-10-27 11:06:59,529 - root - INFO - StandardScaler ajustado.
+2025-10-27 11:06:59,635 - root - INFO - Creando datasets de ventanas...
+2025-10-27 11:06:59,708 - SpatioTemporalWindowDataset - INFO - Datos concatenados con shape: (3184310, 5). Sensores usados: [1, 2, 3, 4, 5]
+2025-10-27 11:06:59,708 - SpatioTemporalWindowDataset - INFO - Dataset creado con 5 nodos, 3184310 puntos, 99508 ventanas.
+2025-10-27 11:06:59,723 - root - INFO - Dataset dividido: 84581 ventanas de entrenamiento, 14927 ventanas de validación.
+2025-10-27 11:06:59,780 - root - INFO - Dispositivo de entrenamiento: cuda
+2025-10-27 11:06:59,780 - root - INFO - Usando 0 workers para DataLoaders.
+2025-10-27 11:06:59,781 - root - INFO - Initializing STAutoencoderNoGNN: N=5, F=1, T=64
+2025-10-27 11:06:59,781 - root - INFO -   RNN Encoder: Input=5, Hidden=96, Layers=2
+2025-10-27 11:06:59,781 - root - INFO -   RNN Decoder: Input=96, Hidden=5, Layers=2
+2025-10-27 11:07:00,079 - root - INFO - Modelo ST-AE (No GNN) creado. Parámetros entrenables: 87,261
+2025-10-27 11:07:01,573 - root - INFO - 
+--- Iniciando Entrenamiento del ST-AE (Sin GNN) ---
+2025-10-27 11:07:10,326 - root - INFO - Epoch 1/50 -> Train Loss: 0.815541, Val Loss: 0.716998 (Dur: 0:00:08.752431)
+2025-10-27 11:07:10,330 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.716998)
+2025-10-27 11:07:19,699 - root - INFO - Epoch 2/50 -> Train Loss: 0.677074, Val Loss: 0.632675 (Dur: 0:00:09.368864)
+2025-10-27 11:07:19,703 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.632675)
+2025-10-27 11:07:26,626 - root - INFO - Epoch 3/50 -> Train Loss: 0.620271, Val Loss: 0.597739 (Dur: 0:00:06.923849)
+2025-10-27 11:07:26,629 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.597739)
+2025-10-27 11:07:34,192 - root - INFO - Epoch 4/50 -> Train Loss: 0.595715, Val Loss: 0.575880 (Dur: 0:00:07.562115)
+2025-10-27 11:07:34,194 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.575880)
+2025-10-27 11:07:42,113 - root - INFO - Epoch 5/50 -> Train Loss: 0.580836, Val Loss: 0.566308 (Dur: 0:00:07.919717)
+2025-10-27 11:07:42,114 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.566308)
+2025-10-27 11:07:49,333 - root - INFO - Epoch 6/50 -> Train Loss: 0.574212, Val Loss: 0.561599 (Dur: 0:00:07.218348)
+2025-10-27 11:07:49,335 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.561599)
+2025-10-27 11:07:56,463 - root - INFO - Epoch 7/50 -> Train Loss: 0.562602, Val Loss: 0.559154 (Dur: 0:00:07.127565)
+2025-10-27 11:07:56,465 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.559154)
+2025-10-27 11:08:03,601 - root - INFO - Epoch 8/50 -> Train Loss: 0.558334, Val Loss: 0.547739 (Dur: 0:00:07.135221)
+2025-10-27 11:08:03,602 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.547739)
+2025-10-27 11:08:10,658 - root - INFO - Epoch 9/50 -> Train Loss: 0.556420, Val Loss: 0.558124 (Dur: 0:00:07.055506)
+2025-10-27 11:08:17,893 - root - INFO - Epoch 10/50 -> Train Loss: 0.546414, Val Loss: 0.539096 (Dur: 0:00:07.234923)
+2025-10-27 11:08:17,895 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.539096)
+2025-10-27 11:08:25,119 - root - INFO - Epoch 11/50 -> Train Loss: 0.543396, Val Loss: 0.538831 (Dur: 0:00:07.223111)
+2025-10-27 11:08:25,120 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.538831)
+2025-10-27 11:08:32,274 - root - INFO - Epoch 12/50 -> Train Loss: 0.537122, Val Loss: 0.533135 (Dur: 0:00:07.154837)
+2025-10-27 11:08:32,276 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.533135)
+2025-10-27 11:08:39,626 - root - INFO - Epoch 13/50 -> Train Loss: 0.537230, Val Loss: 0.531337 (Dur: 0:00:07.350184)
+2025-10-27 11:08:39,627 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.531337)
+2025-10-27 11:08:46,503 - root - INFO - Epoch 14/50 -> Train Loss: 0.529836, Val Loss: 0.528014 (Dur: 0:00:06.875469)
+2025-10-27 11:08:46,504 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.528014)
+2025-10-27 11:08:53,403 - root - INFO - Epoch 15/50 -> Train Loss: 0.538567, Val Loss: 0.526144 (Dur: 0:00:06.899050)
+2025-10-27 11:08:53,404 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.526144)
+2025-10-27 11:09:00,300 - root - INFO - Epoch 16/50 -> Train Loss: 0.524978, Val Loss: 0.510032 (Dur: 0:00:06.896147)
+2025-10-27 11:09:00,302 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.510032)
+2025-10-27 11:09:07,207 - root - INFO - Epoch 17/50 -> Train Loss: 0.519657, Val Loss: 0.509062 (Dur: 0:00:06.904646)
+2025-10-27 11:09:07,209 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.509062)
+2025-10-27 11:09:14,170 - root - INFO - Epoch 18/50 -> Train Loss: 0.522595, Val Loss: 0.541791 (Dur: 0:00:06.960576)
+2025-10-27 11:09:21,151 - root - INFO - Epoch 19/50 -> Train Loss: 0.522384, Val Loss: 0.511979 (Dur: 0:00:06.981464)
+2025-10-27 11:09:28,125 - root - INFO - Epoch 20/50 -> Train Loss: 0.515272, Val Loss: 0.500882 (Dur: 0:00:06.973452)
+2025-10-27 11:09:28,126 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.500882)
+2025-10-27 11:09:35,101 - root - INFO - Epoch 21/50 -> Train Loss: 0.514683, Val Loss: 0.502493 (Dur: 0:00:06.975038)
+2025-10-27 11:09:42,215 - root - INFO - Epoch 22/50 -> Train Loss: 0.513912, Val Loss: 0.503584 (Dur: 0:00:07.114355)
+2025-10-27 11:09:49,577 - root - INFO - Epoch 23/50 -> Train Loss: 0.522123, Val Loss: 0.499959 (Dur: 0:00:07.361365)
+2025-10-27 11:09:49,579 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.499959)
+2025-10-27 11:09:56,986 - root - INFO - Epoch 24/50 -> Train Loss: 0.517979, Val Loss: 0.498527 (Dur: 0:00:07.407197)
+2025-10-27 11:09:56,988 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.498527)
+2025-10-27 11:10:04,249 - root - INFO - Epoch 25/50 -> Train Loss: 0.501861, Val Loss: 0.498761 (Dur: 0:00:07.260105)
+2025-10-27 11:10:11,404 - root - INFO - Epoch 26/50 -> Train Loss: 0.508433, Val Loss: 0.499401 (Dur: 0:00:07.154819)
+2025-10-27 11:10:18,316 - root - INFO - Epoch 27/50 -> Train Loss: 0.499652, Val Loss: 0.492741 (Dur: 0:00:06.911235)
+2025-10-27 11:10:18,318 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.492741)
+2025-10-27 11:10:25,182 - root - INFO - Epoch 28/50 -> Train Loss: 0.502703, Val Loss: 0.492386 (Dur: 0:00:06.864431)
+2025-10-27 11:10:25,183 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.492386)
+2025-10-27 11:10:32,078 - root - INFO - Epoch 29/50 -> Train Loss: 0.499535, Val Loss: 0.499474 (Dur: 0:00:06.895300)
+2025-10-27 11:10:41,359 - root - INFO - Epoch 30/50 -> Train Loss: 0.500575, Val Loss: 0.503836 (Dur: 0:00:09.281011)
+2025-10-27 11:10:50,076 - root - INFO - Epoch 31/50 -> Train Loss: 0.503170, Val Loss: 0.488577 (Dur: 0:00:08.716349)
+2025-10-27 11:10:50,079 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.488577)
+2025-10-27 11:10:58,582 - root - INFO - Epoch 32/50 -> Train Loss: 0.504071, Val Loss: 0.496060 (Dur: 0:00:08.503209)
+2025-10-27 11:11:08,696 - root - INFO - Epoch 33/50 -> Train Loss: 0.499581, Val Loss: 0.508187 (Dur: 0:00:10.113163)
+2025-10-27 11:11:16,967 - root - INFO - Epoch 34/50 -> Train Loss: 0.500600, Val Loss: 0.498226 (Dur: 0:00:08.270626)
+2025-10-27 11:11:25,198 - root - INFO - Epoch 35/50 -> Train Loss: 0.500306, Val Loss: 0.501216 (Dur: 0:00:08.230923)
+2025-10-27 11:11:33,314 - root - INFO - Epoch 36/50 -> Train Loss: 0.494920, Val Loss: 0.485118 (Dur: 0:00:08.116514)
+2025-10-27 11:11:33,316 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.485118)
+2025-10-27 11:11:42,408 - root - INFO - Epoch 37/50 -> Train Loss: 0.494610, Val Loss: 0.490400 (Dur: 0:00:09.092152)
+2025-10-27 11:11:50,543 - root - INFO - Epoch 38/50 -> Train Loss: 0.496325, Val Loss: 0.482963 (Dur: 0:00:08.135000)
+2025-10-27 11:11:50,545 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.482963)
+2025-10-27 11:11:58,408 - root - INFO - Epoch 39/50 -> Train Loss: 0.493100, Val Loss: 0.497155 (Dur: 0:00:07.862937)
+2025-10-27 11:12:06,716 - root - INFO - Epoch 40/50 -> Train Loss: 0.491200, Val Loss: 0.489225 (Dur: 0:00:08.308011)
+2025-10-27 11:12:15,271 - root - INFO - Epoch 41/50 -> Train Loss: 0.492933, Val Loss: 0.489063 (Dur: 0:00:08.555276)
+2025-10-27 11:12:24,834 - root - INFO - Epoch 42/50 -> Train Loss: 0.489498, Val Loss: 0.482726 (Dur: 0:00:09.561714)
+2025-10-27 11:12:24,835 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.482726)
+2025-10-27 11:12:35,856 - root - INFO - Epoch 43/50 -> Train Loss: 0.493065, Val Loss: 0.495300 (Dur: 0:00:11.020752)
+2025-10-27 11:12:45,717 - root - INFO - Epoch 44/50 -> Train Loss: 0.489374, Val Loss: 0.480733 (Dur: 0:00:09.861155)
+2025-10-27 11:12:45,719 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.480733)
+2025-10-27 11:12:55,040 - root - INFO - Epoch 45/50 -> Train Loss: 0.486838, Val Loss: 0.481309 (Dur: 0:00:09.320658)
+2025-10-27 11:13:03,226 - root - INFO - Epoch 46/50 -> Train Loss: 0.495893, Val Loss: 0.484894 (Dur: 0:00:08.186120)
+2025-10-27 11:13:11,205 - root - INFO - Epoch 47/50 -> Train Loss: 0.487374, Val Loss: 0.483282 (Dur: 0:00:07.979062)
+2025-10-27 11:13:18,947 - root - INFO - Epoch 48/50 -> Train Loss: 0.486572, Val Loss: 0.479088 (Dur: 0:00:07.742149)
+2025-10-27 11:13:18,948 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.479088)
+2025-10-27 11:13:26,923 - root - INFO - Epoch 49/50 -> Train Loss: 0.502112, Val Loss: 0.499641 (Dur: 0:00:07.975139)
+2025-10-27 11:13:35,982 - root - INFO - Epoch 50/50 -> Train Loss: 0.493000, Val Loss: 0.477290 (Dur: 0:00:09.058420)
+2025-10-27 11:13:35,983 - root - INFO -    -> Nuevo mejor modelo (No GNN) guardado en D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\best_model_no_gnn.pth (Val Loss: 0.477290)
+2025-10-27 11:13:35,983 - root - INFO - --- Entrenamiento Finalizado (No GNN) ---
+2025-10-27 11:13:35,983 - root - INFO - Duración total del entrenamiento: 0:06:34.409258
+2025-10-27 11:13:35,983 - root - INFO - Mejor pérdida de validación alcanzada: 0.477290
+2025-10-27 11:13:35,983 - root - INFO - Guardando artefactos finales...
+2025-10-27 11:13:35,995 - root - INFO - Scaler (No GNN) guardado en: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\scaler_no_gnn.gz
+2025-10-27 11:13:35,995 - root - INFO - Hiperparámetros (No GNN) guardados en: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\hyperparameters_no_gnn.json
+2025-10-27 11:13:35,996 - root - INFO - Historial de pérdidas (No GNN) guardado en: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\loss_history_no_gnn.json
+2025-10-27 11:13:36,374 - root - INFO - Gráfico de curvas de pérdida (No GNN) guardado en: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_no_gnn\run_no_gnn_20251027-110627\loss_curve_no_gnn.png
+2025-10-27 11:13:36,374 - root - INFO - Cerrando archivo de log de entrenamiento.

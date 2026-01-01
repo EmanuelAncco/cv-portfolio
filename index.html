@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emanuel Ancco | Ingeniería Civil + IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Emanuel Edgar Ancco Guaygua</h1>
+            <p class="subtitle">Ingeniero Civil | Especialista en IA aplicada a Construcción</p>
+            <p class="tagline">Machine Learning • Computer Vision • BIM Automation</p>
+            <div class="hero-buttons">
+                <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
+                <a href="mailto:coarp.eancco@gmail.com" class="btn btn-secondary">Contactar</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>Sobre Mí</h2>
+            <div class="about-content">
+                <p>Egresado de <strong>Ingeniería Civil de la Universidad Peruana de Ciencias Aplicadas (UPC)</strong>
+                    con especialización en Inteligencia Artificial y desarrollo de software aplicado a la industria de
+                    la construcción.</p>
+                <p>Mi enfoque combina el conocimiento tradicional de ingeniería estructural con herramientas modernas de
+                    Machine Learning para optimizar procesos, mejorar la seguridad y automatizar flujos de trabajo BIM.
+                </p>
+
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <span class="skill-icon">🧠</span>
+                        <h4>Machine Learning</h4>
+                        <p>PyTorch, TensorFlow, Scikit-learn</p>
+                    </div>
+                    <div class="skill-card">
+                        <span class="skill-icon">👁️</span>
+                        <h4>Computer Vision</h4>
+                        <p>YOLOv8, OpenCV</p>
+                    </div>
+                    <div class="skill-card">
+                        <span class="skill-icon">🏗️</span>
+                        <h4>BIM Automation</h4>
+                        <p>Revit API (C#), Dynamo</p>
+                    </div>
+                    <div class="skill-card">
+                        <span class="skill-icon">📊</span>
+                        <h4>Data Analysis</h4>
+                        <p>Power BI, Python, Excel VBA</p>
+                    </div>
+                </div>
+
+                <div class="tech-stack-image" style="margin-top: 2rem; text-align: center;">
+                    <img src="assets/images/skills_tech_stack.png" alt="Technical Skills"
+                        style="max-width: 100%; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                </div>
+            </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="proyectos" class="section section-dark">
+        <div class="container">
+            <h2>Proyectos Destacados</h2>
+
+            <!-- Project 1: GAIATECH -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>🧠 GAIATECH SHM</h3>
+                    <span class="project-tag">Machine Learning</span>
+                </div>
+                <p class="project-description">Sistema de <strong>Monitoreo de Salud Estructural</strong> basado en IA
+                    para detección de anomalías en puentes usando datos de acelerómetros y redes neuronales de grafos.
+                </p>
+
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <span class="metric-value">4</span>
+                        <span class="metric-label">Modelos Entrenados</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">0.0064</span>
+                        <span class="metric-label">Best Val Loss</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">5.1M</span>
+                        <span class="metric-label">Parámetros</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">PINN-GNN</span>
+                        <span class="metric-label">Arquitectura</span>
+                    </div>
+                </div>
+
+                <div class="project-details">
+                    <h4>Innovación Técnica</h4>
+                    <ul>
+                        <li>Arquitectura <strong>Spatio-Temporal Graph Autoencoder (STG-AE)</strong> con GRU y GCN</li>
+                        <li>Grafo <strong>físicamente informado</strong> basado en geometría 3D real del puente</li>
+                        <li>Features extraídas con <strong>Discrete Wavelet Transform (DWT)</strong></li>
+                        <li>Entrenado con datos de 5 sensores de acelerometría</li>
+                    </ul>
+                </div>
+
+                <div class="results-gallery">
+                    <h4>Arquitectura del Modelo</h4>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/images/neural_network_architecture.png" alt="Arquitectura STG-AE">
+                            <p>Spatio-Temporal Graph Autoencoder</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/gaiatech_model_comparison.png" alt="Comparativa de Modelos">
+                            <p>Comparativa de 4 Modelos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-gallery">
+                    <h4>Resumen del Proyecto</h4>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/images/gaiatech_results.png" alt="GAIATECH SHM Results">
+                            <p>Sistema de Monitoreo Estructural con IA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: EMARC VISION -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>👷 EMARC VISIÓN</h3>
+                    <span class="project-tag">Computer Vision</span>
+                </div>
+                <p class="project-description">Sistema de <strong>visión por computadora</strong> para verificación
+                    automática del uso de Equipos de Protección Personal (EPP) en obras de construcción, cumpliendo la
+                    Norma G.050.</p>
+
+                <div class="metrics-grid">
+                    <div class="metric highlight">
+                        <span class="metric-value">90.7%</span>
+                        <span class="metric-label">mAP@0.5</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">11</span>
+                        <span class="metric-label">Clases Detectadas</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">94%</span>
+                        <span class="metric-label">Precisión Cascos</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">YOLOv8</span>
+                        <span class="metric-label">Framework</span>
+                    </div>
+                </div>
+
+                <div class="project-details">
+                    <h4>Clases Detectadas</h4>
+                    <div class="tags-container">
+                        <span class="tag">🪖 Casco</span>
+                        <span class="tag">🦺 Chaleco</span>
+                        <span class="tag">🧤 Guantes</span>
+                        <span class="tag">👓 Gafas</span>
+                        <span class="tag">👢 Botas</span>
+                        <span class="tag">🎭 Mascarilla</span>
+                        <span class="tag tag-warning">❌ Sin Casco</span>
+                        <span class="tag tag-warning">❌ Sin Chaleco</span>
+                        <span class="tag tag-warning">❌ Sin Mascarilla</span>
+                    </div>
+                </div>
+
+                <div class="project-details">
+                    <h4>Características del Sistema</h4>
+                    <ul>
+                        <li>Aplicación de escritorio con interfaz profesional (Tkinter)</li>
+                        <li>Análisis en tiempo real de video, cámara o imágenes</li>
+                        <li>Historial de detecciones con exportación</li>
+                        <li>Arquitectura escalable con ESP32-CAM</li>
+                    </ul>
+                </div>
+
+                <div class="results-gallery">
+                    <h4>📊 Evidencia Cuantitativa</h4>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/images/BoxPR_curve.png" alt="Curva Precisión-Recall">
+                            <p>Curva Precisión-Recall (mAP 90.4%)</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/confusion_matrix_normalized.png" alt="Matriz de Confusión">
+                            <p>Matriz de Confusión Normalizada</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-gallery">
+                    <h4>📈 Proceso de Aprendizaje</h4>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/images/results.png" alt="Curvas de Entrenamiento">
+                            <p>Curvas de Entrenamiento</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/labels.jpg" alt="Análisis del Dataset">
+                            <p>Análisis del Dataset</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-gallery">
+                    <h4>🖥️ Validación Funcional</h4>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/images/prueba1.png" alt="Interfaz en Acción">
+                            <p>Interfaz del Sistema en Acción</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-gallery">
+                    <h4>🏗️ Resultados en Campo</h4>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/images/resultado_1.png" alt="Detección en grupo">
+                            <p>Detección en grupo</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/resultado_2.png" alt="Ausencia de EPP">
+                            <p>Detección de ausencia de EPP</p>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/images/resultado_8.png" alt="Diferentes ángulos">
+                            <p>Detección en diferentes ángulos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-gallery">
+                    <h4>🎥 Demostración en Video</h4>
+                    <div class="video-container" style="display: flex; justify-content: center; margin: 1rem 0;">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/K500tgJHRiY"
+                            title="EMARC VISIÓN Demo" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen style="border-radius: 12px; max-width: 100%;">
+                        </iframe>
+                    </div>
+                    <p style="text-align: center; color: var(--text-light);">Primera prueba de funcionamiento del
+                        sistema</p>
+                </div>
+
+                <div class="results-gallery">
+                    <h4>🔐 Control de Acceso</h4>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/images/detecciónfacial.png" alt="Detección Facial">
+                            <p>Control de Acceso por Detección Facial</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Revit Plugins -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>🔧 Suite de Automatización BIM</h3>
+                    <span class="project-tag">Revit API</span>
+                </div>
+                <p class="project-description">Colección de <strong>plugins para Autodesk Revit 2026</strong> que
+                    automatizan tareas de diseño estructural, importación de modelos y gestión de proyectos BIM.</p>
+
+                <div class="metrics-grid">
+                    <div class="metric">
+                        <span class="metric-value">18+</span>
+                        <span class="metric-label">Comandos</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">2</span>
+                        <span class="metric-label">Plugins</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">C#</span>
+                        <span class="metric-label">.NET 4.8</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">2026</span>
+                        <span class="metric-label">Revit Version</span>
+                    </div>
+                </div>
+
+                <div class="plugins-grid">
+                    <div class="plugin-card">
+                        <h4>SAPtoRevit</h4>
+                        <p>Importador de modelos SAP2000/ETABS a Revit</p>
+                        <ul>
+                            <li>Vigas y columnas estructurales</li>
+                            <li>Losas con pendientes variables</li>
+                            <li>Mapeo automático de secciones</li>
+                        </ul>
+                    </div>
+                    <div class="plugin-card">
+                        <h4>RebarVigas</h4>
+                        <p>Suite de automatización estructural</p>
+                        <ul>
+                            <li>Armado de vigas, columnas, zapatas</li>
+                            <li>Losas aligeradas y bidireccionales</li>
+                            <li>Detección de interferencias</li>
+                            <li>Importación CAD → Familias</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="results-gallery">
+                    <h4>Suite de Automatización</h4>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/images/revit_automation.png" alt="BIM Automation Suite">
+                            <p>Plugins para Revit 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experiencia" class="section">
+        <div class="container">
+            <h2>Experiencia</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep - Dic 2025</div>
+                    <div class="timeline-content">
+                        <h4>Asistente de Oficina Técnica</h4>
+                        <p class="timeline-company">Obra: Teatro Municipal de Yunguyo, Puno</p>
+                        <ul>
+                            <li>Elaboración de informes mensuales de avance</li>
+                            <li>Valorizaciones y control de costos</li>
+                            <li>Modelado BIM estructural en Revit</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jun - Nov 2024</div>
+                    <div class="timeline-content">
+                        <h4>Asistente de Oficina Técnica</h4>
+                        <p class="timeline-company">Constructora Talgus S.A.C., Lima</p>
+                        <ul>
+                            <li>Metrados y análisis de costos</li>
+                            <li>Seguimiento de obra y valorizaciones</li>
+                            <li>Actualización de planos CAD y BIM</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - 2025</div>
+                    <div class="timeline-content">
+                        <h4>Director del Área de Investigaciones</h4>
+                        <p class="timeline-company">Capítulo Estudiantil IDI - UPC</p>
+                        <ul>
+                            <li>Gestión de proyectos de investigación en IA</li>
+                            <li>Coordinación de equipos multidisciplinarios</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="section section-dark">
+        <div class="container">
+            <h2>Contacto</h2>
+            <div class="contact-grid">
+                <a href="mailto:coarp.eancco@gmail.com" class="contact-card">
+                    <span class="contact-icon">📧</span>
+                    <h4>Email</h4>
+                    <p>coarp.eancco@gmail.com</p>
+                </a>
+                <a href="https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352" target="_blank"
+                    class="contact-card">
+                    <span class="contact-icon">💼</span>
+                    <h4>LinkedIn</h4>
+                    <p>Emanuel Ancco</p>
+                </a>
+                <a href="tel:+51974583549" class="contact-card">
+                    <span class="contact-icon">📱</span>
+                    <h4>Teléfono</h4>
+                    <p>+51 974 583 549</p>
+                </a>
+            </div>
+
+            <div class="availability">
+                <p>🏔️ <strong>Disponibilidad inmediata</strong> para régimen 14x7 en Unidad Minera</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Emanuel Edgar Ancco Guaygua | Ingeniería Civil + IA</p>
+    </footer>
+</body>
+
+</html>

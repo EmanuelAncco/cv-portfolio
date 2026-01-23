@@ -885,14 +885,22 @@
                 <!-- Suite Tuberías -->
                 <div class="compact-card">
                     <div class="compact-header"
-                        style="background-image: url('assets/images/tuberias_polar.png'); background-color: #f1f5f9; background-size: contain; background-repeat: no-repeat;">
+                        style="background-image: url('assets/images/tuberias-interfaz-final.png'); background-color: #f1f5f9; background-size: cover; background-position: center;">
                     </div>
                     <div class="compact-body">
                         <h3>🚰 Suite Tuberías TGD</h3>
                         <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
                             Plataforma integral (v1/v2) para análisis sísmico de tuberías. Combina diseño determinista
-                            con gráficos polares y simulación probabilística (Monte Carlo) para curvas de fragilidad.
+                            con gráficos polares y simulación probabilística (Monte Carlo).
                         </p>
+                        <!-- Mini Gallery Tuberías -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem;">
+                            <img src="assets/images/tuberias-calculo-tramos.png" alt="Cálculo Tramos"
+                                style="width: 100%; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">
+                            <img src="assets/images/tuberias-imagen1.png" alt="Análisis Tubería"
+                                style="width: 100%; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">
+                        </div>
+
                         <div class="card-tech">
                             <span class="tech-tag">SciPy</span>
                             <span class="tech-tag">Matplotlib 3D</span>
@@ -901,7 +909,7 @@
                     </div>
                 </div>
 
-                <!-- PachaGuard -->
+                <!-- PachaGuard (Unchanged) -->
                 <div class="compact-card">
                     <div class="compact-header"
                         style="background: linear-gradient(135deg, #6366f1, #a855f7); display: flex; align-items: center; justify-content: center;">
@@ -935,14 +943,22 @@
                 <!-- EMAIRC HIDRA -->
                 <div class="compact-card">
                     <div class="compact-header"
-                        style="background-image: url('assets/images/hidraulica_perfil.png'); background-color: #0f172a;">
+                        style="background-image: url('assets/images/hp-prime-grafico.png'); background-color: #0f172a; background-size: cover; background-position: center;">
                     </div>
                     <div class="compact-body">
-                        <h3>📟 EMAIRC HIDRA</h3>
+                        <h3>📟 EMAIRC HIDRA (HP Prime)</h3>
                         <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
-                            Software profesional para HP Prime escrito en PPL (Pascal). Algoritmos robustos (Secante,
-                            Standard Step) para cálculo de curvas de remanso y perfiles hidráulicos.
+                            Software profesional para HP Prime escrito en PPL. Algoritmos robustos (Secante,
+                            Standard Step) para cálculo de curvas de remanso y perfiles hidráulicos complejos.
                         </p>
+                        <!-- Mini Gallery HP Prime -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem;">
+                            <img src="assets/images/hp-prime-tabla.png" alt="Tabla Cálculos"
+                                style="width: 100%; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">
+                            <img src="assets/images/hp-prime-integracion.png" alt="Integración Gráfica"
+                                style="width: 100%; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">
+                        </div>
+
                         <div class="card-tech">
                             <span class="tech-tag">HP PPL</span>
                             <span class="tech-tag">Pascal</span>
@@ -950,28 +966,30 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Archon -->
-                <div class="compact-card">
-                    <div class="compact-header"
-                        style="background: linear-gradient(135deg, #10b981, #3b82f6); display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-robot" style="font-size: 4rem; color: rgba(255,255,255,0.8);"></i>
-                    </div>
-                    <div class="compact-body">
-                        <h3>🤖 Archon Assistant</h3>
-                        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
-                            Asistente de voz avanzado con motor OpenAI (GPT). Integración de reconocimiento de voz y
-                            síntesis TTS para interacción natural en tareas de ingeniería.
-                        </p>
-                        <div class="card-tech">
-                            <span class="tech-tag">OpenAI API</span>
-                            <span class="tech-tag">Python Speech</span>
-                            <span class="tech-tag">Automation</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+        </div>
+
+        <!-- Archon -->
+        <div class="compact-card">
+            <div class="compact-header"
+                style="background: linear-gradient(135deg, #10b981, #3b82f6); display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-robot" style="font-size: 4rem; color: rgba(255,255,255,0.8);"></i>
+            </div>
+            <div class="compact-body">
+                <h3>🤖 Archon Assistant</h3>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
+                    Asistente de voz avanzado con motor OpenAI (GPT). Integración de reconocimiento de voz y
+                    síntesis TTS para interacción natural en tareas de ingeniería.
+                </p>
+                <div class="card-tech">
+                    <span class="tech-tag">OpenAI API</span>
+                    <span class="tech-tag">Python Speech</span>
+                    <span class="tech-tag">Automation</span>
+                </div>
+            </div>
+        </div>
+
+        </div>
         </div>
     </section>
 

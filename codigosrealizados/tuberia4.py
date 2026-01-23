@@ -1,0 +1,525 @@
+import tkinter as tk
+from tkinter import ttk, messagebox, scrolledtext # Corregido: scrolledtext si necesitas un área de texto desplazable, pero para el layout usaremos Canvas+Scrollbar
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg # Para incrustar matplotlib en Tkinter
+
+# --- Función de cálculo de esfuerzos ---
+def calculate_pipeline_stress(
+    D, t, E, nu, alpha_T, Sy,
+    H,
+    p, delta_T,
+    W_traffic, If,
+    PGV, C, alpha_seismic
+):
+    """
+    Calcula los esfuerzos en una tubería enterrada bajo cargas combinadas.
+
+    Basado en el modelo analítico simplificado descrito en el documento.
+
+    Args:
+        D (float): Diámetro exterior de la tubería (m).
+        t (float): Espesor de pared de la tubería (m).
+        E (float): Módulo de Young del acero (Pa).
+        nu (float): Coeficiente de Poisson del acero (adimensional).
+        alpha_T (float): Coeficiente de expansión térmica lineal del acero (°C⁻¹).
+        Sy (float): Límite de Fluencia Específico Mínimo (SMYS) del acero (Pa).
+        H (float): Profundidad desde la superficie hasta el eje de la tubería (m).
+        p (float): Presión interna máxima de operación (Pa).
+        delta_T (float): Diferencia de temperatura máxima entre operación e instalación (°C).
+        W_traffic (float): Carga por rueda o peso total del vehículo/equipo (N).
+        If (float): Factor de impacto (DAF) (adimensional).
+        PGV (float): Velocidad Pico del Suelo (m/s).
+        C (float): Velocidad aparente de propagación de la onda sísmica (m/s).
+        alpha_seismic (float): Factor de relación deformación-velocidad (adimensional).
+
+    Returns:
+        dict: Un diccionario que contiene los esfuerzos calculados y el ratio de esfuerzo.
+    """
+
+    # --- Ecuaciones del Modelo Analítico ---
+
+    # Esfuerzo Circunferencial por Presión Interna (sigma_h)
+    sigma_h = (p * D) / (2 * t)
+
+    # Esfuerzo Axial por Presión Interna (sigma_a_p)
+    sigma_a_p = nu * sigma_h
+
+    # Esfuerzo Axial por Cambio de Temperatura (sigma_a_T)
+    sigma_a_T = E * alpha_T * delta_T
+
+    # Esfuerzo Longitudinal por Carga de Tráfico (sigma_L_traf)
+    Hc = H - D / 2.0 # Profundidad a la corona (m)
+
+    Qd = 0.0
+    if Hc > 0:
+         # Presión vertical en la corona (Qd) - Usando Boussinesq simplificado para carga puntual
+         # Nota: El documento usa W_traffic como carga puntual en el ejemplo
+         Qd = (3 * W_traffic) / (2 * np.pi * Hc**2)
+
+    # Carga lineal Wt
+    Wt = If * Qd * D # N/m
+
+    # Longitud característica X y factor km (valores de ejemplo del documento)
+    X = 2 * Hc # m
+    km = 10    # adimensional (intermedio)
+
+    # Módulo de sección aproximado Zpipe
+    Zpipe = (np.pi * D**2 * t) / 4.0 # m^3
+
+    sigma_L_traf = 0.0
+    if km != 0 and Zpipe != 0:
+        # Momento flector por tráfico (simplificado)
+        M_traf = (Wt * X**2) / km # Nm
+        # Esfuerzo longitudinal por tráfico
+        sigma_L_traf = M_traf / Zpipe # Pa
+
+
+    # Esfuerzo Axial por TGD (sigma_a_w)
+    sigma_a_w = 0.0
+    if C != 0:
+        sigma_a_w = E * alpha_seismic * (PGV / C)
+
+
+    # Esfuerzo Longitudinal Total (sigma_L)
+    sigma_L = sigma_a_p + sigma_a_T + sigma_L_traf + sigma_a_w
+
+    # Esfuerzo Circunferencial Total (sigma_h_total)
+    sigma_h_total = sigma_h
+
+    # Esfuerzo Equivalente de Von Mises (sigma_VM)
+    sigma_VM = np.sqrt(sigma_L**2 - sigma_L * sigma_h_total + sigma_h_total**2)
+
+    # Ratio de Esfuerzo
+    ratio = float('inf') # Evitar división por cero si Sy es cero
+    if Sy != 0:
+        ratio = sigma_VM / Sy
+
+    results = {
+        "sigma_h": sigma_h,
+        "sigma_a_p": sigma_a_p,
+        "sigma_a_T": sigma_a_T,
+        "sigma_L_traf": sigma_L_traf,
+        "sigma_a_w": sigma_a_w,
+        "sigma_L_total": sigma_L,
+        "sigma_h_total": sigma_h_total,
+        "sigma_VM": sigma_VM,
+        "Ratio_VM_Sy": ratio
+    }
+
+    return results
+
+# --- Datos de vehículos pesados (ejemplos para Perú) ---
+VEHICLES = {
+    "Camión ligero (35.5 kN/rueda)": {"W_traffic": 35500, "A_contacto": 0.1}, # Basado en el ejemplo del documento (HS-20)
+    "Camión 2 ejes (carga por eje ~100 kN)": {"W_traffic": 50000, "A_contacto": 0.15},
+    "Camión 3 ejes (carga por eje ~150 kN)": {"W_traffic": 50000, "A_contacto": 0.15},
+    "Tráiler (carga por eje > 150 kN)": {"W_traffic": 65000, "A_contacto": 0.2},
+    "Vehículo Personalizado": {"W_traffic": 35500, "A_contacto": 0.1}
+}
+
+# --- Valores por defecto (Caso Miraflores del documento) ---
+DEFAULT_PARAMS = {
+    "D": 0.61,
+    "t": 0.0095,
+    "E": 2.07e11,
+    "nu": 0.3,
+    "alpha_T": 1.2e-5,
+    "Sy": 4.48e8,
+    "H": 1.5,
+    "p": 7e6,
+    "delta_T": -15,
+    "If": 1.5,
+    "PGV": 0.40, # Default Miraflores
+    "C": 800,    # Default Miraflores
+    "alpha_seismic": 1.0,
+    "W_traffic": VEHICLES["Camión ligero (35.5 kN/rueda)"]["W_traffic"],
+    "A_contacto": VEHICLES["Camión ligero (35.5 kN/rueda)"]["A_contacto"]
+}
+
+# --- Parámetros específicos por ubicación (Tabla 5.5.1 del documento) ---
+LOCATION_PARAMS = {
+    "Miraflores": {
+        "PGV": 0.40,
+        "C": 800,
+        # Otros parámetros como H, tipo de suelo, etc. podrían añadirse aquí
+        # si el modelo los utilizara explícitamente en los cálculos de esfuerzo.
+        # En este modelo simplificado, solo PGV y C varían significativamente por distrito.
+    },
+    "La Molina": {
+        "PGV": 0.50,
+        "C": 400,
+    },
+    "Villa El Salvador": {
+        "PGV": 0.60,
+        "C": 250,
+    }
+}
+
+# --- Función para generar el diagrama conceptual de carga de tráfico ---
+def plot_traffic_load_concept(D, H, W_traffic, If):
+    """
+    Genera una figura de Matplotlib con una visualización conceptual
+    de la carga de tráfico sobre la tubería enterrada.
+
+    Args:
+        D (float): Diámetro exterior de la tubería (m).
+        H (float): Profundidad desde la superficie hasta el eje de la tubería (m).
+        W_traffic (float): Carga por rueda (N).
+        If (float): Factor de impacto (DAF).
+
+    Returns:
+        matplotlib.figure.Figure: La figura de Matplotlib creada.
+    """
+    fig, ax = plt.subplots(figsize=(6, 4)) # Ajustar tamaño para la GUI
+
+    # Escala para la visualización
+    scale = 1.5 # Metros por unidad en el gráfico
+    ax.set_xlim(-scale * 1.5, scale * 1.5)
+    ax.set_ylim(H + D/2 + scale*0.5, -scale*0.2) # Invertir eje Y
+    ax.set_aspect('equal', adjustable='box')
+
+    # Dibujar suelo
+    soil_depth = H + D/2 + scale*0.5
+    ax.add_patch(patches.Rectangle((-scale * 1.5, 0), 3*scale, soil_depth, facecolor='#a08a6a', edgecolor='#5a4d3b', linewidth=1))
+
+    # Dibujar superficie del suelo
+    ax.plot([-scale * 1.5, scale * 1.5], [0, 0], color='#5a4d3b', linewidth=2)
+
+    # Dibujar tubería
+    pipe_center_x = 0
+    pipe_center_y = H
+    pipe_circle = patches.Circle((pipe_center_x, pipe_center_y), D/2, facecolor='#778899', edgecolor='#556270', linewidth=2)
+    ax.add_patch(pipe_circle)
+
+    # Dibujar vehículo (simplificado como un rectángulo en la superficie)
+    vehicle_width = D * 0.8 # Ancho conceptual relacionado al diámetro de la tubería
+    vehicle_height = vehicle_width * 0.5
+    vehicle_x = -vehicle_width / 2
+    vehicle_y = -vehicle_height
+    ax.add_patch(patches.Rectangle((vehicle_x, vehicle_y), vehicle_width, vehicle_height, facecolor='#4682B4', edgecolor='#3a6a9a', linewidth=1))
+
+    # Dibujar líneas conceptuales de dispersión de presión (simplificado)
+    dispersion_angle_rad = np.deg2rad(45)
+    dispersion_dist = H + D/2
+
+    start_x = 0
+    start_y = 0
+
+    end_y = H + D/2
+    end_x_left = start_x - end_y * np.tan(dispersion_angle_rad)
+    end_x_right = start_x + end_y * np.tan(dispersion_angle_rad)
+
+    ax.plot([start_x, end_x_left], [start_y, end_y], color='#FF4500', linestyle='--', linewidth=1, label='Dispersión Conceptual')
+    ax.plot([start_x, end_x_right], [start_y, end_y], color='#FF4500', linestyle='--', linewidth=1)
+
+    # Añadir etiquetas
+    ax.text(pipe_center_x, pipe_center_y, f'Tubería (D={D:.2f}m)', ha='center', va='center', color='white', fontsize=9)
+    ax.text(scale * 1.2, -vehicle_height - 0.05, f'Carga={W_traffic*If/1000:.1f} kN', ha='center', va='bottom', color='#333', fontsize=9)
+    ax.text(-scale * 1.3, H/2, f'H={H:.2f}m', ha='right', va='center', color='#333', fontsize=9)
+
+    ax.set_title('Diagrama Conceptual de Carga de Tráfico')
+    ax.set_xlabel('Distancia Horizontal (m)')
+    ax.set_ylabel('Profundidad (m)')
+    ax.grid(True, linestyle='--', alpha=0.6)
+    # ax.legend() # La leyenda puede quitar espacio, omitir por simplicidad en la GUI
+
+    plt.tight_layout() # Ajustar diseño
+    return fig
+
+# --- Interfaz Gráfica (Tkinter) ---
+
+class PipelineStressApp:
+    def __init__(self, root):
+        self.root = root
+        root.title("Calculadora de Esfuerzos en Tuberías")
+
+        # Configurar estilo
+        style = ttk.Style()
+        # Puedes explorar más opciones de temas ttk si están disponibles
+        # style.theme_use('clam') # 'alt', 'default', 'classic'
+
+        style.configure("TLabel", padding=5, font=('Arial', 10), foreground='#333')
+        style.configure("TEntry", padding=5, font=('Arial', 10))
+        style.configure("TButton", padding=5, font=('Arial', 10, 'bold'), background='#007bff', foreground='white')
+        style.map("TButton",
+                  background=[('active', '#0056b3')])
+        style.configure("TCombobox", padding=5, font=('Arial', 10))
+        style.configure("TFrame", background='#f4f7f6') # Color de fondo para frames
+
+        # Crear un Canvas principal y barras de desplazamiento
+        self.canvas = tk.Canvas(root)
+        self.scrollbar_v = ttk.Scrollbar(root, orient="vertical", command=self.canvas.yview)
+        self.scrollbar_h = ttk.Scrollbar(root, orient="horizontal", command=self.canvas.xview)
+        self.canvas.configure(yscrollcommand=self.scrollbar_v.set, xscrollcommand=self.scrollbar_h.set)
+
+        self.scrollbar_v.grid(row=0, column=1, sticky=(tk.N, tk.S))
+        self.scrollbar_h.grid(row=1, column=0, sticky=(tk.E, tk.W))
+        self.canvas.grid(row=0, column=0, sticky=(tk.N, tk.S, tk.E, tk.W))
+
+        # Configurar expansión de la ventana principal
+        root.grid_columnconfigure(0, weight=1)
+        root.grid_rowconfigure(0, weight=1)
+
+        # Crear un frame dentro del canvas para colocar todos los widgets
+        self.main_frame = ttk.Frame(self.canvas, padding="10")
+
+        # Agregar el frame al canvas
+        self.canvas.create_window((0, 0), window=self.main_frame, anchor="nw")
+
+        # Configurar expansión de columnas en el frame principal
+        self.main_frame.columnconfigure(0, weight=1)
+        self.main_frame.columnconfigure(1, weight=1)
+        self.main_frame.columnconfigure(2, weight=1) # Columna extra para unidades
+
+        # Diccionario para almacenar las variables de entrada
+        self.input_vars = {}
+        self.create_input_fields(self.main_frame)
+
+        # Sección de resultados
+        self.results_label = ttk.Label(self.main_frame, text="Resultados del Análisis:", font=('Arial', 12, 'bold'), foreground='#0056b3')
+        self.results_label.grid(row=len(self.input_vars) + 4, column=0, columnspan=3, sticky=tk.W, pady=(15, 5), padx=5) # Ajustar fila
+
+        self.output_labels = {}
+        self.create_output_labels(self.main_frame, row_start=len(self.input_vars) + 5) # Ajustar fila
+
+        # Sección de Visualizaciones
+        self.viz_label = ttk.Label(self.main_frame, text="Visualizaciones Conceptuales:", font=('Arial', 12, 'bold'), foreground='#0056b3')
+        # Posicionar debajo de los resultados, abarcando todas las columnas de inputs
+        self.viz_label.grid(row=len(self.input_vars) + 5 + len(self.output_labels), column=0, columnspan=3, sticky=tk.W, pady=(15, 5), padx=5)
+
+        # Frame para las visualizaciones (columna derecha conceptual, pero debajo en el layout actual con scroll)
+        self.viz_frame = ttk.Frame(self.main_frame, padding="10", style="TFrame")
+        # Posicionar debajo de los resultados y la etiqueta de visualizaciones
+        self.viz_frame.grid(row=len(self.input_vars) + 6 + len(self.output_labels), column=0, columnspan=3, sticky=(tk.N, tk.S, tk.E, tk.W), padx=10, pady=10)
+
+        # Configurar columna dentro del viz_frame para que el contenido se centre/expanda
+        self.viz_frame.columnconfigure(0, weight=1)
+
+
+        # Título para la sección de mapa (placeholder)
+        ttk.Label(self.viz_frame, text="Mapa de Microzonificación Sísmica de Lima:", font=('Arial', 10, 'bold')).grid(row=0, column=0, sticky=tk.W, pady=5)
+        ttk.Label(self.viz_frame, text="[Aquí iría una imagen o referencia al mapa]", foreground='#555').grid(row=1, column=0, sticky=tk.W, padx=10)
+        ttk.Label(self.viz_frame, text="Fuente: PDF 'MICROZONIFICACION_SISMICA_GEOTECNICA_LIMA_2017.pdf'", font=('Arial', 9, 'italic'), foreground='#777').grid(row=2, column=0, sticky=tk.W, padx=10)
+        ttk.Label(self.viz_frame, text="Nota: No es posible mostrar el PDF directamente aquí.", font=('Arial', 9, 'italic'), foreground='#777').grid(row=3, column=0, sticky=tk.W, padx=10)
+
+
+        # Título para el diagrama de carga de tráfico
+        ttk.Label(self.viz_frame, text="Diagrama Conceptual de Carga de Tráfico:", font=('Arial', 10, 'bold')).grid(row=4, column=0, sticky=tk.W, pady=5)
+
+        # Contenedor para el gráfico de Matplotlib
+        self.traffic_plot_container = ttk.Frame(self.viz_frame)
+        self.traffic_plot_container.grid(row=5, column=0, sticky=(tk.W, tk.E), padx=5, pady=5)
+        self.viz_frame.rowconfigure(5, weight=1) # Permitir que el contenedor del gráfico se expanda verticalmente
+
+        # Inicializar el gráfico con valores por defecto
+        self.fig = None
+        self.canvas_widget = None
+        self.update_traffic_diagram()
+
+
+        # Asegurar que los campos de tráfico estén deshabilitados inicialmente si no es personalizado
+        self.on_vehicle_selected(None) # Llamar al handler para configurar el estado inicial
+
+        # Configurar el scrollbar para que funcione
+        # Actualizar el scrollregion del canvas cuando el tamaño del main_frame cambie
+        self.main_frame.bind("<Configure>", self.on_frame_configure)
+
+
+    def create_input_fields(self, parent_frame):
+        """Crea las etiquetas y campos de entrada para los parámetros."""
+        row = 0
+
+        # Selector de Ubicación
+        ttk.Label(parent_frame, text="Ubicación (Cargar Parámetros):").grid(row=row, column=0, sticky=tk.W, pady=2, padx=5)
+        self.location_combobox = ttk.Combobox(parent_frame, values=list(LOCATION_PARAMS.keys()), state="readonly", width=27)
+        self.location_combobox.grid(row=row, column=1, sticky=(tk.W, tk.E), pady=2, padx=5)
+        self.location_combobox.set("Miraflores") # Valor por defecto
+        self.location_combobox.bind("<<ComboboxSelected>>", self.on_location_selected)
+        row += 1
+
+
+        # Definir parámetros y sus etiquetas/unidades
+        parameters_info = {
+            "D": ("Diámetro exterior D (m):", "m"),
+            "t": ("Espesor de pared t (m):", "m"),
+            "E": ("Módulo de Young E (Pa):", "Pa"),
+            "nu": ("Coeficiente de Poisson ν:", ""),
+            "alpha_T": ("Coeficiente expansión térmica α_T (°C⁻¹):", "°C⁻¹"),
+            "Sy": ("Límite de Fluencia Sy (Pa):", "Pa"),
+            "H": ("Profundidad al eje H (m):", "m"),
+            "p": ("Presión interna p (Pa):", "Pa"),
+            "delta_T": ("Cambio de Temperatura ΔT (°C):", "°C"),
+            "If": ("Factor de impacto If:", ""),
+            "PGV": ("Velocidad Pico del Suelo PGV (m/s):", "m/s"),
+            "C": ("Velocidad de Onda C (m/s):", "m/s"),
+            "alpha_seismic": ("Factor α (Sísmico):", ""),
+            # W_traffic y A_contacto se manejarán por el selector de vehículo
+        }
+
+        for key, (label_text, unit) in parameters_info.items():
+            ttk.Label(parent_frame, text=label_text).grid(row=row, column=0, sticky=tk.W, pady=2, padx=5)
+            var = tk.StringVar(value=str(DEFAULT_PARAMS[key]))
+            entry = ttk.Entry(parent_frame, textvariable=var, width=30)
+            entry.grid(row=row, column=1, sticky=(tk.W, tk.E), pady=2, padx=5)
+            ttk.Label(parent_frame, text=unit).grid(row=row, column=2, sticky=tk.W, pady=2, padx=5)
+            self.input_vars[key] = var
+            row += 1
+
+        # Selector de vehículo
+        ttk.Label(parent_frame, text="Vehículo:").grid(row=row, column=0, sticky=tk.W, pady=2, padx=5)
+        self.vehicle_combobox = ttk.Combobox(parent_frame, values=list(VEHICLES.keys()), state="readonly", width=27)
+        self.vehicle_combobox.grid(row=row, column=1, sticky=(tk.W, tk.E), pady=2, padx=5)
+        self.vehicle_combobox.set("Camión ligero (35.5 kN/rueda)") # Valor por defecto
+        self.vehicle_combobox.bind("<<ComboboxSelected>>", self.on_vehicle_selected)
+        row += 1
+
+        # Campos para W_traffic y A_contacto (se actualizarán con el selector o se editarán si es personalizado)
+        ttk.Label(parent_frame, text="Carga por rueda W_traffic (N):").grid(row=row, column=0, sticky=tk.W, pady=2, padx=5)
+        self.input_vars["W_traffic"] = tk.StringVar(value=str(DEFAULT_PARAMS["W_traffic"]))
+        self.entry_w_traffic = ttk.Entry(parent_frame, textvariable=self.input_vars["W_traffic"], width=30)
+        self.entry_w_traffic.grid(row=row, column=1, sticky=(tk.W, tk.E), pady=2, padx=5)
+        ttk.Label(parent_frame, text="N").grid(row=row, column=2, sticky=tk.W, pady=2, padx=5)
+        row += 1
+
+        ttk.Label(parent_frame, text="Área de contacto A_contacto (m²):").grid(row=row, column=0, sticky=tk.W, pady=2, padx=5)
+        self.input_vars["A_contacto"] = tk.StringVar(value=str(DEFAULT_PARAMS["A_contacto"]))
+        self.entry_a_contacto = ttk.Entry(parent_frame, textvariable=self.input_vars["A_contacto"], width=30)
+        self.entry_a_contacto.grid(row=row, column=1, sticky=(tk.W, tk.E), pady=2, padx=5)
+        ttk.Label(parent_frame, text="m²").grid(row=row, column=2, sticky=tk.W, pady=2, padx=5)
+        row += 1
+
+        # Botón de cálculo
+        ttk.Button(parent_frame, text="Calcular Esfuerzos", command=self.run_analysis).grid(row=row, column=0, columnspan=3, pady=10)
+
+        # Asegurar que los campos de tráfico estén deshabilitados inicialmente si no es personalizado
+        self.on_vehicle_selected(None) # Llamar al handler para configurar el estado inicial
+
+
+    def create_output_labels(self, parent_frame, row_start):
+        """Crea las etiquetas para mostrar los resultados."""
+        results_order = [
+            ("sigma_h", "σh (Presión):"),
+            ("sigma_a_p", "σa,p (Axial Presión):"),
+            ("sigma_a_T", "σa,T (Axial Temperatura):"),
+            ("sigma_L_traf", "σL,traf (Longitudinal Tráfico):"),
+            ("sigma_a_w", "σa,w (Axial TGD):"),
+            ("sigma_L_total", "σL Total:"),
+            ("sigma_h_total", "σh Total:"),
+            ("sigma_VM", "σVM (Von Mises):"),
+            ("Ratio_VM_Sy", "Ratio σVM/Sy:")
+        ]
+
+        row = row_start
+        for key, label_text in results_order:
+            ttk.Label(parent_frame, text=label_text).grid(row=row, column=0, sticky=tk.W, pady=2, padx=5)
+            label_var = tk.StringVar(value="--")
+            ttk.Label(parent_frame, textvariable=label_var, font=('Arial', 10, 'bold')).grid(row=row, column=1, sticky=tk.W, pady=2, padx=5)
+            self.output_labels[key] = label_var
+            row += 1
+
+    def on_vehicle_selected(self, event):
+        """Actualiza los campos de tráfico cuando se selecciona un vehículo."""
+        selected_vehicle = self.vehicle_combobox.get()
+        if selected_vehicle in VEHICLES:
+            traffic_data = VEHICLES[selected_vehicle]
+            # Establecer los valores primero
+            self.input_vars["W_traffic"].set(str(traffic_data["W_traffic"]))
+            self.input_vars["A_contacto"].set(str(traffic_data["A_contacto"]))
+
+            # Habilitar/deshabilitar campos si es "Vehículo Personalizado"
+            if selected_vehicle == "Vehículo Personalizado":
+                self.entry_w_traffic.config(state="normal")
+                self.entry_a_contacto.config(state="normal")
+            else:
+                # Deshabilitar después de establecer el valor
+                self.entry_w_traffic.config(state="disabled")
+                self.entry_a_contacto.config(state="disabled")
+
+    def on_location_selected(self, event):
+        """Carga los parámetros sísmicos para la ubicación seleccionada."""
+        selected_location = self.location_combobox.get()
+        if selected_location in LOCATION_PARAMS:
+            location_data = LOCATION_PARAMS[selected_location]
+            # Actualizar solo los parámetros que varían por ubicación en este modelo simplificado
+            if "PGV" in location_data:
+                self.input_vars["PGV"].set(str(location_data["PGV"]))
+            if "C" in location_data:
+                self.input_vars["C"].set(str(location_data["C"]))
+            # Si otros parámetros variaran (como H, gamma, etc.), se añadirían aquí.
+
+    def run_analysis(self):
+        """Lee los inputs, realiza el cálculo y muestra los resultados."""
+        params = {}
+        try:
+            # Leer todos los valores de los campos de entrada
+            # Excluir A_contacto ya que no es un parámetro de la función calculate_pipeline_stress
+            param_keys_for_calculation = [key for key in self.input_vars.keys() if key != "A_contacto"]
+
+            for key in param_keys_for_calculation:
+                 var = self.input_vars[key]
+                 # Convertir a float
+                 params[key] = float(var.get())
+
+            # Realizar los cálculos
+            results = calculate_pipeline_stress(**params)
+
+            # Mostrar resultados (convertir Pa a MPa y redondear)
+            self.output_labels["sigma_h"].set(f"{results['sigma_h']/1e6:.3f} MPa")
+            self.output_labels["sigma_a_p"].set(f"{results['sigma_a_p']/1e6:.3f} MPa")
+            self.output_labels["sigma_a_T"].set(f"{results['sigma_a_T']/1e6:.3f} MPa")
+            self.output_labels["sigma_L_traf"].set(f"{results['sigma_L_traf']/1e6:.3f} MPa")
+            self.output_labels["sigma_a_w"].set(f"{results['sigma_a_w']/1e6:.3f} MPa")
+            self.output_labels["sigma_L_total"].set(f"{results['sigma_L_total']/1e6:.3f} MPa")
+            self.output_labels["sigma_h_total"].set(f"{results['sigma_h_total']/1e6:.3f} MPa")
+            self.output_labels["sigma_VM"].set(f"{results['sigma_VM']/1e6:.3f} MPa")
+            self.output_labels["Ratio_VM_Sy"].set(f"{results['Ratio_VM_Sy']:.3f}")
+
+            # Actualizar el diagrama de tráfico con los valores actuales
+            self.update_traffic_diagram()
+
+
+        except ValueError:
+            messagebox.showerror("Error de Entrada", "Por favor, ingrese valores numéricos válidos en todos los campos.")
+        except Exception as e:
+            messagebox.showerror("Error de Cálculo", f"Ocurrió un error durante el cálculo: {e}")
+
+    def update_traffic_diagram(self):
+        """Actualiza el diagrama conceptual de carga de tráfico."""
+        try:
+            # Obtener los parámetros necesarios para el diagrama
+            D = float(self.input_vars["D"].get())
+            H = float(self.input_vars["H"].get())
+            W_traffic = float(self.input_vars["W_traffic"].get())
+            If = float(self.input_vars["If"].get())
+
+            # Limpiar el contenedor si ya hay un gráfico
+            for widget in self.traffic_plot_container.winfo_children():
+                widget.destroy()
+
+            # Generar el nuevo gráfico de Matplotlib
+            self.fig = plot_traffic_load_concept(D, H, W_traffic, If)
+
+            # Incrustar el gráfico en el contenedor de Tkinter
+            self.canvas_matplotlib = FigureCanvasTkAgg(self.fig, master=self.traffic_plot_container)
+            self.canvas_widget = self.canvas_matplotlib.get_tk_widget()
+            self.canvas_widget.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+            self.canvas_matplotlib.draw()
+
+        except ValueError:
+             # Manejar error si los valores de entrada no son válidos para el diagrama
+             pass # El error ya se maneja en run_analysis, solo evitamos que rompa el diagrama
+        except Exception as e:
+             print(f"Error al actualizar el diagrama: {e}") # Imprimir error para depuración
+
+    def on_frame_configure(self, event):
+        """Actualiza la región de desplazamiento del canvas cuando el frame interior cambia de tamaño."""
+        self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+
+
+# --- Ejecutar la aplicación ---
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = PipelineStressApp(root)
+    root.mainloop()

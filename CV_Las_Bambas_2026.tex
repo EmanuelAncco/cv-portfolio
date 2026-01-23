@@ -1,0 +1,222 @@
+% =============================================================================
+%  CV de Emanuel Edgar Ancco Guaygua - Las Bambas 2026
+%  Optimizado para: Seguridad de Presas (Vacante 503057)
+% =============================================================================
+
+\documentclass[10pt, a4paper]{article}
+
+% --- PAQUETES NECESARIOS ---
+\usepackage[utf8]{inputenc} 
+\usepackage[spanish]{babel}      
+\usepackage{geometry}            
+\usepackage{hyperref}            
+\usepackage{fontawesome5}        
+\usepackage{titlesec}            
+\usepackage{amsmath}             
+\usepackage{lmodern} 
+
+% --- CONFIGURACIÓN DE LA PÁGINA ---
+\geometry{
+    a4paper,
+    left=1.6cm,
+    right=1.6cm,
+    top=1.3cm,
+    bottom=1.3cm
+}
+
+% --- COLORES Y ENLACES ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    pdftitle={CV - Emanuel Edgar Ancco Guaygua - Las Bambas},
+    pdfauthor={Emanuel Edgar Ancco Guaygua},
+}
+
+% --- PERSONALIZACIÓN DE TÍTULOS DE SECCIÓN ---
+\titleformat{\section}
+  {\Large\bfseries\scshape} 
+  {}
+  {0em}
+  {}[\titlerule] 
+
+\titlespacing*{\section}{0pt}{1.0ex plus 0.6ex minus .2ex}{0.6ex plus .2ex}
+
+% --- ELIMINAR SANGRÍA DE PÁRRAFO ---
+\setlength{\parindent}{0pt}
+
+% --- DEFINICIÓN DE COMANDOS PARA ENTRADAS ---
+\newcommand{\entry}[4]{
+    \textbf{#1} \hfill \textit{#2} \\
+    \textit{#3} \hfill \textit{#4} \\
+    \vspace{-1.5mm} 
+}
+
+% =============================================================================
+%  INICIO DEL DOCUMENTO
+% =============================================================================
+\begin{document}
+
+% --- ENCABEZADO ---
+\begin{center}
+    {\Huge\bfseries EMANUEL EDGAR ANCCO GUAYGUA}
+    \vspace{2mm}
+
+    \faMapMarker*{} Lima / Puno, Perú \quad
+    \faPhone*{} 974583549 \quad
+    \faEnvelope{} \href{mailto:coarp.eancco@gmail.com}{coarp.eancco@gmail.com} \quad
+    \faLinkedin{} \href{https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352}{LinkedIn}
+    
+    \faGlobe{} \textbf{Portafolio:} \href{https://emanuelancco.github.io/cv-portfolio/}{emanuelancco.github.io/cv-portfolio}
+\end{center}
+
+% --- RESUMEN PROFESIONAL ---
+\section*{Resumen Profesional}
+Egresado de Ingeniería Civil (UPC, Diciembre 2025) con experiencia en \textbf{gestión documentaria y elaboración de documentos técnicos} en obras públicas. Especialización en \textbf{análisis de datos con Python, R y MATLAB}, desarrollo de sistemas de Machine Learning para monitoreo estructural (arquitecturas PINN-GNN), y automatización de procesos con herramientas BIM. Conocimiento de estándares internacionales de seguridad de presas (\textbf{GISTM, ANCOLD, CDA}). Experiencia en \textbf{coordinación con equipos multidisciplinarios} y elaboración de informes técnicos. Originario de Puno, familiarizado con trabajo en altura.
+
+\vspace{2mm}
+\begin{center}
+\fbox{\parbox{0.92\textwidth}{\centering
+\faExternalLink*{} \textbf{EVIDENCIA TÉCNICA Y DEMOS:} \href{https://emanuelancco.github.io/cv-portfolio/}{emanuelancco.github.io/cv-portfolio} \\
+\small{Videos de inferencia, métricas de modelos ML, arquitecturas GNN, capturas de plugins Revit}
+}}
+\end{center}
+
+% --- EXPERIENCIA PREPROFESIONAL ---
+\section*{Experiencia Preprofesional}
+
+\entry{Asistente de Oficina Técnica}{Septiembre 2025 – Diciembre 2025}{Obra: ``Creación de Servicios Culturales - Teatro Municipal de Yunguyo''}{Puno, Perú}
+\begin{itemize}
+    \item Elaboración de informes mensuales de avance de obra, documentando progreso físico y financiero.
+    \item Desarrollo de valorizaciones mensuales con cálculo de metrados ejecutados y control de costos.
+    \item Modelado BIM estructural del proyecto (Revit 2026), generando modelos 3D para coordinación.
+    \item Aplicación de plugins propios de automatización para armado de vigas y generación de losas.
+\end{itemize}
+
+\vspace{1mm} 
+
+\entry{Asistente de Oficina Técnica}{Junio 2024 – Noviembre 2024}{Constructora Talgus S.A.C.}{Lima, Perú}
+\begin{itemize}
+    \item Elaboración de metrados y análisis de costos unitarios para preparación de presupuestos.
+    \item Seguimiento y control de costos de obra, preparación de informes de valorización.
+    \item Modelado y actualización de planos técnicos (AutoCAD, Revit) para correcta ejecución.
+\end{itemize}
+
+\vspace{1mm} 
+
+\entry{Director del Área de Investigaciones}{Enero 2024 – Diciembre 2025}{Capítulo Estudiantil de Ingeniería Civil - IDI UPC}{Lima, Perú}
+\begin{itemize}
+    \item Gestión de proyectos de investigación aplicada en IA para infraestructura, liderando equipos multidisciplinarios.
+    \item Supervisión del ciclo de vida de proyectos, desde planificación hasta presentación de resultados técnicos.
+    \item Ponencia en CONEIC Ucayali 2024 sobre ``Detección Automatizada de Fisuras y Grietas con CNN''.
+\end{itemize}
+
+% --- EDUCACIÓN ---
+\section*{Educación}
+\entry{Pregrado en Ingeniería Civil (Egresado)}{2021 - Diciembre 2025}{Universidad Peruana de Ciencias Aplicadas (UPC)}{Lima, Perú}
+\vspace{1mm}
+\entry{Bachillerato Internacional (IB Diploma)}{2015 - 2017}{Colegio de Alto Rendimiento (COAR Puno)}{Puno, Perú}
+
+% --- PROYECTOS DE DESARROLLO DE SOFTWARE ---
+\section*{Proyectos de Desarrollo de Software e IA}
+
+\textbf{GAIATECH SHM | Sistema de Monitoreo de Salud Estructural con IA}
+\begin{itemize}
+    \item Sistema de \textbf{detección de anomalías en puentes} usando datos de 5 acelerómetros y redes neuronales de grafos.
+    \item Arquitectura innovadora \textbf{PINN-GNN} (Physics-Informed Neural Network) con grafo basado en geometría 3D real.
+    \item Mejor modelo: \textbf{STG-AE Wavelet-GNN} con 5.1M parámetros y validation loss de \textbf{0.0064}.
+    \item Extracción de features con \textbf{Discrete Wavelet Transform (DWT)} y análisis espectral (FFT, CWT).
+    \item Tecnologías: Python, \textbf{PyTorch, PyTorch Geometric}, Wavelets (PyWavelets), CUDA.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{EMARC VISIÓN | Sistema de Detección de Grietas y EPP con Visión Artificial}
+\begin{itemize}
+    \item Sistema de \textbf{segmentación semántica de fisuras y grietas} en superficies de concreto (muros, pavimentos, puentes).
+    \item Modelo \textbf{SegFormer} (Transformers) con clasificación automática de severidad: Leve/Moderada/Severa.
+    \item Cálculo automático de métricas: \textbf{área (cm²), longitud, ancho promedio, porcentaje de daño}.
+    \item Recomendaciones automáticas de mantenimiento según normativa (inspección/reparación).
+    \item Módulo adicional: Detección de EPP con YOLOv8 (\textbf{mAP@0.5 = 90.7\%}).
+    \item Tecnologías: Python, \textbf{Hugging Face Transformers}, SegFormer, YOLOv8, OpenCV.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{Plataforma de Predicción de Riesgos Laborales | NLP + Deep Learning}
+\begin{itemize}
+    \item API REST (FastAPI) para clasificación de narrativas de incidentes usando \textbf{DistilBERT}.
+    \item Predicción de naturaleza del evento, parte del cuerpo afectada y tipo de evento.
+    \item Módulo de \textbf{Toolbox Talks} automáticos para prevención proactiva de accidentes.
+    \item Tecnologías: Python, \textbf{PyTorch, Transformers (Hugging Face)}, FastAPI, SQL.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{EMARC BIM SUITE | Suite de Automatización para Revit 2026}
+\begin{itemize}
+    \item \textbf{SAPtoRevit:} Importador de modelos SAP2000/ETABS a Revit (vigas, columnas, losas con pendientes).
+    \item \textbf{EMARC Structural:} Suite de 20+ comandos para armado automático de elementos estructurales.
+    \item \textbf{AutoCAD $\leftrightarrow$ Revit:} Interoperabilidad JSON para transferencia de geometría y familias.
+    \item Tecnologías: C\#, \textbf{Revit API 2026}, .NET Framework 4.8.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{Innovación Tecnológica e Instrumentación IoT (Hardware Propio)}
+\begin{itemize}
+    \item \textbf{PachaGuard (IoT/FPGA):} Sistema de vigilancia autónoma con \textbf{FPGA Tang Nano 1K} y ESP32-CAM. Procesamiento en el borde (Edge Computing) para alertas en tiempo real vía UART.
+    \item \textbf{Detección Ambiental (Aves/Tráfico):} Modelos \textbf{YOLOv11 y DETR} (Transformers) para monitoreo de fauna y flujo vehicular.
+    \item \textbf{Análisis de Materiales:} Scripting avanzado con librería \textit{concrete-properties} (ACI) para diagramas momento-curvatura.
+    \item Tecnologías: Verilog (FPGA), C++ (Arduino), MicroPython, Transformers.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{Herramientas de Análisis Estructural e Hidráulico}
+\begin{itemize}
+    \item \textbf{Análisis Sísmico Modal:} Herramienta Python para análisis dinámico con norma E.030 (matrices de rigidez, modos, derivas).
+    \item \textbf{Simulación Monte Carlo:} Análisis de confiabilidad estructural con métodos FORM/FOSM y curvas de fragilidad.
+    \item \textbf{Diseño Hidráulico:} Cálculo de canales con ecuación de Manning, exportación a Civil 3D, HEC-RAS, IBER.
+    \item \textbf{Detección de Tráfico Vehicular:} Sistema YOLOv5/v11 para conteo y clasificación de vehículos en tiempo real.
+    \item Tecnologías: Python, NumPy, SciPy, PyWavelets, OpenCV.
+\end{itemize}
+
+% --- HABILIDADES TÉCNICAS ---
+\section*{Habilidades Técnicas}
+\begin{itemize}
+    \item \textbf{Análisis de Datos:} \textbf{Python, R, MATLAB} para procesamiento y visualización de datos, SQL, Power BI, Excel VBA.
+    \item \textbf{Ofimática:} \textbf{MS Office nivel avanzado} (Word, Excel, PowerPoint), \textbf{SAP nivel básico}.
+    \item \textbf{Programación y AI/ML:} Python (PyTorch, TensorFlow, Scikit-learn, YOLOv8), C\# (.NET).
+    \item \textbf{Confiabilidad Estructural:} Métodos FORM/FOSM, Simulación Monte Carlo, Curvas de Fragilidad.
+    \item \textbf{Ingeniería BIM/CAD:} Revit (Desarrollo de Plugins), AutoCAD, Civil 3D, SAP2000.
+    \item \textbf{Automatización:} n8n (workflows), Dynamo, generación automática de reportes Word/Excel.
+    \item \textbf{Sistemas GIS:} ArcGIS, QGIS.
+    \item \textbf{Idiomas:} Español (Nativo), Inglés Intermedio-Avanzado (dominio técnico y conversacional).
+\end{itemize}
+
+% --- CERTIFICACIONES Y RECONOCIMIENTOS ---
+\section*{Certificaciones y Reconocimientos}
+\textit{\small Verificables en LinkedIn: \href{https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352}{linkedin.com/in/emanuel-edgar-ancco-guaygua}}
+\vspace{1mm}
+\begin{itemize}
+    \item \textbf{Especialización en Machine Learning on Google Cloud} (4 cursos) | Google Cloud / Coursera, 2025
+    \item \textbf{Especialista en IA y Aprendizaje Automático con Python} (120 horas) | Data Science Analysis, 2024
+    \item \textbf{Ponente en CONEIC Ucayali 2024} - ``Aplicación de CNN para Evaluación Automatizada de Fisuras y Grietas en Construcciones de Lima''
+    \item \textbf{2do lugar en Concurso de Conocimientos CONEIC} | Huaraz, 2025
+    \item \textbf{Primer Puesto, Concurso de Ponencias Académicas} | XIV COREIC Lima 2023, UNFV
+    \item \textbf{Innovador Destacado, DigiEduHack 2023} | Comisión Europea
+    \item \textbf{Especialización en Python for Everybody} (5 cursos) | University of Michigan / Coursera
+    \item \textbf{ISC AI Foundations For Everyone} | Campus Global ISC, 2025
+    \item \textbf{ISC Data Analytics Aplicado a Cadena de Suministro} | Campus Global ISC, 2025
+\end{itemize}
+
+% --- INFORMACIÓN ADICIONAL ---
+\section*{Información Adicional}
+\begin{itemize}
+    \item \textbf{Disponibilidad:} Inmediata para régimen atípico (14x7) en Unidad Minera.
+    \item \textbf{Origen:} Puno, Perú - \textbf{Familiarizado con trabajo en altura} y condiciones de sierra (4,000+ msnm).
+    \item \textbf{Conocimiento normativo:} Familiaridad con estándares GISTM, CDA y ANCOLD para seguridad de presas.
+\end{itemize}
+
+\end{document}

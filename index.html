@@ -8,6 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+        });
+    </script>
     <style>
         :root {
             --primary: #2563eb;
@@ -910,6 +916,71 @@
 
             <div class="new-projects-grid">
 
+                <!-- GAIATECH Gestor Archivos -->
+                <div class="compact-card"
+                    style="border: 1px solid rgba(99, 102, 241, 0.3); box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);">
+                    <div class="compact-header"
+                        style="background: linear-gradient(135deg, #1e1b4b, #312e81); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-folder-tree" style="font-size: 4rem; color: rgba(255,255,255,0.8);"></i>
+                    </div>
+                    <div class="compact-body">
+                        <h3>🌌 GAIATECH | Gestor IA</h3>
+                        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
+                            Plataforma de escritorio (CustomTkinter) supervitaminada con Gemini 2.5 Flash, capaz de
+                            auto-organizar archivos locales, realizar OCR en documentos y actuar como un agente de
+                            sistema operativo nativo (Auto-Organización Watchdog).
+                        </p>
+                        <div class="card-tech">
+                            <span class="tech-tag">Python CLI/GUI</span>
+                            <span class="tech-tag">GenAI SDK</span>
+                            <span class="tech-tag">Agentic OS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clawdbot / AI Chatbots -->
+                <div class="compact-card"
+                    style="border: 1px solid rgba(16, 185, 129, 0.3); box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);">
+                    <div class="compact-header"
+                        style="background: linear-gradient(135deg, #064e3b, #047857); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-robot" style="font-size: 4rem; color: rgba(255,255,255,0.8);"></i>
+                    </div>
+                    <div class="compact-body">
+                        <h3>💬 Clawdbot & Agentes Sociales</h3>
+                        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
+                            Desarrollo avanzado de asistentes virtuales para Instagram DMs (Manychat + Python). Gestión
+                            inteligente de reservas, FAQs, y derivación de leads usando prompts especializados y RAG.
+                        </p>
+                        <div class="card-tech">
+                            <span class="tech-tag">Manychat</span>
+                            <span class="tech-tag">Claude/GPT</span>
+                            <span class="tech-tag">Social API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Python Automation Scripts -->
+                <div class="compact-card"
+                    style="border: 1px solid rgba(234, 179, 8, 0.3); box-shadow: 0 0 20px rgba(234, 179, 8, 0.1);">
+                    <div class="compact-header"
+                        style="background: linear-gradient(135deg, #713f12, #a16207); display: flex; align-items: center; justify-content: center;">
+                        <i class="fab fa-python" style="font-size: 4rem; color: rgba(255,255,255,0.8);"></i>
+                    </div>
+                    <div class="compact-body">
+                        <h3>🐍 Scripts de Automatización</h3>
+                        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
+                            Colección de utilidades críticas corporativas: scrappers masivos de licitaciones (SEACE),
+                            validadores documentales, extracción de facturas y organizadores automatizados para control
+                            de calidad.
+                        </p>
+                        <div class="card-tech">
+                            <span class="tech-tag">Python Scripts</span>
+                            <span class="tech-tag">Scraping</span>
+                            <span class="tech-tag">File IO</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- n8n Automation -->
                 <div class="compact-card"
                     style="border: 1px solid rgba(249, 115, 22, 0.3); box-shadow: 0 0 20px rgba(249, 115, 22, 0.1);">
@@ -1045,6 +1116,109 @@
                             <span class="tech-tag">OpenAI API</span>
                             <span class="tech-tag">Python Speech</span>
                             <span class="tech-tag">Voice Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MCP & n8n Ecosystem Section -->
+    <section id="ecosistema" class="section section-dark"
+        style="background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #020617 80%); border-top: 1px solid rgba(99, 102, 241, 0.2);">
+        <div class="container">
+            <h2 class="section-title"
+                style="background: linear-gradient(to right, #818cf8, #c084fc); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                🌐 Arquitectura Agentic & MCP Ecosystem</h2>
+            <p
+                style="text-align: center; color: var(--text-dim); max-width: 800px; margin: 0 auto 3rem auto; font-size: 1.1rem;">
+                Integración profunda usando <strong>Model Context Protocol (MCP)</strong>. Conexión de LLMs potentes
+                (Claude, Gemini) con herramientas de software externas (n8n, Unity Editor, Notions, Sistemas de
+                Archivos) mediante flujos orquestados y automatizaciones inteligentes.
+            </p>
+
+            <div style="display: grid; grid-template-columns: 1fr; gap: 3rem;">
+
+                <!-- Diagrama General -->
+                <div class="project-card"
+                    style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.05);">
+                    <h3 style="margin-bottom: 1.5rem; text-align: center; color: white;">Arquitectura de Protocolos y
+                        Herramientas (MCP)</h3>
+                    <div
+                        style="background: #0f172a; padding: 2rem; border-radius: 16px; border: 1px solid #1e293b; overflow-x: auto;">
+                        <div class="mermaid" style="text-align: center;">
+                            flowchart TD
+                            classDef agent fill:#4f46e5,stroke:#8b5cf6,stroke-width:2px,color:#fff,font-weight:bold
+                            classDef mcp fill:#0f766e,stroke:#14b8a6,stroke-width:2px,color:#fff
+                            classDef external fill:#b45309,stroke:#f59e0b,stroke-width:2px,color:#fff
+
+                            AI["🤖 LLM Core (Claude/Gemini/GPT)"]:::agent
+
+                            subgraph MCP [Servidores MCP Integrados]
+                            N8N["fa:fa-network-wired n8n MCP Server"]:::mcp
+                            UNITY["fa:fa-cube Unity MCP Server"]:::mcp
+                            NOTION["fa:fa-book Notion MCP"]:::mcp
+                            LOCAL["fa:fa-folder-tree Local FS / Python OS"]:::mcp
+                            end
+
+                            AI <-->|Solicita herramientas| MCP
+
+                                N8N -->|Ejecuta Workflows| API["fa:fa-globe APIs Externas (Apify, Meta,
+                                etc)"]:::external
+                                UNITY -->|Controla Editor/GameObjects| CSHARP["fa:fa-code C# Unity Env"]:::external
+                                NOTION -->|Lee/Escribe DBs| DB["fa:fa-database Bases de Datos"]:::external
+                                LOCAL -->|Auto-Organización| DISK["fa:fa-hard-drive Disco/Servidores"]:::external
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diagrama n8n -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <div class="project-card"
+                        style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.05);">
+                        <h3 style="margin-bottom: 1.5rem; text-align: center; color: white;">Lógica de Casos: Agente
+                            Inmobiliario (n8n Workflow)</h3>
+                        <div
+                            style="background: #0f172a; padding: 2rem; border-radius: 16px; border: 1px solid #1e293b; overflow-x: auto;">
+                            <div class="mermaid" style="text-align: center;">
+                                flowchart LR
+                                classDef doc fill:#047857,stroke:#10b981,stroke-width:2px,color:#fff
+                                classDef action fill:#0369a1,stroke:#0ea5e9,stroke-width:2px,color:#fff
+                                classDef agent fill:#9333ea,stroke:#c084fc,stroke-width:2px,color:#fff
+
+                                T["fa:fa-bolt Webhook / Schedule"]:::doc
+                                R["fa:fa-database Retriever (Notion KV)"]:::action
+                                A["fa:fa-brain AI Agent (LangChain)"]:::agent
+                                O["fa:fa-paper-plane Output (Email, WP)"]:::action
+
+                                T --> R
+                                R --> A
+                                A -->|Decisión / Routing| O
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Diagrama Unity -->
+                    <div class="project-card"
+                        style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.05);">
+                        <h3 style="margin-bottom: 1.5rem; text-align: center; color: white;">Unity Game Engine
+                            Automation</h3>
+                        <div
+                            style="background: #0f172a; padding: 2rem; border-radius: 16px; border: 1px solid #1e293b; overflow-x: auto;">
+                            <div class="mermaid" style="text-align: center;">
+                                flowchart TD
+                                classDef base fill:#1d4ed8,stroke:#2563eb,stroke-width:2px,color:#fff
+
+                                Claude["fa:fa-robot Claude / LLM"]:::base
+                                UnityMCP["fa:fa-plug Unity MCP"]:::base
+                                Hierarchy["fa:fa-sitemap Scene Hierarchy"]:::base
+                                Assets["fa:fa-boxes Assets Search"]:::base
+
+                                Claude <-->|mcp_unity_*_action| UnityMCP
+                                    UnityMCP --> Hierarchy
+                                    UnityMCP --> Assets
+                            </div>
                         </div>
                     </div>
                 </div>

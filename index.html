@@ -1163,43 +1163,41 @@
                             classDef code fill:#b45309,stroke:#f59e0b,stroke-width:2px,color:#fff,rx:5,ry:5
                             classDef db fill:#4d7c0f,stroke:#84cc16,stroke-width:2px,color:#fff,rx:20,ry:20
 
-                            subgraph Core["🧠 Cerebro Lógico (LLM)"]
-                            Claude["fa:fa-brain Claude 3.5 Sonnet<br />(Main Agent)"]:::llm
+                            subgraph Core["Cerebro Lógico LLM"]
+                            Claude["fa:fa-brain Claude 3.5 Sonnet"]:::llm
                             end
 
-                            subgraph MCPServers ["🔌 Infraestructura Integrada (Model Context Protocol)"]
-                            direction LR
+                            subgraph MCPServers ["Infraestructura Integrada MCP"]
                             N8NMCP["fa:fa-network-wired n8n MCP Server"]:::mcp
                             UNITYMCP["fa:fa-cube Unity MCP Server"]:::mcp
                             NOTIONMCP["fa:fa-book Notion MCP Server"]:::mcp
-                            LOCALMCP["fa:fa-folder-tree OS File System MCP"]:::mcp
+                            LOCALMCP["fa:fa-folder-tree OS File System"]:::mcp
                             end
 
-                            Core <==>|"Llamada Dinámica a Herramientas"| MCPServers
+                            Core <-->|Llamada Dinamica| MCPServers
 
-                                subgraph Tools ["🛠️ Entornos y Herramientas Nativas Controladas"]
-                                direction TB
-                                subgraph BIM_Eng ["BIM & Ingeniería Estructural"]
-                                RevitApp["fa:fa-building Autodesk Revit<br />(Modelado 3D & Planos)"]:::bim
-                                SAPApp["fa:fa-cogs SAP2000 / ETABS<br />(Cálculo Estructural)"]:::eng
+                                subgraph Tools ["Entornos Nativos"]
+                                subgraph BIM_Eng ["BIM e Ingenieria Estructural"]
+                                RevitApp["fa:fa-building Autodesk Revit"]:::bim
+                                SAPApp["fa:fa-cogs Engine SAP2000"]:::eng
                                 end
 
-                                subgraph Game_Logic ["Desarrollo & Orquestación Web"]
-                                UnityEditor["fa:fa-gamepad Unity Editor<br />(C#, Scene Hierarchy)"]:::code
-                                n8nCloud["fa:fa-cloud n8n Node Editor<br />(Workflows & APIs)"]:::code
+                                subgraph Game_Logic ["Desarrollo de Software"]
+                                UnityEditor["fa:fa-gamepad Unity Editor"]:::code
+                                n8nCloud["fa:fa-cloud n8n Node Editor"]:::code
                                 end
 
-                                subgraph Data_Mgmt ["Gestión y Persistencia"]
-                                NotionWorkspace["fa:fa-file-alt Notion Workspace<br />(Sistemas PARA)"]:::db
-                                LocalMachine["fa:fa-desktop PC Local<br />(Python, SDKs)"]:::db
+                                subgraph Data_Mgmt ["Gestion y Persistencia"]
+                                NotionWorkspace["fa:fa-file-alt Notion Workspace"]:::db
+                                LocalMachine["fa:fa-desktop PC Local"]:::db
                                 end
                                 end
 
-                                LOCALMCP -->|Scripts: PyRevit / OAPI| BIM_Eng
-                                UNITYMCP -->|GameObjects & C#| UnityEditor
-                                N8NMCP -->|Ejecuta Workflows| n8nCloud
-                                NOTIONMCP -->|CRUD Tablas| NotionWorkspace
-                                LOCALMCP -->|Auto-Organización| LocalMachine
+                                LOCALMCP -->|Scripts| BIM_Eng
+                                UNITYMCP -->|C# Code| UnityEditor
+                                N8NMCP -->|Workflows| n8nCloud
+                                NOTIONMCP -->|CRUD API| NotionWorkspace
+                                LOCALMCP -->|Archivos| LocalMachine
                         </div>
                     </div>
                 </div>
@@ -1221,22 +1219,22 @@
                                 classDef bim fill:#be123c,stroke:#f43f5e,stroke-width:2px,color:#fff
                                 classDef sap fill:#0284c7,stroke:#0369a1,stroke-width:2px,color:#fff
 
-                                Claude["fa:fa-brain IA (Claude)"]:::base
+                                Claude["fa:fa-brain IA Claude"]:::base
                                 OS["fa:fa-laptop OS Local MCP"]:::base
 
-                                ScriptSAP["fa:fa-code Script Extractor (SAP OAPI)"]:::python
-                                ScriptRevit["fa:fa-code Script Creador (PyRevit)"]:::python
+                                ScriptSAP["fa:fa-code OAPI Extractor"]:::python
+                                ScriptRevit["fa:fa-code PyRevit Creador"]:::python
 
-                                SAP["fa:fa-cogs SAP2000<br />Cálculo Estructural"]:::sap
-                                Revit["fa:fa-building Autodesk Revit<br />Modelo BIM"]:::bim
+                                SAP["fa:fa-cogs Engine SAP2000"]:::sap
+                                Revit["fa:fa-building Engine Revit"]:::bim
 
-                                Claude <-->|Comanda ejecución| OS
-                                    OS -->|Ejecuta| ScriptSAP
-                                    OS -->|Ejecuta| ScriptRevit
+                                Claude <-->|Comanda ejecucion| OS
+                                    OS -->|Ejecuta Python| ScriptSAP
+                                    OS -->|Ejecuta Python| ScriptRevit
 
-                                    ScriptSAP <-->|Lee Nodos/Frames| SAP
-                                        ScriptSAP -.->|Genera Coordenadas (JSON)| ScriptRevit
-                                        ScriptRevit -->|Dibuja Tuberías/Uniones| Revit
+                                    ScriptSAP <-->|Lee Nodos| SAP
+                                        ScriptSAP -.->|JSON Coordinates| ScriptRevit
+                                        ScriptRevit -->|Dibuja elementos| Revit
                             </div>
                         </div>
                     </div>
@@ -1254,22 +1252,22 @@
                                 classDef mcp fill:#0f766e,stroke:#14b8a6,stroke-width:2px,color:#fff
                                 classDef unity fill:#10b981,stroke:#059669,stroke-width:2px,color:#fff
 
-                                Claude["fa:fa-robot IA Contextual (Claude)"]:::base
+                                Claude["fa:fa-robot IA Contextual"]:::base
                                 UnityMCP["fa:fa-plug Unity MCP Server"]:::mcp
 
                                 subgraph UnityEditor ["Unity Editor Environment"]
-                                Hierarchy["fa:fa-sitemap Análisis de Jerarquía"]:::unity
-                                Scripts["fa:fa-code Ejecución Código C#"]:::unity
-                                Assets["fa:fa-archive Búsqueda de Assets"]:::unity
+                                Hierarchy["fa:fa-sitemap Analisis Jerarquia"]:::unity
+                                Scripts["fa:fa-code Ejecuta Codigo C#"]:::unity
+                                Assets["fa:fa-archive Busqueda Assets"]:::unity
                                 end
 
-                                GameObjects["fa:fa-cubes Modificación Directa de GameObjects (2D/3D)"]:::unity
+                                GameObjects["fa:fa-cubes Modificacion GameObjects"]:::unity
 
                                 Claude <-->|JSON Tools| UnityMCP
                                     UnityMCP --> Hierarchy
                                     UnityMCP --> Scripts
                                     UnityMCP --> Assets
-                                    Scripts -.->|Compila e inyecta en C#| GameObjects
+                                    Scripts -.->|Inyecta Codigo| GameObjects
                             </div>
                         </div>
                     </div>

@@ -1174,30 +1174,34 @@
                             LOCALMCP["fa:fa-folder-tree OS File System"]:::mcp
                             end
 
-                            Core <-->|Llamada Dinamica| MCPServers
+                            Claude <--> N8NMCP
+                                Claude <--> UNITYMCP
+                                    Claude <--> NOTIONMCP
+                                        Claude <--> LOCALMCP
 
-                                subgraph Tools ["Entornos Nativos"]
-                                subgraph BIM_Eng ["BIM e Ingenieria Estructural"]
-                                RevitApp["fa:fa-building Autodesk Revit"]:::bim
-                                SAPApp["fa:fa-cogs Engine SAP2000"]:::eng
-                                end
+                                            subgraph Tools ["Entornos Nativos"]
+                                            subgraph BIM_Eng ["BIM e Ingenieria Estructural"]
+                                            RevitApp["fa:fa-building Autodesk Revit"]:::bim
+                                            SAPApp["fa:fa-cogs Engine SAP2000"]:::eng
+                                            end
 
-                                subgraph Game_Logic ["Desarrollo de Software"]
-                                UnityEditor["fa:fa-gamepad Unity Editor"]:::code
-                                n8nCloud["fa:fa-cloud n8n Node Editor"]:::code
-                                end
+                                            subgraph Game_Logic ["Desarrollo de Software"]
+                                            UnityEditor["fa:fa-gamepad Unity Editor"]:::code
+                                            n8nCloud["fa:fa-cloud n8n Node Editor"]:::code
+                                            end
 
-                                subgraph Data_Mgmt ["Gestion y Persistencia"]
-                                NotionWorkspace["fa:fa-file-alt Notion Workspace"]:::db
-                                LocalMachine["fa:fa-desktop PC Local"]:::db
-                                end
-                                end
+                                            subgraph Data_Mgmt ["Gestion y Persistencia"]
+                                            NotionWorkspace["fa:fa-file-alt Notion Workspace"]:::db
+                                            LocalMachine["fa:fa-desktop PC Local"]:::db
+                                            end
+                                            end
 
-                                LOCALMCP -->|Scripts| BIM_Eng
-                                UNITYMCP -->|C# Code| UnityEditor
-                                N8NMCP -->|Workflows| n8nCloud
-                                NOTIONMCP -->|CRUD API| NotionWorkspace
-                                LOCALMCP -->|Archivos| LocalMachine
+                                            LOCALMCP -->|Scripts| RevitApp
+                                            LOCALMCP -->|Scripts| SAPApp
+                                            UNITYMCP -->|C# Code| UnityEditor
+                                            N8NMCP -->|Workflows| n8nCloud
+                                            NOTIONMCP -->|CRUD API| NotionWorkspace
+                                            LOCALMCP -->|Archivos| LocalMachine
                         </div>
                     </div>
                 </div>

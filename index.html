@@ -1163,45 +1163,45 @@
                             classDef code fill:#b45309,stroke:#f59e0b,stroke-width:2px,color:#fff,rx:5,ry:5
                             classDef db fill:#4d7c0f,stroke:#84cc16,stroke-width:2px,color:#fff,rx:20,ry:20
 
-                            subgraph Core["Cerebro Lógico LLM"]
+                            subgraph Core [Cerebro Lógico LLM]
                             Claude["fa:fa-brain Claude 3.5 Sonnet"]:::llm
                             end
 
-                            subgraph MCPServers ["Infraestructura Integrada MCP"]
+                            subgraph MCPServers [Infraestructura Integrada MCP]
                             N8NMCP["fa:fa-network-wired n8n MCP Server"]:::mcp
                             UNITYMCP["fa:fa-cube Unity MCP Server"]:::mcp
                             NOTIONMCP["fa:fa-book Notion MCP Server"]:::mcp
-                            LOCALMCP["fa:fa-folder-tree OS File System"]:::mcp
+                            LOCALMCP["fa:fa-folder-tree OS File System MCP"]:::mcp
                             end
 
-                            Claude <--> N8NMCP
-                                Claude <--> UNITYMCP
-                                    Claude <--> NOTIONMCP
-                                        Claude <--> LOCALMCP
+                            Claude --> N8NMCP
+                            Claude --> UNITYMCP
+                            Claude --> NOTIONMCP
+                            Claude --> LOCALMCP
 
-                                            subgraph Tools ["Entornos Nativos"]
-                                            subgraph BIM_Eng ["BIM e Ingenieria Estructural"]
-                                            RevitApp["fa:fa-building Autodesk Revit"]:::bim
-                                            SAPApp["fa:fa-cogs Engine SAP2000"]:::eng
-                                            end
+                            subgraph Tools [Entornos Nativos]
+                            subgraph BIMEng [BIM e Ingenieria Estructural]
+                            RevitApp["fa:fa-building Autodesk Revit"]:::bim
+                            SAPApp["fa:fa-cogs Engine SAP2000"]:::eng
+                            end
 
-                                            subgraph Game_Logic ["Desarrollo de Software"]
-                                            UnityEditor["fa:fa-gamepad Unity Editor"]:::code
-                                            n8nCloud["fa:fa-cloud n8n Node Editor"]:::code
-                                            end
+                            subgraph GameLogic [Desarrollo de Software]
+                            UnityEditor["fa:fa-gamepad Unity Editor"]:::code
+                            N8NApp["fa:fa-cloud n8n Node Editor"]:::code
+                            end
 
-                                            subgraph Data_Mgmt ["Gestion y Persistencia"]
-                                            NotionWorkspace["fa:fa-file-alt Notion Workspace"]:::db
-                                            LocalMachine["fa:fa-desktop PC Local"]:::db
-                                            end
-                                            end
+                            subgraph DataMgmt [Gestion y Persistencia]
+                            NotionWorkspace["fa:fa-file-alt Notion Workspace"]:::db
+                            LocalMachine["fa:fa-desktop PC Local"]:::db
+                            end
+                            end
 
-                                            LOCALMCP -->|Scripts| RevitApp
-                                            LOCALMCP -->|Scripts| SAPApp
-                                            UNITYMCP -->|C# Code| UnityEditor
-                                            N8NMCP -->|Workflows| n8nCloud
-                                            NOTIONMCP -->|CRUD API| NotionWorkspace
-                                            LOCALMCP -->|Archivos| LocalMachine
+                            LOCALMCP -->|Scripts| RevitApp
+                            LOCALMCP -->|Scripts| SAPApp
+                            UNITYMCP -->|C# Code| UnityEditor
+                            N8NMCP -->|Workflows| N8NApp
+                            NOTIONMCP -->|CRUD API| NotionWorkspace
+                            LOCALMCP -->|Archivos| LocalMachine
                         </div>
                     </div>
                 </div>
@@ -1229,16 +1229,17 @@
                                 ScriptSAP["fa:fa-code OAPI Extractor"]:::python
                                 ScriptRevit["fa:fa-code PyRevit Creador"]:::python
 
-                                SAP["fa:fa-cogs Engine SAP2000"]:::sap
-                                Revit["fa:fa-building Engine Revit"]:::bim
+                                SAPEngine["fa:fa-cogs Engine SAP2000"]:::sap
+                                RevitEngine["fa:fa-building Engine Revit"]:::bim
 
-                                Claude <-->|Comanda ejecucion| OS
-                                    OS -->|Ejecuta Python| ScriptSAP
-                                    OS -->|Ejecuta Python| ScriptRevit
+                                Claude -->|Ejecuta Cmd| OS
+                                OS -->|Ejecuta Python| ScriptSAP
+                                OS -->|Ejecuta Python| ScriptRevit
 
-                                    ScriptSAP <-->|Lee Nodos| SAP
-                                        ScriptSAP -.->|JSON Coordinates| ScriptRevit
-                                        ScriptRevit -->|Dibuja elementos| Revit
+                                ScriptSAP -->|Lee Nodos| SAPEngine
+
+                                ScriptSAP -.->|Coordenadas JSON| ScriptRevit
+                                ScriptRevit -->|Dibuja elementos| RevitEngine
                             </div>
                         </div>
                     </div>
@@ -1259,7 +1260,7 @@
                                 Claude["fa:fa-robot IA Contextual"]:::base
                                 UnityMCP["fa:fa-plug Unity MCP Server"]:::mcp
 
-                                subgraph UnityEditor ["Unity Editor Environment"]
+                                subgraph UnityEditorEnv [Unity Editor Environment]
                                 Hierarchy["fa:fa-sitemap Analisis Jerarquia"]:::unity
                                 Scripts["fa:fa-code Ejecuta Codigo C#"]:::unity
                                 Assets["fa:fa-archive Busqueda Assets"]:::unity
@@ -1267,11 +1268,11 @@
 
                                 GameObjects["fa:fa-cubes Modificacion GameObjects"]:::unity
 
-                                Claude <-->|JSON Tools| UnityMCP
-                                    UnityMCP --> Hierarchy
-                                    UnityMCP --> Scripts
-                                    UnityMCP --> Assets
-                                    Scripts -.->|Inyecta Codigo| GameObjects
+                                Claude -->|Tools| UnityMCP
+                                UnityMCP --> Hierarchy
+                                UnityMCP --> Scripts
+                                UnityMCP --> Assets
+                                Scripts -.->|Inyecta C#| GameObjects
                             </div>
                         </div>
                     </div>

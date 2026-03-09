@@ -920,8 +920,14 @@
                 <div class="compact-card"
                     style="border: 1px solid rgba(99, 102, 241, 0.3); box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);">
                     <div class="compact-header"
-                        style="background: linear-gradient(135deg, #1e1b4b, #312e81); display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-folder-tree" style="font-size: 4rem; color: rgba(255,255,255,0.8);"></i>
+                        style="height: 200px; padding: 0; position: relative; overflow: hidden; background: #0f172a;">
+                        <img src="assets/images/gaiatech-app.png" alt="GAIATECH Gestor IA"
+                            style="width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: opacity 0.3s ease;"
+                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">
+                        <div
+                            style="position: absolute; bottom: 10px; right: 10px; background: rgba(30, 27, 75, 0.9); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(99,102,241,0.5);">
+                            <i class="fas fa-folder-tree" style="font-size: 1.5rem; color: #818cf8;"></i>
+                        </div>
                     </div>
                     <div class="compact-body">
                         <h3>🌌 GAIATECH | Gestor IA</h3>
@@ -1133,15 +1139,14 @@
                 🌐 Arquitectura Agentic & Ecosistema MCP</h2>
             <p
                 style="text-align: center; color: var(--text-dim); max-width: 900px; margin: 0 auto 3rem auto; font-size: 1.1rem;">
-                Integración profunda usando el estándar <strong>Model Context Protocol (MCP)</strong>. Conexión de LLMs
-                frontera (Claude 3.5 Sonnet, Gemini 2.5 Pro) con entornos corporativos, bases de datos vectoriales y
-                herramientas de software externo (n8n, Unity Editor, Notion, Sistemas Nativos) mediante flujos
-                orquestados dinámicos.
+                Integración profunda usando el estándar <strong>Model Context Protocol (MCP)</strong>. Conexión directa
+                del cerebro lógico (Claude 3.5 Sonnet) con servidores MCP especializados para dominar herramientas de
+                Ingeniería (Revit, SAP2000), Desarrollo de Videojuegos (Unity), y Automatización (n8n, Notion, Local
+                OS).
             </p>
 
             <div style="display: grid; grid-template-columns: 1fr; gap: 3rem;">
-
-                <!-- Diagrama General MCP -->
+                <!-- 1. Diagrama Global MCP -->
                 <div class="project-card"
                     style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.05);">
                     <h3 style="margin-bottom: 1.5rem; text-align: center; color: white;">Mapa Global de Interacción LLM
@@ -1153,136 +1158,122 @@
                             classDef llm
                             fill:#4f46e5,stroke:#8b5cf6,stroke-width:2px,color:#fff,font-weight:bold,rx:10,ry:10
                             classDef mcp fill:#0f766e,stroke:#14b8a6,stroke-width:2px,color:#fff,rx:5,ry:5
-                            classDef external fill:#b45309,stroke:#f59e0b,stroke-width:2px,color:#fff,rx:5,ry:5
-                            classDef db fill:#0369a1,stroke:#0ea5e9,stroke-width:2px,color:#fff,rx:20,ry:20
+                            classDef bim fill:#be123c,stroke:#f43f5e,stroke-width:2px,color:#fff,rx:5,ry:5
+                            classDef eng fill:#0369a1,stroke:#0ea5e9,stroke-width:2px,color:#fff,rx:5,ry:5
+                            classDef code fill:#b45309,stroke:#f59e0b,stroke-width:2px,color:#fff,rx:5,ry:5
+                            classDef db fill:#4d7c0f,stroke:#84cc16,stroke-width:2px,color:#fff,rx:20,ry:20
 
-                            subgraph Core["Cerebro Lógico (LLMs)"]
-                            Claude["fa:fa-brain Claude 3.5 Sonnet (Primary)"]:::llm
-                            Gemini["fa:fa-bolt Gemini 2.5 Flash / Pro"]:::llm
-                            GPT["fa:fa-robot OpenAI GPT-4o"]:::llm
+                            subgraph Core["🧠 Cerebro Lógico (LLM)"]
+                            Claude["fa:fa-brain Claude 3.5 Sonnet<br />(Main Agent)"]:::llm
                             end
 
-                            subgraph MCPServers ["Infraestructura Model Context Protocol (MCP)"]
-                            N8NMCP["fa:fa-network-wired n8n MCP Server<br>(Orquestación & Workflows)"]:::mcp
-                            UNITYMCP["fa:fa-cube Unity MCP Server<br>(C# Game Engine Control)"]:::mcp
-                            NOTIONMCP["fa:fa-book Notion MCP Server<br>(Base de Conocimiento)"]:::mcp
-                            LOCALMCP["fa:fa-folder-tree OS File System MCP<br>(Organización Local / Python)"]:::mcp
+                            subgraph MCPServers ["🔌 Infraestructura Integrada (Model Context Protocol)"]
+                            direction LR
+                            N8NMCP["fa:fa-network-wired n8n MCP Server"]:::mcp
+                            UNITYMCP["fa:fa-cube Unity MCP Server"]:::mcp
+                            NOTIONMCP["fa:fa-book Notion MCP Server"]:::mcp
+                            LOCALMCP["fa:fa-folder-tree OS File System MCP"]:::mcp
                             end
 
-                            Core <==>|"Herramientas & Contexto"| MCPServers
+                            Core <==>|"Llamada Dinámica a Herramientas"| MCPServers
 
-                                subgraph Externals ["Puntos Finales & APIs Externas"]
-                                Social["fa:fa-instagram Meta APIs (Manychat, IG)"]:::external
-                                CRM["fa:fa-envelope Gmail / Google Calendar"]:::external
-                                UnityEditor["fa:fa-gamepad Unity Editor (Scene & Hierarchy)"]:::external
-                                Todo["fa:fa-check-square Todoist / Gestión Tareas"]:::external
+                                subgraph Tools ["🛠️ Entornos y Herramientas Nativas Controladas"]
+                                direction TB
+                                subgraph BIM_Eng ["BIM & Ingeniería Estructural"]
+                                RevitApp["fa:fa-building Autodesk Revit<br />(Modelado 3D & Planos)"]:::bim
+                                SAPApp["fa:fa-cogs SAP2000 / ETABS<br />(Cálculo Estructural)"]:::eng
                                 end
 
-                                subgraph Datos ["Capa de Persistencia"]
-                                Postgres[("fa:fa-database Postgres (Memoria Chat)")]:::db
-                                Supabase[("fa:fa-vector-square Supabase (Vector Store RAG)")]:::db
-                                Redis[("fa:fa-server Redis (Caché & Cola)")]:::db
+                                subgraph Game_Logic ["Desarrollo & Orquestación Web"]
+                                UnityEditor["fa:fa-gamepad Unity Editor<br />(C#, Scene Hierarchy)"]:::code
+                                n8nCloud["fa:fa-cloud n8n Node Editor<br />(Workflows & APIs)"]:::code
                                 end
 
-                                N8NMCP -->|Webhooks & REST| Social
-                                N8NMCP -->|Agentes Inmobiliarios/Empresariales| CRM
-                                N8NMCP -->|Chat History & RAG| Datos
-                                UNITYMCP -->|C# Scripts & Assets| UnityEditor
-                                NOTIONMCP -->|CRUD Docs| CRM
+                                subgraph Data_Mgmt ["Gestión y Persistencia"]
+                                NotionWorkspace["fa:fa-file-alt Notion Workspace<br />(Sistemas PARA)"]:::db
+                                LocalMachine["fa:fa-desktop PC Local<br />(Python, SDKs)"]:::db
+                                end
+                                end
+
+                                LOCALMCP -->|Scripts: PyRevit / OAPI| BIM_Eng
+                                UNITYMCP -->|GameObjects & C#| UnityEditor
+                                N8NMCP -->|Ejecuta Workflows| n8nCloud
+                                NOTIONMCP -->|CRUD Tablas| NotionWorkspace
+                                LOCALMCP -->|Auto-Organización| LocalMachine
                         </div>
                     </div>
                 </div>
 
-                <!-- 2 Column Diagramas -->
+                <!-- 2 Column Diagramas Depth -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem;">
 
-                    <!-- Diagrama n8n Inmobiliario -->
+                    <!-- 2. Diagrama BIM & Ingeniería (SAP + Revit) -->
                     <div class="project-card"
                         style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.05);">
-                        <h3 style="margin-bottom: 1.5rem; text-align: center; color: white;">Pipeline n8n: Agente
-                            Inmobiliario IA 3.0 (40+ Nodos)</h3>
+                        <h3 style="margin-bottom: 1.5rem; text-align: center; color: white;">BIM Automation: SAP2000 a
+                            Revit</h3>
                         <div
                             style="background: #0f172a; padding: 2rem; border-radius: 16px; border: 1px solid #1e293b; overflow-x: auto;">
                             <div class="mermaid" style="text-align: center;">
                                 flowchart TD
-                                classDef trigger fill:#047857,stroke:#10b981,stroke-width:2px,color:#fff
-                                classDef logic fill:#0369a1,stroke:#0ea5e9,stroke-width:2px,color:#fff
-                                classDef agent fill:#9333ea,stroke:#c084fc,stroke-width:2px,color:#fff
-                                classDef action fill:#b45309,stroke:#f59e0b,stroke-width:2px,color:#fff
+                                classDef base fill:#1e1b4b,stroke:#a855f7,stroke-width:2px,color:#fff
+                                classDef python fill:#eab308,stroke:#ca8a04,stroke-width:2px,color:#fff
+                                classDef bim fill:#be123c,stroke:#f43f5e,stroke-width:2px,color:#fff
+                                classDef sap fill:#0284c7,stroke:#0369a1,stroke-width:2px,color:#fff
 
-                                T["fa:fa-telegram Telegram Trigger"]:::trigger
-                                C["fa:fa-filter Clasificador IA (Gemini)"]:::logic
-                                R{"Router Principal"}:::logic
-                                A["fa:fa-robot Agente Inmobiliario Pro (LangChain)"]:::agent
-                                M[("fa:fa-database Memoria Postgres")]:::logic
-                                T1["fa:fa-table BD Propiedades (Sheets)"]:::action
-                                T2["fa:fa-calendar Crear Cita (Calendar)"]:::action
-                                Scorer["fa:fa-star Lead Scorer IA"]:::logic
-                                Detect["fa:fa-check Detector Cita Confirmada"]:::logic
-                                Email["fa:fa-envelope Email Confirmación (Gmail)"]:::action
-                                Admin["fa:fa-user-tie Escalación Humana"]:::action
+                                Claude["fa:fa-brain IA (Claude)"]:::base
+                                OS["fa:fa-laptop OS Local MCP"]:::base
 
-                                T --> C --> R
-                                R -->|Spam| SpamCheck["Bloqueo Spam 2m"]:::logic
-                                R -->|Intervención| Admin
-                                R -->|Lead Válido| A
+                                ScriptSAP["fa:fa-code Script Extractor (SAP OAPI)"]:::python
+                                ScriptRevit["fa:fa-code Script Creador (PyRevit)"]:::python
 
-                                M -.->|Contexto Histórico| A
-                                T1 -.->|Tool| A
-                                T2 -.->|Tool| A
+                                SAP["fa:fa-cogs SAP2000<br />Cálculo Estructural"]:::sap
+                                Revit["fa:fa-building Autodesk Revit<br />Modelo BIM"]:::bim
 
-                                A --> Resp["Guardar Respuesta IA"]:::logic
-                                Resp --> TelegramResp["Responder Cliente"]:::action
-                                Resp --> Scorer
-                                Scorer --> Detect
-                                Detect -->|Cita Agendada| GenerarCuerpo["IA Redacta Corpo/Asunto"]:::agent --> Email
+                                Claude <-->|Comanda ejecución| OS
+                                    OS -->|Ejecuta| ScriptSAP
+                                    OS -->|Ejecuta| ScriptRevit
+
+                                    ScriptSAP <-->|Lee Nodos/Frames| SAP
+                                        ScriptSAP -.->|Genera Coordenadas (JSON)| ScriptRevit
+                                        ScriptRevit -->|Dibuja Tuberías/Uniones| Revit
                             </div>
                         </div>
                     </div>
 
-                    <!-- Diagrama n8n Chatbot Instagram -->
+                    <!-- 3. Diagrama Unity Game Engine -->
                     <div class="project-card"
                         style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.05);">
-                        <h3 style="margin-bottom: 1.5rem; text-align: center; color: white;">Pipeline n8n: Chatbot
-                            Instagram/Manychat (68 Nodos)</h3>
+                        <h3 style="margin-bottom: 1.5rem; text-align: center; color: white;">Game Engine Control: Unity
+                            MCP</h3>
                         <div
                             style="background: #0f172a; padding: 2rem; border-radius: 16px; border: 1px solid #1e293b; overflow-x: auto;">
                             <div class="mermaid" style="text-align: center;">
                                 flowchart TD
-                                classDef trigger fill:#047857,stroke:#10b981,stroke-width:2px,color:#fff
-                                classDef logic fill:#0369a1,stroke:#0ea5e9,stroke-width:2px,color:#fff
-                                classDef agent fill:#9333ea,stroke:#c084fc,stroke-width:2px,color:#fff
-                                classDef action fill:#b45309,stroke:#f59e0b,stroke-width:2px,color:#fff
+                                classDef base fill:#1e1b4b,stroke:#a855f7,stroke-width:2px,color:#fff
+                                classDef mcp fill:#0f766e,stroke:#14b8a6,stroke-width:2px,color:#fff
+                                classDef unity fill:#10b981,stroke:#059669,stroke-width:2px,color:#fff
 
-                                W["fa:fa-bolt Webhook Manychat"]:::trigger
-                                JSON["Parse JSON & Split"]:::logic
-                                Intent["fa:fa-compass Text Classifier / Intención"]:::logic
-                                Audio["fa:fa-microphone Procesar Audio (Wisper)"]:::logic
-                                Img["fa:fa-image Analizar Imagen (Vision IA)"]:::logic
+                                Claude["fa:fa-robot IA Contextual (Claude)"]:::base
+                                UnityMCP["fa:fa-plug Unity MCP Server"]:::mcp
 
-                                Agent1["fa:fa-calendar Agendador CAL (Agent)"]:::agent
-                                Agent2["fa:fa-comments Responder Mensajes (Agent)"]:::agent
+                                subgraph UnityEditor ["Unity Editor Environment"]
+                                Hierarchy["fa:fa-sitemap Análisis de Jerarquía"]:::unity
+                                Scripts["fa:fa-code Ejecución Código C#"]:::unity
+                                Assets["fa:fa-archive Búsqueda de Assets"]:::unity
+                                end
 
-                                Vector[("fa:fa-vector-square Supabase RAG Store")]:::logic
-                                Redis[("fa:fa-server Redis Queue & Caché")]:::logic
+                                GameObjects["fa:fa-cubes Modificación Directa de GameObjects (2D/3D)"]:::unity
 
-                                W --> Redis --> JSON --> SwitchFormato{"¿Audio, Texto o Imagen?"}:::logic
-                                SwitchFormato -->|Audio| Audio --> Intent
-                                SwitchFormato -->|Imagen| Img --> Intent
-                                SwitchFormato -->|Texto| Intent
-
-                                Intent -->|Agendar Cita| Agent1
-                                Intent -->|Dudas RAG| Agent2
-
-                                Vector -.->|Knowledge| Agent2
-
-                                Agent1 --> Send["fa:fa-paper-plane Envío de Respuesta a Manychat API"]:::action
-                                Agent2 --> Send
+                                Claude <-->|JSON Tools| UnityMCP
+                                    UnityMCP --> Hierarchy
+                                    UnityMCP --> Scripts
+                                    UnityMCP --> Assets
+                                    Scripts -.->|Compila e inyecta en C#| GameObjects
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

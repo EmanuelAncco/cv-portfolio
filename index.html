@@ -1145,7 +1145,127 @@
                 OS).
             </p>
 
-            <div style="display: grid; grid-template-columns: 1fr; gap: 3rem;">
+            <style>
+                .mcp-diag {
+                    font-family: system-ui, -apple-system, sans-serif;
+                }
+
+                .mcp-node {
+                    padding: 10px 16px;
+                    border-radius: 8px;
+                    font-weight: 600;
+                    color: white;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    border: 2px solid;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+                    font-size: 0.9rem;
+                    text-align: center;
+                }
+
+                .nd-llm {
+                    background: #4f46e5;
+                    border-color: #8b5cf6;
+                    border-radius: 12px;
+                }
+
+                .nd-mcp {
+                    background: #0f766e;
+                    border-color: #14b8a6;
+                }
+
+                .nd-bim {
+                    background: #be123c;
+                    border-color: #f43f5e;
+                    border-radius: 6px;
+                }
+
+                .nd-eng {
+                    background: #0369a1;
+                    border-color: #0ea5e9;
+                    border-radius: 6px;
+                }
+
+                .nd-code {
+                    background: #b45309;
+                    border-color: #f59e0b;
+                    border-radius: 6px;
+                }
+
+                .nd-db {
+                    background: #4d7c0f;
+                    border-color: #84cc16;
+                    border-radius: 20px;
+                }
+
+                .nd-os {
+                    background: #1e1b4b;
+                    border-color: #a855f7;
+                    border-radius: 6px;
+                }
+
+                .nd-py {
+                    background: #eab308;
+                    border-color: #ca8a04;
+                    border-radius: 6px;
+                    color: #1e293b;
+                }
+
+                .nd-unity {
+                    background: #10b981;
+                    border-color: #059669;
+                    border-radius: 6px;
+                }
+
+                .mcp-box {
+                    border: 1px dashed rgba(255, 255, 255, 0.2);
+                    border-radius: 12px;
+                    padding: 15px;
+                    background: rgba(0, 0, 0, 0.2);
+                    margin: 5px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                .mcp-box-title {
+                    color: #94a3b8;
+                    font-size: 0.8rem;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    text-align: center;
+                }
+
+                .mcp-row {
+                    display: flex;
+                    justify-content: center;
+                    gap: 15px;
+                    flex-wrap: wrap;
+                }
+
+                .mcp-arrow-down {
+                    color: #64748b;
+                    font-size: 1.2rem;
+                    margin: 10px 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .mcp-arrow-label {
+                    font-size: 0.75rem;
+                    background: #1e293b;
+                    color: #cbd5e1;
+                    padding: 4px 10px;
+                    border-radius: 12px;
+                    margin-top: -8px;
+                    border: 1px solid #334155;
+                }
+            </style>
+
+            <div style="display: grid; grid-template-columns: 1fr; gap: 3rem;" class="mcp-diag">
                 <!-- 1. Diagrama Global MCP -->
                 <div class="project-card"
                     style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.05);">
@@ -1153,55 +1273,59 @@
                         ↔ MCP Servers</h3>
                     <div
                         style="background: #0f172a; padding: 2rem; border-radius: 16px; border: 1px solid #1e293b; overflow-x: auto;">
-                        <div class="mermaid" style="text-align: center; min-width: 800px;">
-                            flowchart TD
-                            classDef llm
-                            fill:#4f46e5,stroke:#8b5cf6,stroke-width:2px,color:#fff,font-weight:bold,rx:10,ry:10
-                            classDef mcp fill:#0f766e,stroke:#14b8a6,stroke-width:2px,color:#fff,rx:5,ry:5
-                            classDef bim fill:#be123c,stroke:#f43f5e,stroke-width:2px,color:#fff,rx:5,ry:5
-                            classDef eng fill:#0369a1,stroke:#0ea5e9,stroke-width:2px,color:#fff,rx:5,ry:5
-                            classDef code fill:#b45309,stroke:#f59e0b,stroke-width:2px,color:#fff,rx:5,ry:5
-                            classDef db fill:#4d7c0f,stroke:#84cc16,stroke-width:2px,color:#fff,rx:20,ry:20
+                        <div style="min-width: 800px; display: flex; flex-direction: column; align-items: center;">
+                            <div class="mcp-box" style="width: fit-content;">
+                                <div class="mcp-box-title">🧠 Cerebro Lógico (LLM)</div>
+                                <div class="mcp-node nd-llm"><i class="fas fa-brain"></i> Claude 3.5 Sonnet / Gemini
+                                </div>
+                            </div>
 
-                            subgraph Core [Cerebro Lógico LLM]
-                            Claude["fa:fa-brain Claude 3.5 Sonnet"]:::llm
-                            end
+                            <div class="mcp-arrow-down">
+                                <i class="fas fa-arrow-down"></i><i class="fas fa-arrow-up"
+                                    style="margin-top:-10px;"></i>
+                                <span class="mcp-arrow-label">Llamada Dinámica a Herramientas</span>
+                            </div>
 
-                            subgraph MCPServers [Infraestructura Integrada MCP]
-                            N8NMCP["fa:fa-network-wired n8n MCP Server"]:::mcp
-                            UNITYMCP["fa:fa-cube Unity MCP Server"]:::mcp
-                            NOTIONMCP["fa:fa-book Notion MCP Server"]:::mcp
-                            LOCALMCP["fa:fa-folder-tree OS File System MCP"]:::mcp
-                            end
+                            <div class="mcp-box" style="width: 100%;">
+                                <div class="mcp-box-title">🔌 Infraestructura Integrada (Model Context Protocol)</div>
+                                <div class="mcp-row">
+                                    <div class="mcp-node nd-mcp"><i class="fas fa-network-wired"></i> n8n MCP Server
+                                    </div>
+                                    <div class="mcp-node nd-mcp"><i class="fas fa-cube"></i> Unity MCP Server</div>
+                                    <div class="mcp-node nd-mcp"><i class="fas fa-book"></i> Notion MCP Server</div>
+                                    <div class="mcp-node nd-mcp"><i class="fas fa-folder-tree"></i> OS File System MCP
+                                    </div>
+                                </div>
+                            </div>
 
-                            Claude --> N8NMCP
-                            Claude --> UNITYMCP
-                            Claude --> NOTIONMCP
-                            Claude --> LOCALMCP
+                            <div class="mcp-arrow-down">
+                                <i class="fas fa-arrow-down"></i>
+                                <span class="mcp-arrow-label">Control & Ejecución de Entornos Nativos</span>
+                            </div>
 
-                            subgraph Tools [Entornos Nativos]
-                            subgraph BIMEng [BIM e Ingenieria Estructural]
-                            RevitApp["fa:fa-building Autodesk Revit"]:::bim
-                            SAPApp["fa:fa-cogs Engine SAP2000"]:::eng
-                            end
-
-                            subgraph GameLogic [Desarrollo de Software]
-                            UnityEditor["fa:fa-gamepad Unity Editor"]:::code
-                            N8NApp["fa:fa-cloud n8n Node Editor"]:::code
-                            end
-
-                            subgraph DataMgmt [Gestion y Persistencia]
-                            NotionWorkspace["fa:fa-file-alt Notion Workspace"]:::db
-                            LocalMachine["fa:fa-desktop PC Local"]:::db
-                            end
-                            end
-
-                            LOCALMCP -->|Scripts| RevitApp
-                            LOCALMCP -->|Scripts| SAPApp
-                            UNITYMCP -->|C# Code| UnityEditor
-                            N8NMCP -->|Workflows| N8NApp
-                            NOTIONMCP -->|CRUD API| NotionWorkspace
-                            LOCALMCP -->|Archivos| LocalMachine
+                            <div class="mcp-box" style="width: 100%;">
+                                <div class="mcp-box-title">🛠️ Entornos y Herramientas Nativas Controladas</div>
+                                <div class="mcp-row" style="align-items: stretch;">
+                                    <div class="mcp-box">
+                                        <div class="mcp-box-title">BIM e Ingeniería</div>
+                                        <div class="mcp-node nd-bim"><i class="fas fa-building"></i> Autodesk Revit
+                                        </div>
+                                        <div class="mcp-node nd-eng"><i class="fas fa-cogs"></i> SAP2000</div>
+                                    </div>
+                                    <div class="mcp-box">
+                                        <div class="mcp-box-title">Software / Orquestación</div>
+                                        <div class="mcp-node nd-code"><i class="fas fa-gamepad"></i> Unity Editor</div>
+                                        <div class="mcp-node nd-code"><i class="fas fa-cloud"></i> n8n Node Editor</div>
+                                    </div>
+                                    <div class="mcp-box">
+                                        <div class="mcp-box-title">Gestión de Datos</div>
+                                        <div class="mcp-node nd-db"><i class="fas fa-file-alt"></i> Notion Workspace
+                                        </div>
+                                        <div class="mcp-node nd-db"><i class="fas fa-desktop"></i> PC Local / Scripts
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1209,71 +1333,54 @@
                 <!-- 2 Column Diagramas Depth -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem;">
 
-                    <!-- 2. Diagrama BIM & Ingeniería (SAP + Revit) -->
+                    <!-- 2. Diagrama BIM -->
                     <div class="project-card"
                         style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.05);">
                         <h3 style="margin-bottom: 1.5rem; text-align: center; color: white;">BIM Automation: SAP2000 a
                             Revit</h3>
                         <div
-                            style="background: #0f172a; padding: 2rem; border-radius: 16px; border: 1px solid #1e293b; overflow-x: auto;">
-                            <div class="mermaid" style="text-align: center;">
-                                flowchart TD
-                                classDef base fill:#1e1b4b,stroke:#a855f7,stroke-width:2px,color:#fff
-                                classDef python fill:#eab308,stroke:#ca8a04,stroke-width:2px,color:#fff
-                                classDef bim fill:#be123c,stroke:#f43f5e,stroke-width:2px,color:#fff
-                                classDef sap fill:#0284c7,stroke:#0369a1,stroke-width:2px,color:#fff
-
-                                Claude["fa:fa-brain IA Claude"]:::base
-                                OS["fa:fa-laptop OS Local MCP"]:::base
-
-                                ScriptSAP["fa:fa-code OAPI Extractor"]:::python
-                                ScriptRevit["fa:fa-code PyRevit Creador"]:::python
-
-                                SAPEngine["fa:fa-cogs Engine SAP2000"]:::sap
-                                RevitEngine["fa:fa-building Engine Revit"]:::bim
-
-                                Claude -->|Ejecuta Cmd| OS
-                                OS -->|Ejecuta Python| ScriptSAP
-                                OS -->|Ejecuta Python| ScriptRevit
-
-                                ScriptSAP -->|Lee Nodos| SAPEngine
-
-                                ScriptSAP -.->|Coordenadas JSON| ScriptRevit
-                                ScriptRevit -->|Dibuja elementos| RevitEngine
+                            style="background: #0f172a; padding: 2rem; border-radius: 16px; border: 1px solid #1e293b; display:flex; flex-direction:column; align-items:center;">
+                            <div class="mcp-row">
+                                <div class="mcp-node nd-os"><i class="fas fa-brain"></i> IA Claude</div>
+                                <div class="mcp-node nd-os"><i class="fas fa-laptop"></i> Local OS MCP</div>
+                            </div>
+                            <div class="mcp-arrow-down"><i class="fas fa-arrow-down"></i><span
+                                    class="mcp-arrow-label">Comanda Local Scripts</span></div>
+                            <div class="mcp-row">
+                                <div class="mcp-node nd-py"><i class="fas fa-code"></i> OAPI Extractor</div>
+                                <div class="mcp-node nd-py"><i class="fas fa-code"></i> PyRevit Creador</div>
+                            </div>
+                            <div class="mcp-arrow-down"><i class="fas fa-arrow-down"></i><span
+                                    class="mcp-arrow-label">Interacción Plana</span></div>
+                            <div class="mcp-row">
+                                <div class="mcp-node nd-eng"><i class="fas fa-cogs"></i> SAP2000</div>
+                                <div class="mcp-node nd-bim"><i class="fas fa-building"></i> Revit DB</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 3. Diagrama Unity Game Engine -->
+                    <!-- 3. Diagrama Unity MCP -->
                     <div class="project-card"
                         style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.05);">
                         <h3 style="margin-bottom: 1.5rem; text-align: center; color: white;">Game Engine Control: Unity
                             MCP</h3>
                         <div
-                            style="background: #0f172a; padding: 2rem; border-radius: 16px; border: 1px solid #1e293b; overflow-x: auto;">
-                            <div class="mermaid" style="text-align: center;">
-                                flowchart TD
-                                classDef base fill:#1e1b4b,stroke:#a855f7,stroke-width:2px,color:#fff
-                                classDef mcp fill:#0f766e,stroke:#14b8a6,stroke-width:2px,color:#fff
-                                classDef unity fill:#10b981,stroke:#059669,stroke-width:2px,color:#fff
-
-                                Claude["fa:fa-robot IA Contextual"]:::base
-                                UnityMCP["fa:fa-plug Unity MCP Server"]:::mcp
-
-                                subgraph UnityEditorEnv [Unity Editor Environment]
-                                Hierarchy["fa:fa-sitemap Analisis Jerarquia"]:::unity
-                                Scripts["fa:fa-code Ejecuta Codigo C#"]:::unity
-                                Assets["fa:fa-archive Busqueda Assets"]:::unity
-                                end
-
-                                GameObjects["fa:fa-cubes Modificacion GameObjects"]:::unity
-
-                                Claude -->|Tools| UnityMCP
-                                UnityMCP --> Hierarchy
-                                UnityMCP --> Scripts
-                                UnityMCP --> Assets
-                                Scripts -.->|Inyecta C#| GameObjects
+                            style="background: #0f172a; padding: 2rem; border-radius: 16px; border: 1px solid #1e293b; display:flex; flex-direction:column; align-items:center;">
+                            <div class="mcp-node nd-os"><i class="fas fa-robot"></i> IA Contextual</div>
+                            <div class="mcp-arrow-down"><i class="fas fa-arrow-down"></i><span
+                                    class="mcp-arrow-label">Llama Json Tools</span></div>
+                            <div class="mcp-node nd-mcp"><i class="fas fa-plug"></i> Unity MCP Server</div>
+                            <div class="mcp-arrow-down"><i class="fas fa-arrow-down"></i><span
+                                    class="mcp-arrow-label">Controla Unity Editor</span></div>
+                            <div class="mcp-box" style="width: 100%;">
+                                <div class="mcp-row">
+                                    <div class="mcp-node nd-unity"><i class="fas fa-sitemap"></i> Jerarquía</div>
+                                    <div class="mcp-node nd-unity"><i class="fas fa-code"></i> Ejecuta C#</div>
+                                </div>
                             </div>
+                            <div class="mcp-arrow-down"><i class="fas fa-arrow-down"></i><span
+                                    class="mcp-arrow-label">Compila Inyecciones</span></div>
+                            <div class="mcp-node nd-unity"><i class="fas fa-cubes"></i> Auto-Mod GameObjects</div>
                         </div>
                     </div>
                 </div>

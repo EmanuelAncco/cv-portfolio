@@ -1,9 +1,41 @@
 ---
 import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import SkillsMarquee from "../components/SkillsMarquee.astro";
+import AxisSection from "../components/AxisSection.astro";
+import { getCollection } from "astro:content";
+
+const top12 = (await getCollection("proyectos", (p) => p.data.seccion === "top12" && p.data.publico))
+  .sort((a, b) => a.data.orden - b.data.orden);
+
+const ejes = [
+  { key: "investigacion", label: "Eje 01", titulo: "Investigación e I+D" },
+  { key: "ia-campo",      label: "Eje 02", titulo: "IA aplicada al campo" },
+  { key: "plataformas",   label: "Eje 03", titulo: "Plataformas operativas" },
+  { key: "autoria",       label: "Eje 04", titulo: "Autoría multidisciplinar" },
+] as const;
 ---
 <Base title="Emanuel Ancco — Portfolio">
-  <section class="max-w-[var(--container-1100)] mx-auto px-6 pt-32">
-    <p class="text-sm tracking-widest uppercase text-[var(--color-text-dim)]">scaffold ok</p>
-    <h1 class="font-[var(--font-display)] text-6xl mt-4">Hola.</h1>
+  <Hero />
+  <SkillsMarquee />
+  {ejes.map((eje) => (
+    <AxisSection
+      label={eje.label}
+      titulo={eje.titulo}
+      proyectos={top12.filter((p) => p.data.eje === eje.key)}
+    />
+  ))}
+  <section class="max-w-[var(--container-1100)] mx-auto px-6 mt-32 border-t border-[var(--color-rule)] pt-16">
+    <p class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">Contacto</p>
+    <h2 class="font-[var(--font-display)] text-4xl mt-2">Hablemos de un proyecto.</h2>
+    <p class="mt-4 text-[var(--color-text-dim)] max-w-xl">
+      Email · LinkedIn · GitHub. También leo /archive y /sobre.
+    </p>
+    <div class="mt-6 flex gap-6 font-[var(--font-mono)] text-sm">
+      <a href="/contacto" class="hover:text-[var(--color-accent)]">→ /contacto</a>
+      <a href="/archive" class="hover:text-[var(--color-accent)]">→ /archive</a>
+      <a href="/cv" class="hover:text-[var(--color-accent)]">→ /cv</a>
+      <a href="/sobre" class="hover:text-[var(--color-accent)]">→ /sobre</a>
+    </div>
   </section>
 </Base>

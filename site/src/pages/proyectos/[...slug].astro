@@ -21,7 +21,7 @@ const { titulo, anio, stack, metricas, enlaces, hero, galeria, excerpt, eje } = 
     <h1 class="font-[var(--font-display)] text-4xl md:text-6xl mt-3 leading-tight">{titulo}</h1>
     <p class="mt-6 text-xl text-[var(--color-text-dim)] max-w-2xl">{excerpt}</p>
     {hero && (
-      <Image src={hero} alt={titulo} class="mt-10 w-full rounded-md border border-[var(--color-rule)]" />
+      <Image src={hero} alt={`${titulo} — imagen principal`} loading="eager" fetchpriority="high" class="mt-10 w-full rounded-md border border-[var(--color-rule)]" />
     )}
     {metricas.length > 0 && (
       <dl class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 border-y border-[var(--color-rule)] py-8">
@@ -56,7 +56,7 @@ const { titulo, anio, stack, metricas, enlaces, hero, galeria, excerpt, eje } = 
     )}
     {galeria.length > 0 && (
       <div class="mt-12 grid md:grid-cols-2 gap-4">
-        {galeria.map((img) => <Image src={img} alt={titulo} class="rounded-md border border-[var(--color-rule)]" />)}
+        {galeria.map((img, i) => <Image src={img} alt={`${titulo} — figura ${i + 1}`} loading="lazy" class="rounded-md border border-[var(--color-rule)]" />)}
       </div>
     )}
     <p class="mt-16 font-[var(--font-mono)] text-sm">

@@ -1,0 +1,20 @@
+---
+import Base from "../layouts/Base.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { getCollection } from "astro:content";
+
+const archive = (await getCollection("proyectos", (p) => p.data.seccion === "archive" && p.data.publico))
+  .sort((a, b) => b.data.anio - a.data.anio || a.data.orden - b.data.orden);
+---
+<Base title="Archivo — Emanuel Ancco" description="Proyectos secundarios validados en el archivo de Emanuel Ancco.">
+  <section class="max-w-[var(--container-1100)] mx-auto px-6 pt-24">
+    <p class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">Archivo</p>
+    <h1 class="font-[var(--font-display)] text-4xl md:text-6xl mt-3">Trabajo secundario, también real.</h1>
+    <p class="mt-6 text-[var(--color-text-dim)] max-w-2xl">
+      Proyectos que existen, funcionan o se publicaron, pero no representan la apuesta principal de cada eje. Listados por año.
+    </p>
+    <div class="mt-12">
+      {archive.map((p) => <ProjectCard proyecto={p} variant="compact" />)}
+    </div>
+  </section>
+</Base>

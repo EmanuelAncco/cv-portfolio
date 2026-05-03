@@ -4,8 +4,7 @@ eje: "plataformas"
 seccion: "archive"
 anio: 2025
 stack: ["Python", "OpenAI API", "SpeechRecognition", "pyttsx3"]
-metricas:
-  - { valor: "GPT-4", label: "Motor de razonamiento" }
+metricas: []
 excerpt: "Asistente de voz con reconocimiento de voz y síntesis TTS sobre OpenAI GPT, diseñado para consultas de ingeniería en lenguaje natural con integración de comandos de voz en tareas técnicas."
 orden: 50
 ---

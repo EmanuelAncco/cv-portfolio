@@ -5,7 +5,8 @@ seccion: "archive"
 anio: 2025
 stack: ["n8n", "Notion API", "LLM Agents", "WhatsApp", "Gmail"]
 metricas:
-  - { valor: "n8n Cloud", label: "Plataforma" }
+  - { valor: "20+", label: "Workflows productivos" }
+  - { valor: "10+", label: "Integraciones (Gmail, Sheets, Notion, Postgres, etc)" }
 excerpt: "Arquitectura e implementación de workflows n8n para orquestación de agentes inteligentes, integrando LLMs con APIs empresariales (Notion, Google Workspace, WhatsApp Business)."
 orden: 50
 ---

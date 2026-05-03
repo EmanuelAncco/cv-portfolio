@@ -5,7 +5,8 @@ seccion: "archive"
 anio: 2025
 stack: ["Manychat", "Claude API", "GPT-4", "Python", "Social API"]
 metricas:
-  - { valor: "Instagram DMs", label: "Canal principal" }
+  - { valor: "5+ bots", label: "Conectados al gateway" }
+  - { valor: "WebSocket", label: "Protocolo" }
 excerpt: "Asistentes virtuales para Instagram DMs con Manychat y LLMs (Claude/GPT), con gestión inteligente de reservas, FAQs y derivación de leads mediante prompts especializados y RAG."
 orden: 50
 ---

@@ -18,7 +18,11 @@ import emanuel from "../assets/emanuel.jpg";
       alt="Retrato de Emanuel Ancco"
       width={320}
       height={400}
+      widths={[160, 256, 320]}
+      sizes="(min-width: 768px) 256px, 160px"
       loading="eager"
+      decoding="sync"
+      style="aspect-ratio:4/5;min-width:160px;"
       class="rounded-md object-cover object-top w-40 md:w-64 border border-[var(--color-rule)]"
     />
   </div>

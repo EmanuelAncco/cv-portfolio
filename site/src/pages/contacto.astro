@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+const emailUser = "coarp.eancco";
+const emailDomain = "gmail.com";
+---
+<Base title="Contacto — Emanuel Ancco">
+  <section class="max-w-[var(--container-1100)] mx-auto px-6 pt-24">
+    <p class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">Contacto</p>
+    <h1 class="font-[var(--font-display)] text-4xl md:text-6xl mt-3">Hablemos.</h1>
+    <p class="mt-6 text-[var(--color-text-dim)] max-w-2xl">
+      Email es la vía más rápida. LinkedIn y GitHub también funcionan.
+    </p>
+    <ul class="mt-10 space-y-4 font-[var(--font-mono)] text-lg">
+      <li>
+        Email · <a class="text-[var(--color-accent)] hover:underline" href={`mailto:${emailUser}@${emailDomain}`}>{emailUser}<span aria-hidden="true">[at]</span>{emailDomain}</a>
+      </li>
+      <li>
+        LinkedIn · <a class="text-[var(--color-accent)] hover:underline" href="https://www.linkedin.com/in/emanuel-ancco/">linkedin.com/in/emanuel-ancco</a>
+      </li>
+      <li>
+        GitHub · <a class="text-[var(--color-accent)] hover:underline" href="https://github.com/EmanuelAncco">github.com/EmanuelAncco</a>
+      </li>
+    </ul>
+  </section>
+</Base>

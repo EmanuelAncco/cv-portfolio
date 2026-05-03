@@ -336,13 +336,21 @@ site/node_modules/
 site/dist/
 site/.astro/
 site/.cache/
+node_modules/
 
 # Env
 .env.local
 .env.*.local
+.env
+# Tracked: env template (no values inside)
+!.env.local.example
 
 # Brainstorm artifacts
 .superpowers/
+
+# OS
+.DS_Store
+Thumbs.db
 EOF
 ```
 
@@ -351,9 +359,10 @@ EOF
 ```bash
 cat > .env.local.example <<'EOF'
 # Cloudflare API token con scopes: Pages:Edit, Account:Read, DNS:Edit (zone), Zone:Read
+# Genera el token en: https://dash.cloudflare.com/profile/api-tokens
 CLOUDFLARE_API_TOKEN=
 CLOUDFLARE_ACCOUNT_ID=
-# Opcional: zone id de emanuelancco.com (lo descubrimos vía API si falta)
+# Opcional: zone id de emanuelancco.com (descubrible vía API si falta)
 CLOUDFLARE_ZONE_ID=
 EOF
 ```
@@ -419,12 +428,18 @@ curl -sS -X POST \
     "name": "emanuelancco",
     "production_branch": "main",
     "build_config": {
-      "build_command": "cd site && pnpm install && pnpm build",
-      "destination_dir": "site/dist",
-      "root_dir": ""
+      "build_command": "pnpm install && pnpm build",
+      "destination_dir": "dist",
+      "root_dir": "site"
     },
     "deployment_configs": {
       "production": {
+        "env_vars": {
+          "NODE_VERSION": {"value": "22"},
+          "PNPM_VERSION": {"value": "9"}
+        }
+      },
+      "preview": {
         "env_vars": {
           "NODE_VERSION": {"value": "22"},
           "PNPM_VERSION": {"value": "9"}
@@ -465,9 +480,9 @@ curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
 Expected: eventualmente `{"url": "https://....emanuelancco.pages.dev", "latest_stage": "deploy", "status": "success"}`.
 
-- [ ] **Step 6: Smoke test del deploy**
+- [ ] **Step 6: Smoke test del deploy (preview alias del feat branch)**
 
-Abrir `https://emanuelancco.pages.dev` en navegador. Expected: ves "Hola." con serif. Footer abajo.
+Abrir el branch alias del preview en navegador: `https://feat-v2-astro-migration.emanuelancco.pages.dev`. Expected: ves "Hola." con serif y "scaffold ok" arriba. Footer abajo. La URL apex `https://emanuelancco.pages.dev` solo se activará cuando el primer deploy de `main` corra (al merge de la feature branch). Confirmar también con `curl -I` que devuelve `HTTP/2 200` y `server: cloudflare`.
 
 - [ ] **Step 7: Commit (no hay archivos, solo registramos el milestone con tag)**
 
@@ -1672,7 +1687,7 @@ git push origin v1.0
 
 - [ ] Home carga, hero muestra foto y título, fuentes Fraunces se ven
 - [ ] Marquee gira
-- [ ] 4 ejes muestran sus 3 proyectos cada uno = 12
+- [ ] 4 ejes con distribución 3-3-4-2 = 12 proyectos (investigación 3 · IA campo 3 · plataformas 4 · autoría 2). Asimetría intencional: refleja la distribución real del trabajo 2025-2026, no se fuerza balance falso.
 - [ ] Click en un proyecto → página `/proyectos/<slug>` carga
 - [ ] `/archive` muestra 11 tarjetas
 - [ ] `/cv` lista 4 PDFs descargables, todos abren

@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "Fraunces Variable";
+  src: url("/fonts/Fraunces.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter Variable";
+  src: url("/fonts/InterVariable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono Variable";
+  src: url("/fonts/JetBrainsMono.woff2") format("woff2-variations");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-bg: #020617;
+  --color-surface: #0f172a;
+  --color-text: #f8fafc;
+  --color-text-dim: #94a3b8;
+  --color-accent: #f59e0b;
+  --color-accent-light: #fbbf24;
+  --color-rule: rgba(255, 255, 255, 0.08);
+
+  --font-display: "Fraunces Variable", Georgia, serif;
+  --font-body: "Inter Variable", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  --container-1100: 1100px;
+}
+
+html { background: var(--color-bg); color: var(--color-text); }
+body { font-family: var(--font-body); }

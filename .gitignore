@@ -9,6 +9,7 @@ node_modules/
 .env.local
 .env.*.local
 .env
+!.env.local.example
 
 # Brainstorm artifacts
 .superpowers/
@@ -16,3 +17,10 @@ node_modules/
 # OS
 .DS_Store
 Thumbs.db
+
+# LaTeX aux files
+site/public/cv/*.aux
+site/public/cv/*.fdb_latexmk
+site/public/cv/*.fls
+site/public/cv/*.log
+site/public/cv/*.out

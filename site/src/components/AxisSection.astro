@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ProjectCard from "./ProjectCard.astro";
+
+interface Props {
+  label: string;
+  titulo: string;
+  proyectos: CollectionEntry<"proyectos">[];
+}
+const { label, titulo, proyectos } = Astro.props;
+---
+<section class="max-w-[var(--container-1100)] mx-auto px-6 mt-24">
+  <header class="border-t border-[var(--color-rule)] pt-6 mb-2">
+    <p class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">{label}</p>
+    <h2 class="font-[var(--font-display)] text-3xl md:text-4xl mt-2">{titulo}</h2>
+  </header>
+  {proyectos.map((p) => <ProjectCard proyecto={p} />)}
+</section>

@@ -419,12 +419,18 @@ curl -sS -X POST \
     "name": "emanuelancco",
     "production_branch": "main",
     "build_config": {
-      "build_command": "cd site && pnpm install && pnpm build",
-      "destination_dir": "site/dist",
-      "root_dir": ""
+      "build_command": "pnpm install && pnpm build",
+      "destination_dir": "dist",
+      "root_dir": "site"
     },
     "deployment_configs": {
       "production": {
+        "env_vars": {
+          "NODE_VERSION": {"value": "22"},
+          "PNPM_VERSION": {"value": "9"}
+        }
+      },
+      "preview": {
         "env_vars": {
           "NODE_VERSION": {"value": "22"},
           "PNPM_VERSION": {"value": "9"}

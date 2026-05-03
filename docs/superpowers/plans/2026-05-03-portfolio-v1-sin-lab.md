@@ -1687,7 +1687,7 @@ git push origin v1.0
 
 - [ ] Home carga, hero muestra foto y título, fuentes Fraunces se ven
 - [ ] Marquee gira
-- [ ] 4 ejes muestran sus 3 proyectos cada uno = 12
+- [ ] 4 ejes con distribución 3-3-4-2 = 12 proyectos (investigación 3 · IA campo 3 · plataformas 4 · autoría 2). Asimetría intencional: refleja la distribución real del trabajo 2025-2026, no se fuerza balance falso.
 - [ ] Click en un proyecto → página `/proyectos/<slug>` carga
 - [ ] `/archive` muestra 11 tarjetas
 - [ ] `/cv` lista 4 PDFs descargables, todos abren

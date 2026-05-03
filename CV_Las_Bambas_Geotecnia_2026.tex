@@ -1,0 +1,219 @@
+% =============================================================================
+%  CV de Emanuel Edgar Ancco Guaygua - Las Bambas 2026
+%  Optimizado para: Practicante Profesional de Geotecnia
+%  Programa Talentos de Cobre - MMG Las Bambas
+% =============================================================================
+
+\documentclass[10pt, a4paper]{article}
+
+% --- PAQUETES NECESARIOS ---
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{lmodern}
+
+% --- CONFIGURACIÓN DE LA PÁGINA ---
+\geometry{
+    a4paper,
+    left=1.6cm,
+    right=1.6cm,
+    top=1.3cm,
+    bottom=1.3cm
+}
+
+% --- COLORES Y ENLACES ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    pdftitle={CV - Emanuel Edgar Ancco Guaygua - Las Bambas Geotecnia},
+    pdfauthor={Emanuel Edgar Ancco Guaygua},
+}
+
+% --- PERSONALIZACIÓN DE TÍTULOS DE SECCIÓN ---
+\titleformat{\section}
+  {\Large\bfseries\scshape}
+  {}
+  {0em}
+  {}[\titlerule]
+
+\titlespacing*{\section}{0pt}{1.0ex plus 0.6ex minus .2ex}{0.6ex plus .2ex}
+
+% --- ELIMINAR SANGRÍA DE PÁRRAFO ---
+\setlength{\parindent}{0pt}
+
+% --- DEFINICIÓN DE COMANDOS PARA ENTRADAS ---
+\newcommand{\entry}[4]{
+    \textbf{#1} \hfill \textit{#2} \\
+    \textit{#3} \hfill \textit{#4} \\
+    \vspace{-1.5mm}
+}
+
+% =============================================================================
+%  INICIO DEL DOCUMENTO
+% =============================================================================
+\begin{document}
+
+% --- ENCABEZADO ---
+\begin{center}
+    {\Huge\bfseries EMANUEL EDGAR ANCCO GUAYGUA}
+    \vspace{2mm}
+
+    \faMapMarker*{} Lima / Puno, Perú \quad
+    \faPhone*{} 974583549 \quad
+    \faEnvelope{} \href{mailto:coarp.eancco@gmail.com}{coarp.eancco@gmail.com} \quad
+    \faLinkedin{} \href{https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352}{LinkedIn}
+
+    \faGlobe{} \textbf{Portafolio Técnico:} \href{https://emanuelancco.github.io/cv-portfolio/}{emanuelancco.github.io/cv-portfolio}
+\end{center}
+
+% --- RESUMEN PROFESIONAL ---
+\section*{Resumen Profesional}
+Egresado de Ingeniería Civil (UPC, Diciembre 2025) con sólida formación en \textbf{análisis numérico, métodos probabilísticos y procesamiento de datos} aplicados a ingeniería civil. Experiencia en \textbf{diseño e implementación de sistemas de monitoreo con sensores físicos} (acelerómetros MEMS, Arduino, Raspberry Pi, FPGA) y desarrollo de herramientas computacionales para análisis de señales, confiabilidad estructural (\textbf{Monte Carlo, FORM/FOSM}) y análisis sísmico. Capacidad para \textbf{automatizar pipelines de datos} con agentes de IA y workflows (n8n, MCPs) y construir \textbf{dashboards de visualización} para análisis en tiempo real. Manejo de \textbf{Python, R y MATLAB}, \textbf{ArcGIS/QGIS} y \textbf{Civil 3D}. Originario de Puno, \textbf{familiarizado con trabajo en condiciones de altura} (4,000+ msnm). Disponibilidad inmediata para prácticas profesionales de 12 meses.
+
+\vspace{1mm}
+\begin{center}
+\fbox{\parbox{0.92\textwidth}{\centering
+\faExternalLink*{} \textbf{EVIDENCIA TÉCNICA Y DEMOS:} \href{https://emanuelancco.github.io/cv-portfolio/}{emanuelancco.github.io/cv-portfolio} \\
+\small{Herramientas de análisis estructural, modelos de monitoreo con sensores, análisis probabilístico}
+}}
+\end{center}
+
+% --- EXPERIENCIA PREPROFESIONAL ---
+\section*{Experiencia Preprofesional}
+
+\entry{Asistente de Oficina Técnica}{Septiembre 2025 – Diciembre 2025}{Obra: ``Creación de Servicios Culturales - Teatro Municipal de Yunguyo''}{Puno, Perú}
+\begin{itemize}
+    \item \textbf{Desarrollo de plugins propios en Revit API (C\#):} aplicaciones para armado automático de vigas y generación de losas, reduciendo tiempo de modelado estructural.
+    \item \textbf{Automatización de reportes:} scripts Python para generación automática de informes de avance y valorizaciones mensuales en Word/Excel, eliminando trabajo manual repetitivo.
+    \item Elaboración de metrados, control de costos e informes técnicos de avance para proyecto público en zona altoandina (3,800+ msnm).
+\end{itemize}
+
+\vspace{1mm}
+
+\entry{Asistente de Oficina Técnica}{Junio 2024 – Noviembre 2024}{Constructora Talgus S.A.C.}{Lima, Perú}
+\begin{itemize}
+    \item Elaboración de metrados, análisis de costos unitarios y preparación de presupuestos de obra.
+    \item Seguimiento y control de costos, preparación de informes técnicos de valorización.
+    \item Modelado y actualización de planos técnicos (AutoCAD, Revit) para correcta ejecución de obra.
+\end{itemize}
+
+\vspace{1mm}
+
+\entry{Director del Área de Investigaciones}{Enero 2024 – Diciembre 2025}{Capítulo Estudiantil de Ingeniería Civil - IDI UPC}{Lima, Perú}
+\begin{itemize}
+    \item \textbf{Infraestructura de instrumentación:} diseño e implementación de red de adquisición de datos con \textbf{sensores MEMS, Arduino y Raspberry Pi} para captura sincronizada de señales de aceleración en estructuras.
+    \item \textbf{Pipeline de datos y dashboards:} desarrollo de scripts de procesamiento automatizado (Python) y tableros de visualización interactivos (Plotly/Matplotlib) para análisis de señales vibracionales en tiempo real.
+    \item Ponente en CONEIC Ucayali 2024: ``Detección Automatizada de Patologías en Estructuras con Redes Neuronales''.
+\end{itemize}
+
+\vspace{1mm}
+
+\entry{Desarrollador Independiente — Automatización e IA}{Febrero 2025 – Presente}{Proyectos propios}{Remoto}
+\begin{itemize}
+    \item \textbf{Automatización con agentes de IA:} diseño e implementación de workflows multi-fase con \textbf{n8n y Model Context Protocol (MCP)} para orquestación de agentes inteligentes, integración de APIs externas y procesamiento automatizado de datos.
+    \item \textbf{Dashboards inteligentes:} construcción de tableros interactivos con \textbf{Power BI y Plotly/Dash} conectados a fuentes de datos en tiempo real; automatización de reportes técnicos Word/Excel.
+    \item \textbf{Sistemas IoT de campo:} desarrollo de nodos de monitoreo autónomos con \textbf{FPGA (Tang Nano 1K) y ESP32} para operación sin conectividad en zonas remotas, con procesamiento en el borde y transmisión de alertas.
+\end{itemize}
+
+% --- EDUCACIÓN ---
+\section*{Educación}
+\entry{Pregrado en Ingeniería Civil (Egresado)}{2021 - Diciembre 2025}{Universidad Peruana de Ciencias Aplicadas (UPC)}{Lima, Perú}
+\vspace{1mm}
+\entry{Bachillerato Internacional (IB Diploma)}{2015 - 2017}{Colegio de Alto Rendimiento (COAR Puno)}{Puno, Perú}
+
+% --- PROYECTOS TÉCNICOS RELEVANTES ---
+\section*{Proyectos Técnicos Relevantes}
+
+\textbf{GAIATECH SHM | Sistema de Monitoreo de Salud Estructural con IA}
+\begin{itemize}
+    \item Sistema de \textbf{detección de anomalías en puentes} a partir de señales de 5 acelerómetros, usando redes neuronales de grafos (GNN).
+    \item Procesamiento de señales vibracionales: \textbf{Transformada Wavelet Discreta (DWT), FFT y CWT} para extracción de features y detección temprana de cambios en el comportamiento dinámico.
+    \item Arquitectura \textbf{PINN-GNN} (Physics-Informed Graph Neural Network) — mejor modelo: \textit{validation loss} de \textbf{0.0064} con 5.1M parámetros.
+    \item Tecnologías: Python, \textbf{PyTorch, PyTorch Geometric}, CUDA.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{Suite de Análisis de Tuberías Enterradas | Confiabilidad y Métodos Probabilísticos}
+\begin{itemize}
+    \item Software de escritorio para \textbf{análisis de esfuerzos por tramos} con visualización interactiva 3D de distribución de esfuerzos e identificación de puntos críticos.
+    \item Módulo probabilístico: implementación de \textbf{Simulación Monte Carlo y método FORM/FOSM} para evaluación de confiabilidad bajo incertidumbre de parámetros de resistencia y carga.
+    \item Generación de \textbf{curvas de fragilidad} y análisis de corrosión dependiente del tiempo.
+    \item Tecnologías: Python, SciPy (Stats), NumPy, Matplotlib (Polar/3D).
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{Herramientas de Análisis Estructural, Sísmico y Geoespacial}
+\begin{itemize}
+    \item \textbf{Análisis Sísmico Modal:} Herramienta Python para análisis dinámico conforme a norma E.030 (matrices de rigidez, modos propios, derivas interstoriales, espectros de respuesta).
+    \item \textbf{Análisis Geoespacial:} Procesamiento de datos con \textbf{ArcGIS y QGIS} para caracterización territorial y visualización georreferenciada.
+    \item \textbf{Modelado de Terreno:} Civil 3D para generación de DTMs, perfiles topográficos y análisis de cuencas.
+    \item \textbf{Diseño Hidráulico:} Modelado de flujo con \textbf{HEC-RAS e IBER}; cálculo de canales con ecuación de Manning.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{EMARC VISIÓN | Detección de Patologías en Estructuras con Visión Artificial}
+\begin{itemize}
+    \item Segmentación semántica de \textbf{fisuras y grietas} en superficies de concreto con modelo SegFormer. Clasificación automática de severidad: Leve / Moderada / Severa.
+    \item Cálculo automático de métricas: \textbf{área (cm²), longitud, ancho promedio y porcentaje de daño}.
+    \item Módulo de detección de EPP en tiempo real con YOLOv8 (\textbf{mAP@0.5 = 90.7\%}).
+    \item Tecnologías: Python, Hugging Face Transformers, SegFormer, YOLOv8, OpenCV.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{Instrumentación IoT, Automatización y Despliegue en Zonas Remotas}
+\begin{itemize}
+    \item \textbf{PachaGuard (FPGA + IoT):} Sistema de monitoreo autónomo con \textbf{FPGA Tang Nano 1K} y ESP32-CAM para procesamiento en el borde (\textit{edge computing}), diseñado para operar sin conectividad en zonas remotas. Lógica de control en Verilog; comunicación de alertas vía UART.
+    \item \textbf{Automatización de Pipelines de Datos:} Diseño de workflows multi-fase con \textbf{n8n} y \textbf{Model Context Protocol (MCP)} para orquestación de agentes de IA, integración de APIs y procesamiento automatizado de datos de instrumentación.
+    \item \textbf{Dashboards de Análisis:} Desarrollo de tableros interactivos para visualización de datos de monitoreo en tiempo real usando \textbf{Power BI, Plotly/Dash y Matplotlib}; automatización de reportes técnicos.
+    \item Tecnologías: Verilog, ESP32, Arduino, Raspberry Pi, n8n, Python, Power BI, Plotly.
+\end{itemize}
+
+% --- HABILIDADES TÉCNICAS ---
+\section*{Habilidades Técnicas}
+\begin{itemize}
+    \item \textbf{Análisis de Datos:} \textbf{Python, R, MATLAB} para procesamiento de señales, series temporales y estadística aplicada; SQL, Excel VBA.
+    \item \textbf{Dashboards y Visualización:} \textbf{Power BI}, Plotly/Dash, Matplotlib; generación automatizada de reportes técnicos Word/Excel.
+    \item \textbf{Métodos Probabilísticos:} Simulación Monte Carlo, \textbf{FORM/FOSM}, análisis de confiabilidad y curvas de fragilidad.
+    \item \textbf{Análisis Sísmico:} Análisis modal, espectros de respuesta, norma E.030; procesamiento de señales vibracionales (FFT, Wavelet).
+    \item \textbf{Electrónica e IoT:} \textbf{Arduino, Raspberry Pi, ESP32}; sensores MEMS; \textbf{FPGA} (Verilog/Verilog HDL) para procesamiento en el borde y despliegue en zonas remotas sin conectividad.
+    \item \textbf{Automatización e IA:} \textbf{n8n} (workflows), \textbf{Model Context Protocol (MCP)}, agentes de IA, integración de APIs y LLMs; PyTorch, GNN, YOLOv8.
+    \item \textbf{Sistemas GIS y Topografía:} \textbf{ArcGIS, QGIS}, modelado de terreno con Civil 3D.
+    \item \textbf{Hidráulica:} HEC-RAS, IBER, Civil 3D; cálculo de cuencas y Manning.
+    \item \textbf{Ofimática:} \textbf{MS Office nivel avanzado}, \textbf{SAP nivel básico}.
+    \item \textbf{Ingeniería CAD/BIM:} AutoCAD, Civil 3D, Revit, SAP2000.
+    \item \textbf{Idiomas:} Español (Nativo), Inglés Intermedio-Avanzado (dominio técnico).
+\end{itemize}
+
+% --- CERTIFICACIONES Y RECONOCIMIENTOS ---
+\section*{Certificaciones y Reconocimientos}
+\textit{\small Verificables en LinkedIn: \href{https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352}{linkedin.com/in/emanuel-edgar-ancco-guaygua}}
+\vspace{1mm}
+\begin{itemize}
+    \item \textbf{Especialización en Machine Learning on Google Cloud} (4 cursos) | Google Cloud / Coursera, 2025
+    \item \textbf{Especialista en IA y Aprendizaje Automático con Python} (120 horas) | Data Science Analysis, 2024
+    \item \textbf{Ponente en CONEIC Ucayali 2024} — ``Aplicación de CNN para Evaluación Automatizada de Fisuras y Grietas''
+    \item \textbf{2do lugar en Concurso de Conocimientos CONEIC} | Huaraz, 2025
+    \item \textbf{Primer Puesto, Concurso de Ponencias Académicas} | XIV COREIC Lima 2023, UNFV
+    \item \textbf{Innovador Destacado, DigiEduHack 2023} | Comisión Europea
+    \item \textbf{Especialización en Python for Everybody} (5 cursos) | University of Michigan / Coursera
+    \item \textbf{ISC AI Foundations For Everyone} | Campus Global ISC, 2025
+\end{itemize}
+
+% --- INFORMACIÓN ADICIONAL ---
+\section*{Información Adicional}
+\begin{itemize}
+    \item \textbf{Disponibilidad:} Inmediata para prácticas profesionales a tiempo completo, incluyendo trabajo en campo y zonas alejadas.
+    \item \textbf{Origen:} Puno, Perú — \textbf{Familiarizado con trabajo en condiciones de altura} (4,000+ msnm) y sierra.
+    \item \textbf{Egreso:} Diciembre 2025 (UPC) — Posibilidad de obtener carta de presentación universitaria para prácticas de 12 meses.
+\end{itemize}
+
+\end{document}

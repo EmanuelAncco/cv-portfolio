@@ -1,0 +1,18 @@
+# Astro / Node
+site/node_modules/
+site/dist/
+site/.astro/
+site/.cache/
+node_modules/
+
+# Env
+.env.local
+.env.*.local
+.env
+
+# Brainstorm artifacts
+.superpowers/
+
+# OS
+.DS_Store
+Thumbs.db

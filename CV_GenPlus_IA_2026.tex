@@ -1,0 +1,195 @@
+% =============================================================================
+%  CV de Emanuel Edgar Ancco Guaygua - Gen+ Design 2026
+%  Enfoque: Automatización, Agentes de IA, Dashboards y Operaciones
+% =============================================================================
+
+\documentclass[10pt, a4paper]{article}
+
+% --- PAQUETES NECESARIOS ---
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{lmodern}
+
+% --- CONFIGURACIÓN DE LA PÁGINA ---
+\geometry{
+    a4paper,
+    left=1.6cm,
+    right=1.6cm,
+    top=1.3cm,
+    bottom=1.3cm
+}
+
+% --- COLORES Y ENLACES ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    pdftitle={CV - Emanuel Edgar Ancco Guaygua - IA y Automatización},
+    pdfauthor={Emanuel Edgar Ancco Guaygua},
+}
+
+% --- PERSONALIZACIÓN DE TÍTULOS DE SECCIÓN ---
+\titleformat{\section}
+  {\Large\bfseries\scshape}
+  {}
+  {0em}
+  {}[\titlerule]
+
+\titlespacing*{\section}{0pt}{1.0ex plus 0.6ex minus .2ex}{0.6ex plus .2ex}
+
+% --- ELIMINAR SANGRÍA DE PÁRRAFO ---
+\setlength{\parindent}{0pt}
+
+% --- DEFINICIÓN DE COMANDOS PARA ENTRADAS ---
+\newcommand{\entry}[4]{
+    \textbf{#1} \hfill \textit{#2} \\
+    \textit{#3} \hfill \textit{#4} \\
+    \vspace{-1.5mm}
+}
+
+% =============================================================================
+%  INICIO DEL DOCUMENTO
+% =============================================================================
+\begin{document}
+
+% --- ENCABEZADO ---
+\begin{center}
+    {\Huge\bfseries EMANUEL EDGAR ANCCO GUAYGUA}
+    \vspace{2mm}
+
+    \faMapMarker*{} Lima / Puno, Perú \quad
+    \faPhone*{} 974583549 \quad
+    \faEnvelope{} \href{mailto:coarp.eancco@gmail.com}{coarp.eancco@gmail.com} \quad
+    \faLinkedin{} \href{https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352}{LinkedIn}
+
+    \faGlobe{} \textbf{Portafolio Técnico:} \href{https://emanuelancco.github.io/cv-portfolio/}{emanuelancco.github.io/cv-portfolio}
+\end{center}
+
+% --- PERFIL PROFESIONAL ---
+\section*{Perfil Profesional}
+\textbf{Bachiller en Ingeniería Civil} con experiencia demostrable en \textbf{automatización de procesos, inteligencia artificial y desarrollo de sistemas}. Me especializo en \textbf{diseñar e implementar workflows automatizados} (n8n, Model Context Protocol), \textbf{agentes de IA} que integran múltiples plataformas (WhatsApp, Telegram, Notion, Google Workspace), y \textbf{dashboards interactivos} para toma de decisiones basada en datos (Power BI, Plotly/Dash). Experiencia complementaria en electrónica e IoT: diseño de \textbf{sistemas de monitoreo autónomos con FPGA y microcontroladores} para operación en zonas remotas sin conectividad. He desarrollado, entrenado y publicado modelos de Deep Learning (GNN con PyTorch) y sistemas de Computer Vision (YOLOv8, SegFormer). Perfil orientado a \textbf{traducir problemas operativos en soluciones técnicas concretas} que escalen sin esfuerzo manual.
+
+\vspace{1mm}
+\begin{center}
+\fbox{\parbox{0.92\textwidth}{\centering
+\faExternalLink*{} \textbf{EVIDENCIA TÉCNICA Y DEMOS:} \href{https://emanuelancco.github.io/cv-portfolio/}{emanuelancco.github.io/cv-portfolio} \\
+\small{Automatizaciones n8n, agentes IA, dashboards, modelos ML, sistemas IoT}
+}}
+\end{center}
+
+% --- EXPERIENCIA ---
+\section*{Experiencia Profesional y de Investigación}
+
+\entry{Desarrollador de Automatización y Agentes de IA}{Febrero 2025 – Presente}{Proyectos independientes}{Remoto}
+\begin{itemize}
+    \item \textbf{Workflows multi-fase (n8n):} Diseño e implementación de pipelines automatizados con webhooks, REST APIs y \textbf{Model Context Protocol (MCP)} para orquestación de agentes inteligentes que procesan texto, audio, imagen y PDF.
+    \item \textbf{Agentes con integración de plataformas:} Asistentes virtuales conectados a \textbf{WhatsApp, Telegram, Notion, Google Sheets y Calendar} con memoria persistente (PostgreSQL), clasificación automática de mensajes y derivación inteligente.
+    \item \textbf{Dashboards y reportes automatizados:} Tableros interactivos con \textbf{Power BI y Plotly/Dash} para visualización en tiempo real; scripts Python para generación automática de informes en Word/Excel eliminando trabajo manual.
+    \item \textbf{Sistema multi-agente EMAIRC:} Arquitectura de 4 modelos de IA en paralelo (Gemini + DeepSeek + Qwen + Claude) con backend FastAPI + WebSocket y frontend React en tiempo real.
+\end{itemize}
+
+\vspace{1mm}
+
+\entry{Director del Área de Investigaciones (IA y SHM)}{Enero 2024 – Diciembre 2025}{Capítulo Estudiantil de Ingeniería Civil - IDI UPC}{Lima, Perú}
+\begin{itemize}
+    \item \textbf{Deep Learning para monitoreo estructural:} Liderazgo en desarrollo de modelo híbrido \textbf{ST-GAE} (Spatio-Temporal Graph Autoencoder) con PyTorch y GNN para detección no supervisada de anomalías en puentes.
+    \item \textbf{Infraestructura IoT:} Diseño de red de adquisición de datos con \textbf{sensores MEMS, Arduino y Raspberry Pi} para captura sincronizada de señales de aceleración.
+    \item \textbf{Pipeline de datos:} Scripts de procesamiento automatizado (Python) y dashboards de visualización (Plotly/Matplotlib) para análisis de señales vibracionales.
+    \item Ponente en CONEIC Ucayali 2024: ``Detección Automatizada de Patologías en Estructuras con Redes Neuronales''.
+\end{itemize}
+
+\vspace{1mm}
+
+\entry{Asistente de Oficina Técnica}{Septiembre 2025 – Diciembre 2025}{Obra: ``Teatro Municipal de Yunguyo''}{Puno, Perú}
+\begin{itemize}
+    \item \textbf{Desarrollo de plugins en Revit API (C\#):} Aplicaciones para armado automático de vigas y generación de losas, reduciendo tiempo de modelado estructural.
+    \item \textbf{Automatización de reportes:} Scripts Python para generación automática de informes de avance y valorizaciones mensuales en Word/Excel.
+    \item Gestión de proyectos con Primavera P6 / MS Project; presupuestos con S10 y Delphin Express.
+\end{itemize}
+
+\vspace{1mm}
+
+\entry{Asistente de Oficina Técnica}{Junio 2024 – Noviembre 2024}{Constructora Talgus S.A.C.}{Lima, Perú}
+\begin{itemize}
+    \item Elaboración de metrados, análisis de costos unitarios y presupuestos de obra.
+    \item Modelado y actualización de planos técnicos (AutoCAD, Revit).
+\end{itemize}
+
+% --- EDUCACIÓN ---
+\section*{Educación}
+\entry{Bachiller en Ingeniería Civil}{2021 - Diciembre 2025}{Universidad Peruana de Ciencias Aplicadas (UPC)}{Lima, Perú}
+\vspace{1mm}
+\entry{Bachillerato Internacional (IB Diploma)}{2015 - 2017}{Colegio de Alto Rendimiento (COAR Puno)}{Puno, Perú}
+
+% --- PROYECTOS ---
+\section*{Proyectos Destacados}
+
+\textbf{Automatización e Inteligencia Artificial}
+\begin{itemize}
+    \item \textbf{Agentes de IA en producción (n8n + MCP):} Workflows complejos que procesan mensajes multimedia, consultan bases de datos, agendan citas y derivan a humanos — operando 24/7 en instancia cloud.
+    \item \textbf{EMAIRC Multi-Agent System:} Orquestación de 4 LLMs especializados con FastAPI (backend), React (frontend), WebSocket streaming y ejecución concurrente (asyncio + ThreadPoolExecutor).
+    \item \textbf{ConstEdge:} Sistema de asistencia laboral con reconocimiento facial (DeepFace/ArcFace), detección de EPP (YOLOv8) y generación de reportes Excel con fotos embebidas. Dashboard Vue.js + app móvil PWA.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{Electrónica, IoT y Despliegue en Zonas Remotas}
+\begin{itemize}
+    \item \textbf{CultiGuard (FPGA + IoT):} Sistema de monitoreo agrícola autónomo con \textbf{FPGA Gowin Tang Nano 9K}, ESP32-CAM, sensores ambientales y comunicación \textbf{LoRa} de largo alcance. Edge AI para detección de plagas. Operación solar sin internet.
+    \item \textbf{PachaGuard:} Nodo de monitoreo con FPGA Tang Nano 1K + ESP32 para \textit{edge computing} en zonas remotas. Lógica de control en Verilog; transmisión de alertas vía UART.
+    \item \textbf{Módulos VHDL:} Diseño de IP cores para fusión de sensores (acelerómetro + giroscopio) en FPGA.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{Machine Learning y Computer Vision}
+\begin{itemize}
+    \item \textbf{GAIATECH SHM (Publicación científica):} Modelo ST-GAE con PyTorch Geometric (GNN + GRU) para detección de anomalías en puentes. Validation loss: 0.0064 con 5.1M parámetros.
+    \item \textbf{EMARC VISIÓN:} Segmentación de fisuras con SegFormer + detección de EPP con YOLOv8 (mAP@0.5 = 90.7\%). Cálculo automático de métricas de daño.
+    \item \textbf{Análisis probabilístico:} Suite de escritorio con Simulación Monte Carlo, FORM/FOSM, curvas de fragilidad y visualización 3D interactiva.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{Desarrollo de Software y Plugins}
+\begin{itemize}
+    \item \textbf{EMARC BIM Suite:} Plugins para Revit 2026 (C\#, WPF, Revit API) — armado automático, extracción de metrados, interoperabilidad con SAP2000.
+    \item \textbf{Unity MCP Server:} Servidor MCP (Node.js) que permite a IAs interactuar directamente con el editor de Unity vía TCP + compilación Roslyn en tiempo de ejecución.
+    \item \textbf{SEACE Scraper:} Extracción automatizada de datos de contrataciones públicas (Scrapy + Selenium), con manejo de CAPTCHA y exportación JSON/CSV.
+\end{itemize}
+
+% --- HABILIDADES ---
+\section*{Habilidades Técnicas}
+\begin{itemize}
+    \item \textbf{Automatización y Agentes de IA:} \textbf{n8n} (avanzado), \textbf{Model Context Protocol (MCP)}, agentes multi-plataforma, integración de APIs (REST, webhooks), LLMs (Claude, Gemini, DeepSeek, Qwen).
+    \item \textbf{Dashboards y Visualización:} \textbf{Power BI}, Plotly/Dash, Matplotlib; reportes automatizados Word/Excel (python-docx, openpyxl).
+    \item \textbf{Programación:} \textbf{Python} (avanzado), JavaScript/TypeScript (React, Node.js), \textbf{C\#} (.NET, Revit API), SQL, VBA.
+    \item \textbf{IA y Machine Learning:} PyTorch, GNN, RNN (GRU/LSTM), YOLOv8, SegFormer, Prompt Engineering, Computer Vision (OpenCV).
+    \item \textbf{Electrónica e IoT:} \textbf{FPGA} (Verilog/VHDL, Gowin), \textbf{Arduino, Raspberry Pi, ESP32}, sensores MEMS, LoRa, SPI/UART — despliegue en zonas remotas sin conectividad.
+    \item \textbf{Datos y ETL:} Pandas, NumPy, Scikit-learn, limpieza y procesamiento masivo de datos, series temporales.
+    \item \textbf{Ingeniería y BIM:} Revit (modelado + desarrollo API), AutoCAD, Civil 3D, SAP2000, S10, Primavera P6.
+    \item \textbf{Web y Bases de Datos:} React, FastAPI, WebSocket, PostgreSQL, SQLite, Notion API.
+    \item \textbf{Idiomas:} Español (Nativo), Inglés Intermedio-Avanzado (dominio técnico).
+\end{itemize}
+
+% --- CERTIFICACIONES ---
+\section*{Certificaciones y Reconocimientos}
+\textit{\small Verificables en LinkedIn: \href{https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352}{linkedin.com/in/emanuel-edgar-ancco-guaygua}}
+\vspace{1mm}
+\begin{itemize}
+    \item \textbf{Especialización en Machine Learning on Google Cloud} (4 cursos) | Google Cloud / Coursera, 2025
+    \item \textbf{Especialista en IA y Aprendizaje Automático con Python} (120 horas) | Data Science Analysis, 2024
+    \item \textbf{Ponente en CONEIC Ucayali 2024} — ``Aplicación de CNN para Evaluación Automatizada de Fisuras y Grietas''
+    \item \textbf{2do lugar en Concurso de Conocimientos CONEIC} | Huaraz, 2025
+    \item \textbf{Primer Puesto, Concurso de Ponencias Académicas} | XIV COREIC Lima 2023, UNFV
+    \item \textbf{Innovador Destacado, DigiEduHack 2023} | Comisión Europea
+    \item \textbf{Especialización en Python for Everybody} (5 cursos) | University of Michigan / Coursera
+    \item \textbf{ISC AI Foundations For Everyone} | Campus Global ISC, 2025
+\end{itemize}
+
+\end{document}

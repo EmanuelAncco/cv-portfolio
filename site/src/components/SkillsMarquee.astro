@@ -8,14 +8,37 @@ const skills = [
 ];
 const doubled = [...skills, ...skills];
 ---
-<section class="overflow-hidden border-y border-[var(--color-rule)] mt-20 py-6">
-  <div class="flex gap-10 whitespace-nowrap animate-[marquee_60s_linear_infinite] font-[var(--font-mono)] text-sm text-[var(--color-text-dim)]">
+<section class="overflow-hidden border-y border-[var(--color-rule)] mt-20 py-6" aria-label="Stack técnico">
+  <div class="marquee-track flex gap-10 whitespace-nowrap font-[var(--font-mono)] text-sm text-[var(--color-text-dim)]" aria-hidden="true">
     {doubled.map((s) => <span>{s}</span>)}
   </div>
+  <ul class="sr-only">
+    {skills.map((s) => <li>{s}</li>)}
+  </ul>
 </section>
 <style>
-  @keyframes marquee {
+  .marquee-track {
+    animation: marquee-skills 60s linear infinite;
+  }
+  @keyframes marquee-skills {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+      flex-wrap: wrap;
+    }
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 </style>

@@ -7,7 +7,9 @@ interface Props {
 }
 const { proyecto, variant = "default" } = Astro.props;
 const { titulo, anio, stack, metricas, excerpt } = proyecto.data;
-const slug = proyecto.id.replace(/\.md$/, "").split("/").pop();
+// Preserve subdir in URL: archive entries become /proyectos/archive/<slug>.
+// Avoids latent collision risk between proyectos/foo.md and proyectos/archive/foo.md.
+const slug = proyecto.id.replace(/\.md$/, "");
 ---
 <article class={variant === "compact"
   ? "border-b border-[var(--color-rule)] py-6"

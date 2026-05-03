@@ -41,3 +41,31 @@
 
 html { background: var(--color-bg); color: var(--color-text); }
 body { font-family: var(--font-body); }
+
+/* Progressive-enhancement reveals.
+   Default: everything visible (no FOIT if JS fails or hangs).
+   With JS: html.has-js hides reveal/word-fade until IO toggles is-visible. */
+html.has-js .reveal,
+html.has-js .word-fade,
+html.has-js .hero-fade {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+html.has-js .reveal.is-visible,
+html.has-js .word-fade.is-visible,
+html.has-js .hero-fade.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.has-js .reveal,
+  html.has-js .word-fade,
+  html.has-js .hero-fade {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

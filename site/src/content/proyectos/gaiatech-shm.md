@@ -10,6 +10,10 @@ metricas:
   - { valor: "0.0064", label: "Best val loss" }
   - { valor: "PINN-GNN", label: "Arquitectura principal" }
 enlaces: []
+hero: "../../assets/projects/gaiatech_results.png"
+galeria:
+  - "../../assets/projects/gaiatech_model_comparison.png"
+  - "../../assets/projects/neural_network_architecture.png"
 excerpt: "Sistema de monitoreo de salud estructural basado en IA para detección de anomalías en puentes usando acelerómetros y redes neuronales de grafos físicamente informadas."
 orden: 2
 ---

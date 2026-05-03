@@ -9,6 +9,7 @@ metricas:
   - { valor: "FPGA", label: "Hardware reconfigurable" }
 enlaces:
   - { label: "Demo en YouTube", url: "https://www.youtube.com/watch?v=YuHDxx74Gqk" }
+hero: "../../assets/projects/labels_correlogram.jpg"
 excerpt: "Hardware reconfigurable FPGA de doble propósito: vigilancia autónoma con Edge AI y monitoreo de aceleraciones sísmicas en tiempo real para infraestructura crítica."
 orden: 6
 ---

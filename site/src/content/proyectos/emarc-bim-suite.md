@@ -8,6 +8,12 @@ metricas:
   - { valor: "20+", label: "Comandos implementados" }
   - { valor: "3", label: "Plugins (SAPtoRevit, Structural, CAD-BIM)" }
 enlaces: []
+hero: "../../assets/projects/revit_automation.png"
+galeria:
+  - "../../assets/projects/revit/plugin vigas.png"
+  - "../../assets/projects/revit/plugin losas.png"
+  - "../../assets/projects/revit/plugin bidireccional.png"
+  - "../../assets/projects/revit/plugin zapatas.png"
 excerpt: "Suite profesional de automatización BIM para Revit 2026 con tres plugins: importación SAP2000/ETABS→Revit, armado estructural automático y interoperabilidad AutoCAD↔Revit vía JSON."
 orden: 12
 ---

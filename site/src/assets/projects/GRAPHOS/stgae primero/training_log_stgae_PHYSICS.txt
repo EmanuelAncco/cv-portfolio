@@ -1,0 +1,104 @@
+2025-10-31 12:49:20,934 - [INFO] - Logging de STG-AE (FÍSICO) iniciado. Guardando en: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_modelos_shm\run_STGAE-PHYSICS_lr0.0005_bs16_20251031-124920\training_log_stgae_PHYSICS.txt
+2025-10-31 12:49:20,934 - [INFO] - Directorio de datos: D:\descargas 2025\limpiar-20250619T152105Z-1-001\limpiar
+2025-10-31 12:49:20,934 - [INFO] - Directorio de salida: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_modelos_shm\run_STGAE-PHYSICS_lr0.0005_bs16_20251031-124920
+2025-10-31 12:49:20,934 - [INFO] - Usando definición de GRAFO FÍSICAMENTE INFORMADO.
+2025-10-31 12:49:20,934 - [INFO] - --- INICIANDO NUEVO ENTRENAMIENTO (STG-AE FÍSICO) ---
+2025-10-31 12:49:20,934 - [INFO] - Hiperparámetros (finales): {'window_size': 64, 'stride': 32, 'wavelet_name': 'db4', 'wavelet_level': 5, 'gnn_hidden': 128, 'gnn_out': 64, 'rnn_hidden': 256, 'rnn_layers': 2, 'epochs': 50, 'batch_size': 16, 'learning_rate': 0.0005, 'patience': 10, 'scheduler_patience': 5, 'scheduler_factor': 0.5, 'weight_decay': 1e-05}
+2025-10-31 12:49:20,934 - [INFO] - Config Wavelet: db4, Lvl 5 -> 7 features
+2025-10-31 12:49:20,934 - [INFO] - Cargando datos crudos...
+2025-10-31 12:49:48,487 - [INFO] - Longitud mínima/objetivo: 3184310
+2025-10-31 12:49:48,487 - [INFO] - Aplicando DWT...
+2025-10-31 12:49:50,193 - [INFO] - Features Wavelet generadas. Shape: (3184310, 7)
+2025-10-31 12:49:50,260 - [INFO] - Ajustando nuevo StandardScaler...
+2025-10-31 12:49:51,651 - [INFO] - StandardScaler ajustado.
+2025-10-31 12:49:52,148 - [INFO] - Escalado completado.
+2025-10-31 12:49:52,665 - [INFO] - Dataset STG-AE creado. Shape datos: (3184310, 5, 7). 99508 ventanas.
+2025-10-31 12:49:52,665 - [INFO] - Dataset listo: 99508 ventanas. Shape: (64, 5, 7)
+2025-10-31 12:49:52,676 - [INFO] - Dataset dividido: 84582 train, 14926 val.
+2025-10-31 12:49:52,677 - [INFO] - Dispositivo: cuda
+2025-10-31 12:49:52,677 - [INFO] - DataLoaders creados. Batch Size: 16
+2025-10-31 12:49:52,677 - [INFO] - Cargando definición de grafo personalizada (Física).
+2025-10-31 12:49:52,770 - [INFO] - Grafo FÍSICO con pesos (edge_weight) cargado en dispositivo.
+2025-10-31 12:49:52,882 - [INFO] - Modelo STG-AE (FÍSICO) creado. Parámetros: 5,116,416
+2025-10-31 12:49:52,883 - [INFO] - --- Iniciando Entrenamiento (FÍSICO)... 50 épocas (desde 1 hasta 50) ---
+2025-10-31 12:51:39,719 - [INFO] - Epoch 1/50 -> Lr: 5.00e-04, Train Loss: 0.666192, Val Loss: 0.478909 (Dur: 0:01:46.834705)
+2025-10-31 12:51:39,737 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.478909
+2025-10-31 12:53:25,234 - [INFO] - Epoch 2/50 -> Lr: 5.00e-04, Train Loss: 0.421461, Val Loss: 0.363490 (Dur: 0:01:45.494225)
+2025-10-31 12:53:25,253 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.363490
+2025-10-31 12:55:19,022 - [INFO] - Epoch 3/50 -> Lr: 5.00e-04, Train Loss: 0.306226, Val Loss: 0.230487 (Dur: 0:01:53.768245)
+2025-10-31 12:55:19,050 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.230487
+2025-10-31 12:57:06,158 - [INFO] - Epoch 4/50 -> Lr: 5.00e-04, Train Loss: 0.192648, Val Loss: 0.354360 (Dur: 0:01:47.106727)
+2025-10-31 12:58:49,469 - [INFO] - Epoch 5/50 -> Lr: 5.00e-04, Train Loss: 0.128419, Val Loss: 0.100528 (Dur: 0:01:43.311243)
+2025-10-31 12:58:49,486 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.100528
+2025-10-31 13:00:39,015 - [INFO] - Epoch 6/50 -> Lr: 5.00e-04, Train Loss: 0.090578, Val Loss: 0.078164 (Dur: 0:01:49.526607)
+2025-10-31 13:00:39,031 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.078164
+2025-10-31 13:02:26,521 - [INFO] - Epoch 7/50 -> Lr: 5.00e-04, Train Loss: 0.071819, Val Loss: 0.059872 (Dur: 0:01:47.489018)
+2025-10-31 13:02:26,538 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.059872
+2025-10-31 13:04:35,256 - [INFO] - Epoch 8/50 -> Lr: 5.00e-04, Train Loss: 0.059978, Val Loss: 0.055604 (Dur: 0:02:08.717477)
+2025-10-31 13:04:35,273 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.055604
+2025-10-31 13:06:36,051 - [INFO] - Epoch 9/50 -> Lr: 5.00e-04, Train Loss: 0.053493, Val Loss: 0.046566 (Dur: 0:02:00.778314)
+2025-10-31 13:06:36,069 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.046566
+2025-10-31 13:08:39,215 - [INFO] - Epoch 10/50 -> Lr: 5.00e-04, Train Loss: 0.049355, Val Loss: 0.051234 (Dur: 0:02:03.145031)
+2025-10-31 13:10:41,594 - [INFO] - Epoch 11/50 -> Lr: 5.00e-04, Train Loss: 0.046092, Val Loss: 0.040527 (Dur: 0:02:02.379771)
+2025-10-31 13:10:41,612 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.040527
+2025-10-31 13:12:33,862 - [INFO] - Epoch 12/50 -> Lr: 5.00e-04, Train Loss: 0.042442, Val Loss: 0.037160 (Dur: 0:01:52.243222)
+2025-10-31 13:12:33,879 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.037160
+2025-10-31 13:14:20,877 - [INFO] - Epoch 13/50 -> Lr: 5.00e-04, Train Loss: 0.038709, Val Loss: 0.034229 (Dur: 0:01:46.997433)
+2025-10-31 13:14:20,893 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.034229
+2025-10-31 13:16:10,483 - [INFO] - Epoch 14/50 -> Lr: 5.00e-04, Train Loss: 0.038249, Val Loss: 0.033682 (Dur: 0:01:49.577905)
+2025-10-31 13:16:10,510 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.033682
+2025-10-31 13:17:59,181 - [INFO] - Epoch 15/50 -> Lr: 5.00e-04, Train Loss: 0.037047, Val Loss: 0.034205 (Dur: 0:01:48.671173)
+2025-10-31 13:19:44,327 - [INFO] - Epoch 16/50 -> Lr: 5.00e-04, Train Loss: 0.035988, Val Loss: 0.038748 (Dur: 0:01:45.145712)
+2025-10-31 13:21:30,089 - [INFO] - Epoch 17/50 -> Lr: 5.00e-04, Train Loss: 0.035079, Val Loss: 0.030056 (Dur: 0:01:45.761616)
+2025-10-31 13:21:30,105 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.030056
+2025-10-31 13:23:13,674 - [INFO] - Epoch 18/50 -> Lr: 5.00e-04, Train Loss: 0.033396, Val Loss: 0.030415 (Dur: 0:01:43.567070)
+2025-10-31 13:25:02,842 - [INFO] - Epoch 19/50 -> Lr: 5.00e-04, Train Loss: 0.032008, Val Loss: 0.030407 (Dur: 0:01:49.167975)
+2025-10-31 13:26:45,793 - [INFO] - Epoch 20/50 -> Lr: 5.00e-04, Train Loss: 0.030510, Val Loss: 0.025827 (Dur: 0:01:42.949903)
+2025-10-31 13:26:45,810 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.025827
+2025-10-31 13:28:28,977 - [INFO] - Epoch 21/50 -> Lr: 5.00e-04, Train Loss: 0.029172, Val Loss: 0.029158 (Dur: 0:01:43.166378)
+2025-10-31 13:30:18,043 - [INFO] - Epoch 22/50 -> Lr: 5.00e-04, Train Loss: 0.028638, Val Loss: 0.026219 (Dur: 0:01:49.065624)
+2025-10-31 13:32:06,652 - [INFO] - Epoch 23/50 -> Lr: 5.00e-04, Train Loss: 0.027377, Val Loss: 0.024267 (Dur: 0:01:48.609232)
+2025-10-31 13:32:06,670 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.024267
+2025-10-31 13:33:55,089 - [INFO] - Epoch 24/50 -> Lr: 5.00e-04, Train Loss: 0.026973, Val Loss: 0.024920 (Dur: 0:01:48.417332)
+2025-10-31 13:35:44,862 - [INFO] - Epoch 25/50 -> Lr: 5.00e-04, Train Loss: 0.026018, Val Loss: 0.024574 (Dur: 0:01:49.773925)
+2025-10-31 13:37:37,360 - [INFO] - Epoch 26/50 -> Lr: 5.00e-04, Train Loss: 0.025163, Val Loss: 0.022839 (Dur: 0:01:52.496776)
+2025-10-31 13:37:37,377 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.022839
+2025-10-31 13:39:21,989 - [INFO] - Epoch 27/50 -> Lr: 5.00e-04, Train Loss: 0.024825, Val Loss: 0.024462 (Dur: 0:01:44.611006)
+2025-10-31 13:41:07,205 - [INFO] - Epoch 28/50 -> Lr: 5.00e-04, Train Loss: 0.024171, Val Loss: 0.021832 (Dur: 0:01:45.215439)
+2025-10-31 13:41:07,222 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.021832
+2025-10-31 13:42:55,664 - [INFO] - Epoch 29/50 -> Lr: 5.00e-04, Train Loss: 0.023410, Val Loss: 0.019981 (Dur: 0:01:48.441124)
+2025-10-31 13:42:55,680 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.019981
+2025-10-31 13:44:40,396 - [INFO] - Epoch 30/50 -> Lr: 5.00e-04, Train Loss: 0.022873, Val Loss: 0.020682 (Dur: 0:01:44.714093)
+2025-10-31 13:46:26,396 - [INFO] - Epoch 31/50 -> Lr: 5.00e-04, Train Loss: 0.021842, Val Loss: 0.020212 (Dur: 0:01:46.000464)
+2025-10-31 13:48:12,774 - [INFO] - Epoch 32/50 -> Lr: 5.00e-04, Train Loss: 0.021189, Val Loss: 0.018693 (Dur: 0:01:46.376994)
+2025-10-31 13:48:12,791 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.018693
+2025-10-31 13:50:00,822 - [INFO] - Epoch 33/50 -> Lr: 5.00e-04, Train Loss: 0.020466, Val Loss: 0.017564 (Dur: 0:01:48.029749)
+2025-10-31 13:50:00,839 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.017564
+2025-10-31 13:51:45,085 - [INFO] - Epoch 34/50 -> Lr: 5.00e-04, Train Loss: 0.019148, Val Loss: 0.017367 (Dur: 0:01:44.244351)
+2025-10-31 13:51:45,102 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.017367
+2025-10-31 13:53:31,522 - [INFO] - Epoch 35/50 -> Lr: 5.00e-04, Train Loss: 0.018646, Val Loss: 0.017105 (Dur: 0:01:46.419798)
+2025-10-31 13:53:31,540 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.017105
+2025-10-31 13:55:18,532 - [INFO] - Epoch 36/50 -> Lr: 5.00e-04, Train Loss: 0.018095, Val Loss: 0.015951 (Dur: 0:01:46.990873)
+2025-10-31 13:55:18,549 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.015951
+2025-10-31 13:57:04,088 - [INFO] - Epoch 37/50 -> Lr: 5.00e-04, Train Loss: 0.017614, Val Loss: 0.016490 (Dur: 0:01:45.538382)
+2025-10-31 13:58:52,567 - [INFO] - Epoch 38/50 -> Lr: 5.00e-04, Train Loss: 0.017095, Val Loss: 0.016741 (Dur: 0:01:48.479419)
+2025-10-31 14:00:40,484 - [INFO] - Epoch 39/50 -> Lr: 5.00e-04, Train Loss: 0.016594, Val Loss: 0.013343 (Dur: 0:01:47.916479)
+2025-10-31 14:00:40,501 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.013343
+2025-10-31 14:02:28,637 - [INFO] - Epoch 40/50 -> Lr: 5.00e-04, Train Loss: 0.015966, Val Loss: 0.018385 (Dur: 0:01:48.135058)
+2025-10-31 14:04:16,944 - [INFO] - Epoch 41/50 -> Lr: 5.00e-04, Train Loss: 0.015072, Val Loss: 0.013707 (Dur: 0:01:48.306673)
+2025-10-31 14:06:02,608 - [INFO] - Epoch 42/50 -> Lr: 5.00e-04, Train Loss: 0.014656, Val Loss: 0.016333 (Dur: 0:01:45.664476)
+2025-10-31 14:07:51,941 - [INFO] - Epoch 43/50 -> Lr: 5.00e-04, Train Loss: 0.014331, Val Loss: 0.012682 (Dur: 0:01:49.332611)
+2025-10-31 14:07:51,958 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.012682
+2025-10-31 14:09:36,169 - [INFO] - Epoch 44/50 -> Lr: 5.00e-04, Train Loss: 0.013807, Val Loss: 0.016811 (Dur: 0:01:44.209323)
+2025-10-31 14:11:33,355 - [INFO] - Epoch 45/50 -> Lr: 5.00e-04, Train Loss: 0.013584, Val Loss: 0.013198 (Dur: 0:01:57.186394)
+2025-10-31 14:13:22,342 - [INFO] - Epoch 46/50 -> Lr: 5.00e-04, Train Loss: 0.013334, Val Loss: 0.011705 (Dur: 0:01:48.986773)
+2025-10-31 14:13:22,358 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.011705
+2025-10-31 14:15:06,666 - [INFO] - Epoch 47/50 -> Lr: 5.00e-04, Train Loss: 0.013164, Val Loss: 0.014120 (Dur: 0:01:44.306126)
+2025-10-31 14:16:57,008 - [INFO] - Epoch 48/50 -> Lr: 5.00e-04, Train Loss: 0.012436, Val Loss: 0.012388 (Dur: 0:01:50.342738)
+2025-10-31 14:18:47,729 - [INFO] - Epoch 49/50 -> Lr: 5.00e-04, Train Loss: 0.012468, Val Loss: 0.011991 (Dur: 0:01:50.720664)
+2025-10-31 14:20:36,754 - [INFO] - Epoch 50/50 -> Lr: 5.00e-04, Train Loss: 0.012142, Val Loss: 0.010267 (Dur: 0:01:49.024605)
+2025-10-31 14:20:36,771 - [INFO] -    -> Nuevo mejor modelo (FÍSICO) guardado. Val Loss: 0.010267
+2025-10-31 14:20:36,772 - [INFO] - --- Entrenamiento (FÍSICO) Finalizado ---
+2025-10-31 14:20:36,772 - [INFO] - Mejor pérdida de validación: 0.010267
+2025-10-31 14:20:37,140 - [INFO] - Gráfico de pérdidas guardado en: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_modelos_shm\run_STGAE-PHYSICS_lr0.0005_bs16_20251031-124920\loss_curve_stgae_physics.png
+2025-10-31 14:20:37,141 - [INFO] - Cerrando archivo de log.

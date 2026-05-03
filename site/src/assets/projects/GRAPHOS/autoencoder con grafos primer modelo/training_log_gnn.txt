@@ -1,0 +1,98 @@
+2025-09-10 02:07:56,943 - INFO - Hiperparámetros guardados en resultados_entrenamiento\run_gnn_20250910-020756
+2025-09-10 02:07:56,943 - INFO - Cargando y preprocesando datos...
+2025-09-10 02:08:23,608 - INFO - Ajustando el escalador con los datos de entrenamiento...
+2025-09-10 02:08:23,700 - INFO - Creando datasets y dataloaders...
+2025-09-10 02:08:23,878 - INFO - Tamaños -> Entrenamiento: 56554, Validación: 9981, Prueba: 32972
+2025-09-10 02:08:23,878 - INFO - Usando dispositivo: cuda
+2025-09-10 02:08:24,025 - INFO - --- Iniciando Entrenamiento del Autoencoder ---
+2025-09-10 02:15:30,193 - INFO - Epoch 1/50 -> Train Loss: 0.737716, Val Loss: 0.637364
+2025-09-10 02:15:30,201 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.637364
+2025-09-10 02:22:56,488 - INFO - Epoch 2/50 -> Train Loss: 0.424877, Val Loss: 0.290142
+2025-09-10 02:22:56,494 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.290142
+2025-09-10 02:30:04,537 - INFO - Epoch 3/50 -> Train Loss: 0.265172, Val Loss: 0.258075
+2025-09-10 02:30:04,541 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.258075
+2025-09-10 02:37:15,816 - INFO - Epoch 4/50 -> Train Loss: 0.248408, Val Loss: 0.244643
+2025-09-10 02:37:15,819 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.244643
+2025-09-10 02:44:34,765 - INFO - Epoch 5/50 -> Train Loss: 0.239624, Val Loss: 0.239562
+2025-09-10 02:44:34,768 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.239562
+2025-09-10 02:51:44,810 - INFO - Epoch 6/50 -> Train Loss: 0.236708, Val Loss: 0.236561
+2025-09-10 02:51:44,810 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.236561
+2025-09-10 02:58:53,301 - INFO - Epoch 7/50 -> Train Loss: 0.234559, Val Loss: 0.233374
+2025-09-10 02:58:53,305 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.233374
+2025-09-10 03:06:01,656 - INFO - Epoch 8/50 -> Train Loss: 0.232360, Val Loss: 0.232155
+2025-09-10 03:06:01,659 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.232155
+2025-09-10 03:13:08,682 - INFO - Epoch 9/50 -> Train Loss: 0.229600, Val Loss: 0.228438
+2025-09-10 03:13:08,686 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.228438
+2025-09-10 03:20:17,705 - INFO - Epoch 10/50 -> Train Loss: 0.226791, Val Loss: 0.226381
+2025-09-10 03:20:17,709 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.226381
+2025-09-10 03:27:25,842 - INFO - Epoch 11/50 -> Train Loss: 0.224507, Val Loss: 0.225753
+2025-09-10 03:27:25,847 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.225753
+2025-09-10 03:34:36,492 - INFO - Epoch 12/50 -> Train Loss: 0.221809, Val Loss: 0.219953
+2025-09-10 03:34:36,494 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.219953
+2025-09-10 03:41:51,365 - INFO - Epoch 13/50 -> Train Loss: 0.218902, Val Loss: 0.218681
+2025-09-10 03:41:51,368 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.218681
+2025-09-10 03:49:04,599 - INFO - Epoch 14/50 -> Train Loss: 0.216192, Val Loss: 0.216165
+2025-09-10 03:49:04,602 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.216165
+2025-09-10 03:56:15,974 - INFO - Epoch 15/50 -> Train Loss: 0.214402, Val Loss: 0.215624
+2025-09-10 03:56:15,977 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.215624
+2025-09-10 04:03:28,578 - INFO - Epoch 16/50 -> Train Loss: 0.213687, Val Loss: 0.215639
+2025-09-10 04:10:36,940 - INFO - Epoch 17/50 -> Train Loss: 0.212257, Val Loss: 0.212569
+2025-09-10 04:10:36,943 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.212569
+2025-09-10 04:17:49,074 - INFO - Epoch 18/50 -> Train Loss: 0.211439, Val Loss: 0.212143
+2025-09-10 04:17:49,091 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.212143
+2025-09-10 04:24:58,896 - INFO - Epoch 19/50 -> Train Loss: 0.210768, Val Loss: 0.213154
+2025-09-10 04:32:17,928 - INFO - Epoch 20/50 -> Train Loss: 0.209816, Val Loss: 0.209498
+2025-09-10 04:32:17,931 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.209498
+2025-09-10 04:39:32,729 - INFO - Epoch 21/50 -> Train Loss: 0.208884, Val Loss: 0.208920
+2025-09-10 04:39:32,731 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.208920
+2025-09-10 04:47:00,580 - INFO - Epoch 22/50 -> Train Loss: 0.208643, Val Loss: 0.208393
+2025-09-10 04:47:00,583 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.208393
+2025-09-10 04:54:26,562 - INFO - Epoch 23/50 -> Train Loss: 0.208329, Val Loss: 0.211364
+2025-09-10 05:01:17,264 - INFO - Epoch 24/50 -> Train Loss: 0.208244, Val Loss: 0.208290
+2025-09-10 05:01:17,267 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.208290
+2025-09-10 05:08:02,711 - INFO - Epoch 25/50 -> Train Loss: 0.208046, Val Loss: 0.209825
+2025-09-10 05:14:39,923 - INFO - Epoch 26/50 -> Train Loss: 0.207634, Val Loss: 0.209440
+2025-09-10 05:21:07,420 - INFO - Epoch 27/50 -> Train Loss: 0.208126, Val Loss: 0.211138
+2025-09-10 05:27:37,905 - INFO - Epoch 28/50 -> Train Loss: 0.219769, Val Loss: 0.211804
+2025-09-10 05:34:08,114 - INFO - Epoch 29/50 -> Train Loss: 0.208120, Val Loss: 0.195470
+2025-09-10 05:34:08,128 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.195470
+2025-09-10 05:40:36,345 - INFO - Epoch 30/50 -> Train Loss: 0.145075, Val Loss: 0.096541
+2025-09-10 05:40:36,348 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.096541
+2025-09-10 05:47:05,871 - INFO - Epoch 31/50 -> Train Loss: 0.067300, Val Loss: 0.047781
+2025-09-10 05:47:05,885 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.047781
+2025-09-10 05:53:37,630 - INFO - Epoch 32/50 -> Train Loss: 0.047608, Val Loss: 0.056129
+2025-09-10 06:00:06,499 - INFO - Epoch 33/50 -> Train Loss: 0.041936, Val Loss: 0.053013
+2025-09-10 06:06:34,704 - INFO - Epoch 34/50 -> Train Loss: 0.036719, Val Loss: 0.032163
+2025-09-10 06:06:34,707 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.032163
+2025-09-10 06:13:01,657 - INFO - Epoch 35/50 -> Train Loss: 0.034003, Val Loss: 0.029557
+2025-09-10 06:13:01,660 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.029557
+2025-09-10 06:19:29,329 - INFO - Epoch 36/50 -> Train Loss: 0.032457, Val Loss: 0.039841
+2025-09-10 06:25:59,448 - INFO - Epoch 37/50 -> Train Loss: 0.031418, Val Loss: 0.027912
+2025-09-10 06:25:59,452 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.027912
+2025-09-10 06:32:24,572 - INFO - Epoch 38/50 -> Train Loss: 0.029749, Val Loss: 0.026967
+2025-09-10 06:32:24,575 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.026967
+2025-09-10 06:38:53,729 - INFO - Epoch 39/50 -> Train Loss: 0.028939, Val Loss: 0.035345
+2025-09-10 06:45:23,035 - INFO - Epoch 40/50 -> Train Loss: 0.028127, Val Loss: 0.030425
+2025-09-10 06:52:52,319 - INFO - Epoch 41/50 -> Train Loss: 0.028114, Val Loss: 0.024689
+2025-09-10 06:52:52,333 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.024689
+2025-09-10 06:59:37,555 - INFO - Epoch 42/50 -> Train Loss: 0.027829, Val Loss: 0.027325
+2025-09-10 07:06:53,322 - INFO - Epoch 43/50 -> Train Loss: 0.026884, Val Loss: 0.045350
+2025-09-10 07:14:05,130 - INFO - Epoch 44/50 -> Train Loss: 0.026328, Val Loss: 0.036698
+2025-09-10 07:21:30,290 - INFO - Epoch 45/50 -> Train Loss: 0.025161, Val Loss: 0.029062
+2025-09-10 07:28:55,317 - INFO - Epoch 46/50 -> Train Loss: 0.025064, Val Loss: 0.023323
+2025-09-10 07:28:55,340 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.023323
+2025-09-10 07:36:22,789 - INFO - Epoch 47/50 -> Train Loss: 0.025420, Val Loss: 0.025576
+2025-09-10 07:43:16,145 - INFO - Epoch 48/50 -> Train Loss: 0.024149, Val Loss: 0.026523
+2025-09-10 07:49:44,262 - INFO - Epoch 49/50 -> Train Loss: 0.023861, Val Loss: 0.021815
+2025-09-10 07:49:44,276 - INFO -    -> Nuevo mejor modelo guardado con Val Loss: 0.021815
+2025-09-10 07:56:19,900 - INFO - Epoch 50/50 -> Train Loss: 0.023267, Val Loss: 0.024571
+2025-09-10 07:56:19,900 - INFO - --- Entrenamiento Finalizado ---
+2025-09-10 07:56:20,076 - INFO - 
+--- Simulación de Localización con Datos de Prueba ---
+2025-09-10 07:56:20,288 - INFO - 
+Vector de Error de Reconstrucción por Nodo:
+2025-09-10 07:56:20,289 - INFO -   - Sensor 1: Error = 0.009653
+2025-09-10 07:56:20,289 - INFO -   - Sensor 2: Error = 0.023957
+2025-09-10 07:56:20,289 - INFO -   - Sensor 3: Error = 0.037290
+2025-09-10 07:56:20,289 - INFO -   - Sensor 4: Error = 0.055721
+2025-09-10 07:56:20,289 - INFO -   - Sensor 5: Error = 0.037822

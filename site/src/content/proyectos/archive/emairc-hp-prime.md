@@ -6,6 +6,10 @@ anio: 2024
 stack: ["HP PPL", "Pascal", "HP Prime"]
 metricas:
   - { valor: "HP Prime", label: "Calculadora objetivo" }
+hero: "../../../assets/projects/hp-prime-tabla.png"
+galeria:
+  - "../../../assets/projects/hp-prime-grafico.png"
+  - "../../../assets/projects/hp-prime-integracion.png"
 excerpt: "Software profesional para HP Prime escrito en PPL con algoritmos Secante y Standard Step para cálculo de curvas de remanso y perfiles hidráulicos en canales de sección variable."
 orden: 50
 ---

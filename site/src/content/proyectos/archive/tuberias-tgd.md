@@ -7,6 +7,11 @@ stack: ["Python", "SciPy", "Matplotlib", "NumPy"]
 metricas:
   - { valor: "Monte Carlo", label: "Simulación probabilística" }
   - { valor: "v1/v2", label: "Versiones disponibles" }
+hero: "../../../assets/projects/tuberias-interfaz-final.png"
+galeria:
+  - "../../../assets/projects/tuberias-imagen1.png"
+  - "../../../assets/projects/tuberias_polar.png"
+  - "../../../assets/projects/tuberias-calculo-tramos.png"
 excerpt: "Plataforma integral para análisis sísmico de tuberías con diseño determinista (gráficos polares), simulación probabilística Monte Carlo y visualización 3D de resultados."
 orden: 50
 ---

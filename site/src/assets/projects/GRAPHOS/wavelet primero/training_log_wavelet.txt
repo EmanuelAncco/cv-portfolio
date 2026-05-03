@@ -1,0 +1,130 @@
+2025-10-27 14:33:43,727 - root - INFO - Logging de entrenamiento Wavelet-GNN iniciado. Guardando en: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_wavelet\run_wavelet_db45_h128_r256_lr0.0005_wd1e-05_20251027-143343\training_log_wavelet.txt
+2025-10-27 14:33:43,727 - root - INFO - --- Iniciando Experimento STG-AE con Wavelets ---
+2025-10-27 14:33:43,727 - root - INFO - Directorio de datos: D:\descargas 2025\limpiar-20250619T152105Z-1-001\limpiar
+2025-10-27 14:33:43,727 - root - INFO - Directorio de salida: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_wavelet\run_wavelet_db45_h128_r256_lr0.0005_wd1e-05_20251027-143343
+2025-10-27 14:33:43,727 - root - INFO - Hiperparámetros (hp): {'window_size': 64, 'stride': 32, 'wavelet_name': 'db4', 'wavelet_level': 5, 'gnn_hidden': 128, 'gnn_out': 64, 'rnn_hidden': 256, 'rnn_layers': 2, 'epochs': 50, 'batch_size': 16, 'learning_rate': 0.0005, 'patience': 10, 'scheduler_patience': 5, 'scheduler_factor': 0.5, 'weight_decay': 1e-05}
+2025-10-27 14:33:43,728 - root - INFO - Configuración Wavelet: Name='db4', Level=5 -> Features esperadas=7
+2025-10-27 14:33:43,728 - root - INFO - Cargando datos crudos...
+2025-10-27 14:34:21,643 - root - INFO - Carga inicial completa. Archivos procesados: 15, Omitidos: 0
+2025-10-27 14:34:21,650 - root - INFO - Sensor 1: 3 archivos concatenados -> (3801106, 1)
+2025-10-27 14:34:21,656 - root - INFO - Sensor 2: 3 archivos concatenados -> (3806266, 1)
+2025-10-27 14:34:21,663 - root - INFO - Sensor 3: 3 archivos concatenados -> (3834853, 1)
+2025-10-27 14:34:21,670 - root - INFO - Sensor 4: 3 archivos concatenados -> (3608927, 1)
+2025-10-27 14:34:21,675 - root - INFO - Sensor 5: 3 archivos concatenados -> (3184310, 1)
+2025-10-27 14:34:21,676 - root - INFO - Datos crudos concatenados para sensores: [1, 2, 3, 4, 5]
+2025-10-27 14:34:21,676 - root - INFO - Longitud mínima/objetivo para DWT y truncado: 3184310
+2025-10-27 14:34:21,676 - root - INFO - Aplicando DWT y reconstrucción de bandas...
+2025-10-27 14:34:23,646 - root - INFO - Features Wavelet generadas exitosamente. Shape por sensor: (3184310, 7)
+2025-10-27 14:34:23,762 - root - INFO - Escalando todas las características...
+2025-10-27 14:34:25,378 - root - INFO - StandardScaler ajustado a todas las features.
+2025-10-27 14:34:25,989 - root - INFO - Escalado de features completado.
+2025-10-27 14:34:26,160 - root - INFO - Creando datasets de ventanas con features Wavelet...
+2025-10-27 14:34:26,642 - SpatioTemporalWaveletDataset - INFO - Datos apilados con shape final: (3184310, 5, 7). Sensores usados: [1, 2, 3, 4, 5]
+2025-10-27 14:34:26,642 - SpatioTemporalWaveletDataset - INFO - Dataset creado con 5 nodos, 7 features, 3184310 puntos, 99508 ventanas.
+2025-10-27 14:34:26,746 - root - INFO - Dataset Wavelet dividido: 84582 train, 14926 val.
+2025-10-27 14:34:26,747 - root - INFO - Dispositivo de entrenamiento: cuda
+2025-10-27 14:34:26,748 - root - INFO - Workers DataLoader: 0
+2025-10-27 14:34:26,748 - root - INFO - Intentando crear DataLoaders con Batch Size: 16
+2025-10-27 14:34:26,749 - root - INFO - DataLoaders creados exitosamente.
+2025-10-27 14:34:26,879 - SpatioTemporalAutoencoder - INFO - Initializing STAutoencoder: N=5, F=7, T=64
+2025-10-27 14:34:26,879 - SpatioTemporalAutoencoder - INFO -   GNN Encoder: 7 -> 128 -> 64
+2025-10-27 14:34:26,879 - SpatioTemporalAutoencoder - INFO -   RNN Encoder: Input=320, Hidden=256, Layers=2
+2025-10-27 14:34:26,879 - SpatioTemporalAutoencoder - INFO -   RNN Decoder: Input=256, Hidden=640, Layers=2
+2025-10-27 14:34:26,879 - SpatioTemporalAutoencoder - INFO -   GNN Decoder: 128 -> 128 -> 7
+2025-10-27 14:34:27,018 - root - INFO - Modelo STG-AE (Wavelet Features - Cap Max) creado. Features: 7, Parámetros: 5,050,951, Batch Size Final: 16
+2025-10-27 14:34:27,021 - root - INFO - 
+--- Iniciando Entrenamiento del STG-AE (Wavelet Features - Capacidad Máxima) ---
+2025-10-27 14:36:12,675 - root - INFO - Epoch 1/50 -> Lr: 5.00e-04, Train Loss: 0.696369, Val Loss: 0.534390 (Dur: 0:01:45.653971)
+2025-10-27 14:36:12,693 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.534390
+2025-10-27 14:37:54,878 - root - INFO - Epoch 2/50 -> Lr: 5.00e-04, Train Loss: 0.476835, Val Loss: 0.418041 (Dur: 0:01:42.184564)
+2025-10-27 14:37:54,896 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.418041
+2025-10-27 14:39:49,381 - root - INFO - Epoch 3/50 -> Lr: 5.00e-04, Train Loss: 0.378531, Val Loss: 0.351782 (Dur: 0:01:54.485630)
+2025-10-27 14:39:49,399 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.351782
+2025-10-27 14:41:45,562 - root - INFO - Epoch 4/50 -> Lr: 5.00e-04, Train Loss: 0.325604, Val Loss: 0.291648 (Dur: 0:01:56.161807)
+2025-10-27 14:41:45,581 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.291648
+2025-10-27 14:43:41,193 - root - INFO - Epoch 5/50 -> Lr: 5.00e-04, Train Loss: 0.262012, Val Loss: 0.228695 (Dur: 0:01:55.612775)
+2025-10-27 14:43:41,215 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.228695
+2025-10-27 14:45:27,210 - root - INFO - Epoch 6/50 -> Lr: 5.00e-04, Train Loss: 0.225751, Val Loss: 0.224354 (Dur: 0:01:45.994853)
+2025-10-27 14:45:27,228 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.224354
+2025-10-27 14:47:06,922 - root - INFO - Epoch 7/50 -> Lr: 5.00e-04, Train Loss: 0.216684, Val Loss: 0.216769 (Dur: 0:01:39.694067)
+2025-10-27 14:47:06,940 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.216769
+2025-10-27 14:48:56,938 - root - INFO - Epoch 8/50 -> Lr: 5.00e-04, Train Loss: 0.212337, Val Loss: 0.205628 (Dur: 0:01:49.998201)
+2025-10-27 14:48:56,959 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.205628
+2025-10-27 14:50:47,748 - root - INFO - Epoch 9/50 -> Lr: 5.00e-04, Train Loss: 0.211928, Val Loss: 0.204936 (Dur: 0:01:50.789150)
+2025-10-27 14:50:47,764 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.204936
+2025-10-27 14:52:42,458 - root - INFO - Epoch 10/50 -> Lr: 5.00e-04, Train Loss: 0.207847, Val Loss: 0.203432 (Dur: 0:01:54.693885)
+2025-10-27 14:52:42,481 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.203432
+2025-10-27 14:54:38,466 - root - INFO - Epoch 11/50 -> Lr: 5.00e-04, Train Loss: 0.206950, Val Loss: 0.202153 (Dur: 0:01:55.985593)
+2025-10-27 14:54:38,493 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.202153
+2025-10-27 14:56:31,291 - root - INFO - Epoch 12/50 -> Lr: 5.00e-04, Train Loss: 0.206335, Val Loss: 0.201796 (Dur: 0:01:52.798717)
+2025-10-27 14:56:31,310 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.201796
+2025-10-27 14:58:27,084 - root - INFO - Epoch 13/50 -> Lr: 5.00e-04, Train Loss: 0.205880, Val Loss: 0.202895 (Dur: 0:01:55.773779)
+2025-10-27 15:00:16,568 - root - INFO - Epoch 14/50 -> Lr: 5.00e-04, Train Loss: 0.206017, Val Loss: 0.200880 (Dur: 0:01:49.484029)
+2025-10-27 15:00:16,595 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.200880
+2025-10-27 15:02:13,329 - root - INFO - Epoch 15/50 -> Lr: 5.00e-04, Train Loss: 0.204663, Val Loss: 0.201162 (Dur: 0:01:56.733575)
+2025-10-27 15:03:59,132 - root - INFO - Epoch 16/50 -> Lr: 5.00e-04, Train Loss: 0.203649, Val Loss: 0.199761 (Dur: 0:01:45.803605)
+2025-10-27 15:03:59,149 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.199761
+2025-10-27 15:05:53,990 - root - INFO - Epoch 17/50 -> Lr: 5.00e-04, Train Loss: 0.203459, Val Loss: 0.196956 (Dur: 0:01:54.840845)
+2025-10-27 15:05:54,008 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.196956
+2025-10-27 15:07:41,213 - root - INFO - Epoch 18/50 -> Lr: 5.00e-04, Train Loss: 0.191952, Val Loss: 0.176501 (Dur: 0:01:47.204530)
+2025-10-27 15:07:41,229 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.176501
+2025-10-27 15:09:36,657 - root - INFO - Epoch 19/50 -> Lr: 5.00e-04, Train Loss: 0.175251, Val Loss: 0.165495 (Dur: 0:01:55.428227)
+2025-10-27 15:09:36,665 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.165495
+2025-10-27 15:11:37,836 - root - INFO - Epoch 20/50 -> Lr: 5.00e-04, Train Loss: 0.164460, Val Loss: 0.157684 (Dur: 0:02:01.171106)
+2025-10-27 15:11:37,856 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.157684
+2025-10-27 15:13:36,342 - root - INFO - Epoch 21/50 -> Lr: 5.00e-04, Train Loss: 0.152930, Val Loss: 0.140895 (Dur: 0:01:58.484562)
+2025-10-27 15:13:36,356 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.140895
+2025-10-27 15:15:35,642 - root - INFO - Epoch 22/50 -> Lr: 5.00e-04, Train Loss: 0.144909, Val Loss: 0.139512 (Dur: 0:01:59.285826)
+2025-10-27 15:15:35,659 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.139512
+2025-10-27 15:17:34,836 - root - INFO - Epoch 23/50 -> Lr: 5.00e-04, Train Loss: 0.138211, Val Loss: 0.124538 (Dur: 0:01:59.177804)
+2025-10-27 15:17:34,858 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.124538
+2025-10-27 15:19:32,612 - root - INFO - Epoch 24/50 -> Lr: 5.00e-04, Train Loss: 0.130104, Val Loss: 0.118235 (Dur: 0:01:57.753853)
+2025-10-27 15:19:32,630 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.118235
+2025-10-27 15:21:29,541 - root - INFO - Epoch 25/50 -> Lr: 5.00e-04, Train Loss: 0.124979, Val Loss: 0.111603 (Dur: 0:01:56.910679)
+2025-10-27 15:21:29,579 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.111603
+2025-10-27 15:23:28,022 - root - INFO - Epoch 26/50 -> Lr: 5.00e-04, Train Loss: 0.121936, Val Loss: 0.114308 (Dur: 0:01:58.442540)
+2025-10-27 15:25:33,131 - root - INFO - Epoch 27/50 -> Lr: 5.00e-04, Train Loss: 0.120152, Val Loss: 0.112210 (Dur: 0:02:05.109363)
+2025-10-27 15:27:33,018 - root - INFO - Epoch 28/50 -> Lr: 5.00e-04, Train Loss: 0.118066, Val Loss: 0.111798 (Dur: 0:01:59.886267)
+2025-10-27 15:29:29,898 - root - INFO - Epoch 29/50 -> Lr: 5.00e-04, Train Loss: 0.115791, Val Loss: 0.112574 (Dur: 0:01:56.880498)
+2025-10-27 15:31:34,394 - root - INFO - Epoch 30/50 -> Lr: 5.00e-04, Train Loss: 0.113376, Val Loss: 0.105385 (Dur: 0:02:04.495846)
+2025-10-27 15:31:34,432 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.105385
+2025-10-27 15:33:40,536 - root - INFO - Epoch 31/50 -> Lr: 5.00e-04, Train Loss: 0.108320, Val Loss: 0.103173 (Dur: 0:02:06.103356)
+2025-10-27 15:33:40,546 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.103173
+2025-10-27 15:35:38,517 - root - INFO - Epoch 32/50 -> Lr: 5.00e-04, Train Loss: 0.101516, Val Loss: 0.105968 (Dur: 0:01:57.971453)
+2025-10-27 15:37:41,238 - root - INFO - Epoch 33/50 -> Lr: 5.00e-04, Train Loss: 0.096673, Val Loss: 0.100829 (Dur: 0:02:02.720711)
+2025-10-27 15:37:41,258 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.100829
+2025-10-27 15:39:36,121 - root - INFO - Epoch 34/50 -> Lr: 5.00e-04, Train Loss: 0.093081, Val Loss: 0.085531 (Dur: 0:01:54.862487)
+2025-10-27 15:39:36,148 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.085531
+2025-10-27 15:41:37,387 - root - INFO - Epoch 35/50 -> Lr: 5.00e-04, Train Loss: 0.089735, Val Loss: 0.077900 (Dur: 0:02:01.238748)
+2025-10-27 15:41:37,404 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.077900
+2025-10-27 15:43:33,696 - root - INFO - Epoch 36/50 -> Lr: 5.00e-04, Train Loss: 0.088494, Val Loss: 0.087140 (Dur: 0:01:56.291563)
+2025-10-27 15:45:27,686 - root - INFO - Epoch 37/50 -> Lr: 5.00e-04, Train Loss: 0.086449, Val Loss: 0.086470 (Dur: 0:01:53.989431)
+2025-10-27 15:47:20,144 - root - INFO - Epoch 38/50 -> Lr: 5.00e-04, Train Loss: 0.086467, Val Loss: 0.079135 (Dur: 0:01:52.457555)
+2025-10-27 15:49:14,708 - root - INFO - Epoch 39/50 -> Lr: 5.00e-04, Train Loss: 0.083892, Val Loss: 0.076494 (Dur: 0:01:54.563892)
+2025-10-27 15:49:14,725 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.076494
+2025-10-27 15:51:09,976 - root - INFO - Epoch 40/50 -> Lr: 5.00e-04, Train Loss: 0.081918, Val Loss: 0.087130 (Dur: 0:01:55.249474)
+2025-10-27 15:53:06,830 - root - INFO - Epoch 41/50 -> Lr: 5.00e-04, Train Loss: 0.079232, Val Loss: 0.076842 (Dur: 0:01:56.854207)
+2025-10-27 15:55:04,795 - root - INFO - Epoch 42/50 -> Lr: 5.00e-04, Train Loss: 0.072748, Val Loss: 0.068181 (Dur: 0:01:57.965156)
+2025-10-27 15:55:04,813 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.068181
+2025-10-27 15:57:03,394 - root - INFO - Epoch 43/50 -> Lr: 5.00e-04, Train Loss: 0.066227, Val Loss: 0.056819 (Dur: 0:01:58.580584)
+2025-10-27 15:57:03,423 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.056819
+2025-10-27 15:59:04,165 - root - INFO - Epoch 44/50 -> Lr: 5.00e-04, Train Loss: 0.063588, Val Loss: 0.055358 (Dur: 0:02:00.742003)
+2025-10-27 15:59:04,189 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.055358
+2025-10-27 16:00:57,776 - root - INFO - Epoch 45/50 -> Lr: 5.00e-04, Train Loss: 0.059590, Val Loss: 0.052640 (Dur: 0:01:53.586730)
+2025-10-27 16:00:57,794 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.052640
+2025-10-27 16:02:55,895 - root - INFO - Epoch 46/50 -> Lr: 5.00e-04, Train Loss: 0.058581, Val Loss: 0.054843 (Dur: 0:01:58.101329)
+2025-10-27 16:04:57,961 - root - INFO - Epoch 47/50 -> Lr: 5.00e-04, Train Loss: 0.056983, Val Loss: 0.070929 (Dur: 0:02:02.066021)
+2025-10-27 16:06:52,862 - root - INFO - Epoch 48/50 -> Lr: 5.00e-04, Train Loss: 0.055993, Val Loss: 0.043217 (Dur: 0:01:54.900956)
+2025-10-27 16:06:52,888 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.043217
+2025-10-27 16:08:46,525 - root - INFO - Epoch 49/50 -> Lr: 5.00e-04, Train Loss: 0.053661, Val Loss: 0.041035 (Dur: 0:01:53.635044)
+2025-10-27 16:08:46,543 - root - INFO -    -> Nuevo mejor modelo guardado. Val Loss: 0.041035
+2025-10-27 16:10:46,376 - root - INFO - Epoch 50/50 -> Lr: 5.00e-04, Train Loss: 0.051588, Val Loss: 0.046156 (Dur: 0:01:59.832720)
+2025-10-27 16:10:46,376 - root - INFO - --- Entrenamiento Finalizado (Wavelet GNN - Max Capacity) ---
+2025-10-27 16:10:46,376 - root - INFO - Duración total del entrenamiento: 1:36:19.355199
+2025-10-27 16:10:46,376 - root - INFO - Mejor pérdida de validación alcanzada: 0.041035
+2025-10-27 16:10:46,376 - root - INFO - Guardando artefactos finales...
+2025-10-27 16:10:46,394 - root - INFO - Scaler guardado en: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_wavelet\run_wavelet_db45_h128_r256_lr0.0005_wd1e-05_20251027-143343\scaler_wavelet_gnn.gz
+2025-10-27 16:10:46,397 - root - INFO - Hiperparámetros guardados en: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_wavelet\run_wavelet_db45_h128_r256_lr0.0005_wd1e-05_20251027-143343\hyperparameters_wavelet_gnn.json
+2025-10-27 16:10:46,397 - root - INFO - Historial de pérdidas guardado en: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_wavelet\run_wavelet_db45_h128_r256_lr0.0005_wd1e-05_20251027-143343\loss_history_wavelet_gnn.json
+2025-10-27 16:10:46,819 - root - INFO - Gráfico de curvas de pérdida guardado en: D:\Python_proyectos_2025\GAIATECH\resultados_entrenamiento_wavelet\run_wavelet_db45_h128_r256_lr0.0005_wd1e-05_20251027-143343\loss_curve_wavelet_gnn_max_cap.png
+2025-10-27 16:10:46,819 - root - INFO - Cerrando archivo de log de entrenamiento.

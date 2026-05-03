@@ -9,6 +9,7 @@ metricas:
   - { valor: "4K", label: "Resolución cámara PDK" }
   - { valor: "30s", label: "Auto-refresh feed" }
 enlaces: []
+hero: "../../assets/projects/results.png"
 excerpt: "Dashboard Next.js con login, feed de cámara 4K en vivo desde obra PDK (Teleport.io) y análisis YOLOv8 de EPP, obreros y vehículos corriendo en backend FastAPI sobre VPS."
 orden: 5
 ---

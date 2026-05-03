@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { proyecto } = Astro.props;
 const { Content } = await render(proyecto);
-const { titulo, anio, stack, metricas, enlaces, hero, galeria, excerpt, eje } = proyecto.data;
+const { titulo, anio, stack, metricas, enlaces, hero, galeria, video, excerpt, eje } = proyecto.data;
 ---
 <Base title={`${titulo} — Emanuel Ancco`} description={excerpt}>
   <article class="max-w-[var(--container-1100)] mx-auto px-6 pt-24">
@@ -52,6 +52,21 @@ const { titulo, anio, stack, metricas, enlaces, hero, galeria, excerpt, eje } = 
             <li><a href={e.url} class="text-[var(--color-accent)] hover:underline">{e.label} →</a></li>
           ))}
         </ul>
+      </div>
+    )}
+    {video && (
+      <div class="mt-12">
+        <h2 class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)] mb-4">Demo en video</h2>
+        <div class="relative w-full rounded-md overflow-hidden border border-[var(--color-rule)]" style="padding-bottom:56.25%;">
+          <iframe
+            src={video}
+            title={`${titulo} — demo`}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            class="absolute inset-0 w-full h-full"
+          ></iframe>
+        </div>
       </div>
     )}
     {galeria.length > 0 && (

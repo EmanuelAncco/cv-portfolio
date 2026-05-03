@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import Hero from "../components/Hero.astro";
+import StatsStrip from "../components/StatsStrip.astro";
 import SkillsMarquee from "../components/SkillsMarquee.astro";
 import AxisSection from "../components/AxisSection.astro";
 import { getCollection } from "astro:content";
@@ -17,7 +18,9 @@ const ejes = [
 ---
 <Base title="Emanuel Ancco — Portfolio">
   <Hero />
+  <StatsStrip />
   <SkillsMarquee />
+  <div id="proyectos">
   {ejes.map((eje) => (
     <AxisSection
       label={eje.label}
@@ -25,6 +28,7 @@ const ejes = [
       proyectos={top12.filter((p) => p.data.eje === eje.key)}
     />
   ))}
+  </div>
   <section class="max-w-[var(--container-1100)] mx-auto px-6 mt-32 border-t border-[var(--color-rule)] pt-16">
     <p class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">Contacto</p>
     <h2 class="font-[var(--font-display)] text-4xl mt-2">Hablemos de un proyecto.</h2>

@@ -8,13 +8,18 @@ metricas:
   - { valor: "90.7%", label: "mAP@0.5" }
   - { valor: "11", label: "Clases detectadas" }
   - { valor: "94%", label: "Precisión cascos" }
+video: "https://www.youtube.com/embed/K500tgJHRiY"
 enlaces:
   - { label: "Demo en YouTube", url: "https://www.youtube.com/watch?v=K500tgJHRiY" }
 hero: "../../assets/projects/emarc_vision_detection.png"
 galeria:
-  - "../../assets/projects/BoxF1_curve.png"
-  - "../../assets/projects/confusion_matrix.png"
-  - "../../assets/projects/labels.jpg"
+  - "../../assets/projects/BoxPR_curve.png"
+  - "../../assets/projects/confusion_matrix_normalized.png"
+  - "../../assets/projects/results.png"
+  - "../../assets/projects/prueba1.png"
+  - "../../assets/projects/resultado_1.png"
+  - "../../assets/projects/resultado_2.png"
+  - "../../assets/projects/detecciónfacial.png"
 excerpt: "Sistema de visión por computadora para verificación automática del uso de EPP en obras de construcción, con mAP@0.5 del 90.7% y 11 clases de equipamiento detectadas."
 orden: 4
 ---

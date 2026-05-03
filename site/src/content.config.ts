@@ -35,6 +35,7 @@ const proyectos = defineCollection({
     enlaces: z.array(z.object({ label: z.string(), url: z.string().url() })).default([]),
     hero: image().optional(),
     galeria: z.array(image()).default([]),
+    video: z.string().url().optional(),
     excerpt: z.string().min(20).max(280),
     orden: z.number().int().default(99),
     publico: z.boolean().default(true),

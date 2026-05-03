@@ -1,35 +1,43 @@
 ---
-const skills = [
-  "Astro", "TypeScript", "React", "Three.js", "Python",
-  "PyTorch", "OpenCV", "YOLOv8", "GNN", "FastAPI",
-  "Next.js", "Tailwind", "Postgres", "n8n", "Verilog",
-  "FPGA Gowin", "Godot 4", "Blender", "Revit API", "OpenSees",
-  "Cloudflare", "Docker", "LaTeX",
+import {
+  siAstro, siTypescript, siReact, siThreedotjs, siPython, siPytorch,
+  siOpencv, siFastapi, siNextdotjs, siTailwindcss, siPostgresql,
+  siN8n, siGodotengine, siBlender, siCloudflare, siDocker, siLatex, siVite
+} from "simple-icons";
+
+const icons = [
+  siAstro, siTypescript, siReact, siThreedotjs, siPython, siPytorch,
+  siOpencv, siFastapi, siNextdotjs, siTailwindcss, siPostgresql,
+  siN8n, siGodotengine, siBlender, siCloudflare, siDocker, siLatex, siVite,
 ];
-const doubled = [...skills, ...skills];
 ---
-<section class="overflow-hidden border-y border-[var(--color-rule)] mt-20 py-6" aria-label="Stack técnico">
-  <div class="marquee-track flex gap-10 whitespace-nowrap font-[var(--font-mono)] text-sm text-[var(--color-text-dim)]" aria-hidden="true">
-    {doubled.map((s) => <span>{s}</span>)}
+<section class="border-y border-[var(--color-rule)] py-8 mt-12" aria-label="Stack técnico">
+  <div class="max-w-[var(--container-1100)] mx-auto px-6">
+    <p class="font-[var(--font-mono)] text-[10px] uppercase tracking-widest text-[var(--color-text-dim)] text-center mb-6 opacity-50">Stack técnico</p>
+    <div class="flex flex-wrap items-center justify-center gap-7 opacity-50 hover:opacity-100 transition-opacity duration-500">
+      {icons.map((icon) => (
+        <span title={icon.title} aria-label={icon.title} class="group flex flex-col items-center gap-1.5">
+          <svg
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-6 h-6 text-[var(--color-text-dim)] group-hover:text-[var(--color-accent)] transition-colors duration-200"
+            aria-hidden="true"
+          >
+            <path d={icon.path} />
+          </svg>
+          <span class="font-[var(--font-mono)] text-[9px] text-[var(--color-text-dim)] group-hover:text-[var(--color-accent)] transition-colors duration-200 hidden sm:block">
+            {icon.title}
+          </span>
+        </span>
+      ))}
+    </div>
   </div>
+  <!-- Accessible fallback -->
   <ul class="sr-only">
-    {skills.map((s) => <li>{s}</li>)}
+    {icons.map((icon) => <li>{icon.title}</li>)}
   </ul>
 </section>
 <style>
-  .marquee-track {
-    animation: marquee-skills 60s linear infinite;
-  }
-  @keyframes marquee-skills {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .marquee-track {
-      animation: none;
-      flex-wrap: wrap;
-    }
-  }
   .sr-only {
     position: absolute;
     width: 1px;

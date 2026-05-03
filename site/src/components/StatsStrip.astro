@@ -1,26 +1,22 @@
 ---
-const stats = [
-  { number: "12", label: "Proyectos" },
-  { number: "4",  label: "Ejes" },
-  { number: "1",  label: "Paper" },
-  { number: "2026", label: "Desde" },
-];
+// Inline terminal-style data row — no glass card, reads like a status line
 ---
-<div class="max-w-[var(--container-1100)] mx-auto px-6 mt-6">
-  <div
-    class="flex flex-wrap items-center justify-around gap-6 rounded-xl px-8 py-6 border border-[var(--color-rule)]"
-    style="background: rgba(15,23,42,0.6); backdrop-filter: blur(12px);"
-  >
-    {stats.map((s, i) => (
-      <div class="flex items-center gap-6">
-        <div class="text-center">
-          <p class="font-[var(--font-display)] text-4xl md:text-5xl text-[var(--color-accent)] leading-none">{s.number}</p>
-          <p class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)] mt-1">{s.label}</p>
-        </div>
-        {i < stats.length - 1 && (
-          <div class="hidden sm:block w-px h-10 bg-[var(--color-rule)]" aria-hidden="true"></div>
-        )}
-      </div>
-    ))}
+<div class="border-y border-[var(--color-rule)] py-3 mt-12 overflow-x-auto reveal">
+  <div class="max-w-[var(--container-1100)] mx-auto px-6 flex gap-6 md:gap-8 font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)] whitespace-nowrap items-center">
+    <span>
+      <span data-count="12" class="text-[var(--color-accent)] tabular-nums">12</span>
+      <span class="ml-1">proyectos</span>
+    </span>
+    <span class="text-[var(--color-rule)] select-none">//</span>
+    <span>
+      <span data-count="4" class="text-[var(--color-accent)] tabular-nums">4</span>
+      <span class="ml-1">ejes</span>
+    </span>
+    <span class="text-[var(--color-rule)] select-none">//</span>
+    <span>2024 — 2026</span>
+    <span class="text-[var(--color-rule)] select-none">//</span>
+    <span>Lima · Puno</span>
+    <span class="text-[var(--color-rule)] select-none">//</span>
+    <span>1 paper · paper-ready</span>
   </div>
 </div>

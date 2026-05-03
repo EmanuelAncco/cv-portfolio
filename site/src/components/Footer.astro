@@ -1,25 +1,62 @@
 ---
-const year = new Date().getFullYear();
+// Dense info-block footer — no watermark, no big decorative text
 ---
-<!-- Decorative display watermark -->
-<div class="relative overflow-hidden mt-32 select-none pointer-events-none" aria-hidden="true">
-  <p
-    class="font-[var(--font-display)] font-black text-center leading-none whitespace-nowrap"
-    style="font-size: clamp(3.5rem, 11vw, 10rem); color: rgba(245,158,11,0.05); letter-spacing: -0.02em;"
-  >
-    CIVIL · IA · HARDWARE
-  </p>
-</div>
+<footer class="border-t border-[var(--color-rule)] mt-32 py-16 font-[var(--font-mono)] text-xs">
+  <div class="max-w-[var(--container-1100)] mx-auto px-6 grid sm:grid-cols-2 md:grid-cols-4 gap-8 text-[var(--color-text-dim)]">
 
-<footer class="border-t border-[var(--color-rule)] -mt-8 py-12 text-sm text-[var(--color-text-dim)]">
-  <div class="max-w-[var(--container-1100)] mx-auto px-6 flex flex-col md:flex-row justify-between gap-4">
-    <div class="font-[var(--font-mono)] text-xs">
-      © {year} Emanuel Ancco · Construido en Astro · Lima / Puno
+    <div>
+      <p class="text-[var(--color-text)] uppercase tracking-widest mb-3">contacto</p>
+      <a
+        href="mailto:coarp.eancco@gmail.com"
+        class="block hover:text-[var(--color-accent)] transition-colors mb-1"
+      >
+        coarp.eancco[at]gmail.com
+      </a>
+      <a
+        href="https://github.com/EmanuelAncco"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block hover:text-[var(--color-accent)] transition-colors mb-1"
+      >
+        github · EmanuelAncco
+      </a>
+      <a
+        href="https://www.linkedin.com/in/emanuel-ancco/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block hover:text-[var(--color-accent)] transition-colors"
+      >
+        linkedin · emanuel-ancco
+      </a>
     </div>
-    <div class="flex gap-6 font-[var(--font-mono)] text-xs">
-      <a href="https://github.com/EmanuelAncco" class="hover:text-[var(--color-accent)] transition-colors">GitHub</a>
-      <a href="https://www.linkedin.com/in/emanuel-ancco/" class="hover:text-[var(--color-accent)] transition-colors">LinkedIn</a>
-      <a href="/contacto" class="hover:text-[var(--color-accent)] transition-colors">Contacto</a>
+
+    <div>
+      <p class="text-[var(--color-text)] uppercase tracking-widest mb-3">ubicación</p>
+      <p>Lima · Puno · Perú</p>
+      <p class="mt-1">UTC−5</p>
     </div>
+
+    <div>
+      <p class="text-[var(--color-text)] uppercase tracking-widest mb-3">stack del sitio</p>
+      <p>Astro 6 · Tailwind 4</p>
+      <p class="mt-1">GSAP · Lenis</p>
+      <p class="mt-1">Cloudflare Pages</p>
+      <a
+        href="https://github.com/EmanuelAncco/cv-portfolio"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block mt-1 hover:text-[var(--color-accent)] transition-colors"
+      >
+        source on github
+      </a>
+    </div>
+
+    <div>
+      <p class="text-[var(--color-text)] uppercase tracking-widest mb-3">build</p>
+      <p>v2.0 · 2026</p>
+      <p class="mt-1">© Emanuel Ancco</p>
+      <p class="mt-3 text-[var(--color-rule)]">Ing. Civil · IA · Hardware</p>
+    </div>
+
   </div>
 </footer>

@@ -3,16 +3,41 @@ import type { CollectionEntry } from "astro:content";
 import ProjectCard from "./ProjectCard.astro";
 
 interface Props {
-  label: string;
+  label: string;  // "Eje 01", "Eje 02", etc.
   titulo: string;
   proyectos: CollectionEntry<"proyectos">[];
 }
 const { label, titulo, proyectos } = Astro.props;
+
+// Extract numeric part for the big display number
+const num = label.replace(/[^0-9]/g, "").padStart(2, "0");
 ---
-<section class="max-w-[var(--container-1100)] mx-auto px-6 mt-24">
-  <header class="border-t border-[var(--color-rule)] pt-6 mb-2">
-    <p class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">{label}</p>
-    <h2 class="font-[var(--font-display)] text-3xl md:text-4xl mt-2">{titulo}</h2>
+<section class="max-w-[var(--container-1100)] mx-auto px-6 mt-28" id={`eje-${num}`}>
+  <!-- Magazine-style chapter header -->
+  <header class="border-t border-[var(--color-rule)] pt-8 mb-12 grid md:grid-cols-[auto_1fr] gap-6 md:gap-12 items-end reveal">
+    <!-- Big display number on the left -->
+    <p
+      class="font-[var(--font-display)] leading-none text-[var(--color-rule)] select-none"
+      style="font-size: clamp(5rem, 14vw, 11rem); font-weight: 900; letter-spacing: -0.04em; line-height: 0.8;"
+      aria-hidden="true"
+    >
+      {num}
+    </p>
+    <!-- Section title on the right -->
+    <div>
+      <p class="font-[var(--font-mono)] text-[10px] uppercase tracking-widest text-[var(--color-text-dim)] mb-2">
+        {label}
+      </p>
+      <h2 class="font-[var(--font-display)] text-3xl md:text-4xl leading-tight">
+        {titulo}
+      </h2>
+    </div>
   </header>
-  {proyectos.map((p) => <ProjectCard proyecto={p} />)}
+
+  <!-- Project cards, each with reveal class -->
+  {proyectos.map((p) => (
+    <div class="reveal">
+      <ProjectCard proyecto={p} />
+    </div>
+  ))}
 </section>

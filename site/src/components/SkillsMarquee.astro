@@ -1,52 +1,38 @@
 ---
-import {
-  siAstro, siTypescript, siReact, siThreedotjs, siPython, siPytorch,
-  siOpencv, siFastapi, siNextdotjs, siTailwindcss, siPostgresql,
-  siN8n, siGodotengine, siBlender, siCloudflare, siDocker, siLatex, siVite
-} from "simple-icons";
-
-const icons = [
-  siAstro, siTypescript, siReact, siThreedotjs, siPython, siPytorch,
-  siOpencv, siFastapi, siNextdotjs, siTailwindcss, siPostgresql,
-  siN8n, siGodotengine, siBlender, siCloudflare, siDocker, siLatex, siVite,
+const skills = [
+  "Astro", "TypeScript", "PyTorch", "YOLOv8", "Three.js",
+  "Verilog", "FPGA Gowin", "Godot 4", "FastAPI", "n8n",
+  "Cloudflare", "Postgres", "OpenSees", "Revit API", "Blender",
+  "Docker", "LaTeX", "Next.js", "React", "Python",
 ];
 ---
-<section class="border-y border-[var(--color-rule)] py-8 mt-12" aria-label="Stack técnico">
+<section class="py-16 border-y border-[var(--color-rule)] reveal" aria-label="Stack técnico">
   <div class="max-w-[var(--container-1100)] mx-auto px-6">
-    <p class="font-[var(--font-mono)] text-[10px] uppercase tracking-widest text-[var(--color-text-dim)] text-center mb-6 opacity-50">Stack técnico</p>
-    <div class="flex flex-wrap items-center justify-center gap-7 opacity-50 hover:opacity-100 transition-opacity duration-500">
-      {icons.map((icon) => (
-        <span title={icon.title} aria-label={icon.title} class="group flex flex-col items-center gap-1.5">
-          <svg
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="w-6 h-6 text-[var(--color-text-dim)] group-hover:text-[var(--color-accent)] transition-colors duration-200"
-            aria-hidden="true"
-          >
-            <path d={icon.path} />
-          </svg>
-          <span class="font-[var(--font-mono)] text-[9px] text-[var(--color-text-dim)] group-hover:text-[var(--color-accent)] transition-colors duration-200 hidden sm:block">
-            {icon.title}
-          </span>
-        </span>
+    <p class="font-[var(--font-mono)] text-[10px] uppercase tracking-widest text-[var(--color-text-dim)] mb-6">
+      stack
+    </p>
+    <p class="font-[var(--font-mono)] text-sm md:text-base leading-relaxed text-[var(--color-text-dim)]">
+      <span class="text-[var(--color-accent)]">$</span>
+      <span class="text-[var(--color-text-dim)]"> emanuel --skills</span>
+      <br />
+      {skills.map((s, i) => (
+        <>
+          <span class="text-[var(--color-text)]">{s}</span>
+          {i < skills.length - 1 && <span class="text-[var(--color-rule)]"> · </span>}
+        </>
       ))}
-    </div>
+      <span
+        class="inline-block w-[0.55em] h-[1em] bg-[var(--color-accent)] ml-1 align-middle"
+        style="animation: blink 1.1s step-end infinite;"
+        aria-hidden="true"
+      ></span>
+    </p>
   </div>
-  <!-- Accessible fallback -->
-  <ul class="sr-only">
-    {icons.map((icon) => <li>{icon.title}</li>)}
-  </ul>
 </section>
+
 <style>
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
   }
 </style>

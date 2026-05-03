@@ -8,8 +8,6 @@ metricas:
   - { valor: "R² 0.998", label: "Precisión GNN" }
   - { valor: "65×", label: "Menos parámetros vs FFNN" }
   - { valor: "15 figs", label: "Generadas para el manuscrito" }
-enlaces:
-  - { label: "Repositorio (interno)", url: "https://github.com/EmanuelAncco" }
 excerpt: "Red neuronal de grafos como modelo sustituto del puente arco Junín. R² 0.998 con 65× menos parámetros que la red feed-forward de referencia. Paper-ready para Elsevier Structures."
 orden: 1
 ---

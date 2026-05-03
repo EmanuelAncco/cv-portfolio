@@ -336,13 +336,21 @@ site/node_modules/
 site/dist/
 site/.astro/
 site/.cache/
+node_modules/
 
 # Env
 .env.local
 .env.*.local
+.env
+# Tracked: env template (no values inside)
+!.env.local.example
 
 # Brainstorm artifacts
 .superpowers/
+
+# OS
+.DS_Store
+Thumbs.db
 EOF
 ```
 
@@ -351,9 +359,10 @@ EOF
 ```bash
 cat > .env.local.example <<'EOF'
 # Cloudflare API token con scopes: Pages:Edit, Account:Read, DNS:Edit (zone), Zone:Read
+# Genera el token en: https://dash.cloudflare.com/profile/api-tokens
 CLOUDFLARE_API_TOKEN=
 CLOUDFLARE_ACCOUNT_ID=
-# Opcional: zone id de emanuelancco.com (lo descubrimos vía API si falta)
+# Opcional: zone id de emanuelancco.com (descubrible vía API si falta)
 CLOUDFLARE_ZONE_ID=
 EOF
 ```
@@ -471,9 +480,9 @@ curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
 Expected: eventualmente `{"url": "https://....emanuelancco.pages.dev", "latest_stage": "deploy", "status": "success"}`.
 
-- [ ] **Step 6: Smoke test del deploy**
+- [ ] **Step 6: Smoke test del deploy (preview alias del feat branch)**
 
-Abrir `https://emanuelancco.pages.dev` en navegador. Expected: ves "Hola." con serif. Footer abajo.
+Abrir el branch alias del preview en navegador: `https://feat-v2-astro-migration.emanuelancco.pages.dev`. Expected: ves "Hola." con serif y "scaffold ok" arriba. Footer abajo. La URL apex `https://emanuelancco.pages.dev` solo se activará cuando el primer deploy de `main` corra (al merge de la feature branch). Confirmar también con `curl -I` que devuelve `HTTP/2 200` y `server: cloudflare`.
 
 - [ ] **Step 7: Commit (no hay archivos, solo registramos el milestone con tag)**
 

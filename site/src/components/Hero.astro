@@ -1,114 +1,131 @@
 ---
 import { Image } from "astro:assets";
 import emanuel from "../assets/emanuel.jpg";
-
-const tags = [
-  { label: "PyTorch",  color: "#f59e0b", rot: "-3deg",  top: "8%",  left: "-14%" },
-  { label: "YOLOv8",  color: "#34d399", rot: "4deg",   top: "22%", left: "-18%" },
-  { label: "Verilog",  color: "#60a5fa", rot: "-2deg",  top: "55%", left: "-16%" },
-  { label: "Three.js", color: "#a78bfa", rot: "5deg",   top: "72%", left: "-12%" },
-  { label: "FPGA",     color: "#f59e0b", rot: "3deg",   top: "10%", right: "-16%" },
-  { label: "Astro",    color: "#fb923c", rot: "-4deg",  top: "38%", right: "-20%" },
-  { label: "FastAPI",  color: "#34d399", rot: "2deg",   top: "65%", right: "-14%" },
-];
 ---
 
+<!-- Hero A: Photo-as-background-strip — full viewport, editorial title bottom-aligned -->
 <section
+  id="hero"
   class="relative overflow-hidden"
-  style="background: radial-gradient(ellipse at 70% 0%, rgba(245,158,11,0.10) 0%, transparent 60%), radial-gradient(ellipse at 0% 80%, rgba(96,165,250,0.06) 0%, transparent 50%), #020617;"
+  style="height: 100vh; min-height: 600px; background: #020617;"
 >
-  <!-- Grain texture overlay -->
-  <div class="pointer-events-none absolute inset-0 opacity-[0.025]"
-       style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/><feColorMatrix type=%22saturate%22 values=%220%22/></filter><rect width=%22200%22 height=%22200%22 filter=%22url(%23n)%22/></svg>');"></div>
+  <!-- LEFT STRIP: photo with hard gradient overlay -->
+  <div
+    class="absolute top-0 left-0 h-full pointer-events-none"
+    style="width: 38%; max-width: 560px;"
+    aria-hidden="true"
+  >
+    <Image
+      src={emanuel}
+      alt=""
+      width={560}
+      height={900}
+      widths={[280, 560, 840]}
+      sizes="38vw"
+      loading="eager"
+      decoding="sync"
+      id="hero-photo"
+      style="
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+        filter: grayscale(30%) contrast(1.1);
+      "
+    />
+    <!-- gradient: photo fades hard to dark on right edge -->
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(to right, rgba(2,6,23,0.05) 0%, rgba(2,6,23,0.55) 60%, rgba(2,6,23,1) 100%);"
+    ></div>
+    <!-- gradient: fades from dark at top -->
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(to bottom, rgba(2,6,23,0.7) 0%, transparent 20%, transparent 75%, rgba(2,6,23,0.8) 100%);"
+    ></div>
+  </div>
 
-  <div class="max-w-[var(--container-1100)] mx-auto px-6 pt-24 md:pt-32 pb-12">
-    <div class="grid md:grid-cols-[1fr_auto] gap-10 md:gap-20 items-center">
-      <!-- Text side -->
-      <div>
-        <p class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">
-          Emanuel Ancco · Lima / Puno · 2026
-        </p>
-        <h1 class="font-[var(--font-display)] text-5xl md:text-7xl leading-[0.92] mt-4 tracking-tight">
-          Construyo en el cruce de la
-          <span class="text-[var(--color-accent)]">ingeniería civil</span>,
-          la <span class="text-[var(--color-accent)]">IA</span> y el
-          <span class="text-[var(--color-accent)]">hardware</span>
-          desde el sur del Perú.
-        </h1>
-        <p class="mt-6 text-lg text-[var(--color-text-dim)] max-w-xl">
-          12 proyectos validados en 2026 — investigación, IA aplicada al campo, plataformas operativas y autoría multidisciplinar.
-        </p>
-        <div class="mt-8 flex gap-4 font-[var(--font-mono)] text-sm flex-wrap">
-          <a href="/#proyectos" class="px-5 py-2.5 rounded bg-[var(--color-accent)] text-black font-semibold hover:bg-[var(--color-accent-light)] transition-colors">
-            Ver proyectos →
-          </a>
-          <a href="/sobre" class="px-5 py-2.5 rounded border border-[var(--color-rule)] text-[var(--color-text-dim)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-colors">
-            Sobre mí
-          </a>
-        </div>
-      </div>
-
-      <!-- Photo side with floating tags -->
-      <div class="relative flex justify-center md:justify-end" style="min-width:280px;">
-        <!-- Floating tags -->
-        {tags.map((tag) => (
-          <span
-            class="absolute z-10 font-[var(--font-mono)] text-[10px] font-semibold px-2.5 py-1 rounded-full border whitespace-nowrap pointer-events-none select-none"
-            style={`
-              color: ${tag.color};
-              border-color: ${tag.color}44;
-              background: ${tag.color}14;
-              transform: rotate(${tag.rot});
-              ${tag.top ? `top: ${tag.top};` : ''}
-              ${tag.left ? `left: ${tag.left};` : ''}
-              ${tag.right ? `right: ${tag.right};` : ''}
-              backdrop-filter: blur(4px);
-            `}
-          >
-            {tag.label}
-          </span>
-        ))}
-
-        <!-- Photo with CSS mask to remove gray background edges -->
-        <div class="relative" style="width:288px;">
-          <div
-            style="
-              border-radius: 12px;
-              overflow: hidden;
-              box-shadow: 0 0 60px rgba(245,158,11,0.12), 0 0 0 1px rgba(255,255,255,0.06);
-            "
-          >
-            <Image
-              src={emanuel}
-              alt="Retrato de Emanuel Ancco"
-              width={288}
-              height={360}
-              widths={[192, 288, 384]}
-              sizes="(min-width: 768px) 288px, 192px"
-              loading="eager"
-              decoding="sync"
-              style="
-                aspect-ratio:4/5;
-                display:block;
-                width:100%;
-                height:auto;
-                object-fit:cover;
-                object-position:center top;
-                mask-image: radial-gradient(ellipse 85% 80% at 50% 35%, black 55%, transparent 85%);
-                -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 35%, black 55%, transparent 85%);
-                mix-blend-mode: luminosity;
-                filter: contrast(1.05) brightness(1.02);
-              "
-            />
-          </div>
-          <!-- Glow accent under photo -->
-          <div
-            class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-8 rounded-full blur-2xl"
-            style="background: rgba(245,158,11,0.18);"
-            aria-hidden="true"
-          ></div>
-        </div>
+  <!-- RIGHT TWO-THIRDS: editorial content, bottom-aligned -->
+  <div
+    class="relative h-full flex flex-col justify-end"
+    style="padding-left: max(38%, min(38vw, 560px)); padding-right: 5vw; padding-bottom: 8vh;"
+  >
+    <!-- ID card block — top-left of text column -->
+    <div
+      class="absolute top-0 font-[var(--font-mono)] text-xs leading-relaxed text-[var(--color-text-dim)]"
+      style="left: max(38%, min(38vw, 560px)); padding-left: 2.5vw; padding-top: 7vh;"
+    >
+      <div id="id-card" class="border-l-2 border-[var(--color-accent)] pl-4 opacity-0">
+        <p class="text-[var(--color-text)] font-semibold tracking-widest uppercase text-[11px]">Emanuel Ancco</p>
+        <p class="mt-1 tracking-widest">── Ingeniería / IA / Hardware</p>
+        <p class="tracking-widest">── Lima · Puno · 2026</p>
+        <p class="tracking-widest">── 12 Proy · 4 Ejes · 1 Paper</p>
       </div>
     </div>
+
+    <!-- Main editorial title — bottom-aligned, massive -->
+    <div class="pl-[2.5vw]">
+      <h1
+        id="hero-title"
+        class="font-[var(--font-display)] leading-[0.88] tracking-tight text-[var(--color-text)]"
+        style="font-size: clamp(3.2rem, 8vw, 7.5rem);"
+      >
+        <span class="word-fade block">Construyo en el</span>
+        <span class="word-fade block">cruce de la <em class="not-italic text-[var(--color-accent)]">ingeniería</em>,</span>
+        <span class="word-fade block">la <em class="not-italic text-[var(--color-accent)]">IA</em> y el</span>
+        <span class="word-fade block"><em class="not-italic text-[var(--color-accent)]">hardware</em>.</span>
+      </h1>
+      <p
+        id="hero-sub"
+        class="mt-6 text-base text-[var(--color-text-dim)] max-w-lg font-[var(--font-mono)] opacity-0"
+        style="line-height: 1.7;"
+      >
+        12 proyectos validados en 2024–2026. Investigación estructural, visión por computadora, plataformas operativas y electrónica digital desde el sur del Perú.
+      </p>
+      <!-- CTA row -->
+      <div id="hero-cta" class="mt-8 flex flex-wrap gap-4 font-[var(--font-mono)] text-sm opacity-0">
+        <a
+          href="/#proyectos"
+          class="px-5 py-2.5 bg-[var(--color-accent)] text-black font-semibold tracking-wide uppercase text-xs hover:bg-[var(--color-accent-light)] transition-colors"
+          style="letter-spacing: 0.1em;"
+        >
+          ver proyectos →
+        </a>
+        <a
+          href="/sobre"
+          class="px-5 py-2.5 border border-[var(--color-rule)] text-[var(--color-text-dim)] text-xs uppercase tracking-widest hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-colors"
+        >
+          sobre mí
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator — bottom of viewport -->
+    <div
+      id="scroll-indicator"
+      class="absolute bottom-0 left-0 right-0 flex justify-center pb-6 font-[var(--font-mono)] text-xs text-[var(--color-text-dim)] tracking-widest opacity-0"
+      aria-hidden="true"
+    >
+      <span id="scroll-arrow" class="flex flex-col items-center gap-1">
+        <span>scroll</span>
+        <span class="block w-px h-8 bg-[var(--color-rule)]"></span>
+        <span class="animate-bounce">↓</span>
+      </span>
+    </div>
   </div>
+
+  <!-- Amber accent line along right edge of photo strip -->
+  <div
+    class="absolute top-0 h-full pointer-events-none"
+    style="left: calc(38% + 1px); max-left: calc(560px + 1px); width: 1px; background: linear-gradient(to bottom, transparent 0%, var(--color-accent) 30%, var(--color-accent) 70%, transparent 100%); opacity: 0.35;"
+    aria-hidden="true"
+  ></div>
 </section>
+
+<style>
+  .word-fade {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+</style>

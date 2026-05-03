@@ -2,6 +2,7 @@
 import "../styles/globals.css";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
+import NoiseBackground from "../components/NoiseBackground.astro";
 
 interface Props {
   title: string;
@@ -9,7 +10,11 @@ interface Props {
   ogImage?: string;
 }
 
-const { title, description = "Portfolio de Emanuel Ancco — Ingeniería civil, IA, hardware y emprendimiento desde el sur del Perú.", ogImage = "/og-default.jpg" } = Astro.props;
+const {
+  title,
+  description = "Portfolio de Emanuel Ancco — Ingeniería civil, IA, hardware y emprendimiento desde el sur del Perú.",
+  ogImage = "/og-default.jpg"
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 <!doctype html>
@@ -31,8 +36,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body class="min-h-screen flex flex-col">
+    <NoiseBackground />
     <Nav />
     <main class="flex-1"><slot /></main>
     <Footer />
+    <!-- Animations: Lenis smooth scroll + GSAP reveals -->
+    <script>
+      import "../scripts/animations.ts";
+    </script>
   </body>
 </html>

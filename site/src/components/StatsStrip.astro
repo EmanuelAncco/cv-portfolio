@@ -1,0 +1,26 @@
+---
+const stats = [
+  { number: "12", label: "Proyectos" },
+  { number: "4",  label: "Ejes" },
+  { number: "1",  label: "Paper" },
+  { number: "2026", label: "Desde" },
+];
+---
+<div class="max-w-[var(--container-1100)] mx-auto px-6 mt-6">
+  <div
+    class="flex flex-wrap items-center justify-around gap-6 rounded-xl px-8 py-6 border border-[var(--color-rule)]"
+    style="background: rgba(15,23,42,0.6); backdrop-filter: blur(12px);"
+  >
+    {stats.map((s, i) => (
+      <div class="flex items-center gap-6">
+        <div class="text-center">
+          <p class="font-[var(--font-display)] text-4xl md:text-5xl text-[var(--color-accent)] leading-none">{s.number}</p>
+          <p class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)] mt-1">{s.label}</p>
+        </div>
+        {i < stats.length - 1 && (
+          <div class="hidden sm:block w-px h-10 bg-[var(--color-rule)]" aria-hidden="true"></div>
+        )}
+      </div>
+    ))}
+  </div>
+</div>

@@ -1,29 +1,114 @@
 ---
 import { Image } from "astro:assets";
 import emanuel from "../assets/emanuel.jpg";
+
+const tags = [
+  { label: "PyTorch",  color: "#f59e0b", rot: "-3deg",  top: "8%",  left: "-14%" },
+  { label: "YOLOv8",  color: "#34d399", rot: "4deg",   top: "22%", left: "-18%" },
+  { label: "Verilog",  color: "#60a5fa", rot: "-2deg",  top: "55%", left: "-16%" },
+  { label: "Three.js", color: "#a78bfa", rot: "5deg",   top: "72%", left: "-12%" },
+  { label: "FPGA",     color: "#f59e0b", rot: "3deg",   top: "10%", right: "-16%" },
+  { label: "Astro",    color: "#fb923c", rot: "-4deg",  top: "38%", right: "-20%" },
+  { label: "FastAPI",  color: "#34d399", rot: "2deg",   top: "65%", right: "-14%" },
+];
 ---
-<section class="max-w-[var(--container-1100)] mx-auto px-6 pt-24 md:pt-32">
-  <div class="grid md:grid-cols-[1fr_auto] gap-10 md:gap-16 items-end">
-    <div>
-      <p class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">Emanuel Ancco · Lima / Puno · 2026</p>
-      <h1 class="font-[var(--font-display)] text-5xl md:text-7xl leading-[0.95] mt-4 tracking-tight">
-        Construyo en el cruce de la <span class="text-[var(--color-accent)]">ingeniería civil</span>, la <span class="text-[var(--color-accent)]">IA</span> y el <span class="text-[var(--color-accent)]">hardware</span> desde el sur del Perú.
-      </h1>
-      <p class="mt-6 text-lg text-[var(--color-text-dim)] max-w-xl">
-        12 obras validadas en 2026 — investigación, IA aplicada al campo, plataformas operativas y autoría multidisciplinar.
-      </p>
+
+<section
+  class="relative overflow-hidden"
+  style="background: radial-gradient(ellipse at 70% 0%, rgba(245,158,11,0.10) 0%, transparent 60%), radial-gradient(ellipse at 0% 80%, rgba(96,165,250,0.06) 0%, transparent 50%), #020617;"
+>
+  <!-- Grain texture overlay -->
+  <div class="pointer-events-none absolute inset-0 opacity-[0.025]"
+       style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/><feColorMatrix type=%22saturate%22 values=%220%22/></filter><rect width=%22200%22 height=%22200%22 filter=%22url(%23n)%22/></svg>');"></div>
+
+  <div class="max-w-[var(--container-1100)] mx-auto px-6 pt-24 md:pt-32 pb-12">
+    <div class="grid md:grid-cols-[1fr_auto] gap-10 md:gap-20 items-center">
+      <!-- Text side -->
+      <div>
+        <p class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">
+          Emanuel Ancco · Lima / Puno · 2026
+        </p>
+        <h1 class="font-[var(--font-display)] text-5xl md:text-7xl leading-[0.92] mt-4 tracking-tight">
+          Construyo en el cruce de la
+          <span class="text-[var(--color-accent)]">ingeniería civil</span>,
+          la <span class="text-[var(--color-accent)]">IA</span> y el
+          <span class="text-[var(--color-accent)]">hardware</span>
+          desde el sur del Perú.
+        </h1>
+        <p class="mt-6 text-lg text-[var(--color-text-dim)] max-w-xl">
+          12 proyectos validados en 2026 — investigación, IA aplicada al campo, plataformas operativas y autoría multidisciplinar.
+        </p>
+        <div class="mt-8 flex gap-4 font-[var(--font-mono)] text-sm flex-wrap">
+          <a href="/#proyectos" class="px-5 py-2.5 rounded bg-[var(--color-accent)] text-black font-semibold hover:bg-[var(--color-accent-light)] transition-colors">
+            Ver proyectos →
+          </a>
+          <a href="/sobre" class="px-5 py-2.5 rounded border border-[var(--color-rule)] text-[var(--color-text-dim)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-colors">
+            Sobre mí
+          </a>
+        </div>
+      </div>
+
+      <!-- Photo side with floating tags -->
+      <div class="relative flex justify-center md:justify-end" style="min-width:280px;">
+        <!-- Floating tags -->
+        {tags.map((tag) => (
+          <span
+            class="absolute z-10 font-[var(--font-mono)] text-[10px] font-semibold px-2.5 py-1 rounded-full border whitespace-nowrap pointer-events-none select-none"
+            style={`
+              color: ${tag.color};
+              border-color: ${tag.color}44;
+              background: ${tag.color}14;
+              transform: rotate(${tag.rot});
+              ${tag.top ? `top: ${tag.top};` : ''}
+              ${tag.left ? `left: ${tag.left};` : ''}
+              ${tag.right ? `right: ${tag.right};` : ''}
+              backdrop-filter: blur(4px);
+            `}
+          >
+            {tag.label}
+          </span>
+        ))}
+
+        <!-- Photo with CSS mask to remove gray background edges -->
+        <div class="relative" style="width:288px;">
+          <div
+            style="
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: 0 0 60px rgba(245,158,11,0.12), 0 0 0 1px rgba(255,255,255,0.06);
+            "
+          >
+            <Image
+              src={emanuel}
+              alt="Retrato de Emanuel Ancco"
+              width={288}
+              height={360}
+              widths={[192, 288, 384]}
+              sizes="(min-width: 768px) 288px, 192px"
+              loading="eager"
+              decoding="sync"
+              style="
+                aspect-ratio:4/5;
+                display:block;
+                width:100%;
+                height:auto;
+                object-fit:cover;
+                object-position:center top;
+                mask-image: radial-gradient(ellipse 85% 80% at 50% 35%, black 55%, transparent 85%);
+                -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 35%, black 55%, transparent 85%);
+                mix-blend-mode: luminosity;
+                filter: contrast(1.05) brightness(1.02);
+              "
+            />
+          </div>
+          <!-- Glow accent under photo -->
+          <div
+            class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-8 rounded-full blur-2xl"
+            style="background: rgba(245,158,11,0.18);"
+            aria-hidden="true"
+          ></div>
+        </div>
+      </div>
     </div>
-    <Image
-      src={emanuel}
-      alt="Retrato de Emanuel Ancco"
-      width={320}
-      height={400}
-      widths={[160, 256, 320]}
-      sizes="(min-width: 768px) 256px, 160px"
-      loading="eager"
-      decoding="sync"
-      style="aspect-ratio:4/5;min-width:160px;"
-      class="rounded-md object-cover object-top w-40 md:w-64 border border-[var(--color-rule)]"
-    />
   </div>
 </section>

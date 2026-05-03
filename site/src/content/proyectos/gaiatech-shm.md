@@ -14,6 +14,10 @@ hero: "../../assets/projects/gaiatech_results.png"
 galeria:
   - "../../assets/projects/gaiatech_model_comparison.png"
   - "../../assets/projects/neural_network_architecture.png"
+  - "../../assets/projects/GRAPHOS/Fig1-1_wavelet_decomposition_visible.png"
+  - "../../assets/projects/GRAPHOS/figure_2_graph_topology.png"
+  - "../../assets/projects/GRAPHOS/2_1_All_Models_Loss_Curves.png"
+  - "../../assets/projects/GRAPHOS/Figure_3_Performance_Bar.png"
 excerpt: "Sistema de monitoreo de salud estructural basado en IA para detección de anomalías en puentes usando acelerómetros y redes neuronales de grafos físicamente informadas."
 orden: 2
 ---

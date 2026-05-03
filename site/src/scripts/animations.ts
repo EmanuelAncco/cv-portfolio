@@ -1,192 +1,131 @@
 /**
- * Portfolio animations — Engineer's Field Notebook v2.0
- * Stack: Lenis smooth scroll + GSAP scroll-driven reveals
+ * Portfolio animations — Engineer's Field Notebook v2.1
+ * Progressive enhancement: content is visible by default (CSS),
+ * JS only adds polish via IntersectionObserver toggling .is-visible.
+ *
+ * No GSAP required. Pure CSS transitions + IO. Smaller bundle, more robust.
  */
 
-import Lenis from "lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+// Mark <html> so progressive-enhanced CSS rules activate
+document.documentElement.classList.add("has-js");
 
-gsap.registerPlugin(ScrollTrigger);
+function activate() {
+  const revealables = document.querySelectorAll<HTMLElement>(
+    ".reveal, .word-fade, .hero-fade"
+  );
 
-// ─── 1. LENIS SMOOTH SCROLL ──────────────────────────────────────────────────
-const lenis = new Lenis({
-  duration: 1.2,
-  easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  orientation: "vertical",
-  smoothWheel: true,
-});
-
-function raf(time: number) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
-
-// Sync Lenis with GSAP ScrollTrigger
-lenis.on("scroll", ScrollTrigger.update);
-gsap.ticker.add((time: number) => {
-  lenis.raf(time * 1000);
-});
-gsap.ticker.lagSmoothing(0);
-
-// ─── 2. HERO ANIMATIONS (staggered on load) ──────────────────────────────────
-function initHeroAnimations() {
-  const wordFadeEls = document.querySelectorAll<HTMLElement>(".word-fade");
-  const idCard = document.getElementById("id-card");
-  const heroSub = document.getElementById("hero-sub");
-  const heroCta = document.getElementById("hero-cta");
-  const scrollIndicator = document.getElementById("scroll-indicator");
-
-  if (wordFadeEls.length > 0) {
-    // Animate each title line in sequence
-    gsap.to(wordFadeEls, {
-      opacity: 1,
-      y: 0,
-      duration: 0.9,
-      stagger: 0.15,
-      ease: "power3.out",
-      delay: 0.3,
-    });
-  }
-
-  if (idCard) {
-    gsap.to(idCard, {
-      opacity: 1,
-      duration: 0.7,
-      ease: "power2.out",
-      delay: 0.6,
-    });
-  }
-
-  if (heroSub) {
-    gsap.to(heroSub, {
-      opacity: 1,
-      y: 0,
-      duration: 0.7,
-      ease: "power2.out",
-      delay: 1.0,
-    });
-  }
-
-  if (heroCta) {
-    gsap.to(heroCta, {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      ease: "power2.out",
-      delay: 1.25,
-    });
-  }
-
-  if (scrollIndicator) {
-    gsap.to(scrollIndicator, {
-      opacity: 1,
-      duration: 0.8,
-      ease: "power1.out",
-      delay: 1.6,
-    });
-  }
-}
-
-// ─── 3. MOUSE PARALLAX ON HERO PHOTO ─────────────────────────────────────────
-function initHeroParallax() {
-  const photo = document.getElementById("hero-photo") as HTMLImageElement | null;
-  if (!photo) return;
-
-  let targetX = 0;
-  let targetY = 0;
-  let currentX = 0;
-  let currentY = 0;
-
-  document.addEventListener("mousemove", (e: MouseEvent) => {
-    const cx = window.innerWidth / 2;
-    const cy = window.innerHeight / 2;
-    targetX = ((e.clientX - cx) / cx) * 14;
-    targetY = ((e.clientY - cy) / cy) * 8;
+  // Above-the-fold elements: reveal immediately with a tiny stagger
+  const heroFades = document.querySelectorAll<HTMLElement>(".hero-fade, .word-fade");
+  heroFades.forEach((el, i) => {
+    setTimeout(() => el.classList.add("is-visible"), 80 + i * 120);
   });
 
-  function animateParallax() {
-    currentX += (targetX - currentX) * 0.06;
-    currentY += (targetY - currentY) * 0.06;
-    photo!.style.transform = `translate(${currentX}px, ${currentY}px) scale(1.04)`;
-    requestAnimationFrame(animateParallax);
+  // Below-fold reveals: IntersectionObserver, fires once
+  if (!("IntersectionObserver" in window)) {
+    revealables.forEach((el) => el.classList.add("is-visible"));
+    return;
   }
-  animateParallax();
-}
 
-// ─── 4. SCROLL REVEALS ───────────────────────────────────────────────────────
-function initScrollReveals() {
-  const revealEls = document.querySelectorAll<HTMLElement>(".reveal");
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: "0px 0px -8% 0px", threshold: 0.05 }
+  );
 
-  revealEls.forEach((el) => {
-    gsap.fromTo(
-      el,
-      { opacity: 0, y: 28 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.75,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 88%",
-          once: true,
-        },
-      }
-    );
-  });
-}
-
-// ─── 5. COUNTER ANIMATIONS ───────────────────────────────────────────────────
-function initCounters() {
-  const counters = document.querySelectorAll<HTMLElement>("[data-count]");
-
-  counters.forEach((el) => {
-    const target = parseInt(el.dataset.count ?? "0", 10);
-
-    ScrollTrigger.create({
-      trigger: el,
-      start: "top 90%",
-      once: true,
-      onEnter: () => {
-        gsap.fromTo(
-          el,
-          { innerText: 0 },
-          {
-            innerText: target,
-            duration: 1.2,
-            ease: "power2.out",
-            snap: { innerText: 1 },
-            onUpdate() {
-              el.textContent = Math.round(
-                parseFloat(el.textContent ?? "0")
-              ).toString();
-            },
-          }
-        );
-      },
-    });
-  });
-}
-
-// ─── 6. HIDE SCROLL INDICATOR ON SCROLL ──────────────────────────────────────
-function initScrollIndicatorFade() {
-  const indicator = document.getElementById("scroll-indicator");
-  if (!indicator) return;
-
-  lenis.on("scroll", ({ scroll }: { scroll: number }) => {
-    if (scroll > 60) {
-      gsap.to(indicator, { opacity: 0, duration: 0.4, ease: "power1.out" });
+  document.querySelectorAll<HTMLElement>(".reveal").forEach((el) => {
+    // Anything already in initial viewport: reveal immediately
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add("is-visible");
+    } else {
+      io.observe(el);
     }
   });
 }
 
-// ─── BOOT ─────────────────────────────────────────────────────────────────────
-document.addEventListener("DOMContentLoaded", () => {
-  initHeroAnimations();
-  initHeroParallax();
-  initScrollReveals();
+// Counter animation: numbers count up when their parent enters viewport
+function initCounters() {
+  const counters = document.querySelectorAll<HTMLElement>("[data-count]");
+  if (counters.length === 0 || !("IntersectionObserver" in window)) return;
+
+  const animate = (el: HTMLElement) => {
+    const target = parseInt(el.dataset.count ?? "0", 10);
+    const start = performance.now();
+    const duration = 900;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(target * eased).toString();
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animate(entry.target as HTMLElement);
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+  counters.forEach((el) => {
+    el.textContent = "0";
+    io.observe(el);
+  });
+}
+
+// Mouse parallax on hero photo (light, eased)
+function initHeroParallax() {
+  const photo = document.getElementById("hero-photo");
+  if (!photo) return;
+  let tx = 0, ty = 0, cx = 0, cy = 0;
+  document.addEventListener("mousemove", (e) => {
+    const w = innerWidth / 2, h = innerHeight / 2;
+    tx = ((e.clientX - w) / w) * 10;
+    ty = ((e.clientY - h) / h) * 6;
+  });
+  function tick() {
+    cx += (tx - cx) * 0.06;
+    cy += (ty - cy) * 0.06;
+    photo!.style.transform = `translate(${cx}px, ${cy}px) scale(1.04)`;
+    requestAnimationFrame(tick);
+  }
+  tick();
+}
+
+// Fade scroll indicator after a bit of scroll
+function initScrollIndicatorFade() {
+  const indicator = document.getElementById("scroll-indicator");
+  if (!indicator) return;
+  addEventListener(
+    "scroll",
+    () => {
+      if (scrollY > 60) indicator.style.opacity = "0";
+    },
+    { passive: true }
+  );
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => {
+    activate();
+    initCounters();
+    initHeroParallax();
+    initScrollIndicatorFade();
+  });
+} else {
+  activate();
   initCounters();
+  initHeroParallax();
   initScrollIndicatorFade();
-});
+}

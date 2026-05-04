@@ -17,9 +17,9 @@ const { titulo, anio, stack, metricas, enlaces, hero, galeria, video, excerpt, e
 ---
 <Base title={`${titulo} — Emanuel Ancco`} description={excerpt}>
   <article class="max-w-[var(--container-1100)] mx-auto px-6 pt-24">
-    <p class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">{anio} · {eje}</p>
-    <h1 class="font-[var(--font-display)] text-4xl md:text-6xl mt-3 leading-tight">{titulo}</h1>
-    <p class="mt-6 text-xl text-[var(--color-text-dim)] max-w-2xl">{excerpt}</p>
+    <p class="font-[var(--font-tech)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">{anio} · {eje}</p>
+    <h1 class="font-[var(--font-display)] text-4xl md:text-6xl mt-3 leading-tight font-black uppercase tracking-wide">{titulo}</h1>
+    <p class="mt-6 text-xl text-[var(--color-text-dim)] max-w-2xl font-[var(--font-body)]">{excerpt}</p>
     {hero && (
       <Image src={hero} alt={`${titulo} — imagen principal`} loading="eager" fetchpriority="high" class="mt-10 w-full rounded-md border border-[var(--color-rule)]" />
     )}
@@ -27,7 +27,7 @@ const { titulo, anio, stack, metricas, enlaces, hero, galeria, video, excerpt, e
       <dl class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 border-y border-[var(--color-rule)] py-8">
         {metricas.map((m) => (
           <div>
-            <dt class="font-[var(--font-mono)] text-xs uppercase tracking-wider text-[var(--color-text-dim)]">{m.label}</dt>
+            <dt class="font-[var(--font-tech)] text-xs uppercase tracking-wider text-[var(--color-text-dim)]">{m.label}</dt>
             <dd class="font-[var(--font-display)] text-2xl text-[var(--color-accent)] mt-1">{m.valor}</dd>
           </div>
         ))}
@@ -38,25 +38,29 @@ const { titulo, anio, stack, metricas, enlaces, hero, galeria, video, excerpt, e
     </div>
     {stack.length > 0 && (
       <div class="mt-10">
-        <h2 class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">Stack</h2>
-        <div class="mt-2 flex flex-wrap gap-3 font-[var(--font-mono)] text-sm">
-          {stack.map((s) => <span class="border border-[var(--color-rule)] px-2 py-1 rounded">{s}</span>)}
+        <h2 class="font-[var(--font-tech)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">Stack</h2>
+        <div class="mt-2 flex flex-wrap gap-3 font-[var(--font-tech)] text-sm">
+          {stack.map((s) => (
+            <span class="border border-[var(--color-rule)] px-2 py-1 rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors cursor-default">
+              {s}
+            </span>
+          ))}
         </div>
       </div>
     )}
     {enlaces.length > 0 && (
       <div class="mt-10">
-        <h2 class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">Enlaces</h2>
+        <h2 class="font-[var(--font-tech)] text-xs uppercase tracking-widest text-[var(--color-text-dim)]">Enlaces</h2>
         <ul class="mt-2 space-y-1">
           {enlaces.map((e) => (
-            <li><a href={e.url} class="text-[var(--color-accent)] hover:underline">{e.label} →</a></li>
+            <li><a href={e.url} class="text-[var(--color-accent)] hover:underline font-[var(--font-tech)]">{e.label} →</a></li>
           ))}
         </ul>
       </div>
     )}
     {video && (
       <div class="mt-12">
-        <h2 class="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-text-dim)] mb-4">Demo en video</h2>
+        <h2 class="font-[var(--font-tech)] text-xs uppercase tracking-widest text-[var(--color-text-dim)] mb-4">Demo en video</h2>
         <div class="relative w-full rounded-md overflow-hidden border border-[var(--color-rule)]" style="padding-bottom:56.25%;">
           <iframe
             src={video}
@@ -74,7 +78,7 @@ const { titulo, anio, stack, metricas, enlaces, hero, galeria, video, excerpt, e
         {galeria.map((img, i) => <Image src={img} alt={`${titulo} — figura ${i + 1}`} loading="lazy" class="rounded-md border border-[var(--color-rule)]" />)}
       </div>
     )}
-    <p class="mt-16 font-[var(--font-mono)] text-sm">
+    <p class="mt-16 font-[var(--font-tech)] text-sm">
       <a href="/" class="text-[var(--color-text-dim)] hover:text-[var(--color-accent)]">← Volver al portfolio</a>
     </p>
   </article>

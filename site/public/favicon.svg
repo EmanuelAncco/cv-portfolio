@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#020617"/>
-  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-family="Georgia, serif" font-size="40" font-weight="700" fill="#f59e0b">E</text>
+  <rect width="64" height="64" fill="#0B1220"/>
+  <rect x="2" y="2" width="60" height="60" fill="none" stroke="#2EE5FF" stroke-width="1"/>
+  <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" font-family="Arial Black, sans-serif" font-size="34" font-weight="900" fill="#2EE5FF">EA</text>
 </svg>

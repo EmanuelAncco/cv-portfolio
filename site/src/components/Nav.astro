@@ -8,17 +8,17 @@ const links = [
 ---
 <nav
   class="fixed top-0 left-0 right-0 z-50 border-b border-[var(--color-rule)]"
-  style="backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); background: rgba(2,6,23,0.65);"
+  style="backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); background: rgba(11,18,32,0.75);"
 >
-  <div class="max-w-[var(--container-1100)] mx-auto px-6 py-3 flex items-center justify-between font-[var(--font-mono)] text-xs uppercase tracking-widest">
-    <a href="/" class="text-[var(--color-text-dim)] hover:text-[var(--color-text)] transition-colors">
+  <div class="max-w-[var(--container-1100)] mx-auto px-6 py-3 flex items-center justify-between">
+    <a href="/" class="font-[var(--font-display)] text-xs uppercase tracking-widest text-[var(--color-text-dim)] hover:text-[var(--color-accent)] transition-colors font-bold">
       / emanuel
     </a>
-    <div class="flex gap-6 text-[var(--color-text-dim)]">
+    <div class="flex gap-6">
       {links.map((l) => (
         <a
           href={l.href}
-          class="hidden sm:block hover:text-[var(--color-accent)] transition-colors"
+          class="hidden sm:block font-[var(--font-tech)] text-xs uppercase tracking-widest text-[var(--color-text-dim)] hover:text-[var(--color-accent)] transition-colors"
         >
           {l.label}
         </a>
@@ -26,7 +26,7 @@ const links = [
       <!-- Mobile: only contacto pill -->
       <a
         href="/contacto"
-        class="sm:hidden text-[var(--color-accent)] border border-[var(--color-accent)] px-3 py-1"
+        class="sm:hidden font-[var(--font-tech)] text-xs uppercase tracking-widest text-[var(--color-accent)] border border-[var(--color-accent)] px-3 py-1"
       >
         contacto
       </a>

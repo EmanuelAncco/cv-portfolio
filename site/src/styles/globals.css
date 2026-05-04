@@ -1,40 +1,23 @@
-@font-face {
-  font-family: "Fraunces Variable";
-  src: url("/fonts/Fraunces.woff2") format("woff2-variations");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Inter Variable";
-  src: url("/fonts/InterVariable.woff2") format("woff2-variations");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "JetBrains Mono Variable";
-  src: url("/fonts/JetBrainsMono.woff2") format("woff2-variations");
-  font-weight: 100 800;
-  font-style: normal;
-  font-display: swap;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800;900&family=Rajdhani:wght@500;600;700&family=Allura&display=swap');
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-bg: #020617;
-  --color-surface: #0f172a;
-  --color-text: #f8fafc;
-  --color-text-dim: #94a3b8;
-  --color-accent: #f59e0b;
-  --color-accent-light: #fbbf24;
-  --color-rule: rgba(255, 255, 255, 0.08);
+  /* === Brand: "Ingeniería con visión de futuro" === */
+  --color-bg:           #0B1220;
+  --color-surface:      #102B5E;
+  --color-text:         #E8F0FF;
+  --color-text-dim:     #7A8AA8;
+  --color-accent:       #2EE5FF;
+  --color-accent-2:     #3F88FF;
+  --color-accent-warm:  #C97A3A;
+  --color-rule:         rgba(46, 229, 255, 0.16);
+  --color-glow:         rgba(46, 229, 255, 0.45);
 
-  --font-display: "Fraunces Variable", Georgia, serif;
-  --font-body: "Inter Variable", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --font-display: "Orbitron", "Rajdhani", "Segoe UI", Arial, sans-serif;
+  --font-tech:    "Rajdhani", "Inter", "Segoe UI", Arial, sans-serif;
+  --font-body:    "Inter", "Segoe UI", Arial, sans-serif;
+  --font-script:  "Allura", "Segoe Script", "Brush Script MT", cursive;
 
   --container-1100: 1100px;
 }
@@ -42,15 +25,13 @@
 html { background: var(--color-bg); color: var(--color-text); }
 body { font-family: var(--font-body); }
 
-/* Reveal classes — SAFE: content always visible by default.
-   Hero-fade only: small stagger fade-in on load, with @starting-style fallback.
-   .reveal and .word-fade are markers; no hiding so SSR + slow JS + headless never break. */
+/* Hero entrance fade — CSS only, no JS dependency */
 .hero-fade {
   animation: hero-in 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 @keyframes hero-in {
   from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: none; }
+  to   { opacity: 1; transform: none; }
 }
 .hero-fade-1 { animation-delay: 0.10s; }
 .hero-fade-2 { animation-delay: 0.20s; }
@@ -76,7 +57,32 @@ html.has-js .reveal::before {
 html.has-js .reveal.is-visible::before {
   height: 100%;
 }
+
+/* Scan-line subtle texture (signature of the brand) */
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(46, 229, 255, 0) 0px,
+    rgba(46, 229, 255, 0) 3px,
+    rgba(46, 229, 255, 0.025) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Glow effect for cyan elements */
+.glow-cyan {
+  box-shadow: 0 0 32px var(--color-glow), 0 0 8px var(--color-glow);
+}
+.text-glow-cyan {
+  text-shadow: 0 0 18px var(--color-glow);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-fade { animation: none; opacity: 1; transform: none; }
+  .scanlines::before { display: none; }
   html.has-js .reveal::before { display: none; }
 }

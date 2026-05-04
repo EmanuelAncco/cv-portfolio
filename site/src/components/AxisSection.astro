@@ -15,20 +15,20 @@ const num = label.replace(/[^0-9]/g, "").padStart(2, "0");
 <section class="max-w-[var(--container-1100)] mx-auto px-6 mt-28" id={`eje-${num}`}>
   <!-- Magazine-style chapter header -->
   <header class="border-t border-[var(--color-rule)] pt-8 mb-12 grid md:grid-cols-[auto_1fr] gap-6 md:gap-12 items-end reveal">
-    <!-- Big display number on the left -->
+    <!-- Big display number on the left — Orbitron 900, cyan -->
     <p
-      class="font-[var(--font-display)] leading-none text-[var(--color-rule)] select-none"
-      style="font-size: clamp(5rem, 14vw, 11rem); font-weight: 900; letter-spacing: -0.04em; line-height: 0.8;"
+      class="font-[var(--font-display)] leading-none select-none text-[var(--color-accent)]"
+      style="font-size: clamp(5rem, 14vw, 11rem); font-weight: 900; letter-spacing: -0.04em; line-height: 0.8; opacity: 0.35; text-shadow: 0 0 40px var(--color-glow);"
       aria-hidden="true"
     >
       {num}
     </p>
     <!-- Section title on the right -->
     <div>
-      <p class="font-[var(--font-mono)] text-[10px] uppercase tracking-widest text-[var(--color-text-dim)] mb-2">
+      <p class="font-[var(--font-tech)] text-[10px] uppercase tracking-widest text-[var(--color-text-dim)] mb-2">
         {label}
       </p>
-      <h2 class="font-[var(--font-display)] text-3xl md:text-4xl leading-tight">
+      <h2 class="font-[var(--font-display)] text-3xl md:text-4xl leading-tight font-bold text-[var(--color-text)]">
         {titulo}
       </h2>
     </div>

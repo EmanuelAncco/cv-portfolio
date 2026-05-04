@@ -2,130 +2,102 @@
 import { Image } from "astro:assets";
 import emanuel from "../assets/emanuel.jpg";
 ---
+<section class="relative scanlines min-h-[92vh] overflow-hidden" style="background: radial-gradient(ellipse at 20% 30%, rgba(46,229,255,0.08), transparent 55%), radial-gradient(ellipse at 85% 70%, rgba(63,136,255,0.10), transparent 60%), var(--color-bg);">
 
-<!-- Hero A: Photo-as-background-strip — full viewport, editorial title bottom-aligned -->
-<section
-  id="hero"
-  class="relative overflow-hidden"
-  style="height: 100vh; min-height: 600px; background: #020617;"
->
-  <!-- LEFT STRIP: photo with hard gradient overlay -->
-  <div
-    class="absolute top-0 left-0 h-full pointer-events-none"
-    style="width: 38%; max-width: 560px;"
-    aria-hidden="true"
-  >
-    <Image
-      src={emanuel}
-      alt=""
-      width={560}
-      height={900}
-      widths={[280, 560, 840]}
-      sizes="38vw"
-      loading="eager"
-      decoding="sync"
-      id="hero-photo"
-      style="
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center top;
-        display: block;
-        filter: grayscale(30%) contrast(1.1);
-      "
-    />
-    <!-- gradient: photo fades hard to dark on right edge -->
-    <div
-      class="absolute inset-0"
-      style="background: linear-gradient(to right, rgba(2,6,23,0.05) 0%, rgba(2,6,23,0.55) 60%, rgba(2,6,23,1) 100%);"
-    ></div>
-    <!-- gradient: fades from dark at top -->
-    <div
-      class="absolute inset-0"
-      style="background: linear-gradient(to bottom, rgba(2,6,23,0.7) 0%, transparent 20%, transparent 75%, rgba(2,6,23,0.8) 100%);"
-    ></div>
-  </div>
+  <!-- Wireframe grid backdrop -->
+  <svg class="absolute inset-0 w-full h-full opacity-[0.06] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#2EE5FF" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grid)" />
+  </svg>
 
-  <!-- RIGHT TWO-THIRDS: editorial content, bottom-aligned -->
-  <div
-    class="relative h-full flex flex-col justify-end"
-    style="padding-left: max(38%, min(38vw, 560px)); padding-right: 5vw; padding-bottom: 8vh;"
-  >
-    <!-- ID card block — top-left of text column -->
-    <div
-      class="absolute top-0 font-[var(--font-mono)] text-xs leading-relaxed text-[var(--color-text-dim)]"
-      style="left: max(38%, min(38vw, 560px)); padding-left: 2.5vw; padding-top: 7vh;"
-    >
-      <div id="id-card" class="border-l-2 border-[var(--color-accent)] pl-4 hero-fade">
-        <p class="text-[var(--color-text)] font-semibold tracking-widest uppercase text-[11px]">Emanuel Ancco</p>
-        <p class="mt-1 tracking-widest">── Ingeniería / IA / Hardware</p>
-        <p class="tracking-widest">── Lima · Puno · 2026</p>
-        <p class="tracking-widest">── 12 Proy · 4 Ejes · 1 Paper</p>
+  <div class="relative z-10 max-w-[var(--container-1100)] mx-auto px-6 pt-24 md:pt-32 pb-20">
+
+    <!-- Page label -->
+    <p class="font-[var(--font-tech)] text-xs uppercase tracking-[0.3em] text-[var(--color-accent)] mb-8 hero-fade hero-fade-1">
+      / 01 — manual de marca personal
+    </p>
+
+    <div class="grid md:grid-cols-[1fr_auto] gap-12 items-center">
+
+      <!-- LEFT: Wordmark + tagline + CTA -->
+      <div>
+        <h1 class="font-[var(--font-display)] tracking-[0.04em] uppercase font-black leading-[0.92] hero-fade hero-fade-2"
+            style="font-size: clamp(2.5rem, 7vw, 6rem); color: var(--color-text); text-shadow: 0 0 28px rgba(46,229,255,0.18);">
+          <span class="block">Emanuel</span>
+          <span class="block" style="color: var(--color-accent); text-shadow: 0 0 28px var(--color-glow);">Ancco</span>
+        </h1>
+
+        <p class="font-[var(--font-script)] text-3xl md:text-4xl mt-2 hero-fade hero-fade-3" style="color: rgba(232,240,255,0.55);">
+          Emanuel Ancco
+        </p>
+
+        <p class="mt-8 font-[var(--font-tech)] text-xs uppercase tracking-[0.25em] text-[var(--color-accent)] hero-fade hero-fade-4">
+          ── manual de marca personal ──
+        </p>
+        <p class="mt-3 font-[var(--font-tech)] text-sm uppercase tracking-[0.18em] text-[var(--color-text-dim)] hero-fade hero-fade-4">
+          Ingeniería estructural · IA aplicada · FPGA · Plataformas web
+        </p>
+
+        <p class="mt-8 max-w-md text-base text-[var(--color-text-dim)] hero-fade hero-fade-5" style="line-height: 1.7;">
+          Estructuras, inteligencia y sistemas con <em class="not-italic" style="color: var(--color-accent);">visión de futuro</em>. Tecnología aplicada con criterio estructural.
+        </p>
+
+        <!-- CTA -->
+        <div class="mt-10 flex flex-wrap gap-4 font-[var(--font-tech)] text-xs uppercase tracking-[0.2em] hero-fade hero-fade-6">
+          <a href="/#proyectos"
+             class="px-6 py-3 border border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] transition-colors glow-cyan"
+             style="font-weight: 700;">
+            Ver proyectos →
+          </a>
+          <a href="/sobre"
+             class="px-6 py-3 border border-[var(--color-rule)] text-[var(--color-text-dim)] hover:text-[var(--color-text)] hover:border-[var(--color-text-dim)] transition-colors"
+             style="font-weight: 600;">
+            Sobre mí
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Portrait with cyan border + chrome EA badge above -->
+      <div class="relative hero-fade hero-fade-5">
+        <!-- EA monogram badge -->
+        <div class="absolute -top-6 -left-6 z-20 w-20 h-20 flex items-center justify-center rounded-md font-[var(--font-display)] text-3xl font-black tracking-tighter glow-cyan"
+             style="background: linear-gradient(135deg, #102B5E 0%, #0B1220 100%); border: 1px solid var(--color-accent); color: var(--color-accent); text-shadow: 0 0 12px var(--color-glow);">
+          EA
+        </div>
+
+        <!-- Cyan accent corner brackets -->
+        <span class="absolute -top-2 -right-2 w-5 h-5 border-t-2 border-r-2 border-[var(--color-accent)]" aria-hidden="true"></span>
+        <span class="absolute -bottom-2 -left-2 w-5 h-5 border-b-2 border-l-2 border-[var(--color-accent)]" aria-hidden="true"></span>
+
+        <Image
+          src={emanuel}
+          alt="Emanuel Ancco"
+          width={320}
+          height={400}
+          loading="eager"
+          class="relative z-10 rounded-md object-cover object-top w-56 md:w-72 border border-[var(--color-rule)]"
+          style="filter: contrast(1.05) saturate(0.85);"
+        />
+
+        <!-- Tech tags below -->
+        <div class="mt-4 flex flex-wrap gap-1.5 max-w-72 font-[var(--font-tech)] text-[10px] uppercase tracking-widest">
+          <span class="px-2 py-1 border border-[var(--color-rule)] text-[var(--color-accent)]">FPGA</span>
+          <span class="px-2 py-1 border border-[var(--color-rule)] text-[var(--color-text-dim)]">PyTorch</span>
+          <span class="px-2 py-1 border border-[var(--color-rule)] text-[var(--color-text-dim)]">YOLOv8</span>
+          <span class="px-2 py-1 border border-[var(--color-rule)] text-[var(--color-text-dim)]">Astro</span>
+          <span class="px-2 py-1 border border-[var(--color-rule)] text-[var(--color-text-dim)]">Verilog</span>
+        </div>
       </div>
     </div>
 
-    <!-- Main editorial title — bottom-aligned, massive -->
-    <div class="pl-[2.5vw]">
-      <h1
-        id="hero-title"
-        class="font-[var(--font-display)] leading-[0.88] tracking-tight text-[var(--color-text)]"
-        style="font-size: clamp(3.2rem, 8vw, 7.5rem);"
-      >
-        <span class="word-fade block">Construyo en el</span>
-        <span class="word-fade block">cruce de la <em class="not-italic text-[var(--color-accent)]">ingeniería</em>,</span>
-        <span class="word-fade block">la <em class="not-italic text-[var(--color-accent)]">IA</em> y el</span>
-        <span class="word-fade block"><em class="not-italic text-[var(--color-accent)]">hardware</em>.</span>
-      </h1>
-      <p
-        id="hero-sub"
-        class="mt-6 text-base text-[var(--color-text-dim)] max-w-lg font-[var(--font-mono)] hero-fade"
-        style="line-height: 1.7;"
-      >
-        12 proyectos validados en 2024–2026. Investigación estructural, visión por computadora, plataformas operativas y electrónica digital desde el sur del Perú.
-      </p>
-      <!-- CTA row -->
-      <div id="hero-cta" class="mt-8 flex flex-wrap gap-4 font-[var(--font-mono)] text-sm hero-fade">
-        <a
-          href="/#proyectos"
-          class="px-5 py-2.5 bg-[var(--color-accent)] text-black font-semibold tracking-wide uppercase text-xs hover:bg-[var(--color-accent-light)] transition-colors"
-          style="letter-spacing: 0.1em;"
-        >
-          ver proyectos →
-        </a>
-        <a
-          href="/sobre"
-          class="px-5 py-2.5 border border-[var(--color-rule)] text-[var(--color-text-dim)] text-xs uppercase tracking-widest hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-colors"
-        >
-          sobre mí
-        </a>
-      </div>
-    </div>
-
-    <!-- Scroll indicator — bottom of viewport -->
-    <div
-      id="scroll-indicator"
-      class="absolute bottom-0 left-0 right-0 flex justify-center pb-6 font-[var(--font-mono)] text-xs text-[var(--color-text-dim)] tracking-widest hero-fade"
-      aria-hidden="true"
-    >
-      <span id="scroll-arrow" class="flex flex-col items-center gap-1">
-        <span>scroll</span>
-        <span class="block w-px h-8 bg-[var(--color-rule)]"></span>
-        <span class="animate-bounce">↓</span>
-      </span>
+    <!-- Bottom version line -->
+    <div class="mt-20 flex items-center justify-between font-[var(--font-tech)] text-[10px] uppercase tracking-[0.3em] text-[var(--color-text-dim)] border-t border-[var(--color-rule)] pt-6 hero-fade hero-fade-6">
+      <span>versión 1.0 · 2026</span>
+      <span>portfolio · live at emanuelancco.com</span>
     </div>
   </div>
-
-  <!-- Amber accent line along right edge of photo strip -->
-  <div
-    class="absolute top-0 h-full pointer-events-none"
-    style="left: calc(38% + 1px); max-left: calc(560px + 1px); width: 1px; background: linear-gradient(to bottom, transparent 0%, var(--color-accent) 30%, var(--color-accent) 70%, transparent 100%); opacity: 0.35;"
-    aria-hidden="true"
-  ></div>
 </section>
-
-<style>
-  .word-fade {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-</style>

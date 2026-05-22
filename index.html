@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -561,12 +561,35 @@ header.site {
   background: var(--bg-deep);
   border-bottom: 1px solid var(--border);
 }
-.proj-image img {
+.proj-image img,
+.proj-image video {
   width: 100%; height: 100%; object-fit: cover;
-  filter: contrast(1.05) saturate(0.92);
+  filter: contrast(1.05) saturate(0.95);
   transition: transform 500ms cubic-bezier(0.2,0.8,0.2,1);
 }
-.proj:hover .proj-image img { transform: scale(1.08); }
+.proj:hover .proj-image img,
+.proj:hover .proj-image video { transform: scale(1.06); }
+
+/* Video LIVE badge */
+.proj-video-tag {
+  position: absolute; bottom: 0.85rem; left: 0.85rem;
+  z-index: 3;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.34rem 0.75rem;
+  background: oklch(0 0 0 / 0.7); backdrop-filter: blur(12px);
+  border: 1px solid oklch(1 0 0 / 0.2);
+  border-radius: 999px;
+  font-family: var(--font-mono); font-size: var(--s--2);
+  color: white; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  pointer-events: none;
+}
+.proj-video-tag .live-dot {
+  width: 7px; height: 7px;
+  background: var(--mint); border-radius: 50%;
+  box-shadow: 0 0 12px var(--mint);
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
 .proj-image::after {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(135deg, transparent 40%, oklch(0.09 0.020 285 / 0.6) 100%);
@@ -580,6 +603,24 @@ header.site {
   width: 64px; height: 64px;
   color: oklch(from var(--brand) l c h / 0.6);
 }
+/* placeholder con icono en proj-image normal (cuando no hay imagen real) */
+.proj-image-icon-wrap {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  background:
+    radial-gradient(circle at 25% 30%, oklch(from var(--brand) l c h / 0.35) 0%, transparent 55%),
+    radial-gradient(circle at 75% 70%, oklch(from var(--mint) l c h / 0.30) 0%, transparent 55%),
+    linear-gradient(135deg, oklch(from var(--brand) l c h / 0.12), oklch(from var(--mint) l c h / 0.06));
+}
+.proj-image-icon-svg {
+  width: 88px !important; height: 88px !important;
+  color: white;
+  opacity: 0.9;
+  stroke-width: 1.25 !important;
+  filter: drop-shadow(0 4px 18px oklch(from var(--brand) l c h / 0.55));
+  transition: transform 500ms cubic-bezier(0.2,0.8,0.2,1);
+}
+.proj:hover .proj-image-icon-svg { transform: scale(1.18) rotate(-5deg); }
 
 .proj-image-tags {
   position: absolute; top: 0.85rem; left: 0.85rem; right: 0.85rem;
@@ -810,7 +851,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
       <a href="#contacto">Contacto</a>
     </nav>
     <div class="nav-actions">
-      <a href="CV_Las_Bambas_Innovadores_2026.pdf" class="btn btn-primary" download>
+      <a href="Ancco_Emanuel_CV_Mayo_2026.pdf" class="btn btn-primary" download>
         <i data-lucide="download"></i> CV
       </a>
       <button class="btn btn-ghost" id="theme-toggle" aria-label="Cambiar tema">
@@ -858,7 +899,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         <a href="#contacto" class="btn btn-mint">
           <i data-lucide="message-square"></i> Conversar
         </a>
-        <a href="CV_Las_Bambas_Innovadores_2026.pdf" class="btn" download>
+        <a href="Ancco_Emanuel_CV_Mayo_2026.pdf" class="btn" download>
           <i data-lucide="file-down"></i> CV PDF
         </a>
       </div>
@@ -1081,7 +1122,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Plataforma · Eventos</span>
               <span class="proj-status r-and-d"><i data-lucide="hammer"></i> En curso</span>
             </div>
-            <img src="assets/images/profile_v2.jpg" alt="AECODE Live" loading="lazy" style="opacity: 0.3;">
+            <div class="proj-image-icon-wrap"><i data-lucide="calendar-days" class="proj-image-icon-svg"></i></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">AECODE Live</h3>
@@ -1098,7 +1139,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Email Marketing</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <img src="assets/images/profile_v2.jpg" alt="Email Studio" loading="lazy" style="opacity: 0.3;">
+            <div class="proj-image-icon-wrap"><i data-lucide="mail" class="proj-image-icon-svg"></i></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Email Studio</h3>
@@ -1132,7 +1173,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Coordinación</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <img src="assets/images/profile_v2.jpg" alt="Coord Studio" loading="lazy" style="opacity: 0.3;">
+            <div class="proj-image-icon-wrap"><i data-lucide="kanban-square" class="proj-image-icon-svg"></i></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Coord Studio</h3>
@@ -1149,7 +1190,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Ticketing IA</span>
               <span class="proj-status r-and-d"><i data-lucide="hammer"></i> v2 build</span>
             </div>
-            <img src="assets/images/profile_v2.jpg" alt="Ticket Studio v2" loading="lazy" style="opacity: 0.3;">
+            <div class="proj-image-icon-wrap"><i data-lucide="ticket" class="proj-image-icon-svg"></i></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Ticket Studio v2</h3>
@@ -1166,7 +1207,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">CRM / Discovery</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <img src="assets/images/profile_v2.jpg" alt="AECODE FINDER" loading="lazy" style="opacity: 0.3;">
+            <div class="proj-image-icon-wrap"><i data-lucide="search-check" class="proj-image-icon-svg"></i></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">AECODE FINDER v2</h3>
@@ -1183,7 +1224,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Multi-tenant CRM</span>
               <span class="proj-status beta"><i data-lucide="alert-circle"></i> Local</span>
             </div>
-            <img src="assets/images/profile_v2.jpg" alt="AECODE Operaciones" loading="lazy" style="opacity: 0.3;">
+            <div class="proj-image-icon-wrap"><i data-lucide="building-2" class="proj-image-icon-svg"></i></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">AECODE Operaciones · CorpGranda</h3>
@@ -1200,7 +1241,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Workflows OSS</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <img src="assets/images/profile_v2.jpg" alt="GEN+ FLOWS" loading="lazy" style="opacity: 0.3;">
+            <div class="proj-image-icon-wrap"><i data-lucide="workflow" class="proj-image-icon-svg"></i></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">GEN+ FLOWS</h3>
@@ -1217,7 +1258,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Acta Studio · Zoom</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <img src="assets/images/profile_v2.jpg" alt="Acta Studio" loading="lazy" style="opacity: 0.3;">
+            <div class="proj-image-icon-wrap"><i data-lucide="mic" class="proj-image-icon-svg"></i></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Acta Studio</h3>
@@ -1234,7 +1275,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Scraper · Licitaciones</span>
               <span class="proj-status r-and-d"><i data-lucide="hammer"></i> v1 build</span>
             </div>
-            <img src="assets/images/profile_v2.jpg" alt="SEACE Radar" loading="lazy" style="opacity: 0.3;">
+            <div class="proj-image-icon-wrap"><i data-lucide="radar" class="proj-image-icon-svg"></i></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">SEACE Radar</h3>
@@ -1251,7 +1292,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Curso · Web Stack</span>
               <span class="proj-status r-and-d"><i data-lucide="hammer"></i> 16 sábados</span>
             </div>
-            <img src="assets/images/profile_v2.jpg" alt="Curso n8n AECODE" loading="lazy" style="opacity: 0.3;">
+            <div class="proj-image-icon-wrap"><i data-lucide="graduation-cap" class="proj-image-icon-svg"></i></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Curso n8n + IA · AECODE + CIP</h3>
@@ -1268,7 +1309,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Turismo · Cusco</span>
               <span class="proj-status award"><i data-lucide="medal"></i> Convocatoria</span>
             </div>
-            <img src="assets/images/profile_v2.jpg" alt="Qawari AI" loading="lazy" style="opacity: 0.3;">
+            <div class="proj-image-icon-wrap"><i data-lucide="mountain-snow" class="proj-image-icon-svg"></i></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Qawari AI · Polo Turístico</h3>
@@ -1303,7 +1344,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Agente WhatsApp · Inmobiliario</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <img src="assets/images/profile_v2.jpg" alt="Agente Inmobiliario" loading="lazy" style="opacity: 0.3;">
+            <div class="proj-image-icon-wrap"><i data-lucide="home" class="proj-image-icon-svg"></i></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Agente Inmobiliario Gen+</h3>
@@ -1354,7 +1395,8 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Vision · Edge AI</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <img src="assets/images/emarc_vision_detection.png" alt="Vision Pro PDK" loading="lazy">
+            <video src="assets/videos/vision-pro-hero.mp4" autoplay muted loop playsinline poster="assets/images/emarc_vision_detection.png" preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Demo</span>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Gen+ Vision Pro PDK</h3>
@@ -1371,7 +1413,8 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Training Pipeline</span>
               <span class="proj-status live"><i data-lucide="check"></i> Dataset 1182</span>
             </div>
-            <img src="assets/images/BoxF1_curve.png" alt="YOLO Cascos" loading="lazy">
+            <video src="assets/videos/yolo-annotated.mp4" autoplay muted loop playsinline poster="assets/images/BoxF1_curve.png" preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Annotated</span>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Vision Pro Cascos · Training</h3>
@@ -1388,7 +1431,8 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Diseño HW · Edge</span>
               <span class="proj-status r-and-d"><i data-lucide="hammer"></i> Diseño v3</span>
             </div>
-            <img src="assets/images/profile_v2.jpg" alt="Cámaras Edge AI" loading="lazy" style="opacity: 0.3;">
+            <video src="assets/videos/vision-pro-demo.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Live demo</span>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Gen+ Cámaras Edge AI</h3>
@@ -1404,7 +1448,8 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             <div class="proj-image-tags">
               <span class="proj-tag">Reconocimiento facial + EPP</span>
             </div>
-            <img src="assets/images/detecciónfacial.png" alt="ConstEdge" loading="lazy">
+            <video src="assets/videos/vision-pro-demo-b.mp4" autoplay muted loop playsinline poster="assets/images/detecciónfacial.png" preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Detect</span>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">ConstEdge — Acceso + EPP</h3>
@@ -1438,7 +1483,8 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">SHM Edge · FFT FPGA</span>
               <span class="proj-status award"><i data-lucide="trophy"></i> 2° AI Talent 2026</span>
             </div>
-            <img src="assets/images/gaiatech_results.png" alt="GAIATECH VIGÍA" loading="lazy">
+            <video src="assets/videos/vision-pro-alert.mp4" autoplay muted loop playsinline poster="assets/images/gaiatech_results.png" preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Alert clip</span>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">GAIATECH VIGÍA — Monitoreo estructural</h3>
@@ -1562,7 +1608,8 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">3D Tour · Inmobiliario</span>
               <span class="proj-status live"><i data-lucide="check"></i> Entregado</span>
             </div>
-            <img src="assets/images/profile_v2.jpg" alt="Ainy Inmobiliaria" loading="lazy" style="opacity: 0.3;">
+            <video src="assets/videos/ainy-inmobiliaria.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Tour 3D</span>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Ainy Inmobiliaria · 3 Fases</h3>
@@ -1813,7 +1860,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             lo que necesitas — usualmente respondo en menos de 24 h.
           </p>
           <div style="margin-top: 1.75rem; display: flex; gap: 0.65rem; flex-wrap: wrap;">
-            <a href="CV_Las_Bambas_Innovadores_2026.pdf" class="btn btn-primary" download>
+            <a href="Ancco_Emanuel_CV_Mayo_2026.pdf" class="btn btn-primary" download>
               <i data-lucide="file-down"></i> Descargar CV (PDF)
             </a>
             <a href="https://github.com/EmanuelAncco" class="btn btn-mint" target="_blank" rel="noopener">
@@ -1846,7 +1893,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
 
 </main>
 
-<a href="CV_Las_Bambas_Innovadores_2026.pdf" class="floating-cv" download aria-label="Descargar CV">
+<a href="Ancco_Emanuel_CV_Mayo_2026.pdf" class="floating-cv" download aria-label="Descargar CV">
   <i data-lucide="file-down"></i> CV PDF
 </a>
 

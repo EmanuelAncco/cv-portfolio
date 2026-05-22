@@ -1378,11 +1378,11 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
       </header>
 
       <div class="cat-tabs" role="tablist">
-        <button class="cat-tab active" data-cat="all" role="tab">Todos <span class="count">25</span></button>
+        <button class="cat-tab active" data-cat="all" role="tab">Todos <span class="count">31</span></button>
         <button class="cat-tab" data-cat="bim" role="tab">AEC & BIM <span class="count">7</span></button>
         <button class="cat-tab" data-cat="cv" role="tab">Visión EPP / Obra <span class="count">6</span></button>
-        <button class="cat-tab" data-cat="hw" role="tab">Hardware FPGA & IoT <span class="count">5</span></button>
-        <button class="cat-tab" data-cat="research" role="tab">Investigación SHM <span class="count">5</span></button>
+        <button class="cat-tab" data-cat="hw" role="tab">GAIATECH · Hardware FPGA <span class="count">8</span></button>
+        <button class="cat-tab" data-cat="research" role="tab">Investigación SHM <span class="count">8</span></button>
         <button class="cat-tab" data-cat="aec-tech" role="tab">Inmobiliario + Licitaciones <span class="count">2</span></button>
       </div>
 
@@ -1640,17 +1640,37 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         <article class="proj feat reveal" data-cat="hw">
           <div class="proj-image">
             <div class="proj-image-tags">
-              <span class="proj-tag">SHM Edge · FFT FPGA</span>
-              <span class="proj-status award"><i data-lucide="trophy"></i> 2° AI Talent 2026</span>
+              <span class="proj-tag">GAIATECH SHM 2.0 · Mission Control</span>
+              <span class="proj-status live"><i data-lucide="check"></i> 8/8 nodos online</span>
             </div>
-            <video src="assets/videos/vision-pro-alert.mp4" autoplay muted loop playsinline poster="assets/images/gaiatech_results.png" preload="metadata"></video>
-            <span class="proj-video-tag"><span class="live-dot"></span> Alert clip</span>
+            <div class="img-grid-2">
+              <img src="assets/images/panels/gaiatech-shm-hero.jpg" alt="GAIATECH SHM hero" loading="lazy">
+              <img src="assets/images/panels/gaiatech-shm-network.jpg" alt="GAIATECH SHM network" loading="lazy">
+            </div>
           </div>
           <div class="proj-body">
-            <h3 class="proj-title">GAIATECH VIGÍA — Monitoreo estructural</h3>
-            <p class="proj-desc">Sistema completo: <strong>FFT en FPGA Gowin GW1NR-9</strong> (Explorer Edge-9K), ESP32 como bridge, modelo <strong>LSTM-Autoencoder F1 = 0.961</strong>, alertas WhatsApp &lt; 2s. Aplicable a presas, taludes, estructuras críticas.</p>
+            <h3 class="proj-title">GAIATECH SHM · Mission Control 8 puentes</h3>
+            <p class="proj-desc">Plataforma <strong>FPGA + IA</strong> monitoreando 8 puentes críticos de la costa norte (Reque, Jequetepeque, Zaña, Eten, Viru, Moche, Chao, Chicama). <strong>Latencia sensor→reporte &lt; 3 min</strong>, uptime 142 días/99.81%. Op base Chiclayo+Trujillo. Dashboard live en <code>gaiatech.187-77-250-111.nip.io</code>.</p>
             <div class="proj-meta">
-              <span class="tag">Verilog</span><span class="tag">FFT FPGA</span><span class="tag">Gowin GW1NR-9</span><span class="tag">ESP32</span><span class="tag">PyTorch LSTM-AE</span>
+              <span class="tag">8 puentes</span><span class="tag">MQTT 8.4 ms</span><span class="tag">Postgres :5433</span><span class="tag">Construmatica</span><span class="tag">Leaflet GIS</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj feat reveal" data-cat="hw">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">ATOK Edge-9K · Hardware propio</span>
+              <span class="proj-status award"><i data-lucide="cpu"></i> Rev A1</span>
+            </div>
+            <video src="assets/videos/gaiatech-bridge.mp4" autoplay muted loop playsinline poster="assets/images/panels/gaiatech-shm-hardware.jpg" preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Bridge render</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">ATOK Edge-9K · DevBoard diseñado por mí</h3>
+            <p class="proj-desc">Nodo edge FPGA <strong>diseñado desde cero</strong>: 8,640 LUT4 · 26 DSP · 468 Kb BRAM · IMU triaxial 200 Hz · LoRa+WiFi+BLE · 4× 7-seg · <strong>0.57 mW avg · 590 días autonomía</strong>. BOM <strong>USD 43-89</strong> vs Campbell Scientific $6,875 (<strong>-94% costo</strong>). Toolchain open source: Verilog · Yosys · nextpnr · openFPGALoader · ATOK SDK.</p>
+            <div class="proj-meta">
+              <span class="tag">FPGA Gowin GW1NR-9</span><span class="tag">PCB 4-layer FR4</span><span class="tag">IP65 ready</span><span class="tag">Yosys + nextpnr</span><span class="tag">PyATOK SDK</span>
             </div>
           </div>
         </article>
@@ -1658,17 +1678,54 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         <article class="proj reveal" data-cat="hw">
           <div class="proj-image">
             <div class="proj-image-tags">
-              <span class="proj-tag">FPGA Gowin GW1NR-9</span>
+              <span class="proj-tag">SHM Edge · Alert clip</span>
+              <span class="proj-status award"><i data-lucide="trophy"></i> 2° AI Talent 2026</span>
+            </div>
+            <video src="assets/videos/vision-pro-alert.mp4" autoplay muted loop playsinline poster="assets/images/gaiatech_results.png" preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Alert WhatsApp</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIATECH VIGÍA — Pipeline SHM completo</h3>
+            <p class="proj-desc">Sistema completo end-to-end: <strong>FFT 512 pts Radix-2 Q8.8 en FPGA</strong>, MPU-6050 200 Hz, modelo <strong>LSTM-Autoencoder F1 = 0.961 / ROC-AUC 0.973</strong> (Z24 Bridge Benchmark), GIS Scour Predictor MAE 0.332 m. Alertas WhatsApp &lt; 2s vía n8n + Claude API.</p>
+            <div class="proj-meta">
+              <span class="tag">Verilog FFT</span><span class="tag">LSTM-AE 258k params</span><span class="tag">Z24 dataset</span><span class="tag">MPU-6050</span><span class="tag">n8n + Claude</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj feat reveal" data-cat="hw">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">7 agentes IA · n8n + Claude</span>
+            </div>
+            <div class="img-grid-2">
+              <img src="assets/images/panels/gaiatech-shm-agents.jpg" alt="GAIATECH agentes IA" loading="lazy">
+              <img src="assets/images/panels/aecodito-flow.png" alt="Workflow n8n" loading="lazy">
+            </div>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIATECH Bridge Suite · 7 agentes IA</h3>
+            <p class="proj-desc">Pipeline n8n con <strong>7 agentes Claude</strong>: Inspector (foto→YOLO→patologías), Report (informe PDF), Cost Estimator (cotización 12 patologías PEN/USD+IGV), Alert (anomaly→WhatsApp/TG), RAG Consultant, Chatbot multicanal, Scheduler. Webhook público <code>aecode.app.n8n.cloud/webhook/gaiatech-shm</code>.</p>
+            <div class="proj-meta">
+              <span class="tag">n8n Cloud</span><span class="tag">Claude API</span><span class="tag">7 agentes</span><span class="tag">RAG</span><span class="tag">WhatsApp + Telegram</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="hw">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">FPGA Gowin · YouTube demo</span>
             </div>
             <div class="yt-embed">
               <iframe src="https://www.youtube.com/embed/YuHDxx74Gqk?rel=0&modestbranding=1" title="FPGA Seismic Simulation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
           </div>
           <div class="proj-body">
-            <h3 class="proj-title">GAIATECH FPGA · Investigación</h3>
-            <p class="proj-desc">Explorer Edge-9K funcionando. 5 módulos para FFT. <strong>253 KB de investigación</strong> técnica documentada. Pinout completo, gotchas resueltos.</p>
+            <h3 class="proj-title">GAIATECH FPGA · Investigación técnica</h3>
+            <p class="proj-desc">Explorer Edge-9K funcionando. 5 módulos para FFT (I2C Master, FFT 1024 Radix-2, feature extraction, empaquetado 25B + CRC-16, top module). <strong>253 KB de investigación</strong> documentada con pinout completo.</p>
             <div class="proj-meta">
-              <span class="tag">Gowin EDA</span><span class="tag">openFPGALoader</span><span class="tag">JTAG</span><span class="tag">YouTube demo</span>
+              <span class="tag">Gowin EDA</span><span class="tag">openFPGALoader</span><span class="tag">JTAG</span><span class="tag">5 módulos Verilog</span>
             </div>
           </div>
         </article>
@@ -1780,8 +1837,8 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             <img src="assets/images/GRAPHOS/Fig1-3_graph_comparison_NOTORIO.png" alt="PINN-GNN graph comparison" loading="lazy">
           </div>
           <div class="proj-body">
-            <h3 class="proj-title">Tesis Sheyla Ancco · PINN-GNN</h3>
-            <p class="proj-desc">Co-dirección. Modelos híbridos Physics-Informed + GNN para detección no supervisada de anomalías en infraestructura civil. APA 7 + figuras paper-ready.</p>
+            <h3 class="proj-title">Investigación PINN-GNN</h3>
+            <p class="proj-desc">Modelos híbridos <strong>Physics-Informed Neural Networks + Graph Neural Networks</strong> para detección no supervisada de anomalías en infraestructura civil. APA 7 + figuras paper-ready.</p>
             <div class="proj-meta">
               <span class="tag">PINN</span><span class="tag">GNN</span><span class="tag">PyTorch</span>
             </div>
@@ -1800,6 +1857,57 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             <p class="proj-desc">Equipo multidisciplinario (8 estudiantes) en modelos PINN-GNN. Red de sensores MEMS + RPi. Pipeline ETL + features + dashboards Plotly.</p>
             <div class="proj-meta">
               <span class="tag">MEMS</span><span class="tag">Arduino</span><span class="tag">Plotly/Dash</span><span class="tag">ETL</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="research">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Pathology Detector · CNN</span>
+              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> En progreso</span>
+            </div>
+            <img src="assets/images/confusion_matrix.png" alt="Pathology Detector ResNet18" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIATECH Pathology Detector</h3>
+            <p class="proj-desc">Clasificación automática de <strong>12 tipos de patologías</strong> estructurales sobre fotos de campo. <strong>ResNet18 Acc=0.856 / AUC=0.901</strong>. ViT integrado en CNN Cracks (983 MB pesos, 400 imgs). Captura via ESP32-CAM. Pipeline YOLOv8 con bounding boxes en construcción.</p>
+            <div class="proj-meta">
+              <span class="tag">ResNet18</span><span class="tag">ViT</span><span class="tag">YOLOv8</span><span class="tag">ESP32-CAM</span><span class="tag">PyTorch</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="research">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Repair Advisor · cotizador</span>
+              <span class="proj-status live"><i data-lucide="check"></i> Funcional</span>
+            </div>
+            <img src="assets/images/panels/gaiatech-shm-agents.jpg" alt="Repair Advisor cotizador" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIATECH Repair Advisor</h3>
+            <p class="proj-desc">Cotizador automático para <strong>12 patologías</strong> (PEN/USD + IGV 18%). Matriz de prioridad <strong>urgencia × impacto × costo-eficiencia</strong>. Base de datos de <strong>30+ métodos de reparación</strong> + descripción técnica y costos referenciales por m² / m / unidad.</p>
+            <div class="proj-meta">
+              <span class="tag">Streamlit</span><span class="tag">FastAPI</span><span class="tag">30+ métodos</span><span class="tag">Claude API</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj feat reveal" data-cat="research">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Las Bambas · LRAC + Relaves</span>
+              <span class="proj-status award"><i data-lucide="medal"></i> Innovadores 2026</span>
+            </div>
+            <img src="assets/images/panels/vision-pdk-grande.png" alt="GAIATECH M1.0 Las Bambas" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIATECH M1.0 · Las Bambas</h3>
+            <p class="proj-desc">Plataforma de <strong>seguridad minera con IA visual + agentes autónomos + monitoreo estructural</strong> para Las Bambas Innovadores en Acción 2026. Integra ConstEdge (EPP + biometría), Vision PDK (11 clases YOLOv8) y VIGÍA (FFT FPGA + LSTM-AE). Caso 1: Sistema LRAC. Caso 2: Gestión de relaves.</p>
+            <div class="proj-meta">
+              <span class="tag">LRAC</span><span class="tag">ICMM Life-saving Rules</span><span class="tag">GISTM Relaves</span><span class="tag">Aecodito Minero</span><span class="tag">DS 024-2016-EM</span>
             </div>
           </div>
         </article>

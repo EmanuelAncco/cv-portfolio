@@ -1,1477 +1,1271 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="es" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emanuel Ancco | I+D Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            mermaid.initialize({ startOnLoad: true, theme: 'dark' });
-        });
-    </script>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --secondary: #0f172a;
-            --accent: #10b981;
-            --bg-dark: #020617;
-            --card-bg: rgba(30, 41, 59, 0.6);
-            --text-light: #f8fafc;
-            --text-dim: #94a3b8;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Emanuel Ancco · IA aplicada a Minería · Seguridad Operacional & Monitoreo Industrial</title>
+<meta name="description" content="Bachiller en Ingeniería Civil (UPC) + AI Automation Engineer en gen+. Visión computacional, FPGA, agentes IA y dashboards para minería peruana. Innovadores en Acción 2026 / Talentos de Cobre.">
+<meta name="author" content="Emanuel Edgar Ancco Guaygua">
+<meta property="og:title" content="Emanuel Ancco · IA para Minería Peruana">
+<meta property="og:description" content="EPP detection 87.67% mAP · 38 FPS Jetson · LSTM-AE F1=0.961 · MISM-GNN R²=0.998 · 2do lugar AI Talent Demo Day 2026">
+<meta property="og:image" content="assets/images/profile_v2.jpg">
+<meta property="og:type" content="profile">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2300629a'/%3E%3Ctext x='16' y='22' font-family='monospace' font-weight='700' font-size='16' fill='white' text-anchor='middle'%3EEA%3C/text%3E%3C/svg%3E">
 
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            margin: 0;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Geist+Mono:wght@300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap">
+<script src="https://unpkg.com/lucide@latest"></script>
 
-        /* --- 3D Hero Effect --- */
-        .hero {
-            position: relative;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #020617 100%);
-            overflow: hidden;
-        }
+<style>
+/* =========================================================================
+   PORTFOLIO EMANUEL ANCCO · v3 · 2026-05-22
+   Stack UI/UX 2026: OKLCH + Geist + light-dark() + container queries
+   + :has() + View Transitions + scroll-driven + bento + dashboard patterns
+   Foco: Minería peruana (Las Bambas, Talentos de Cobre, Innovadores 2026)
+========================================================================= */
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: url('https://grainy-gradients.vercel.app/noise.svg');
-            opacity: 0.05;
-            animation: noise 8s steps(10) infinite;
-        }
+:root {
+  color-scheme: light dark;
+  --brand-50:  oklch(0.97 0.02 220); --brand-100: oklch(0.93 0.05 220);
+  --brand-200: oklch(0.85 0.09 220); --brand-300: oklch(0.76 0.13 220);
+  --brand-400: oklch(0.65 0.16 220); --brand-500: oklch(0.55 0.16 220);
+  --brand-600: oklch(0.46 0.15 220); --brand-700: oklch(0.38 0.12 220);
+  --brand-800: oklch(0.28 0.09 220); --brand-900: oklch(0.18 0.06 220);
 
-        .hero-content {
-            z-index: 10;
-            text-align: center;
-            max-width: 900px;
-            padding: 3rem;
-            background: rgba(2, 6, 23, 0.7);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
+  --copper-300: oklch(0.78 0.13 55); --copper-500: oklch(0.65 0.16 55);
+  --copper-600: oklch(0.55 0.16 55); --copper-700: oklch(0.45 0.14 55);
 
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: top;
-            /* Ensure centered */
-            border: 4px solid #f59e0b;
-            /* Golden Border */
-            box-shadow: 0 0 50px rgba(245, 158, 11, 0.6);
-            /* Golden Glow */
-            margin-bottom: 1.5rem;
-            animation: pulse-gold 3s infinite ease-in-out;
-            position: relative;
-        }
+  --neutral-50:  oklch(0.985 0 0); --neutral-100: oklch(0.96 0 0);
+  --neutral-200: oklch(0.92 0 0);  --neutral-300: oklch(0.84 0 0);
+  --neutral-400: oklch(0.68 0 0);  --neutral-500: oklch(0.55 0 0);
+  --neutral-600: oklch(0.42 0 0);  --neutral-700: oklch(0.30 0 0);
+  --neutral-800: oklch(0.20 0 0);  --neutral-900: oklch(0.14 0 0);
 
-        @keyframes pulse-gold {
-            0% {
-                box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
-                border-color: #f59e0b;
-            }
+  --bg:        light-dark(var(--neutral-50),  oklch(0.12 0.01 220));
+  --bg-elev:   light-dark(white,              oklch(0.16 0.01 220));
+  --bg-muted:  light-dark(var(--neutral-100), oklch(0.20 0.01 220));
+  --fg:        light-dark(var(--neutral-900), var(--neutral-100));
+  --fg-muted:  light-dark(var(--neutral-600), var(--neutral-400));
+  --fg-subtle: light-dark(var(--neutral-500), var(--neutral-500));
+  --border:    light-dark(var(--neutral-200), oklch(0.24 0.01 220));
+  --border-strong: light-dark(var(--neutral-300), oklch(0.32 0.01 220));
 
-            50% {
-                box-shadow: 0 0 80px rgba(245, 158, 11, 0.8), 0 0 20px rgba(255, 215, 0, 0.6);
-                border-color: #ffd700;
-                transform: scale(1.02);
-            }
+  --brand:    var(--brand-500);
+  --brand-fg: oklch(0.98 0.02 220);
+  --accent:   var(--copper-500);
+  --success:  oklch(0.65 0.17 145);
+  --warning:  oklch(0.78 0.18 75);
+  --danger:   oklch(0.62 0.22 25);
 
-            100% {
-                box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
-                border-color: #f59e0b;
-            }
-        }
+  --font-sans:  'Geist', system-ui, -apple-system, sans-serif;
+  --font-mono:  'Geist Mono', ui-monospace, monospace;
+  --font-serif: 'Newsreader', Georgia, serif;
 
-        h1 {
-            font-size: 3.5rem;
-            background: linear-gradient(to right, #f59e0b, #fbbf24, #f59e0b);
-            /* Golden Gradient */
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 0.5rem 0;
-            letter-spacing: -1px;
-            font-weight: 700;
-            text-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
-        }
+  --step--2: clamp(0.69rem, calc(0.66rem + 0.16vw), 0.78rem);
+  --step--1: clamp(0.83rem, calc(0.79rem + 0.22vw), 0.94rem);
+  --step-0:  clamp(1rem,    calc(0.94rem + 0.31vw), 1.13rem);
+  --step-1:  clamp(1.20rem, calc(1.12rem + 0.43vw), 1.41rem);
+  --step-2:  clamp(1.44rem, calc(1.33rem + 0.59vw), 1.76rem);
+  --step-3:  clamp(1.73rem, calc(1.58rem + 0.79vw), 2.20rem);
+  --step-4:  clamp(2.07rem, calc(1.86rem + 1.05vw), 2.75rem);
+  --step-5:  clamp(2.49rem, calc(2.20rem + 1.40vw), 3.43rem);
+  --step-6:  clamp(2.99rem, calc(2.59rem + 1.87vw), 4.29rem);
 
-        .badge {
-            background: rgba(245, 158, 11, 0.1);
-            color: #fbbf24;
-            padding: 0.5rem 1.5rem;
-            border-radius: 99px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            display: inline-block;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
-        }
+  --radius-sm: 0.375rem;
+  --radius:    0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+  --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.05);
+  --shadow:    0 4px 12px oklch(0 0 0 / 0.08), 0 1px 3px oklch(0 0 0 / 0.06);
+  --shadow-lg: 0 12px 32px oklch(0 0 0 / 0.12), 0 4px 8px oklch(0 0 0 / 0.08);
+}
 
-        /* --- Sections --- */
-        .section {
-            padding: 5rem 0;
-        }
+[data-theme="light"] { color-scheme: light; }
+[data-theme="dark"]  { color-scheme: dark; }
 
-        .section-dark {
-            background: rgba(255, 255, 255, 0.02);
-        }
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body {
+  font-family: var(--font-sans); font-optical-sizing: auto;
+  background: var(--bg); color: var(--fg);
+  font-size: var(--step-0); line-height: 1.55;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+img, svg { display: block; max-width: 100%; }
+button { font: inherit; cursor: pointer; border: 0; background: transparent; color: inherit; }
+a { color: inherit; text-decoration: none; transition: color 150ms; }
+a:hover { color: var(--brand); }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: var(--radius-sm); }
+::selection { background: oklch(from var(--brand) l c h / 0.35); }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--text-light);
-        }
+.skip-link {
+  position: absolute; top: -100px; left: 1rem;
+  background: var(--brand); color: var(--brand-fg);
+  padding: 0.75rem 1.25rem; border-radius: var(--radius);
+  font-weight: 600; z-index: 9999; transition: top 200ms;
+}
+.skip-link:focus { top: 1rem; }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
-        /* --- Project Card (Legacy Content Wrapper) --- */
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            margin-bottom: 4rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            padding: 2.5rem;
-            transition: transform 0.3s;
-        }
+h1, h2, h3, h4 { font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; }
+h1 { font-size: var(--step-6); font-weight: 700; letter-spacing: -0.035em; }
+h2 { font-size: var(--step-4); }
+h3 { font-size: var(--step-2); }
+h4 { font-size: var(--step-1); }
+p  { text-wrap: pretty; max-width: 70ch; color: var(--fg-muted); }
+code, .mono { font-family: var(--font-mono); font-size: 0.92em; font-variant-numeric: tabular-nums; }
+.serif { font-family: var(--font-serif); font-style: italic; }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(16, 185, 129, 0.3);
-        }
+.container { width: min(100% - 2.5rem, 1280px); margin-inline: auto; }
+section { padding-block: clamp(3rem, 8vw, 6rem); }
+section + section { border-top: 1px solid var(--border); }
 
-        .project-header h3 {
-            font-size: 2rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.35rem 0.75rem; background: var(--bg-muted);
+  border: 1px solid var(--border); border-radius: 999px;
+  font-family: var(--font-mono); font-size: var(--step--2);
+  color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.08em;
+}
+.eyebrow .pulse {
+  width: 6px; height: 6px; background: var(--success); border-radius: 50%;
+  box-shadow: 0 0 12px var(--success); animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-        .project-tag {
-            background: var(--primary);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            margin-left: 1rem;
-            vertical-align: middle;
-        }
+.label {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.25rem 0.6rem; border-radius: 999px;
+  font-family: var(--font-mono); font-size: var(--step--2);
+  font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.label.brand   { background: oklch(from var(--brand) l c h / 0.15); color: var(--brand); border: 1px solid oklch(from var(--brand) l c h / 0.25); }
+.label.copper  { background: oklch(from var(--copper-500) l c h / 0.15); color: var(--copper-500); border: 1px solid oklch(from var(--copper-500) l c h / 0.25); }
+.label.success { background: oklch(from var(--success) l c h / 0.15); color: var(--success); border: 1px solid oklch(from var(--success) l c h / 0.25); }
 
-        .project-description {
-            font-size: 1.1rem;
-            color: var(--text-dim);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.6rem 1.1rem; border-radius: var(--radius);
+  font-weight: 500; font-size: var(--step--1);
+  background: var(--bg-muted); border: 1px solid var(--border);
+  transition: background 150ms, transform 150ms, border-color 150ms;
+}
+.btn:hover { background: var(--border); color: var(--fg); }
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--brand); color: var(--brand-fg); border-color: var(--brand); }
+.btn-primary:hover { background: oklch(from var(--brand) calc(l - 0.06) c h); color: var(--brand-fg); }
+.btn-ghost { background: transparent; }
 
-        /* --- Metrics Grid --- */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
+/* ============ HEADER ============ */
+header.site {
+  position: sticky; top: 0; z-index: 100;
+  backdrop-filter: blur(20px) saturate(180%);
+  background: light-dark(oklch(1 0 0 / 0.72), oklch(0.12 0.01 220 / 0.72));
+  border-bottom: 1px solid var(--border);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
+.logo { display: flex; align-items: center; gap: 0.7rem; font-weight: 700; font-size: var(--step-0); letter-spacing: -0.015em; }
+.logo-mark {
+  width: 34px; height: 34px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--copper-500) 100%);
+  display: grid; place-items: center; color: white;
+  font-family: var(--font-mono); font-weight: 700; font-size: 13px;
+}
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a { font-size: var(--step--1); color: var(--fg-muted); font-weight: 500; }
+.nav-links a:hover { color: var(--fg); }
+.nav-actions { display: flex; gap: 0.5rem; align-items: center; }
+@media (max-width: 900px) { .nav-links { display: none; } }
 
-        .metric {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 1.5rem;
-            border-radius: 16px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+/* ============ HERO ============ */
+#hero { position: relative; overflow: hidden; padding-block: clamp(4rem, 10vw, 8rem); }
+.hero-grid-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  opacity: 0.55; pointer-events: none;
+}
+.hero-orb {
+  position: absolute; border-radius: 50%; filter: blur(90px);
+  opacity: 0.32; pointer-events: none;
+  animation: orb-drift 22s ease-in-out infinite alternate;
+}
+.hero-orb.a { background: var(--brand); width: 460px; height: 460px; top: -120px; right: -100px; }
+.hero-orb.b { background: var(--copper-500); width: 380px; height: 380px; bottom: -120px; left: -80px; animation-delay: -8s; }
+@keyframes orb-drift { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(40px, -30px) scale(1.12); } }
 
-        .metric-value {
-            display: block;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #60a5fa;
-            /* Blue for metrics */
-            margin-bottom: 0.5rem;
-        }
+.hero-content {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 7fr 5fr;
+  gap: 3rem; align-items: center;
+}
+@media (max-width: 900px) { .hero-content { grid-template-columns: 1fr; gap: 2rem; } }
+.hero-text h1 {
+  font-size: clamp(2.3rem, 6.5vw, 4.5rem);
+  line-height: 1; letter-spacing: -0.04em; margin-bottom: 1.5rem;
+}
+.hero-text h1 .grad {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--copper-500) 70%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-text .sub { font-size: var(--step-1); color: var(--fg-muted); max-width: 50ch; margin-bottom: 0.5rem; }
+.hero-text .sub strong { color: var(--fg); font-weight: 600; }
+.hero-meta-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0 2rem; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.hero-quick-stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem; margin-top: 2.5rem;
+}
+.qs {
+  padding: 0.85rem 1rem;
+  background: light-dark(white, oklch(0.16 0.01 220 / 0.7));
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border); border-radius: var(--radius);
+}
+.qs-value { font-size: var(--step-2); font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.qs-label { font-family: var(--font-mono); font-size: var(--step--2); color: var(--fg-muted); margin-top: 0.1rem; text-transform: uppercase; letter-spacing: 0.05em; }
 
-        .metric.highlight .metric-value {
-            color: #34d399;
-            /* Green for highlight */
-        }
+.hero-portrait {
+  position: relative; border-radius: var(--radius-xl);
+  overflow: hidden; aspect-ratio: 4/5;
+  background: var(--bg-muted); border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+}
+.hero-portrait img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.05) saturate(0.92); }
+.hero-portrait::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, oklch(0.12 0.01 220 / 0.7) 100%);
+  pointer-events: none;
+}
+.portrait-badge {
+  position: absolute; bottom: 1rem; left: 1rem; right: 1rem;
+  display: flex; justify-content: space-between; align-items: end;
+  z-index: 2; color: white;
+}
+.portrait-badge .role {
+  font-family: var(--font-mono); font-size: var(--step--2);
+  background: oklch(0 0 0 / 0.5); backdrop-filter: blur(8px);
+  padding: 0.3rem 0.6rem; border-radius: var(--radius-sm);
+  border: 1px solid oklch(1 0 0 / 0.15);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
 
-        .metric-label {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+/* ============ SECTION HEAD ============ */
+.sec-head { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3.5rem; align-items: end; }
+@media (max-width: 900px) { .sec-head { grid-template-columns: 1fr; gap: 1.5rem; } }
+.sec-head-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.sec-num { font-family: var(--font-mono); font-size: var(--step--1); color: var(--fg-subtle); }
+.sec-title { font-size: var(--step-5); letter-spacing: -0.03em; }
+.sec-title .accent { color: var(--brand); }
+.sec-title .copper { color: var(--copper-500); }
+.sec-desc { color: var(--fg-muted); font-size: var(--step-0); }
 
-        /* --- Galleries --- */
-        .results-gallery h4,
-        .project-details h4 {
-            font-size: 1.3rem;
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
-            color: #e2e8f0;
-            border-left: 4px solid var(--accent);
-            padding-left: 1rem;
-        }
+/* ============ KPI ============ */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+@media (max-width: 900px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+.kpi {
+  padding: 1.25rem; background: var(--bg-elev);
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  position: relative; overflow: hidden;
+  transition: transform 250ms, border-color 250ms, box-shadow 250ms;
+}
+.kpi:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--brand); }
+.kpi-label { font-family: var(--font-mono); font-size: var(--step--2); color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+.kpi-value { font-size: var(--step-4); font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.03em; line-height: 1; }
+.kpi-value .unit { font-size: 0.55em; color: var(--fg-muted); font-weight: 500; margin-left: 0.15rem; }
+.kpi-desc { margin-top: 0.5rem; font-size: var(--step--1); color: var(--fg-muted); line-height: 1.4; }
+.kpi-mini-chart { position: absolute; right: 0; bottom: 0; height: 32px; width: 100px; opacity: 0.4; }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+/* ============ PROYECTOS BENTO ============ */
+.proj-bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
+.proj {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 1.5rem;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 250ms, border-color 250ms;
+  container-type: inline-size;
+}
+.proj:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--brand); }
+.proj.feature { grid-column: span 8; grid-row: span 2; min-height: 480px; }
+.proj.tall    { grid-column: span 4; grid-row: span 2; min-height: 480px; }
+.proj.wide    { grid-column: span 8; }
+.proj.thin    { grid-column: span 4; min-height: 240px; }
+.proj.half    { grid-column: span 6; }
+@media (max-width: 1100px) {
+  .proj.feature, .proj.wide { grid-column: span 12; min-height: auto; }
+  .proj.tall, .proj.thin, .proj.half { grid-column: span 12; min-height: auto; }
+}
+.proj-head { display: flex; justify-content: space-between; align-items: start; gap: 1rem; margin-bottom: 1rem; }
+.proj-title { font-size: var(--step-2); font-weight: 600; line-height: 1.15; }
+.proj-tag { font-family: var(--font-mono); font-size: var(--step--2); color: var(--fg-subtle); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+.proj-desc { color: var(--fg-muted); font-size: var(--step--1); line-height: 1.55; flex: 1; }
+.proj-metrics { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.metric-pill {
+  font-family: var(--font-mono); font-size: var(--step--2);
+  padding: 0.3rem 0.65rem; background: var(--bg);
+  border: 1px solid var(--border); border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+}
+.metric-pill strong { color: var(--brand); font-weight: 600; }
+.metric-pill.copper strong { color: var(--copper-500); }
+.metric-pill.success strong { color: var(--success); }
+.proj-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.85rem; }
+.tech-tag {
+  font-family: var(--font-mono); font-size: var(--step--2);
+  color: var(--fg-muted); background: var(--bg-muted);
+  padding: 0.18rem 0.55rem; border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+.proj-img-wrap {
+  margin-top: 1rem; border-radius: var(--radius);
+  overflow: hidden; border: 1px solid var(--border);
+  background: var(--bg); aspect-ratio: 16/9;
+}
+.proj-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.05); transition: transform 350ms; }
+.proj:hover .proj-img-wrap img { transform: scale(1.04); }
 
-        .gallery-item {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s;
-        }
+.proj.feature .proj-body { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; flex: 1; align-items: start; }
+@container (max-width: 540px) { .proj.feature .proj-body { grid-template-columns: 1fr; } }
+.proj.feature .proj-img-wrap { aspect-ratio: 4/3; margin-top: 0; height: 100%; }
 
-        .gallery-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
+.proj-applicability {
+  margin-top: 1rem; padding: 0.85rem 1rem;
+  background: oklch(from var(--copper-500) l c h / 0.08);
+  border: 1px solid oklch(from var(--copper-500) l c h / 0.25);
+  border-radius: var(--radius);
+  display: flex; gap: 0.65rem; align-items: start;
+}
+.proj-applicability svg { width: 18px; height: 18px; color: var(--copper-500); flex-shrink: 0; margin-top: 2px; }
+.proj-applicability .label-text {
+  font-family: var(--font-mono); font-size: var(--step--2);
+  color: var(--copper-500); text-transform: uppercase;
+  letter-spacing: 0.06em; font-weight: 600;
+  margin-bottom: 0.25rem; display: block;
+}
+.proj-applicability p { margin: 0; font-size: var(--step--1); color: var(--fg); }
 
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
+.proj-award {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.3rem 0.6rem;
+  background: oklch(from var(--copper-500) l c h / 0.15);
+  color: var(--copper-500);
+  border: 1px solid oklch(from var(--copper-500) l c h / 0.3);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono); font-size: var(--step--2);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  font-weight: 600; margin-bottom: 0.75rem;
+}
 
-        .gallery-item p {
-            padding: 1rem;
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            margin: 0;
-        }
+/* ============ NORMATIVA ============ */
+.norma-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+@media (max-width: 900px) { .norma-grid { grid-template-columns: 1fr; } }
+.norma-panel { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; }
+.norma-panel h3 { font-size: var(--step-1); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
+.norma-panel h3 svg { color: var(--brand); width: 22px; height: 22px; }
+.norma-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; }
+.norma-list li {
+  display: grid; grid-template-columns: auto 1fr; gap: 0.85rem;
+  align-items: start; padding: 0.55rem 0.7rem;
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+}
+.norma-code {
+  font-family: var(--font-mono); font-size: var(--step--1);
+  color: var(--brand); font-weight: 600;
+  background: oklch(from var(--brand) l c h / 0.1);
+  padding: 0.25rem 0.55rem; border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+.norma-desc { font-size: var(--step--1); color: var(--fg-muted); line-height: 1.45; }
 
-        /* --- New Compact Projects --- */
-        .new-projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+/* ============ STACK ============ */
+.stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+.stack-card { padding: 1.25rem; background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-lg); transition: border-color 200ms, transform 200ms; }
+.stack-card:hover { border-color: var(--brand); transform: translateY(-2px); }
+.stack-card h4 { font-size: var(--step-0); font-weight: 600; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+.stack-card h4 svg { color: var(--brand); width: 18px; height: 18px; }
+.stack-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 
-        .compact-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s;
-        }
+/* ============ TIMELINE ============ */
+.timeline { position: relative; }
+.timeline::before {
+  content: ''; position: absolute;
+  left: 14px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--brand), transparent);
+}
+.exp { position: relative; padding-left: 3rem; padding-bottom: 2.25rem; }
+.exp::before {
+  content: ''; position: absolute;
+  left: 7px; top: 6px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--bg); border: 3px solid var(--brand);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+.exp-meta { font-family: var(--font-mono); font-size: var(--step--2); color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.35rem; }
+.exp-title { font-size: var(--step-1); font-weight: 600; }
+.exp-org { margin-top: 0.25rem; color: var(--brand); font-size: var(--step-0); font-weight: 500; }
+.exp-bullets { margin-top: 0.75rem; list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+.exp-bullets li { position: relative; padding-left: 1.1rem; font-size: var(--step--1); color: var(--fg-muted); line-height: 1.55; }
+.exp-bullets li::before { content: '→'; position: absolute; left: 0; top: 0; color: var(--brand); font-family: var(--font-mono); }
+.exp-bullets li strong { color: var(--fg); font-weight: 600; }
 
-        .compact-card:hover {
-            transform: translateY(-5px);
-        }
+/* ============ AWARDS ============ */
+.awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.85rem; }
+.award {
+  padding: 1rem 1.15rem; background: var(--bg-elev);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  display: flex; align-items: start; gap: 0.85rem;
+  transition: border-color 200ms, transform 200ms;
+}
+.award:hover { border-color: var(--copper-500); transform: translateY(-2px); }
+.award-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  background: oklch(from var(--copper-500) l c h / 0.15);
+  display: grid; place-items: center; color: var(--copper-500);
+}
+.award-icon svg { width: 18px; height: 18px; }
+.award-body { flex: 1; }
+.award-title { font-size: var(--step--1); font-weight: 600; line-height: 1.3; }
+.award-sub { font-family: var(--font-mono); font-size: var(--step--2); color: var(--fg-subtle); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
 
-        .compact-header {
-            height: 160px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
+/* ============ CTA ============ */
+.cta-card {
+  background: linear-gradient(135deg, oklch(from var(--brand) l c h / 0.08) 0%, oklch(from var(--copper-500) l c h / 0.08) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 5vw, 4rem);
+  display: grid; grid-template-columns: 7fr 5fr;
+  gap: 3rem; align-items: center;
+}
+@media (max-width: 900px) { .cta-card { grid-template-columns: 1fr; gap: 2rem; } }
+.cta-card h2 { font-size: var(--step-4); margin-bottom: 1rem; }
+.cta-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.cta-item {
+  display: flex; align-items: center; gap: 0.85rem;
+  padding: 0.85rem 1rem; background: var(--bg-elev);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  transition: border-color 150ms, transform 150ms;
+}
+.cta-item:hover { border-color: var(--brand); transform: translateX(4px); }
+.cta-item svg { width: 20px; height: 20px; color: var(--brand); flex-shrink: 0; }
+.cta-item-info { flex: 1; line-height: 1.2; }
+.cta-item-label { font-family: var(--font-mono); font-size: var(--step--2); color: var(--fg-subtle); text-transform: uppercase; letter-spacing: 0.05em; }
+.cta-item-value { font-size: var(--step-0); font-weight: 500; }
 
-        .compact-body {
-            padding: 1.5rem;
-        }
+/* ============ FOOTER ============ */
+footer.site { border-top: 1px solid var(--border); padding: 3rem 0 2rem; background: var(--bg-elev); }
+.footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-family: var(--font-mono); font-size: var(--step--2); color: var(--fg-subtle); }
+.footer-social { display: flex; gap: 0.6rem; }
+.footer-social a {
+  width: 36px; height: 36px; display: grid; place-items: center;
+  background: var(--bg-muted); border: 1px solid var(--border);
+  border-radius: var(--radius); color: var(--fg-muted);
+  transition: all 150ms;
+}
+.footer-social a:hover { background: var(--brand); border-color: var(--brand); color: var(--brand-fg); }
 
-        .compact-body h3 {
-            margin-top: 0;
-            color: var(--text-light);
-        }
+/* ============ SCROLL REVEAL ============ */
+.reveal { opacity: 0; transform: translateY(20px); animation: reveal-in linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
+@keyframes reveal-in { to { opacity: 1; transform: translateY(0); } }
 
-        .card-tech {
-            margin-top: 1rem;
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tech-tag {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-dim);
-            padding: 0.25rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-        }
-
-        /* --- Tech Marquee --- */
-        .tech-marquee {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 2rem 0;
-            margin: 0;
-            overflow: hidden;
-            white-space: nowrap;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .marquee-content {
-            display: inline-block;
-            animation: scroll 30s linear infinite;
-        }
-
-        .tech-icon {
-            font-size: 1.5rem;
-            color: var(--text-dim);
-            margin: 0 2rem;
-            font-weight: 500;
-        }
-
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        /* --- Timeline (Experience) --- */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline-item {
-            padding-left: 3rem;
-            border-left: 2px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            margin-bottom: 3rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -9px;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            background: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent);
-        }
-
-        .timeline-date {
-            font-size: 0.9rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .timeline-content h4 {
-            color: var(--text-light);
-            margin: 0 0 0.5rem 0;
-            font-size: 1.2rem;
-        }
-
-        .timeline-company {
-            color: var(--text-dim);
-            margin-bottom: 1rem;
-        }
-
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text-dim);
-            background: #020617;
-        }
-
-        .footer-icons a {
-            color: var(--text-light);
-            margin: 0 1rem;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        .footer-icons a:hover {
-            color: var(--accent);
-        }
-
-        /* Contact Grid */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 16px;
-            text-align: center;
-            text-decoration: none;
-            color: var(--text-light);
-            transition: transform 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-    </style>
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 5px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--fg-subtle); }
+</style>
 </head>
-
 <body>
 
-    <!-- Hero Section (New 3D Design) -->
-    <header class="hero">
-        <div class="hero-content">
-            <img src="assets/images/profile_v2.jpg" alt="Emanuel Ancco" class="profile-img">
-            <div class="badge">Ingeniero Civil + Investigador I+D</div>
-            <h1>Emanuel Ancco</h1>
-            <p
-                style="font-size: 1.25rem; color: var(--text-dim); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                Fusionando ingeniería estructural y física con IA Avanzada, GNNs y Hardware Reconfigurable.
-            </p>
-            <div style="display: flex; gap: 1rem; justify-content: center;">
-                <a href="#proyectos"
-                    style="background: var(--primary); color: white; padding: 0.75rem 2rem; border-radius: 12px; text-decoration: none; font-weight: 600;">Ver
-                    Proyectos</a>
-                <a href="mailto:coarp.eancco@gmail.com"
-                    style="background: rgba(255,255,255,0.1); color: white; padding: 0.75rem 2rem; border-radius: 12px; text-decoration: none; font-weight: 600;">Contactar</a>
-            </div>
-        </div>
-    </header>
+<a href="#main" class="skip-link">Saltar al contenido</a>
 
-    <!-- Marquee Skills (New) -->
-    <div class="tech-marquee">
-        <div class="marquee-content">
-            <span class="tech-icon">Python</span>
-            <span class="tech-icon">PyTorch Geometric</span>
-            <span class="tech-icon">Revit API (C#)</span>
-            <span class="tech-icon">FPGA (Verilog)</span>
-            <span class="tech-icon">YOLOv8</span>
-            <span class="tech-icon">Three.js</span>
-            <span class="tech-icon">Monte Carlo</span>
-            <span class="tech-icon">HP PPL</span>
-            <!-- Repetir -->
-            <span class="tech-icon">Python</span>
-            <span class="tech-icon">PyTorch Geometric</span>
-            <span class="tech-icon">Revit API (C#)</span>
-            <span class="tech-icon">FPGA (Verilog)</span>
-            <span class="tech-icon">YOLOv8</span>
-        </div>
+<header class="site">
+  <div class="container nav">
+    <a href="#" class="logo" aria-label="Emanuel Ancco">
+      <span class="logo-mark">EA</span>
+      <span>Emanuel Ancco<span style="color: var(--fg-muted); font-weight: 400;"> · IA para Minería</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#normativa">Normativa</a>
+      <a href="#stack">Stack</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#reconocimientos">Reconocimientos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="CV_Las_Bambas_Innovadores_2026.pdf" class="btn btn-primary" download>
+        <i data-lucide="download"></i> CV PDF
+      </a>
+      <button class="btn btn-ghost" id="theme-toggle" aria-label="Cambiar tema">
+        <i data-lucide="moon-star" id="theme-icon"></i>
+      </button>
     </div>
+  </div>
+</header>
 
-    <!-- About Section (Legacy Content) -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">Sobre Mí</h2>
-            <div class="about-content"
-                style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-dim); font-size: 1.1rem;">
-                <p>Egresado de <strong>Ingeniería Civil de la Universidad Peruana de Ciencias Aplicadas (UPC)</strong>
-                    con especialización en Inteligencia Artificial y desarrollo de software aplicado a la industria de
-                    la construcción.</p>
-                <p>Mi enfoque combina el conocimiento tradicional de ingeniería estructural con herramientas modernas de
-                    Machine Learning para optimizar procesos, mejorar la seguridad y automatizar flujos de trabajo BIM.
-                </p>
+<main id="main">
 
-                <div class="skills-grid"
-                    style="display: flex; justify-content: center; gap: 2rem; margin-top: 3rem; flex-wrap: wrap;">
-                    <!-- Skills will auto-stack -->
-                </div>
+  <section id="hero">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="hero-orb a" aria-hidden="true"></div>
+    <div class="hero-orb b" aria-hidden="true"></div>
 
-                <div class="tech-stack-image" style="margin-top: 4rem; text-align: center;">
-                    <img src="assets/images/skills_tech_stack.png" alt="Technical Skills"
-                        style="max-width: 100%; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
-                </div>
-            </div>
-    </section>
+    <div class="container hero-content">
+      <div class="hero-text">
+        <span class="eyebrow">
+          <span class="pulse"></span>
+          Disponible · Innovadores en Acción 2026 · Talentos de Cobre
+        </span>
 
-    <!-- Projects Section (ORIGINAL CONTENT PRESERVED) -->
-    <section id="proyectos" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Proyectos Destacados (Deep Learning & BIM)</h2>
+        <h1 style="margin-top: 1.25rem;">
+          IA aplicada a<br>
+          <span class="grad">seguridad operacional</span><br>
+          y monitoreo industrial.
+        </h1>
 
-            <!-- Project 1: GAIATECH -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>🧠 GAIATECH SHM</h3>
-                    <span class="project-tag">Machine Learning</span>
-                </div>
-                <p class="project-description">Sistema de <strong>Monitoreo de Salud Estructural</strong> basado en IA
-                    para detección de anomalías en puentes usando datos de acelerómetros y redes neuronales de grafos.
-                </p>
+        <p class="sub">
+          <strong>Bachiller en Ingeniería Civil (UPC)</strong> +
+          <strong>AI Automation Engineer en gen+</strong>. Construyo soluciones
+          end-to-end: visión computacional, agentes IA, hardware de borde y
+          dashboards en producción — con foco en minería peruana.
+        </p>
 
-                <div class="metrics-grid">
-                    <div class="metric">
-                        <span class="metric-value">4</span>
-                        <span class="metric-label">Modelos Entrenados</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">0.0064</span>
-                        <span class="metric-label">Best Val Loss</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">5.1M</span>
-                        <span class="metric-label">Parámetros</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">PINN-GNN</span>
-                        <span class="metric-label">Arquitectura</span>
-                    </div>
-                </div>
-
-                <div class="project-details">
-                    <h4>Innovación Técnica</h4>
-                    <ul style="color: var(--text-dim);">
-                        <li>Arquitectura <strong>Spatio-Temporal Graph Autoencoder (STG-AE)</strong> con GRU y GCN</li>
-                        <li>Grafo <strong>físicamente informado</strong> basado en geometría 3D real del puente</li>
-                        <li>Features extraídas con <strong>Discrete Wavelet Transform (DWT)</strong></li>
-                        <li>Entrenado con datos de 5 sensores de acelerometría</li>
-                    </ul>
-                </div>
-
-                <div class="results-gallery">
-                    <h4>📊 Análisis de Señales - Wavelets</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="assets/images/GRAPHOS/Fig1-1_wavelet_decomposition_visible.png"
-                                alt="Wavelet Decomposition">
-                            <p>Descomposición Wavelet Multinivel</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/GRAPHOS/Fig1-2_spectral_analysis_clear.png" alt="Spectral Analysis">
-                            <p>Análisis Espectral de Sensores</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="results-gallery">
-                    <h4>🔗 Topología de Grafos</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="assets/images/GRAPHOS/Fig1-3_graph_comparison_NOTORIO.png" alt="Graph Topology">
-                            <p>Comparación de Topologías: Completa vs Física</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/GRAPHOS/figure_2_graph_topology.png" alt="Physical Graph">
-                            <p>Grafo Físicamente Informado del Puente</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="results-gallery">
-                    <h4>📈 Comparación de Modelos</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="assets/images/GRAPHOS/2_1_All_Models_Loss_Curves.png" alt="Loss Curves">
-                            <p>Curvas de Pérdida - 4 Modelos</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/GRAPHOS/Figure_3_Performance_Bar.png" alt="Performance Comparison">
-                            <p>Comparación de Rendimiento</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="results-gallery">
-                    <h4>🧪 Análisis Avanzado</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="assets/images/GRAPHOS/Fig1-4_scalogram_cwt.png" alt="Scalogram CWT">
-                            <p>Escalograma CWT - Análisis Tiempo-Frecuencia</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/GRAPHOS/figure_7_dwt_energy_analysis.png" alt="DWT Energy">
-                            <p>Análisis de Energía por Bandas DWT</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 2: EMARC VISION -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>👷 EMARC VISIÓN</h3>
-                    <span class="project-tag">Computer Vision</span>
-                </div>
-                <p class="project-description">Sistema de <strong>visión por computadora</strong> para verificación
-                    automática del uso de Equipos de Protección Personal (EPP) en obras de construcción, cumpliendo la
-                    Norma G.050.</p>
-
-                <div class="metrics-grid">
-                    <div class="metric highlight">
-                        <span class="metric-value">90.7%</span>
-                        <span class="metric-label">mAP@0.5</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">11</span>
-                        <span class="metric-label">Clases Detectadas</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">94%</span>
-                        <span class="metric-label">Precisión Cascos</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">YOLOv8</span>
-                        <span class="metric-label">Framework</span>
-                    </div>
-                </div>
-
-                <div class="project-details">
-                    <h4>Clases Detectadas</h4>
-                    <div class="tags-container">
-                        <span class="tag">🪖 Casco</span>
-                        <span class="tag">🦺 Chaleco</span>
-                        <span class="tag">🧤 Guantes</span>
-                        <span class="tag">👓 Gafas</span>
-                        <span class="tag">👢 Botas</span>
-                        <span class="tag">🎭 Mascarilla</span>
-                        <span class="tag tag-warning">❌ Sin Casco</span>
-                        <span class="tag tag-warning">❌ Sin Chaleco</span>
-                        <span class="tag tag-warning">❌ Sin Mascarilla</span>
-                    </div>
-                </div>
-
-                <div class="results-gallery">
-                    <h4>📊 Evidencia Cuantitativa</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="assets/images/BoxPR_curve.png" alt="Curva Precisión-Recall">
-                            <p>Curva Precisión-Recall (mAP 90.4%)</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/confusion_matrix_normalized.png" alt="Matriz de Confusión">
-                            <p>Matriz de Confusión Normalizada</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="results-gallery">
-                    <h4>📈 Proceso de Aprendizaje</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="assets/images/results.png" alt="Curvas de Entrenamiento">
-                            <p>Curvas de Entrenamiento</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/labels.jpg" alt="Análisis del Dataset">
-                            <p>Análisis del Dataset</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="results-gallery">
-                    <h4>🖥️ Validación Funcional</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="assets/images/prueba1.png" alt="Interfaz en Acción">
-                            <p>Interfaz del Sistema en Acción</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="results-gallery">
-                    <h4>🏗️ Resultados en Campo</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="assets/images/resultado_1.png" alt="Detección en grupo">
-                            <p>Detección en grupo</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/resultado_2.png" alt="Ausencia de EPP">
-                            <p>Detección de ausencia de EPP</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/resultado_8.png" alt="Diferentes ángulos">
-                            <p>Detección en diferentes ángulos</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="results-gallery">
-                    <h4>🎥 Demostración en Video</h4>
-                    <div class="video-container" style="display: flex; justify-content: center; margin: 1rem 0;">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/K500tgJHRiY"
-                            title="EMARC VISIÓN Demo" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen style="border-radius: 12px; max-width: 100%;">
-                        </iframe>
-                    </div>
-                    <p style="text-align: center; color: var(--text-light);">Primera prueba de funcionamiento del
-                        sistema</p>
-                </div>
-
-                <div class="results-gallery">
-                    <h4>🔐 Control de Acceso</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="assets/images/detecciónfacial.png" alt="Detección Facial">
-                            <p>Control de Acceso por Detección Facial</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3: EMARC BIM Suite -->
-            <div class="project-card" style="border: 2px solid #10b981;">
-                <div class="project-header">
-                    <h3>🏗️ EMARC BIM SUITE</h3>
-                    <span class="project-tag" style="background: linear-gradient(135deg, #10b981, #059669);">Revit
-                        Automation</span>
-                </div>
-                <p class="project-description">
-                    <strong>Suite profesional de automatización BIM</strong> para Autodesk Revit 2026.
-                    Desarrollo propio que reduce horas de trabajo manual a minutos, optimizando flujos de trabajo
-                    en diseño estructural, coordinación y documentación.
-                </p>
-
-                <div class="metrics-grid">
-                    <div class="metric highlight">
-                        <span class="metric-value">20+</span>
-                        <span class="metric-label">Comandos</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">3</span>
-                        <span class="metric-label">Plugins</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">C#</span>
-                        <span class="metric-label">.NET 4.8</span>
-                    </div>
-                    <div class="metric">
-                        <span class="metric-value">∞</span>
-                        <span class="metric-label">Horas Ahorradas</span>
-                    </div>
-                </div>
-
-                <div class="plugins-grid"
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
-                    <div class="plugin-card"
-                        style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px;">
-                        <h4 style="color: #60a5fa;">🔗 SAPtoRevit</h4>
-                        <p style="color: var(--text-dim);"><strong>Integración SAP2000/ETABS → Revit</strong></p>
-                        <ul style="color: var(--text-dim); padding-left: 1.2rem;">
-                            <li>Importación automática de vigas y columnas</li>
-                            <li>Losas con pendientes variables (SlabShapeEditor)</li>
-                            <li>Mapeo inteligente de secciones y familias</li>
-                            <li>Creación automática de niveles</li>
-                        </ul>
-                    </div>
-                    <div class="plugin-card"
-                        style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px;">
-                        <h4 style="color: #60a5fa;">🔧 EMARC Structural</h4>
-                        <p style="color: var(--text-dim);"><strong>Automatización de Armado Estructural</strong></p>
-                        <ul style="color: var(--text-dim); padding-left: 1.2rem;">
-                            <li>Armado de vigas con zonas de confinamiento</li>
-                            <li>Armado de columnas y zapatas</li>
-                            <li>Losas aligeradas y bidireccionales</li>
-                            <li>Detección de interferencias (Clash Detection)</li>
-                        </ul>
-                    </div>
-                    <div class="plugin-card"
-                        style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px;">
-                        <h4 style="color: #60a5fa;">📐 AutoCAD ↔ Revit</h4>
-                        <p style="color: var(--text-dim);"><strong>Interoperabilidad CAD-BIM</strong></p>
-                        <ul style="color: var(--text-dim); padding-left: 1.2rem;">
-                            <li>Polilíneas DWG → Familias de columna</li>
-                            <li>Exportar geometría a JSON desde AutoCAD</li>
-                            <li>Importar JSON → Familias estructurales</li>
-                            <li>Automatización de secciones personalizadas</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="project-details">
-                    <h4>⚡ Funcionalidades Destacadas</h4>
-                    <div class="tags-container">
-                        <span class="tag">📊 Export Schedules → Excel</span>
-                        <span class="tag">🏠 Crear Habitaciones Auto</span>
-                        <span class="tag">🎨 Acabados Automáticos</span>
-                        <span class="tag">📐 Ejes/Rejillas Auto</span>
-                        <span class="tag">🧱 Tabiquería desde Líneas</span>
-                        <span class="tag">🔍 IA Coordinador</span>
-                    </div>
-                </div>
-
-                <div class="results-gallery">
-                    <h4>📸 Capturas del Sistema</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="assets/images/revit/plugin sap2000-ETABS to REVIT.png" alt="SAP2000 to Revit">
-                            <p>SAP2000/ETABS → Revit</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/revit/plugin vigas.png" alt="Plugin Vigas">
-                            <p>Armado de Vigas</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/revit/plugin columnas/columnas L, cruz, rectangulares.png"
-                                alt="Plugin Columnas">
-                            <p>Columnas (L, Cruz, Rectangulares)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="results-gallery">
-                    <h4>🏗️ Más Herramientas</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="assets/images/revit/plugin zapatas.png" alt="Plugin Zapatas">
-                            <p>Armado de Zapatas</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/revit/plugin losas.png" alt="Plugin Losas">
-                            <p>Losas Aligeradas</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/revit/plugin bidireccional.png" alt="Losa Bidireccional">
-                            <p>Losas Bidireccionales</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="results-gallery">
-                    <h4>🎨 Herramientas Arquitectónicas</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="assets/images/revit/plugin acabados.png" alt="Plugin Acabados">
-                            <p>Acabados Automáticos</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/revit/plugin constructor de habitaciones.png"
-                                alt="Constructor Habitaciones">
-                            <p>Constructor de Habitaciones</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/revit/plugin autocad to revit familias.png" alt="AutoCAD to Revit">
-                            <p>AutoCAD → Familias Revit</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="results-gallery">
-                    <h4>🏛️ Proyecto Aplicado: Teatro Municipal de Yunguyo</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="assets/images/revit/modelado teatro/teatro.png" alt="Teatro Yunguyo">
-                            <p>Modelo Estructural Completo</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/revit/modelado teatro/aceros revit .png" alt="Aceros Teatro">
-                            <p>Armado de Acero Estructural</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="assets/images/revit/saptorevit/cobertura6.png" alt="Cobertura Teatro">
-                            <p>Cobertura con Pendientes (SAP→Revit)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <div class="hero-meta-row">
+          <span class="label brand">📍 Puno / Lima</span>
+          <span class="label copper">⛏ Sierra +4,000 msnm</span>
+          <span class="label success">14×7 / 10×10</span>
+          <span class="label">Español · Inglés intermedio</span>
         </div>
-    </section>
 
-    <!-- NEW PROJECTS SECTION (Added below preservation area) -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Otros Desarrollos e Innovación</h2>
-
-            <div class="new-projects-grid">
-
-                <!-- GAIATECH Gestor Archivos -->
-                <div class="compact-card"
-                    style="border: 1px solid rgba(99, 102, 241, 0.3); box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);">
-                    <div class="compact-header"
-                        style="height: 200px; padding: 0; position: relative; overflow: hidden; background: #0f172a;">
-                        <img src="assets/images/gaiatech-app.png" alt="GAIATECH Gestor IA"
-                            style="width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: opacity 0.3s ease;"
-                            onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">
-                        <div
-                            style="position: absolute; bottom: 10px; right: 10px; background: rgba(30, 27, 75, 0.9); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(99,102,241,0.5);">
-                            <i class="fas fa-folder-tree" style="font-size: 1.5rem; color: #818cf8;"></i>
-                        </div>
-                    </div>
-                    <div class="compact-body">
-                        <h3>🌌 GAIATECH | Gestor IA</h3>
-                        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
-                            Plataforma de escritorio (CustomTkinter) supervitaminada con Gemini 2.5 Flash, capaz de
-                            auto-organizar archivos locales, realizar OCR en documentos y actuar como un agente de
-                            sistema operativo nativo (Auto-Organización Watchdog).
-                        </p>
-                        <div class="card-tech">
-                            <span class="tech-tag">Python CLI/GUI</span>
-                            <span class="tech-tag">GenAI SDK</span>
-                            <span class="tech-tag">Agentic OS</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Clawdbot / AI Chatbots -->
-                <div class="compact-card"
-                    style="border: 1px solid rgba(16, 185, 129, 0.3); box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);">
-                    <div class="compact-header"
-                        style="background: linear-gradient(135deg, #064e3b, #047857); display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-robot" style="font-size: 4rem; color: rgba(255,255,255,0.8);"></i>
-                    </div>
-                    <div class="compact-body">
-                        <h3>💬 Clawdbot & Agentes Sociales</h3>
-                        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
-                            Desarrollo avanzado de asistentes virtuales para Instagram DMs (Manychat + Python). Gestión
-                            inteligente de reservas, FAQs, y derivación de leads usando prompts especializados y RAG.
-                        </p>
-                        <div class="card-tech">
-                            <span class="tech-tag">Manychat</span>
-                            <span class="tech-tag">Claude/GPT</span>
-                            <span class="tech-tag">Social API</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Python Automation Scripts -->
-                <div class="compact-card"
-                    style="border: 1px solid rgba(234, 179, 8, 0.3); box-shadow: 0 0 20px rgba(234, 179, 8, 0.1);">
-                    <div class="compact-header"
-                        style="background: linear-gradient(135deg, #713f12, #a16207); display: flex; align-items: center; justify-content: center;">
-                        <i class="fab fa-python" style="font-size: 4rem; color: rgba(255,255,255,0.8);"></i>
-                    </div>
-                    <div class="compact-body">
-                        <h3>🐍 Scripts de Automatización</h3>
-                        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
-                            Colección de utilidades críticas corporativas: scrappers masivos de licitaciones (SEACE),
-                            validadores documentales, extracción de facturas y organizadores automatizados para control
-                            de calidad.
-                        </p>
-                        <div class="card-tech">
-                            <span class="tech-tag">Python Scripts</span>
-                            <span class="tech-tag">Scraping</span>
-                            <span class="tech-tag">File IO</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- n8n Automation -->
-                <div class="compact-card"
-                    style="border: 1px solid rgba(249, 115, 22, 0.3); box-shadow: 0 0 20px rgba(249, 115, 22, 0.1);">
-                    <div class="compact-header"
-                        style="background: linear-gradient(135deg, #f97316, #ea580c); display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-network-wired" style="font-size: 4rem; color: rgba(255,255,255,0.8);"></i>
-                    </div>
-                    <div class="compact-body">
-                        <h3>⚙️ Automatización Avanzada (n8n & IA)</h3>
-                        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
-                            Arquitectura e implementación de flujos de trabajo complejos (workflows) para la
-                            orquestación de agentes inteligentes, integrando Modelos de Lenguaje (LLMs) y APIs
-                            empresariales (Notion).
-                        </p>
-
-                        <!-- Video Demo -->
-                        <div
-                            style="margin: 1rem 0; border-radius: 12px; overflow: hidden; position: relative; padding-bottom: 56.25%; height: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-                            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                                src="https://www.youtube.com/embed/uqNimzK01M8" title="n8n Workflow Automation"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
-
-                        <div class="card-tech">
-                            <span class="tech-tag">n8n</span>
-                            <span class="tech-tag">Notion API</span>
-                            <span class="tech-tag">LLM Agents</span>
-                            <span class="tech-tag">Workflow Automation</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Suite Tuberías -->
-                <div class="compact-card">
-                    <div class="compact-header"
-                        style="background-image: url('assets/images/tuberias-interfaz-final.png'); background-color: #f1f5f9; background-size: cover; background-position: center;">
-                    </div>
-                    <div class="compact-body">
-                        <h3>🚰 Suite Tuberías TGD</h3>
-                        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
-                            Plataforma integral (v1/v2) para análisis sísmico de tuberías. Combina diseño determinista
-                            con gráficos polares y simulación probabilística (Monte Carlo).
-                        </p>
-                        <!-- Mini Gallery Tuberías -->
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem;">
-                            <img src="assets/images/tuberias-calculo-tramos.png" alt="Cálculo Tramos"
-                                style="width: 100%; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">
-                            <img src="assets/images/tuberias-imagen1.png" alt="Análisis Tubería"
-                                style="width: 100%; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">
-                        </div>
-
-                        <div class="card-tech">
-                            <span class="tech-tag">SciPy</span>
-                            <span class="tech-tag">Matplotlib 3D</span>
-                            <span class="tech-tag">Reliability</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PachaGuard (Unchanged) -->
-                <div class="compact-card">
-                    <div class="compact-header"
-                        style="background: linear-gradient(135deg, #6366f1, #a855f7); display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-microchip" style="font-size: 4rem; color: rgba(255,255,255,0.8);"></i>
-                    </div>
-                    <div class="compact-body">
-                        <h3>🦅 PachaGuard IoT & Seismic</h3>
-                        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
-                            Hardware Reconfigurable (FPGA) para doble propósito: <strong>Vigilancia Autónoma</strong>
-                            (Edge AI) y <strong>Monitoreo de Aceleraciones Sísmicas</strong> en tiempo real.
-                        </p>
-
-                        <!-- Video Demo -->
-                        <div
-                            style="margin: 1rem 0; border-radius: 12px; overflow: hidden; position: relative; padding-bottom: 56.25%; height: 0;">
-                            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                                src="https://www.youtube.com/embed/YuHDxx74Gqk" title="FPGA Seismic Simulation"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
-
-                        <div class="card-tech">
-                            <span class="tech-tag">Verilog</span>
-                            <span class="tech-tag">Tang Nano 1K</span>
-                            <span class="tech-tag">Seismic Sensors</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- EMAIRC HIDRA -->
-                <div class="compact-card">
-                    <div class="compact-header"
-                        style="background-image: url('assets/images/hp-prime-grafico.png'); background-color: #0f172a; background-size: cover; background-position: center;">
-                    </div>
-                    <div class="compact-body">
-                        <h3>📟 EMAIRC HIDRA (HP Prime)</h3>
-                        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
-                            Software profesional para HP Prime escrito en PPL. Algoritmos robustos (Secante,
-                            Standard Step) para cálculo de curvas de remanso y perfiles hidráulicos complejos.
-                        </p>
-                        <!-- Mini Gallery HP Prime -->
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem;">
-                            <img src="assets/images/hp-prime-tabla.png" alt="Tabla Cálculos"
-                                style="width: 100%; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">
-                            <img src="assets/images/hp-prime-integracion.png" alt="Integración Gráfica"
-                                style="width: 100%; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">
-                        </div>
-
-                        <div class="card-tech">
-                            <span class="tech-tag">HP PPL</span>
-                            <span class="tech-tag">Pascal</span>
-                            <span class="tech-tag">Hydraulics</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Archon -->
-                <div class="compact-card">
-                    <div class="compact-header"
-                        style="background: linear-gradient(135deg, #10b981, #3b82f6); display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-robot" style="font-size: 4rem; color: rgba(255,255,255,0.8);"></i>
-                    </div>
-                    <div class="compact-body">
-                        <h3>🤖 Archon Assistant</h3>
-                        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 1rem 0;">
-                            Asistente de voz avanzado con motor OpenAI (GPT). Integración de reconocimiento de voz y
-                            síntesis TTS para interacción natural en tareas de ingeniería.
-                        </p>
-                        <div class="card-tech">
-                            <span class="tech-tag">OpenAI API</span>
-                            <span class="tech-tag">Python Speech</span>
-                            <span class="tech-tag">Voice Automation</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="hero-cta">
+          <a href="#proyectos" class="btn btn-primary">
+            Ver evidencia técnica <i data-lucide="arrow-right"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352" class="btn" target="_blank" rel="noopener">
+            <i data-lucide="linkedin"></i> LinkedIn
+          </a>
+          <a href="mailto:coarp.eancco@gmail.com" class="btn">
+            <i data-lucide="mail"></i> Email
+          </a>
         </div>
-    </section>
 
-    <!-- MCP & n8n Ecosystem Section -->
-    <section id="ecosistema" class="section section-dark"
-        style="background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, #020617 80%); border-top: 1px solid rgba(99, 102, 241, 0.2);">
-        <div class="container">
-            <h2 class="section-title"
-                style="background: linear-gradient(to right, #818cf8, #c084fc); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
-                🌐 Arquitectura Agentic & Ecosistema MCP</h2>
-            <p
-                style="text-align: center; color: var(--text-dim); max-width: 900px; margin: 0 auto 3rem auto; font-size: 1.1rem;">
-                Integración profunda usando el estándar <strong>Model Context Protocol (MCP)</strong>. Conexión directa
-                del cerebro lógico (Claude 3.5 Sonnet) con servidores MCP especializados para dominar herramientas de
-                Ingeniería (Revit, SAP2000), Desarrollo de Videojuegos (Unity), y Automatización (n8n, Notion, Local
-                OS).
+        <div class="hero-quick-stats">
+          <div class="qs">
+            <div class="qs-value">87.67<span class="unit">%</span></div>
+            <div class="qs-label">mAP YOLOv8 EPP</div>
+          </div>
+          <div class="qs">
+            <div class="qs-value">38<span class="unit"> FPS</span></div>
+            <div class="qs-label">Jetson Orin Nano</div>
+          </div>
+          <div class="qs">
+            <div class="qs-value">0.961</div>
+            <div class="qs-label">F1 LSTM-AE VIGÍA</div>
+          </div>
+          <div class="qs">
+            <div class="qs-value">0.998</div>
+            <div class="qs-label">R² MISM-GNN</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-portrait">
+        <img src="assets/images/profile_v2.jpg" alt="Foto de Emanuel Ancco" loading="eager" decoding="sync" fetchpriority="high">
+        <div class="portrait-badge">
+          <span class="role">AI Automation Engineer · gen+</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kpis">
+    <div class="container">
+      <header class="sec-head">
+        <div>
+          <div class="sec-head-meta">
+            <span class="sec-num">— 01 / 07</span>
+            <span class="label brand">Resultados duros</span>
+          </div>
+          <h2 class="sec-title">Métricas en <span class="accent">producción</span>, no en slides.</h2>
+        </div>
+        <p class="sec-desc">
+          Modelos entrenados con datasets propios, desplegados en hardware de
+          borde, midiendo en obra. Cada cifra es trazable a un experimento,
+          repositorio o demo.
+        </p>
+      </header>
+
+      <div class="kpi-grid">
+        <div class="kpi reveal">
+          <div class="kpi-label">EPP Detection · mAP@50</div>
+          <div class="kpi-value">87.67<span class="unit">%</span></div>
+          <div class="kpi-desc">YOLOv8 · 11 clases · Jetson Orin Nano Super INT8</div>
+          <svg class="kpi-mini-chart" viewBox="0 0 100 32" preserveAspectRatio="none">
+            <polyline fill="none" stroke="oklch(0.55 0.16 220)" stroke-width="1.5" points="0,28 12,24 24,20 36,18 48,14 60,10 72,8 84,6 100,4"/>
+          </svg>
+        </div>
+        <div class="kpi reveal">
+          <div class="kpi-label">VIGÍA · F1 LSTM-AE</div>
+          <div class="kpi-value">0.961</div>
+          <div class="kpi-desc">FFT en FPGA Gowin GW1NR-9 · alerta <2s</div>
+          <svg class="kpi-mini-chart" viewBox="0 0 100 32" preserveAspectRatio="none">
+            <polyline fill="none" stroke="oklch(0.65 0.16 55)" stroke-width="1.5" points="0,26 14,18 28,22 42,12 56,8 70,10 84,5 100,4"/>
+          </svg>
+        </div>
+        <div class="kpi reveal">
+          <div class="kpi-label">MISM-GNN · R² Junín</div>
+          <div class="kpi-value">0.998</div>
+          <div class="kpi-desc">65× menos parámetros que FFNN equivalente</div>
+          <svg class="kpi-mini-chart" viewBox="0 0 100 32" preserveAspectRatio="none">
+            <polyline fill="none" stroke="oklch(0.65 0.17 145)" stroke-width="1.5" points="0,28 14,20 28,14 42,10 56,8 70,6 84,4 100,3"/>
+          </svg>
+        </div>
+        <div class="kpi reveal">
+          <div class="kpi-label">CAPEX Cámaras Edge AI</div>
+          <div class="kpi-value">−47<span class="unit">%</span></div>
+          <div class="kpi-desc">vs. alternativa comercial · ~S/ 27,600</div>
+          <svg class="kpi-mini-chart" viewBox="0 0 100 32" preserveAspectRatio="none">
+            <polyline fill="none" stroke="oklch(0.65 0.17 145)" stroke-width="1.5" points="0,8 14,12 28,14 42,16 56,20 70,22 84,26 100,28"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <div class="container">
+      <header class="sec-head">
+        <div>
+          <div class="sec-head-meta">
+            <span class="sec-num">— 02 / 07</span>
+            <span class="label copper">Evidencia técnica</span>
+          </div>
+          <h2 class="sec-title">Proyectos <span class="copper">aplicables a minería</span>.</h2>
+        </div>
+        <p class="sec-desc">
+          Demo funcional desde día 1 · datos peruanos · stack open-source.
+          Construidos para ser mantenibles localmente y desplegables en zonas
+          remotas sin conectividad estable.
+        </p>
+      </header>
+
+      <div class="proj-bento">
+
+        <article class="proj feature reveal">
+          <div class="proj-head">
+            <div>
+              <span class="proj-award"><i data-lucide="target" style="width: 12px; height: 12px;"></i> Innovadores en Acción 2026</span>
+              <h3 class="proj-title">GAIATECH M1.0 — Plataforma IA para Casos 13 (LRAC) y 12 (Relaves)</h3>
+            </div>
+            <span class="proj-tag">PROPUESTA · LAS&nbsp;BAMBAS</span>
+          </div>
+          <div class="proj-body">
+            <div>
+              <p class="proj-desc">
+                Integración de <strong>4 activos en producción</strong> alineados con el VP SHE:
+                ConstEdge (acceso + EPP), Gen+ Vision PDK (monitoreo de obra), GAIATECH VIGÍA (vibraciones edge)
+                y Aecodito Minero (captura conversacional de RACS / Tarjetas Verdes en WhatsApp).
+              </p>
+              <div class="proj-metrics">
+                <span class="metric-pill"><strong>4</strong> activos en prod</span>
+                <span class="metric-pill"><strong>5</strong> normas alineadas</span>
+                <span class="metric-pill success"><strong>1 día</strong> demo funcional</span>
+              </div>
+              <div class="proj-stack">
+                <span class="tech-tag">YOLOv8</span>
+                <span class="tech-tag">FPGA</span>
+                <span class="tech-tag">Jetson Orin</span>
+                <span class="tech-tag">n8n + WhatsApp</span>
+                <span class="tech-tag">Postgres pgvector</span>
+              </div>
+              <div class="proj-applicability">
+                <i data-lucide="shield-check"></i>
+                <div>
+                  <span class="label-text">Aplicabilidad</span>
+                  <p>Caso 13 LRAC + Caso 12 Relaves. Cumple DS&nbsp;024-2016-EM, DS&nbsp;023-2017-EM, DS&nbsp;034-2023-EM Cap.&nbsp;XII (arts. 418-423), Res. 122-2024-OS/CD, GISTM 2020, ICMM CCM.</p>
+                </div>
+              </div>
+            </div>
+            <div class="proj-img-wrap">
+              <img src="assets/images/emarc_vision_detection.png" alt="Detección de EPP en obra con YOLOv8 sobre Jetson Orin" loading="lazy">
+            </div>
+          </div>
+        </article>
+
+        <article class="proj tall reveal">
+          <div class="proj-head">
+            <div>
+              <span class="proj-award"><i data-lucide="trophy" style="width: 12px; height: 12px;"></i> 2° AI Talent Demo Day 2026</span>
+              <h3 class="proj-title">GAIATECH VIGÍA</h3>
+            </div>
+            <span class="proj-tag">SHM EDGE</span>
+          </div>
+          <p class="proj-desc">
+            Monitoreo estructural en tiempo real: <strong>FFT directo en FPGA Gowin GW1NR-9</strong>,
+            ESP32 como bridge y LSTM-Autoencoder en PyTorch para detección no supervisada de anomalías.
+          </p>
+          <div class="proj-img-wrap">
+            <img src="assets/images/gaiatech_results.png" alt="Resultados GAIATECH VIGÍA · LSTM-AE para SHM" loading="lazy">
+          </div>
+          <div class="proj-metrics">
+            <span class="metric-pill"><strong>F1 = 0.961</strong></span>
+            <span class="metric-pill success">Alerta <strong>&lt; 2s</strong> WhatsApp</span>
+          </div>
+          <div class="proj-stack">
+            <span class="tech-tag">Verilog</span>
+            <span class="tech-tag">FFT FPGA</span>
+            <span class="tech-tag">ESP32</span>
+            <span class="tech-tag">LSTM-AE</span>
+          </div>
+          <div class="proj-applicability">
+            <i data-lucide="activity"></i>
+            <div>
+              <span class="label-text">Aplicabilidad minera</span>
+              <p>Monitoreo de <strong>presas de relaves, taludes y estructuras de procesamiento</strong>.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj half reveal">
+          <div class="proj-head">
+            <div>
+              <span class="proj-award" style="background: oklch(from var(--success) l c h / 0.15); color: var(--success); border-color: oklch(from var(--success) l c h / 0.3);">
+                <i data-lucide="check-circle-2" style="width: 12px; height: 12px;"></i> En producción
+              </span>
+              <h3 class="proj-title">Gen+ Vision Pro PDK</h3>
+            </div>
+            <span class="proj-tag">EPP · OBRAS</span>
+          </div>
+          <p class="proj-desc">
+            Plataforma de monitoreo de obra con detección automática de EPP (11 clases), dashboard web con alertas filtrables y reportes automáticos por casilla.
+          </p>
+          <div class="proj-metrics">
+            <span class="metric-pill"><strong>87.67%</strong> mAP@50</span>
+            <span class="metric-pill copper"><strong>38 FPS</strong> sostenidos</span>
+            <span class="metric-pill"><strong>11</strong> clases EPP</span>
+          </div>
+          <div class="proj-img-wrap">
+            <img src="assets/images/emarc_results.png" alt="Resultados YOLO Vision Pro PDK" loading="lazy">
+          </div>
+          <div class="proj-stack">
+            <span class="tech-tag">YOLOv8</span>
+            <span class="tech-tag">Jetson Orin Nano Super</span>
+            <span class="tech-tag">TensorRT INT8</span>
+            <span class="tech-tag">Next.js 16</span>
+            <span class="tech-tag">Postgres</span>
+          </div>
+        </article>
+
+        <article class="proj half reveal">
+          <div class="proj-head">
+            <div>
+              <h3 class="proj-title">ConstEdge — Acceso + EPP</h3>
+            </div>
+            <span class="proj-tag">ASISTENCIA · SEGURIDAD</span>
+          </div>
+          <p class="proj-desc">
+            Reconocimiento facial (DeepFace/ArcFace) + detección de EPP (YOLOv8) + 4 marcajes diarios + dashboard Vue.js + app móvil PWA.
+          </p>
+          <div class="proj-img-wrap">
+            <img src="assets/images/detecciónfacial.png" alt="Reconocimiento facial ConstEdge" loading="lazy">
+          </div>
+          <div class="proj-metrics">
+            <span class="metric-pill">Reportes Excel con fotos</span>
+            <span class="metric-pill">Alertas tiempo real</span>
+          </div>
+          <div class="proj-stack">
+            <span class="tech-tag">DeepFace</span>
+            <span class="tech-tag">ArcFace</span>
+            <span class="tech-tag">YOLOv8</span>
+            <span class="tech-tag">Vue.js</span>
+            <span class="tech-tag">PWA</span>
+          </div>
+        </article>
+
+        <article class="proj wide reveal">
+          <div class="proj-head">
+            <div>
+              <h3 class="proj-title">Aecodito Minero — Agente WhatsApp para RACS / Tarjetas Verdes</h3>
+            </div>
+            <span class="proj-tag">AGENTE IA · SHE</span>
+          </div>
+          <p class="proj-desc">
+            Bot conversacional que guía al operador en el reporte de actos y condiciones subestándar.
+            <strong>Procesa texto, audio (transcripción), imagen y PDF</strong> en un único flujo;
+            deriva a SHE cuando aplica. Memoria persistente con pgvector + recordatorios automáticos.
+          </p>
+          <div class="proj-metrics">
+            <span class="metric-pill"><strong>50</strong> nodos n8n</span>
+            <span class="metric-pill"><strong>10</strong> herramientas integradas</span>
+            <span class="metric-pill success">Multi-modal</span>
+            <span class="metric-pill copper">Derivación SHE</span>
+          </div>
+          <div class="proj-stack">
+            <span class="tech-tag">n8n</span>
+            <span class="tech-tag">Evolution API</span>
+            <span class="tech-tag">Gemini Pro</span>
+            <span class="tech-tag">Postgres pgvector</span>
+            <span class="tech-tag">Whisper</span>
+          </div>
+          <div class="proj-applicability">
+            <i data-lucide="message-square"></i>
+            <div>
+              <span class="label-text">Aplicabilidad minera</span>
+              <p>Captura conversacional de incidentes desde la línea operativa (sin app extra). Compatible con sistemas internos SHE.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj half reveal">
+          <div class="proj-head">
+            <div>
+              <h3 class="proj-title">Predicción de Riesgos Laborales (NLP)</h3>
+            </div>
+            <span class="proj-tag">DistilBERT</span>
+          </div>
+          <p class="proj-desc">
+            API FastAPI con DistilBERT que clasifica narrativas de incidentes (naturaleza, parte del cuerpo, tipo de evento) y genera <strong>Toolbox Talks automáticos</strong> de 5 min basados en patrones detectados.
+          </p>
+          <div class="proj-img-wrap">
+            <img src="assets/images/confusion_matrix_event.png" alt="Matriz de confusión clasificador de eventos" loading="lazy">
+          </div>
+          <div class="proj-stack">
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">DistilBERT</span>
+            <span class="tech-tag">Hugging Face</span>
+            <span class="tech-tag">Plotly</span>
+          </div>
+        </article>
+
+        <article class="proj half reveal">
+          <div class="proj-head">
+            <div>
+              <h3 class="proj-title">Hardware IoT + FPGA para zonas remotas</h3>
+            </div>
+            <span class="proj-tag">EDGE · OFFLINE</span>
+          </div>
+          <p class="proj-desc">
+            <strong>CultiGuard</strong> (Tang Nano 9K + ESP32-CAM + LoRa + panel solar),
+            <strong>PachaGuard</strong> (Tang Nano 1K + Verilog + UART) y módulos VHDL de fusión sensorial.
+            Edge AI <strong>sin internet</strong>.
+          </p>
+          <div class="proj-metrics">
+            <span class="metric-pill copper">Panel solar</span>
+            <span class="metric-pill">LoRa &gt;10 km</span>
+            <span class="metric-pill success">100% open HW</span>
+          </div>
+          <div class="proj-stack">
+            <span class="tech-tag">Verilog</span>
+            <span class="tech-tag">VHDL</span>
+            <span class="tech-tag">Tang Nano 9K / 1K</span>
+            <span class="tech-tag">ESP32-CAM</span>
+            <span class="tech-tag">LoRa SX1262</span>
+          </div>
+          <div class="proj-applicability">
+            <i data-lucide="radio-tower"></i>
+            <div>
+              <span class="label-text">Aplicabilidad</span>
+              <p>Sensores de presa de relaves, perímetro mina, taludes y zonas sin cobertura.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="normativa">
+    <div class="container">
+      <header class="sec-head">
+        <div>
+          <div class="sec-head-meta">
+            <span class="sec-num">— 03 / 07</span>
+            <span class="label brand">Cumplimiento</span>
+          </div>
+          <h2 class="sec-title">Normativa minera <span class="accent">peruana</span> integrada en el diseño.</h2>
+        </div>
+        <p class="sec-desc">
+          Cada solución arranca con el marco regulatorio aplicable. No se adapta normativa al producto, se diseña el producto sobre la norma.
+        </p>
+      </header>
+
+      <div class="norma-grid">
+        <div class="norma-panel">
+          <h3><i data-lucide="scale"></i> Marco regulatorio peruano</h3>
+          <ul class="norma-list">
+            <li><span class="norma-code">DS 024-2016-EM</span><span class="norma-desc">Reglamento de Seguridad y Salud Ocupacional en Minería</span></li>
+            <li><span class="norma-code">DS 023-2017-EM</span><span class="norma-desc">Modificatoria · medidas preventivas y plan de gestión</span></li>
+            <li><span class="norma-code">DS 034-2023-EM</span><span class="norma-desc"><strong>Cap. XII Relaves</strong> · arts. 418-423</span></li>
+            <li><span class="norma-code">Res. 122-2024-OS/CD</span><span class="norma-desc">OSINERGMIN · supervisión técnica</span></li>
+            <li><span class="norma-code">Ley 29783</span><span class="norma-desc">Ley de Seguridad y Salud en el Trabajo</span></li>
+            <li><span class="norma-code">ISO 45001:2018</span><span class="norma-desc">Sistemas de gestión SST</span></li>
+          </ul>
+        </div>
+
+        <div class="norma-panel">
+          <h3><i data-lucide="globe"></i> Estándares internacionales</h3>
+          <ul class="norma-list">
+            <li><span class="norma-code">GISTM 2020</span><span class="norma-desc">Global Industry Standard on Tailings Management</span></li>
+            <li><span class="norma-code">ICMM CCM</span><span class="norma-desc">Critical Control Management framework</span></li>
+            <li><span class="norma-code">ISO 31000:2018</span><span class="norma-desc">Gestión del riesgo</span></li>
+            <li><span class="norma-code">ANSI/ASSP Z10</span><span class="norma-desc">Occupational Safety and Health Management</span></li>
+          </ul>
+
+          <div style="margin-top: 1.5rem; padding: 1rem; background: oklch(from var(--brand) l c h / 0.08); border: 1px solid oklch(from var(--brand) l c h / 0.25); border-radius: var(--radius);">
+            <p style="font-size: var(--step--1); color: var(--fg); margin: 0;">
+              <strong style="color: var(--brand);">Origen:</strong> Puno, Perú · familiarizado con altura (4,000+ msnm) y condiciones de sierra. Disponibilidad inmediata para régimen atípico <strong>14×7 / 10×10</strong>.
             </p>
-
-            <style>
-                .mcp-diag {
-                    font-family: system-ui, -apple-system, sans-serif;
-                }
-
-                .mcp-node {
-                    padding: 10px 16px;
-                    border-radius: 8px;
-                    font-weight: 600;
-                    color: white;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 8px;
-                    border: 2px solid;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-                    font-size: 0.9rem;
-                    text-align: center;
-                }
-
-                .nd-llm {
-                    background: #4f46e5;
-                    border-color: #8b5cf6;
-                    border-radius: 12px;
-                }
-
-                .nd-mcp {
-                    background: #0f766e;
-                    border-color: #14b8a6;
-                }
-
-                .nd-bim {
-                    background: #be123c;
-                    border-color: #f43f5e;
-                    border-radius: 6px;
-                }
-
-                .nd-eng {
-                    background: #0369a1;
-                    border-color: #0ea5e9;
-                    border-radius: 6px;
-                }
-
-                .nd-code {
-                    background: #b45309;
-                    border-color: #f59e0b;
-                    border-radius: 6px;
-                }
-
-                .nd-db {
-                    background: #4d7c0f;
-                    border-color: #84cc16;
-                    border-radius: 20px;
-                }
-
-                .nd-os {
-                    background: #1e1b4b;
-                    border-color: #a855f7;
-                    border-radius: 6px;
-                }
-
-                .nd-py {
-                    background: #eab308;
-                    border-color: #ca8a04;
-                    border-radius: 6px;
-                    color: #1e293b;
-                }
-
-                .nd-unity {
-                    background: #10b981;
-                    border-color: #059669;
-                    border-radius: 6px;
-                }
-
-                .mcp-box {
-                    border: 1px dashed rgba(255, 255, 255, 0.2);
-                    border-radius: 12px;
-                    padding: 15px;
-                    background: rgba(0, 0, 0, 0.2);
-                    margin: 5px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 10px;
-                }
-
-                .mcp-box-title {
-                    color: #94a3b8;
-                    font-size: 0.8rem;
-                    text-transform: uppercase;
-                    letter-spacing: 1px;
-                    text-align: center;
-                }
-
-                .mcp-row {
-                    display: flex;
-                    justify-content: center;
-                    gap: 15px;
-                    flex-wrap: wrap;
-                }
-
-                .mcp-arrow-down {
-                    color: #64748b;
-                    font-size: 1.2rem;
-                    margin: 10px 0;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-                .mcp-arrow-label {
-                    font-size: 0.75rem;
-                    background: #1e293b;
-                    color: #cbd5e1;
-                    padding: 4px 10px;
-                    border-radius: 12px;
-                    margin-top: -8px;
-                    border: 1px solid #334155;
-                }
-            </style>
-
-            <div style="display: grid; grid-template-columns: 1fr; gap: 3rem;" class="mcp-diag">
-                <!-- 1. Diagrama Global MCP -->
-                <div class="project-card"
-                    style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.05);">
-                    <h3 style="margin-bottom: 1.5rem; text-align: center; color: white;">Mapa Global de Interacción LLM
-                        ↔ MCP Servers</h3>
-                    <div
-                        style="background: #0f172a; padding: 2rem; border-radius: 16px; border: 1px solid #1e293b; overflow-x: auto;">
-                        <div style="min-width: 800px; display: flex; flex-direction: column; align-items: center;">
-                            <div class="mcp-box" style="width: fit-content;">
-                                <div class="mcp-box-title">🧠 Cerebro Lógico (LLM)</div>
-                                <div class="mcp-node nd-llm"><i class="fas fa-brain"></i> Claude 3.5 Sonnet / Gemini
-                                </div>
-                            </div>
-
-                            <div class="mcp-arrow-down">
-                                <i class="fas fa-arrow-down"></i><i class="fas fa-arrow-up"
-                                    style="margin-top:-10px;"></i>
-                                <span class="mcp-arrow-label">Llamada Dinámica a Herramientas</span>
-                            </div>
-
-                            <div class="mcp-box" style="width: 100%;">
-                                <div class="mcp-box-title">🔌 Infraestructura Integrada (Model Context Protocol)</div>
-                                <div class="mcp-row">
-                                    <div class="mcp-node nd-mcp"><i class="fas fa-network-wired"></i> n8n MCP Server
-                                    </div>
-                                    <div class="mcp-node nd-mcp"><i class="fas fa-cube"></i> Unity MCP Server</div>
-                                    <div class="mcp-node nd-mcp"><i class="fas fa-book"></i> Notion MCP Server</div>
-                                    <div class="mcp-node nd-mcp"><i class="fas fa-folder-tree"></i> OS File System MCP
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mcp-arrow-down">
-                                <i class="fas fa-arrow-down"></i>
-                                <span class="mcp-arrow-label">Control & Ejecución de Entornos Nativos</span>
-                            </div>
-
-                            <div class="mcp-box" style="width: 100%;">
-                                <div class="mcp-box-title">🛠️ Entornos y Herramientas Nativas Controladas</div>
-                                <div class="mcp-row" style="align-items: stretch;">
-                                    <div class="mcp-box">
-                                        <div class="mcp-box-title">BIM e Ingeniería</div>
-                                        <div class="mcp-node nd-bim"><i class="fas fa-building"></i> Autodesk Revit
-                                        </div>
-                                        <div class="mcp-node nd-eng"><i class="fas fa-cogs"></i> SAP2000</div>
-                                    </div>
-                                    <div class="mcp-box">
-                                        <div class="mcp-box-title">Software / Orquestación</div>
-                                        <div class="mcp-node nd-code"><i class="fas fa-gamepad"></i> Unity Editor</div>
-                                        <div class="mcp-node nd-code"><i class="fas fa-cloud"></i> n8n Node Editor</div>
-                                    </div>
-                                    <div class="mcp-box">
-                                        <div class="mcp-box-title">Gestión de Datos</div>
-                                        <div class="mcp-node nd-db"><i class="fas fa-file-alt"></i> Notion Workspace
-                                        </div>
-                                        <div class="mcp-node nd-db"><i class="fas fa-desktop"></i> PC Local / Scripts
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2 Column Diagramas Depth -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem;">
-
-                    <!-- 2. Diagrama BIM -->
-                    <div class="project-card"
-                        style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.05);">
-                        <h3 style="margin-bottom: 1.5rem; text-align: center; color: white;">BIM Automation: SAP2000 a
-                            Revit</h3>
-                        <div
-                            style="background: #0f172a; padding: 2rem; border-radius: 16px; border: 1px solid #1e293b; display:flex; flex-direction:column; align-items:center;">
-                            <div class="mcp-row">
-                                <div class="mcp-node nd-os"><i class="fas fa-brain"></i> IA Claude</div>
-                                <div class="mcp-node nd-os"><i class="fas fa-laptop"></i> Local OS MCP</div>
-                            </div>
-                            <div class="mcp-arrow-down"><i class="fas fa-arrow-down"></i><span
-                                    class="mcp-arrow-label">Comanda Local Scripts</span></div>
-                            <div class="mcp-row">
-                                <div class="mcp-node nd-py"><i class="fas fa-code"></i> OAPI Extractor</div>
-                                <div class="mcp-node nd-py"><i class="fas fa-code"></i> PyRevit Creador</div>
-                            </div>
-                            <div class="mcp-arrow-down"><i class="fas fa-arrow-down"></i><span
-                                    class="mcp-arrow-label">Interacción Plana</span></div>
-                            <div class="mcp-row">
-                                <div class="mcp-node nd-eng"><i class="fas fa-cogs"></i> SAP2000</div>
-                                <div class="mcp-node nd-bim"><i class="fas fa-building"></i> Revit DB</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 3. Diagrama Unity MCP -->
-                    <div class="project-card"
-                        style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.05);">
-                        <h3 style="margin-bottom: 1.5rem; text-align: center; color: white;">Game Engine Control: Unity
-                            MCP</h3>
-                        <div
-                            style="background: #0f172a; padding: 2rem; border-radius: 16px; border: 1px solid #1e293b; display:flex; flex-direction:column; align-items:center;">
-                            <div class="mcp-node nd-os"><i class="fas fa-robot"></i> IA Contextual</div>
-                            <div class="mcp-arrow-down"><i class="fas fa-arrow-down"></i><span
-                                    class="mcp-arrow-label">Llama Json Tools</span></div>
-                            <div class="mcp-node nd-mcp"><i class="fas fa-plug"></i> Unity MCP Server</div>
-                            <div class="mcp-arrow-down"><i class="fas fa-arrow-down"></i><span
-                                    class="mcp-arrow-label">Controla Unity Editor</span></div>
-                            <div class="mcp-box" style="width: 100%;">
-                                <div class="mcp-row">
-                                    <div class="mcp-node nd-unity"><i class="fas fa-sitemap"></i> Jerarquía</div>
-                                    <div class="mcp-node nd-unity"><i class="fas fa-code"></i> Ejecuta C#</div>
-                                </div>
-                            </div>
-                            <div class="mcp-arrow-down"><i class="fas fa-arrow-down"></i><span
-                                    class="mcp-arrow-label">Compila Inyecciones</span></div>
-                            <div class="mcp-node nd-unity"><i class="fas fa-cubes"></i> Auto-Mod GameObjects</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Experience Section (Legacy Content) -->
-    <section id="experiencia" class="section">
-        <div class="container">
-            <h2 class="section-title">Experiencia</h2>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">Sep - Dic 2025</div>
-                    <div class="timeline-content">
-                        <h4>Asistente de Oficina Técnica</h4>
-                        <p class="timeline-company">Obra: Teatro Municipal de Yunguyo, Puno</p>
-                        <ul>
-                            <li style="color: var(--text-dim);">Elaboración de informes mensuales de avance</li>
-                            <li style="color: var(--text-dim);">Valorizaciones y control de costos</li>
-                            <li style="color: var(--text-dim);">Modelado BIM estructural en Revit</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Jun - Nov 2024</div>
-                    <div class="timeline-content">
-                        <h4>Asistente de Oficina Técnica</h4>
-                        <p class="timeline-company">Constructora Talgus S.A.C., Lima</p>
-                        <ul>
-                            <li style="color: var(--text-dim);">Metrados y análisis de costos</li>
-                            <li style="color: var(--text-dim);">Seguimiento de obra y valorizaciones</li>
-                            <li style="color: var(--text-dim);">Actualización de planos CAD y BIM</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">2024 - 2025</div>
-                    <div class="timeline-content">
-                        <h4>Director del Área de Investigaciones</h4>
-                        <p class="timeline-company">Capítulo Estudiantil IDI - UPC</p>
-                        <ul>
-                            <li style="color: var(--text-dim);">Gestión de proyectos de investigación en IA</li>
-                            <li style="color: var(--text-dim);">Coordinación de equipos multidisciplinarios</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+  <section id="stack">
+    <div class="container">
+      <header class="sec-head">
+        <div>
+          <div class="sec-head-meta">
+            <span class="sec-num">— 04 / 07</span>
+            <span class="label brand">Stack técnico</span>
+          </div>
+          <h2 class="sec-title">Herramientas <span class="accent">end-to-end</span>.</h2>
         </div>
-    </section>
+        <p class="sec-desc">
+          Desde el silicio (FPGA / ESP32) hasta el panel web. Stack open-source en su mayoría, con elecciones específicas por escenario.
+        </p>
+      </header>
 
-    <!-- Contact Section -->
-    <section id="contacto" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Contacto</h2>
-            <div class="contact-grid">
-                <a href="mailto:coarp.eancco@gmail.com" class="contact-card">
-                    <span class="contact-icon">📧</span>
-                    <h4>Email</h4>
-                    <p>coarp.eancco@gmail.com</p>
-                </a>
-                <a href="https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352" target="_blank"
-                    class="contact-card">
-                    <span class="contact-icon">💼</span>
-                    <h4>LinkedIn</h4>
-                    <p>Emanuel Ancco</p>
-                </a>
-                <a href="tel:+51974583549" class="contact-card">
-                    <span class="contact-icon">📱</span>
-                    <h4>Teléfono</h4>
-                    <p>+51 974 583 549</p>
-                </a>
-            </div>
+      <div class="stack-grid">
+        <div class="stack-card">
+          <h4><i data-lucide="brain"></i> IA & Computer Vision</h4>
+          <div class="stack-tags">
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">YOLOv8 / v11</span>
+            <span class="tech-tag">SegFormer</span>
+            <span class="tech-tag">DeepFace</span>
+            <span class="tech-tag">PyTorch Geometric</span>
+            <span class="tech-tag">LSTM / GRU</span>
+            <span class="tech-tag">Hugging Face</span>
+            <span class="tech-tag">TensorRT INT8</span>
+          </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-icons" style="margin-bottom: 2rem;">
-                <a href="https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352"><i
-                        class="fab fa-linkedin"></i></a>
-                <a href="mailto:coarp.eancco@gmail.com"><i class="fas fa-envelope"></i></a>
-                <a href="https://github.com/emanuelancco"><i class="fab fa-github"></i></a>
-            </div>
-            <p>© 2025 Emanuel Edgar Ancco Guaygua | Ingeniería Civil + IA</p>
+        <div class="stack-card">
+          <h4><i data-lucide="bot"></i> Automatización & Agentes IA</h4>
+          <div class="stack-tags">
+            <span class="tech-tag">n8n avanzado</span>
+            <span class="tech-tag">MCP</span>
+            <span class="tech-tag">Evolution API</span>
+            <span class="tech-tag">Telegram Bot</span>
+            <span class="tech-tag">Activepieces</span>
+            <span class="tech-tag">Claude / Gemini / Qwen</span>
+          </div>
         </div>
-    </footer>
+
+        <div class="stack-card">
+          <h4><i data-lucide="cpu"></i> Hardware & IoT</h4>
+          <div class="stack-tags">
+            <span class="tech-tag">FPGA Gowin GW1NR-9</span>
+            <span class="tech-tag">Verilog / VHDL</span>
+            <span class="tech-tag">ESP32</span>
+            <span class="tech-tag">Arduino</span>
+            <span class="tech-tag">Raspberry Pi 5</span>
+            <span class="tech-tag">Jetson Orin Nano Super</span>
+            <span class="tech-tag">MEMS sensors</span>
+            <span class="tech-tag">LoRa SX1262</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <h4><i data-lucide="line-chart"></i> Análisis & Señales</h4>
+          <div class="stack-tags">
+            <span class="tech-tag">Python · NumPy · SciPy</span>
+            <span class="tech-tag">R</span>
+            <span class="tech-tag">MATLAB</span>
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">Plotly / Dash</span>
+            <span class="tech-tag">FFT · Wavelets</span>
+            <span class="tech-tag">Series temporales</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <h4><i data-lucide="code-2"></i> Desarrollo de Software</h4>
+          <div class="stack-tags">
+            <span class="tech-tag">Next.js 16</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">C# / .NET Revit API</span>
+            <span class="tech-tag">WebSocket</span>
+            <span class="tech-tag">Drizzle ORM</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <h4><i data-lucide="database"></i> Datos & RAG</h4>
+          <div class="stack-tags">
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">pgvector</span>
+            <span class="tech-tag">pg_search BM25</span>
+            <span class="tech-tag">SQLite</span>
+            <span class="tech-tag">Notion API</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <h4><i data-lucide="hard-hat"></i> Ingeniería & BIM</h4>
+          <div class="stack-tags">
+            <span class="tech-tag">Revit (plugins C#)</span>
+            <span class="tech-tag">AutoCAD / Civil 3D</span>
+            <span class="tech-tag">AutoLISP</span>
+            <span class="tech-tag">SAP2000</span>
+            <span class="tech-tag">S10 · Primavera P6</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <h4><i data-lucide="mountain"></i> Software Geotécnico & Minero</h4>
+          <div class="stack-tags">
+            <span class="tech-tag">Leapfrog Geo</span>
+            <span class="tech-tag">Rocscience RS2/3 · Slide2</span>
+            <span class="tech-tag">MineSight / MinePlan</span>
+            <span class="tech-tag">QGIS · ArcGIS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiencia">
+    <div class="container">
+      <header class="sec-head">
+        <div>
+          <div class="sec-head-meta">
+            <span class="sec-num">— 05 / 07</span>
+            <span class="label brand">Trayectoria</span>
+          </div>
+          <h2 class="sec-title">Experiencia <span class="accent">profesional</span>.</h2>
+        </div>
+        <p class="sec-desc">
+          De oficina técnica de obra civil a liderazgo del área de IA y automatización en gen+.
+          Combinación inusual: <em class="serif">métodos rigurosos de ingeniería estructural + delivery iterativo de software</em>.
+        </p>
+      </header>
+
+      <div class="timeline">
+        <div class="exp reveal">
+          <div class="exp-meta">Marzo 2026 — Presente · Lima, Perú</div>
+          <div class="exp-title">AI Automation Engineer</div>
+          <div class="exp-org">gen+ (Generative Design & Construction)</div>
+          <ul class="exp-bullets">
+            <li>Lidero el área de <strong>operaciones, automatización e IA</strong>: arquitectura de agentes conversacionales, despliegue de modelos de visión y orquestación de workflows entre WhatsApp, Notion, Google Workspace, Postgres y Drive.</li>
+            <li><strong>Gen+ Vision Pro PDK</strong> en producción: plataforma de monitoreo de obra con detección de EPP (YOLOv8 · 11 clases · 87.67% mAP · 38 FPS sostenidos), dashboard web con alertas y reportes automáticos.</li>
+            <li>Diseño de <strong>sistema de cámaras Edge AI</strong> para inspección de obra (Jetson Orin fijo + PTZ 4K solar con LTE/LoRa). CAPEX <strong>47% más barato</strong> que alternativa comercial (~S/ 27,600).</li>
+            <li><strong>Aecodito - Centro de Operaciones v3.0</strong>: agente WhatsApp con 50 nodos n8n, 10 herramientas integradas, memoria persistente y derivación a humanos.</li>
+          </ul>
+        </div>
+
+        <div class="exp reveal">
+          <div class="exp-meta">Junio 2024 — Presente · Lima / Puno</div>
+          <div class="exp-title">Líder Técnico y Co-fundador</div>
+          <div class="exp-org">GAIATECH (spin-off de investigación UPC)</div>
+          <ul class="exp-bullets">
+            <li><strong>2° lugar AI Talent Demo Day 2026</strong> con GAIATECH VIGÍA: FFT en FPGA Gowin GW1NR-9 + LSTM-Autoencoder (F1 = 0.961) + alertas WhatsApp.</li>
+            <li><strong>GAIATECH SHM</strong> (paper-ready, revista Elsevier <em>Structures</em>): MISM-GNN para identificación modal de Puente Junín (R² = 0.998, 65× menos parámetros).</li>
+            <li><strong>GAIATECH G1 — Agroecología Andina</strong>: postulación PROCIENCIA 2026, S/ 896,400 · 36 meses · INIA Illpa-Puno.</li>
+            <li>Ponente <strong>CONEIC Ucayali 2024</strong>; <strong>2° lugar</strong> Concurso de Conocimientos CONEIC Huaraz 2025.</li>
+          </ul>
+        </div>
+
+        <div class="exp reveal">
+          <div class="exp-meta">Enero 2024 — Diciembre 2025 · Lima, Perú</div>
+          <div class="exp-title">Director del Área de Investigaciones (IA & SHM)</div>
+          <div class="exp-org">Capítulo Estudiantil de Ingeniería Civil — IDI UPC</div>
+          <ul class="exp-bullets">
+            <li>Lideré equipo multidisciplinario (8 estudiantes) en modelos híbridos <strong>PINN-GNN</strong> (Physics-Informed + Graph Neural Network) para detección no supervisada de anomalías en infraestructura civil.</li>
+            <li>Red de adquisición con sensores MEMS + Arduino/Raspberry Pi para captura sincronizada de señales vibracionales.</li>
+            <li>Pipeline completo de datos: ETL, extracción de features (DWT, FFT, CWT), entrenamiento y dashboards interactivos (Plotly/Dash).</li>
+          </ul>
+        </div>
+
+        <div class="exp reveal">
+          <div class="exp-meta">Septiembre 2025 — Diciembre 2025 · Yunguyo, Puno</div>
+          <div class="exp-title">Asistente de Oficina Técnica</div>
+          <div class="exp-org">Obra "Teatro Municipal de Yunguyo"</div>
+          <ul class="exp-bullets">
+            <li>Informes mensuales de avance, valorizaciones, modelado BIM estructural (Revit 2026) y plugins propios para armado de vigas y losas.</li>
+          </ul>
+        </div>
+
+        <div class="exp reveal">
+          <div class="exp-meta">Junio 2024 — Noviembre 2024 · Lima, Perú</div>
+          <div class="exp-title">Asistente de Oficina Técnica</div>
+          <div class="exp-org">Constructora Talgus S.A.C.</div>
+          <ul class="exp-bullets">
+            <li>Metrados, análisis de costos unitarios, presupuestos y actualización de planos técnicos (AutoCAD, Revit).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reconocimientos">
+    <div class="container">
+      <header class="sec-head">
+        <div>
+          <div class="sec-head-meta">
+            <span class="sec-num">— 06 / 07</span>
+            <span class="label copper">Reconocimientos</span>
+          </div>
+          <h2 class="sec-title">Premios, ponencias y <span class="copper">certificaciones</span>.</h2>
+        </div>
+        <p class="sec-desc">
+          Verificables en LinkedIn · cada certificación es trazable a una habilidad aplicada en proyecto real.
+        </p>
+      </header>
+
+      <div class="awards-grid">
+        <div class="award"><div class="award-icon"><i data-lucide="trophy"></i></div><div class="award-body"><div class="award-title">2° lugar — AI Talent Demo Day 2026</div><div class="award-sub">GAIATECH VIGÍA · FPGA + LSTM-AE</div></div></div>
+        <div class="award"><div class="award-icon"><i data-lucide="award"></i></div><div class="award-body"><div class="award-title">2° lugar — Concurso de Conocimientos CONEIC</div><div class="award-sub">Huaraz, 2025</div></div></div>
+        <div class="award"><div class="award-icon"><i data-lucide="medal"></i></div><div class="award-body"><div class="award-title">Primer Puesto — XIV COREIC Lima 2023</div><div class="award-sub">Ponencias Académicas · UNFV</div></div></div>
+        <div class="award"><div class="award-icon"><i data-lucide="speech"></i></div><div class="award-body"><div class="award-title">Ponente CONEIC Ucayali 2024</div><div class="award-sub">CNN para evaluación de fisuras y grietas</div></div></div>
+        <div class="award"><div class="award-icon"><i data-lucide="star"></i></div><div class="award-body"><div class="award-title">Innovador Destacado — DigiEduHack 2023</div><div class="award-sub">Comisión Europea</div></div></div>
+        <div class="award"><div class="award-icon"><i data-lucide="graduation-cap"></i></div><div class="award-body"><div class="award-title">Machine Learning on Google Cloud</div><div class="award-sub">Especialización 4 cursos · Coursera · 2025</div></div></div>
+        <div class="award"><div class="award-icon"><i data-lucide="book-open"></i></div><div class="award-body"><div class="award-title">Especialista en IA con Python · 120 h</div><div class="award-sub">Data Science Analysis · 2024</div></div></div>
+        <div class="award"><div class="award-icon"><i data-lucide="code"></i></div><div class="award-body"><div class="award-title">Python for Everybody · 5 cursos</div><div class="award-sub">University of Michigan · Coursera</div></div></div>
+        <div class="award"><div class="award-icon"><i data-lucide="sparkles"></i></div><div class="award-body"><div class="award-title">ISC AI Foundations For Everyone</div><div class="award-sub">Campus Global ISC · 2025</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="container">
+      <div class="cta-card">
+        <div>
+          <span class="eyebrow"><span class="pulse"></span> Disponible inmediato</span>
+          <h2 style="margin-top: 1rem;">¿Conversamos sobre <span class="serif">tu</span> caso?</h2>
+          <p style="margin-top: 1rem; max-width: 50ch;">
+            Estoy postulando a <strong>Innovadores en Acción 2026</strong> y
+            <strong>Talentos de Cobre</strong> con foco en aplicar IA en seguridad
+            y operaciones mineras. Disponibilidad inmediata para régimen atípico
+            (14×7 / 10×10). Origen Puno: familiarizado con altura y sierra.
+          </p>
+          <div style="margin-top: 1.5rem; display: flex; gap: 0.6rem; flex-wrap: wrap;">
+            <a href="CV_Las_Bambas_Innovadores_2026.pdf" class="btn btn-primary" download>
+              <i data-lucide="file-down"></i> Descargar CV (PDF)
+            </a>
+            <a href="https://github.com/EmanuelAncco" class="btn" target="_blank" rel="noopener">
+              <i data-lucide="github"></i> Repositorios
+            </a>
+          </div>
+        </div>
+
+        <div class="cta-list">
+          <a href="mailto:coarp.eancco@gmail.com" class="cta-item">
+            <i data-lucide="mail"></i>
+            <div class="cta-item-info"><div class="cta-item-label">Email</div><div class="cta-item-value">coarp.eancco@gmail.com</div></div>
+          </a>
+          <a href="tel:+51974583549" class="cta-item">
+            <i data-lucide="phone"></i>
+            <div class="cta-item-info"><div class="cta-item-label">Teléfono</div><div class="cta-item-value">+51 974 583 549</div></div>
+          </a>
+          <a href="https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352" class="cta-item" target="_blank" rel="noopener">
+            <i data-lucide="linkedin"></i>
+            <div class="cta-item-info"><div class="cta-item-label">LinkedIn</div><div class="cta-item-value">@emanuel-edgar-ancco-guaygua</div></div>
+          </a>
+          <a href="https://github.com/EmanuelAncco" class="cta-item" target="_blank" rel="noopener">
+            <i data-lucide="github"></i>
+            <div class="cta-item-info"><div class="cta-item-label">GitHub</div><div class="cta-item-value">EmanuelAncco</div></div>
+          </a>
+          <div class="cta-item" style="cursor: default;">
+            <i data-lucide="map-pin"></i>
+            <div class="cta-item-info"><div class="cta-item-label">Ubicación</div><div class="cta-item-value">Lima / Puno · Perú</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="container footer-content">
+    <div>© 2026 Emanuel Edgar Ancco Guaygua · Ingeniería Civil + IA · Puno · Perú</div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352" aria-label="LinkedIn" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
+      <a href="https://github.com/EmanuelAncco" aria-label="GitHub" target="_blank" rel="noopener"><i data-lucide="github"></i></a>
+      <a href="mailto:coarp.eancco@gmail.com" aria-label="Email"><i data-lucide="mail"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  if (window.lucide) lucide.createIcons();
+
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+  const saved = localStorage.getItem('ea-portfolio-theme') || 'dark';
+  document.documentElement.dataset.theme = saved;
+
+  function syncIcon() {
+    const dark = document.documentElement.dataset.theme === 'dark';
+    themeIcon.setAttribute('data-lucide', dark ? 'sun' : 'moon-star');
+    if (window.lucide) lucide.createIcons();
+  }
+  syncIcon();
+
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    if (document.startViewTransition) {
+      document.startViewTransition(() => { document.documentElement.dataset.theme = next; });
+    } else {
+      document.documentElement.dataset.theme = next;
+    }
+    localStorage.setItem('ea-portfolio-theme', next);
+    syncIcon();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 't' && !e.metaKey && !e.ctrlKey && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      themeToggle.click();
+    }
+  });
+
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => {
+          const isActive = a.getAttribute('href') === '#' + entry.target.id;
+          a.style.color = isActive ? 'var(--brand)' : '';
+          a.style.fontWeight = isActive ? '600' : '';
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => spy.observe(s));
+
+  console.log('%c Emanuel Ancco · Portfolio v3 ', 'background: oklch(0.55 0.16 220); color: white; font-weight: 700; padding: 8px 16px; font-size: 13px;');
+  console.log('%c Stack: OKLCH · Geist · light-dark() · View Transitions · Scroll-driven CSS ', 'color: oklch(0.65 0.16 55); font-family: monospace;');
+  console.log('Tip: pulsa T para alternar tema');
+</script>
+
 </body>
-
 </html>

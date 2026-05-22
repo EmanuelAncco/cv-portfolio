@@ -1,0 +1,231 @@
+% =============================================================================
+%  CV de Emanuel Edgar Ancco Guaygua
+%  Innovadores en Acción 2026 - Minera Las Bambas
+%  Enfoque: IA aplicada a seguridad y operaciones mineras
+% =============================================================================
+
+\documentclass[10pt, a4paper]{article}
+
+% --- PAQUETES NECESARIOS ---
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{lmodern}
+\usepackage{enumitem}
+
+% --- CONFIGURACIÓN DE LA PÁGINA ---
+\geometry{
+    a4paper,
+    left=1.5cm,
+    right=1.5cm,
+    top=1.2cm,
+    bottom=1.2cm
+}
+
+% --- COLORES Y ENLACES ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    pdftitle={CV - Emanuel Edgar Ancco Guaygua - Innovadores en Acción 2026},
+    pdfauthor={Emanuel Edgar Ancco Guaygua},
+}
+
+% --- PERSONALIZACIÓN DE TÍTULOS DE SECCIÓN ---
+\titleformat{\section}
+  {\Large\bfseries\scshape}
+  {}
+  {0em}
+  {}[\titlerule]
+
+\titlespacing*{\section}{0pt}{0.9ex plus 0.5ex minus .2ex}{0.5ex plus .2ex}
+
+% --- ELIMINAR SANGRÍA DE PÁRRAFO ---
+\setlength{\parindent}{0pt}
+
+% --- AJUSTE DE LISTAS ---
+\setlist[itemize]{itemsep=0.2mm, topsep=0.5mm, leftmargin=*}
+
+% --- DEFINICIÓN DE COMANDOS PARA ENTRADAS ---
+\newcommand{\entry}[4]{
+    \textbf{#1} \hfill \textit{#2} \\
+    \textit{#3} \hfill \textit{#4} \\
+    \vspace{-1.5mm}
+}
+
+% =============================================================================
+%  INICIO DEL DOCUMENTO
+% =============================================================================
+\begin{document}
+
+% --- ENCABEZADO ---
+\begin{center}
+    {\Huge\bfseries EMANUEL EDGAR ANCCO GUAYGUA}
+    \vspace{1.5mm}
+
+    \faMapMarker*{} Lima / Puno, Perú \quad
+    \faPhone*{} 974583549 \quad
+    \faEnvelope{} \href{mailto:coarp.eancco@gmail.com}{coarp.eancco@gmail.com} \quad
+    \faLinkedin{} \href{https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352}{LinkedIn}
+
+    \faGlobe{} \textbf{Portafolio Técnico:} \href{https://emanuelancco.github.io/cv-portfolio/}{emanuelancco.github.io/cv-portfolio}
+\end{center}
+
+% --- PERFIL ---
+\section*{Perfil Profesional}
+\textbf{Bachiller en Ingeniería Civil (UPC)} y \textbf{AI Automation Engineer en gen+}, con foco en \textbf{IA aplicada a seguridad operacional y monitoreo industrial}. Construyo soluciones de extremo a extremo que combinan \textbf{visión computacional (YOLOv8 / SegFormer)}, \textbf{agentes de IA conversacionales (n8n + LLMs + WhatsApp)}, \textbf{hardware de borde (FPGA + ESP32 + Jetson Orin)} y \textbf{dashboards en producción}. Originario de Puno, con experiencia en obra y conocimiento normativo minero (DS 024-2016-EM, DS 034-2023-EM, GISTM, ICMM CCM). Mi propuesta para esta convocatoria —\textbf{GAIATECH M1.0}— integra cuatro activos ya desplegados para automatizar la verificación del sistema LRAC (Caso 13) y el monitoreo geotécnico de relaves (Caso 12) de Las Bambas.
+
+\vspace{1mm}
+\begin{center}
+\fbox{\parbox{0.94\textwidth}{\centering
+\faExternalLink*{} \textbf{EVIDENCIA TÉCNICA Y DEMOS:} \href{https://emanuelancco.github.io/cv-portfolio/}{emanuelancco.github.io/cv-portfolio} \\
+\small{Videos de inferencia EPP, dashboards en producción, demos FPGA, métricas de modelos, capturas en obra}
+}}
+\end{center}
+
+% --- EXPERIENCIA ---
+\section*{Experiencia Profesional}
+
+\entry{AI Automation Engineer}{Marzo 2026 -- Presente}{gen+ (Generative Design \& Construction)}{Lima, Perú}
+\begin{itemize}
+    \item Lidero el área de \textbf{operaciones, automatización e IA} de la empresa: arquitectura de agentes conversacionales, despliegue de modelos de visión y orquestación de workflows entre WhatsApp, Notion, Google Workspace, Postgres y Drive.
+    \item \textbf{Gen+ Vision Pro PDK} (producción): plataforma de monitoreo de obra con detección de EPP (YOLOv8 sobre Jetson Orin Nano Super, \textbf{11 clases, 87.67\% mAP, 38 FPS sostenidos}), dashboard web con alertas sintéticas y reportes automáticos para Vision Pro AI.
+    \item \textbf{Diseño de sistema de cámaras Edge AI} para inspección de obra: dos subsistemas (cámara fija Jetson Orin + PTZ 4K solar con conectividad LTE/LoRa), CAPEX optimizado \textbf{47\% más barato} que alternativa comercial (~S/ 27,600).
+    \item \textbf{Aecodito - Centro de Operaciones v3.0}: agente WhatsApp multifuncional para Gen+ con \textbf{50 nodos n8n, 10 herramientas integradas} (Sheets/Calendar/Gmail/Postgres), memoria persistente, recordatorios y derivación inteligente a humanos.
+\end{itemize}
+
+\vspace{1mm}
+
+\entry{Líder Técnico y Co-fundador}{Junio 2024 -- Presente}{GAIATECH (spin-off de investigación UPC)}{Lima / Puno, Perú}
+\begin{itemize}
+    \item \textbf{2\textsuperscript{do} lugar AI Talent Demo Day 2026} con \textbf{GAIATECH VIGÍA}: sistema de monitoreo estructural con \textbf{FFT en FPGA Gowin GW1NR-9}, ESP32 y modelo \textbf{LSTM-Autoencoder (F1 = 0.961)} para detección de anomalías en tiempo real con alertas WhatsApp.
+    \item \textbf{GAIATECH SHM} (artículo paper-ready, revista Elsevier \textit{Structures}): modelo \textbf{MISM-GNN} para identificación modal de Puente Junín con \textbf{R² = 0.998} usando 65× menos parámetros que arquitecturas FFNN equivalentes.
+    \item \textbf{GAIATECH G1 - Agroecología Andina} (postulación PROCIENCIA 2026, S/ 896,400): integración de IA + sensores edge + plataforma satelital con INIA Illpa-Puno.
+    \item Ponente en \textbf{CONEIC Ucayali 2024}; \textbf{2\textsuperscript{do} lugar Concurso de Conocimientos CONEIC Huaraz 2025}.
+\end{itemize}
+
+\vspace{1mm}
+
+\entry{Director del Área de Investigaciones (IA y SHM)}{Enero 2024 -- Diciembre 2025}{Capítulo Estudiantil de Ingeniería Civil - IDI UPC}{Lima, Perú}
+\begin{itemize}
+    \item Lideré equipo multidisciplinario (8 estudiantes) en desarrollo de modelos híbridos \textbf{PINN-GNN} (Physics-Informed Neural Network + Graph Neural Network) para detección no supervisada de anomalías en infraestructura civil.
+    \item Diseño de red de adquisición con sensores MEMS + Arduino/Raspberry Pi para captura sincronizada de señales vibracionales.
+    \item Pipeline completo de datos: ETL, extracción de features (DWT, FFT, CWT), entrenamiento y dashboards interactivos (Plotly/Dash).
+\end{itemize}
+
+\vspace{1mm}
+
+\entry{Asistente de Oficina Técnica}{Septiembre 2025 -- Diciembre 2025}{Obra ``Teatro Municipal de Yunguyo''}{Puno, Perú}
+\begin{itemize}
+    \item Informes mensuales de avance, valorizaciones, modelado BIM estructural (Revit 2026) y aplicación de plugins propios para armado de vigas y losas.
+\end{itemize}
+
+\vspace{1mm}
+
+\entry{Asistente de Oficina Técnica}{Junio 2024 -- Noviembre 2024}{Constructora Talgus S.A.C.}{Lima, Perú}
+\begin{itemize}
+    \item Metrados, análisis de costos unitarios, presupuestos y actualización de planos técnicos (AutoCAD, Revit).
+\end{itemize}
+
+% --- EDUCACIÓN ---
+\section*{Educación}
+\entry{Bachiller en Ingeniería Civil}{2021 -- Diciembre 2025}{Universidad Peruana de Ciencias Aplicadas (UPC)}{Lima, Perú}
+\vspace{1mm}
+\entry{Bachillerato Internacional (IB Diploma)}{2015 -- 2017}{Colegio de Alto Rendimiento (COAR Puno)}{Puno, Perú}
+
+% --- PROYECTOS DESTACADOS PARA LAS BAMBAS ---
+\section*{Proyectos Destacados (Aplicables a Las Bambas)}
+
+\textbf{GAIATECH M1.0 -- Plataforma IA + Agente para Seguridad y Relaves (PROPUESTA INNOVADORES EN ACCIÓN 2026)}
+\begin{itemize}
+    \item Integración de \textbf{4 activos en producción} para los Casos 13 (LRAC) y 12 (Relaves) del VP SHE: ConstEdge + Gen+ Vision PDK + GAIATECH VIGÍA + Aecodito Minero.
+    \item Cumplimiento normativo: \textbf{DS 024-2016-EM, DS 023-2017-EM, DS 034-2023-EM (Capítulo XII Relaves, arts. 418-423)}, Resolución 122-2024-OS/CD OSINERGMIN, ICMM CCM, GISTM 2020.
+    \item Diferenciador: \textbf{demo funcional desde día 1} (no PowerPoint), datos peruanos en los modelos, stack open-source.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{GAIATECH VIGÍA -- Monitoreo Estructural Edge AI (2\textsuperscript{do} lugar AI Talent Demo Day 2026)}
+\begin{itemize}
+    \item Sistema completo de monitoreo de vibraciones para infraestructura crítica: \textbf{FFT en FPGA Gowin GW1NR-9} (Explorer Edge-9K), ESP32 como bridge y modelo \textbf{LSTM-Autoencoder} entrenado en PyTorch.
+    \item Métricas: \textbf{F1 = 0.961} en detección de anomalías; latencia de alerta < 2 segundos vía WhatsApp.
+    \item Aplicable a monitoreo de presas de relaves, taludes y estructuras de procesamiento.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{ConstEdge -- Asistencia Laboral y EPP con Visión Computacional}
+\begin{itemize}
+    \item Reconocimiento facial (\textbf{DeepFace / ArcFace}) + detección de EPP (\textbf{YOLOv8}) + 4 marcajes diarios + dashboard Vue.js + app móvil PWA.
+    \item Reportes Excel automáticos con fotos embebidas; alertas en tiempo real ante incumplimientos.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{Aecodito Minero -- Agente WhatsApp para captura de RACS y Tarjetas Verdes}
+\begin{itemize}
+    \item Bot conversacional con \textbf{n8n + Evolution API + Gemini Pro + Postgres pgvector} que guía al operador en el reporte de actos y condiciones subestándar siguiendo plantillas Las Bambas.
+    \item Procesa texto, audio (transcripción), imagen y PDF en un único flujo; deriva a SHE cuando aplica.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{Hardware IoT y FPGA para Zonas Remotas}
+\begin{itemize}
+    \item \textbf{CultiGuard:} nodo FPGA Tang Nano 9K + ESP32-CAM + \textbf{LoRa} de largo alcance + panel solar; edge AI sin necesidad de internet.
+    \item \textbf{PachaGuard:} sistema de vigilancia autónoma con Tang Nano 1K, lógica en Verilog, transmisión por UART.
+    \item Módulos VHDL de fusión sensorial (acelerómetro + giroscopio) para FPGA.
+\end{itemize}
+
+\vspace{1mm}
+
+\textbf{Plataforma de Predicción de Riesgos Laborales (NLP)}
+\begin{itemize}
+    \item API REST (FastAPI) con \textbf{DistilBERT} para clasificar narrativas de incidentes (naturaleza, parte del cuerpo, tipo de evento).
+    \item Módulo de \textbf{Toolbox Talks} automáticos para charlas de 5 minutos basadas en patrones detectados.
+\end{itemize}
+
+% --- HABILIDADES ---
+\section*{Habilidades Técnicas}
+\begin{itemize}
+    \item \textbf{IA y Computer Vision:} PyTorch, YOLOv8, SegFormer, DeepFace, GNN (PyTorch Geometric), LSTM/GRU, Hugging Face Transformers, Prompt Engineering (Claude, Gemini, DeepSeek, Qwen).
+    \item \textbf{Automatización y Agentes:} \textbf{n8n} (avanzado), \textbf{Model Context Protocol (MCP)}, Evolution API (WhatsApp Business), Telegram Bot API, integraciones REST y webhooks.
+    \item \textbf{Hardware e IoT:} FPGA (Verilog/VHDL, Gowin GW1NR-9), ESP32, Arduino, Raspberry Pi, Jetson Orin Nano Super, sensores MEMS, LoRa, UART/SPI/I2C, despliegue sin conectividad.
+    \item \textbf{Análisis de Datos:} Python, R, MATLAB, Power BI, Plotly/Dash, Pandas, NumPy, SciPy; series temporales y procesamiento de señales (FFT, Wavelets).
+    \item \textbf{Desarrollo de Software:} Python (avanzado), JavaScript/TypeScript (Next.js, React, Node.js), C\# (.NET, Revit API), SQL, FastAPI, WebSocket.
+    \item \textbf{Bases de Datos:} PostgreSQL (pgvector), SQLite, Notion API.
+    \item \textbf{Ingeniería y BIM:} Revit (desarrollo de plugins en C\#/.NET), AutoCAD y Civil 3D (intermedio-avanzado, AutoLISP y scripting), SAP2000, QGIS, ArcGIS, S10, Primavera P6.
+    \item \textbf{Software Geotécnico y Minero:} \textbf{Leapfrog Geo} (modelado geológico implícito 3D, drillholes, automatización con exports OMF/VTK -- básico-intermedio); \textbf{Rocscience} (RS2/RS3 elementos finitos + Slide2 estabilidad de taludes -- básico-intermedio); \textbf{MineSight / HxGN MinePlan} (block model, pit design -- básico-intermedio, en formación activa).
+    \item \textbf{Normativa Minera:} DS 024-2016-EM, DS 023-2017-EM, DS 034-2023-EM (Cap. XII Relaves), Resolución 122-2024-OS/CD, GISTM 2020, ICMM CCM, ISO 45001:2018, Ley 29783.
+    \item \textbf{Idiomas:} Español (Nativo), Inglés Intermedio-Avanzado (técnico y conversacional).
+\end{itemize}
+
+% --- CERTIFICACIONES Y RECONOCIMIENTOS ---
+\section*{Certificaciones y Reconocimientos}
+\textit{\small Verificables en LinkedIn: \href{https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352}{linkedin.com/in/emanuel-edgar-ancco-guaygua}}
+\vspace{1mm}
+\begin{itemize}
+    \item \textbf{2\textsuperscript{do} lugar AI Talent Demo Day 2026} -- GAIATECH VIGÍA (FPGA + LSTM-AE para monitoreo estructural).
+    \item \textbf{Especialización en Machine Learning on Google Cloud} (4 cursos) -- Google Cloud / Coursera, 2025.
+    \item \textbf{Especialista en IA y Aprendizaje Automático con Python} (120 horas) -- Data Science Analysis, 2024.
+    \item \textbf{Ponente CONEIC Ucayali 2024} -- ``Aplicación de CNN para Evaluación Automatizada de Fisuras y Grietas''.
+    \item \textbf{2\textsuperscript{do} lugar Concurso de Conocimientos CONEIC} -- Huaraz, 2025.
+    \item \textbf{Primer Puesto, XIV COREIC Lima 2023} -- Concurso de Ponencias Académicas, UNFV.
+    \item \textbf{Innovador Destacado, DigiEduHack 2023} -- Comisión Europea.
+    \item \textbf{Especialización Python for Everybody} (5 cursos) -- University of Michigan / Coursera.
+    \item \textbf{ISC AI Foundations For Everyone} -- Campus Global ISC, 2025.
+\end{itemize}
+
+% --- INFORMACIÓN ADICIONAL ---
+\section*{Información Adicional}
+\begin{itemize}
+    \item \textbf{Origen:} Puno, Perú -- familiarizado con altura (4,000+ msnm) y condiciones de sierra.
+    \item \textbf{Disponibilidad:} Inmediata para régimen atípico (14x7 / 10x10) en Unidad Minera Las Bambas (Apurímac).
+    \item \textbf{Visión:} Llevar a la operación minera peruana herramientas de IA de bajo costo, mantenibles localmente y alineadas con la normativa vigente.
+\end{itemize}
+
+\end{document}

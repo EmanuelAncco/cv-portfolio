@@ -603,6 +603,25 @@ header.site {
   width: 64px; height: 64px;
   color: oklch(from var(--brand) l c h / 0.6);
 }
+/* YouTube embed dentro de proj-image */
+.proj-image .yt-embed {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+}
+.proj-image .yt-embed iframe {
+  width: 100%; height: 100%;
+  border: 0; display: block;
+}
+/* Galería compacta de plugins Revit dentro de proj-image */
+.proj-image .img-grid-4 {
+  position: absolute; inset: 0;
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+  gap: 2px;
+}
+.proj-image .img-grid-4 img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: contrast(1.06) saturate(0.95);
+}
 /* placeholder con icono en proj-image normal (cuando no hay imagen real) */
 .proj-image-icon-wrap {
   position: absolute; inset: 0;
@@ -1103,11 +1122,12 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
       </header>
 
       <div class="cat-tabs" role="tablist">
-        <button class="cat-tab active" data-cat="all" role="tab">Todos <span class="count">40</span></button>
+        <button class="cat-tab active" data-cat="all" role="tab">Todos <span class="count">48</span></button>
         <button class="cat-tab" data-cat="plat" role="tab">Plataformas Web <span class="count">12</span></button>
         <button class="cat-tab" data-cat="ai" role="tab">Agentes IA <span class="count">5</span></button>
-        <button class="cat-tab" data-cat="cv" role="tab">Visión & Edge AI <span class="count">5</span></button>
+        <button class="cat-tab" data-cat="cv" role="tab">Visión & Edge AI <span class="count">6</span></button>
         <button class="cat-tab" data-cat="hw" role="tab">Hardware & FPGA <span class="count">5</span></button>
+        <button class="cat-tab" data-cat="bim" role="tab">BIM & Ingeniería <span class="count">7</span></button>
         <button class="cat-tab" data-cat="research" role="tab">Investigación <span class="count">5</span></button>
         <button class="cat-tab" data-cat="3d" role="tab">3D & Inmersivo <span class="count">3</span></button>
         <button class="cat-tab" data-cat="tools" role="tab">Toolkits <span class="count">5</span></button>
@@ -1292,13 +1312,15 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Curso · Web Stack</span>
               <span class="proj-status r-and-d"><i data-lucide="hammer"></i> 16 sábados</span>
             </div>
-            <div class="proj-image-icon-wrap"><i data-lucide="graduation-cap" class="proj-image-icon-svg"></i></div>
+            <div class="yt-embed">
+              <iframe src="https://www.youtube.com/embed/uqNimzK01M8?rel=0&modestbranding=1" title="n8n Workflow Automation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Curso n8n + IA · AECODE + CIP</h3>
-            <p class="proj-desc">100h, 16 sábados desde may 2026. 11 alumnos, 11 misiones personalizadas, hexágono AECODE de competencias.</p>
+            <p class="proj-desc">100h, 16 sábados desde may 2026. <strong>11 alumnos</strong>, 11 misiones personalizadas, hexágono AECODE de competencias. Demo YouTube de workflow real.</p>
             <div class="proj-meta">
-              <span class="tag">n8n</span><span class="tag">Claude</span><span class="tag">Gemini</span><span class="tag">RAG</span>
+              <span class="tag">n8n</span><span class="tag">Claude</span><span class="tag">Gemini</span><span class="tag">RAG</span><span class="tag">YouTube</span>
             </div>
           </div>
         </article>
@@ -1395,8 +1417,8 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Vision · Edge AI</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <video src="assets/videos/vision-pro-hero.mp4" autoplay muted loop playsinline poster="assets/images/emarc_vision_detection.png" preload="metadata"></video>
-            <span class="proj-video-tag"><span class="live-dot"></span> Demo</span>
+            <video src="assets/videos/vision-pro-pitch.mp4" autoplay muted loop playsinline poster="assets/images/emarc_vision_detection.png" preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Pitch · 75s</span>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Gen+ Vision Pro PDK</h3>
@@ -1413,8 +1435,8 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Training Pipeline</span>
               <span class="proj-status live"><i data-lucide="check"></i> Dataset 1182</span>
             </div>
-            <video src="assets/videos/yolo-annotated.mp4" autoplay muted loop playsinline poster="assets/images/BoxF1_curve.png" preload="metadata"></video>
-            <span class="proj-video-tag"><span class="live-dot"></span> Annotated</span>
+            <img src="assets/images/labels_correlogram.jpg" alt="YOLOv8 cascos training" loading="lazy">
+            <span class="proj-video-tag"><span class="live-dot"></span> Roboflow 1182</span>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Vision Pro Cascos · Training</h3>
@@ -1476,6 +1498,25 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           </div>
         </article>
 
+        <article class="proj feat reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">EMARC VISIÓN · Demo YouTube</span>
+              <span class="proj-status award"><i data-lucide="play-circle"></i> Video</span>
+            </div>
+            <div class="yt-embed">
+              <iframe src="https://www.youtube.com/embed/K500tgJHRiY?rel=0&modestbranding=1" title="EMARC VISIÓN Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">EMARC VISIÓN · Detección EPP (origen)</h3>
+            <p class="proj-desc">Versión original del sistema EPP que dio origen a Vision Pro PDK. Detección en tiempo real de cascos, chalecos y arnés sobre RTSP IP cam. <em>Predecesor del modelo YOLOv8 actual.</em></p>
+            <div class="proj-meta">
+              <span class="tag">YOLOv5</span><span class="tag">OpenCV</span><span class="tag">Python</span><span class="tag">RTSP</span><span class="tag">YouTube demo</span>
+            </div>
+          </div>
+        </article>
+
         <!-- ============ HARDWARE & FPGA ============ -->
         <article class="proj feat reveal" data-cat="hw">
           <div class="proj-image">
@@ -1496,18 +1537,30 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="hw">
-          <div class="proj-image no-img"><i data-lucide="microchip"></i></div>
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">FPGA Gowin GW1NR-9</span>
+            </div>
+            <div class="yt-embed">
+              <iframe src="https://www.youtube.com/embed/YuHDxx74Gqk?rel=0&modestbranding=1" title="FPGA Seismic Simulation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">GAIATECH FPGA · Investigación</h3>
             <p class="proj-desc">Explorer Edge-9K funcionando. 5 módulos para FFT. <strong>253 KB de investigación</strong> técnica documentada. Pinout completo, gotchas resueltos.</p>
             <div class="proj-meta">
-              <span class="tag">Gowin EDA</span><span class="tag">openFPGALoader</span><span class="tag">JTAG</span>
+              <span class="tag">Gowin EDA</span><span class="tag">openFPGALoader</span><span class="tag">JTAG</span><span class="tag">YouTube demo</span>
             </div>
           </div>
         </article>
 
         <article class="proj reveal" data-cat="hw">
-          <div class="proj-image no-img"><i data-lucide="leaf"></i></div>
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">IoT Edge · LoRa</span>
+            </div>
+            <img src="assets/images/GRAPHOS/figure_8_graph_topology_comparison.png" alt="CultiGuard topology" loading="lazy">
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">CultiGuard · PachaGuard</h3>
             <p class="proj-desc">Nodos IoT autónomos con <strong>Tang Nano 9K + ESP32-CAM + LoRa + panel solar</strong>. Edge AI sin internet. PachaGuard usa Tang Nano 1K + Verilog + UART.</p>
@@ -1518,7 +1571,12 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="hw">
-          <div class="proj-image no-img"><i data-lucide="bot"></i></div>
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">RPi 5 + AI HAT 26 TOPS</span>
+            </div>
+            <img src="assets/images/skills_tech_stack.png" alt="Aecodito robot stack" loading="lazy">
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">Aecodito Robot Físico</h3>
             <p class="proj-desc">Robot para AI Summit jun 2026: <strong>RPi 5 + AI HAT 26 TOPS + FPGA + ESP32-C6 + voz</strong>. BOM total ~$430 USD. Movimientos servo, voz Kore, integración con n8n.</p>
@@ -1529,12 +1587,158 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="hw">
-          <div class="proj-image no-img"><i data-lucide="cpu"></i></div>
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">38 FPS · TensorRT</span>
+            </div>
+            <img src="assets/images/results.png" alt="Jetson Orin results" loading="lazy">
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">Jetson Orin Nano Super · Setup Vision Pro 3.1</h3>
             <p class="proj-desc">Stack <strong>torch nv24.08 + cuSPARSELt + torchvision compiled</strong>. 38 FPS sostenidos con emarc_v3.1 EPP. 7 gotchas críticos documentados.</p>
             <div class="proj-meta">
               <span class="tag">Jetson Orin Nano Super</span><span class="tag">TensorRT</span><span class="tag">JetPack</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ BIM & INGENIERÍA ============ -->
+        <article class="proj feat reveal" data-cat="bim">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">EMARC BIM Suite · Revit Plugins</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En uso</span>
+            </div>
+            <div class="img-grid-4">
+              <img src="assets/images/revit/plugin-vigas.png" alt="Plugin Vigas" loading="lazy">
+              <img src="assets/images/revit/plugin-zapatas.png" alt="Plugin Zapatas" loading="lazy">
+              <img src="assets/images/revit/plugin-losas.png" alt="Plugin Losas" loading="lazy">
+              <img src="assets/images/revit/plugin-acabados.png" alt="Plugin Acabados" loading="lazy">
+            </div>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">EMARC BIM Suite · Plugins Revit</h3>
+            <p class="proj-desc">Suite de 9 plugins C# para Revit que automatizan tareas críticas: <strong>SAP2000/ETABS → Revit</strong>, vigas, zapatas, losas, columnas (L, cruz, rectangulares), acabados, constructor de habitaciones, bidireccional Revit↔SAP, AutoCAD → familias Revit.</p>
+            <div class="proj-meta">
+              <span class="tag">C# / Revit API</span><span class="tag">SAP2000</span><span class="tag">ETABS</span><span class="tag">Dynamo</span><span class="tag">9 plugins</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="bim">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Plugin · SAP2000/ETABS → Revit</span>
+            </div>
+            <img src="assets/images/revit/plugin-sap2000-etabs-revit.png" alt="Plugin SAP2000/ETABS to Revit" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Plugin SAP2000/ETABS → Revit</h3>
+            <p class="proj-desc">Importa modelos estructurales analíticos de SAP2000/ETABS a Revit con mapeo de secciones, materiales y cargas. Elimina horas de modelado manual.</p>
+            <div class="proj-meta">
+              <span class="tag">CSI OAPI</span><span class="tag">Revit API</span><span class="tag">C#</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="bim">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Plugin · Columnas paramétricas</span>
+            </div>
+            <img src="assets/images/revit/plugin-columnas/columnas-l-cruz-rectangulares.png" alt="Plugin Columnas L cruz rectangulares" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Plugin Columnas L / Cruz / Rectangulares</h3>
+            <p class="proj-desc">Familias paramétricas + plugin que genera columnas L, cruz y rectangulares a partir de parámetros de SAP. Resuelve la falta de columnas L nativas en Revit.</p>
+            <div class="proj-meta">
+              <span class="tag">Revit families</span><span class="tag">C#</span><span class="tag">Parametric</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj feat reveal" data-cat="bim">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Teatro Municipal Yunguyo</span>
+              <span class="proj-status award"><i data-lucide="building"></i> Modelo entregado</span>
+            </div>
+            <div class="img-grid-4">
+              <img src="assets/images/revit/teatro-yunguyo/teatro.png" alt="Teatro Yunguyo 3D" loading="lazy">
+              <img src="assets/images/revit/teatro-yunguyo/teatro-con-cobertura.png" alt="Teatro con cobertura" loading="lazy">
+              <img src="assets/images/revit/teatro-yunguyo/teatro-plano.png" alt="Teatro plano" loading="lazy">
+              <img src="assets/images/revit/teatro-yunguyo/aceros-revit.png" alt="Aceros Revit" loading="lazy">
+            </div>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Teatro Municipal Yunguyo · Modelado BIM</h3>
+            <p class="proj-desc">Modelado BIM completo (arquitectura + estructura + cobertura espacial). Aceros detallados, losas automáticas, planos a partir del modelo. Documentación lista para licitación.</p>
+            <div class="proj-meta">
+              <span class="tag">Revit 2026</span><span class="tag">Estructura espacial</span><span class="tag">Concreto + acero</span><span class="tag">Documentación</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="bim">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">SAP → Revit · Cobertura</span>
+            </div>
+            <div class="img-grid-4">
+              <img src="assets/images/revit/saptorevit-cobertura/cobertura.png" alt="Cobertura paso 1" loading="lazy">
+              <img src="assets/images/revit/saptorevit-cobertura/cobertura3.png" alt="Cobertura paso 3" loading="lazy">
+              <img src="assets/images/revit/saptorevit-cobertura/cobertura5.png" alt="Cobertura paso 5" loading="lazy">
+              <img src="assets/images/revit/saptorevit-cobertura/cobertura7.png" alt="Cobertura paso 7" loading="lazy">
+            </div>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Workflow SAP → Revit · Coberturas espaciales</h3>
+            <p class="proj-desc">Pipeline reproducible para llevar coberturas espaciales (cerchas, arcos, mallas) desde SAP2000 a Revit conservando topología, secciones y conexiones. 7 pasos documentados.</p>
+            <div class="proj-meta">
+              <span class="tag">SAP2000</span><span class="tag">Revit</span><span class="tag">Pipeline</span><span class="tag">Estructuras espaciales</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj feat reveal" data-cat="bim">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Suite Tuberías TGD</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En uso</span>
+            </div>
+            <div class="img-grid-4">
+              <img src="assets/images/tuberias-interfaz-final.png" alt="Tuberías UI" loading="lazy">
+              <img src="assets/images/tuberias-calculo-tramos.png" alt="Cálculo tramos" loading="lazy">
+              <img src="assets/images/tuberias_polar.png" alt="Diagrama polar" loading="lazy">
+              <img src="assets/images/tuberias-imagen1.png" alt="Tuberías render" loading="lazy">
+            </div>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Suite Tuberías TGD</h3>
+            <p class="proj-desc">App de cálculo y diseño de tuberías de impulsión/gravedad: tramos, pérdidas, diagrama polar, dimensionamiento. Salida lista para integración con Revit/AutoCAD.</p>
+            <div class="proj-meta">
+              <span class="tag">Python</span><span class="tag">PyQt</span><span class="tag">Hidráulica</span><span class="tag">Cálculo TGD</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="bim">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">EMAIRC HIDRA · HP Prime</span>
+            </div>
+            <div class="img-grid-4">
+              <img src="assets/images/hp-prime-directo-tramos.png" alt="HP Prime directo tramos" loading="lazy">
+              <img src="assets/images/hp-prime-grafico.png" alt="HP Prime gráfico" loading="lazy">
+              <img src="assets/images/hp-prime-integracion.png" alt="HP Prime integración" loading="lazy">
+              <img src="assets/images/hp-prime-tabla.png" alt="HP Prime tabla" loading="lazy">
+            </div>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">EMAIRC HIDRA · App HP Prime</h3>
+            <p class="proj-desc">Aplicación nativa para calculadora <strong>HP Prime</strong> que resuelve hidráulica de tramos en campo. UI tabular, gráficos, integración paramétrica. Útil cuando no hay laptop.</p>
+            <div class="proj-meta">
+              <span class="tag">HP PPL</span><span class="tag">HP Prime</span><span class="tag">Hidráulica</span><span class="tag">Field tool</span>
             </div>
           </div>
         </article>
@@ -1558,7 +1762,12 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="research">
-          <div class="proj-image no-img"><i data-lucide="sprout"></i></div>
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">PROCIENCIA 2026 · S/ 896k</span>
+            </div>
+            <img src="assets/images/GRAPHOS/figure_2_graph_topology.png" alt="GNN topology agro" loading="lazy">
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">GAIATECH G1 · Agroecología Andina</h3>
             <p class="proj-desc">Postulación PROCIENCIA 2026 (<strong>S/ 896,400 / 36 meses</strong>). 5 capas: edge + IA + satelital + chatbot + marketplace. Integra CultiGuard + PachaGuard + INIA Illpa-Puno.</p>
@@ -1569,7 +1778,12 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="research">
-          <div class="proj-image no-img"><i data-lucide="bridge"></i></div>
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">ProCiencia · FPGA Dual</span>
+            </div>
+            <img src="assets/images/GRAPHOS/Figure_2_Wavelet_Decomposition.png" alt="Wavelet decomposition" loading="lazy">
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">ProCiencia Tesis 2026 · FPGA Dual + Cercha Bailey</h3>
             <p class="proj-desc">Maqueta 1:10 + <strong>FPGA dual</strong> (FFT + GNN cuantizada) + 4 tipos de daño. 2 papers esperados. Cierre 19-jun, S/ 30k.</p>
@@ -1580,7 +1794,12 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="research">
-          <div class="proj-image no-img"><i data-lucide="graduation-cap"></i></div>
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Co-dirección · PINN+GNN</span>
+            </div>
+            <img src="assets/images/GRAPHOS/Fig1-3_graph_comparison_NOTORIO.png" alt="PINN-GNN graph comparison" loading="lazy">
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">Tesis Sheyla Ancco · PINN-GNN</h3>
             <p class="proj-desc">Co-dirección. Modelos híbridos Physics-Informed + GNN para detección no supervisada de anomalías en infraestructura civil.</p>
@@ -1591,7 +1810,12 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="research">
-          <div class="proj-image no-img"><i data-lucide="atom"></i></div>
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">IDI UPC · MEMS + ETL</span>
+            </div>
+            <img src="assets/images/GRAPHOS/Figure_1_Spectral_Dashboard.png" alt="Spectral dashboard IDI" loading="lazy">
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">IDI UPC · Director Investigaciones IA/SHM</h3>
             <p class="proj-desc">Equipo multidisciplinario (8 estudiantes) en modelos PINN-GNN. Red de sensores MEMS + RPi. Pipeline ETL + features + dashboards Plotly.</p>
@@ -1668,8 +1892,8 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         <article class="proj reveal" data-cat="tools">
           <div class="proj-image no-img"><i data-lucide="test-tube"></i></div>
           <div class="proj-body">
-            <h3 class="proj-title">Playwright UI/UX Toolkit · Yary</h3>
-            <p class="proj-desc">Toolkit para colega diseñadora: guía HTML standalone con mascot video, efecto linterna, <strong>18 plantillas .spec.ts</strong>. ZIP 6.69 MB.</p>
+            <h3 class="proj-title">Playwright UI/UX Toolkit</h3>
+            <p class="proj-desc">Toolkit para equipo de diseño: guía HTML standalone con mascot video, efecto linterna, <strong>18 plantillas .spec.ts</strong> para testing visual de paneles. ZIP 6.69 MB.</p>
             <div class="proj-meta">
               <span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">Standalone HTML</span>
             </div>
@@ -1679,8 +1903,8 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         <article class="proj reveal" data-cat="tools">
           <div class="proj-image no-img"><i data-lucide="package"></i></div>
           <div class="proj-body">
-            <h3 class="proj-title">Prototype Studio · Yary</h3>
-            <p class="proj-desc">Segundo toolkit con <strong>18 plantillas Next.js + shadcn + Awwwards</strong> (9 app + 9 landing). ZIP 664 KB.</p>
+            <h3 class="proj-title">Prototype Studio</h3>
+            <p class="proj-desc">Toolkit con <strong>18 plantillas Next.js + shadcn + Awwwards</strong> (9 app + 9 landing) para prototipado rápido de productos digitales. ZIP 664 KB.</p>
             <div class="proj-meta">
               <span class="tag">Next.js 16</span><span class="tag">shadcn</span><span class="tag">Awwwards stack</span>
             </div>

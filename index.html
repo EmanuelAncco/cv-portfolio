@@ -137,7 +137,24 @@ code,.mono { font-family: var(--font-mono); font-size: 0.92em; font-variant-nume
 .serif { font-family: var(--font-serif); font-style: italic; }
 
 .container { width: min(100% - 2.5rem, 1320px); margin-inline: auto; }
-section { padding-block: clamp(4rem, 9vw, 7rem); position: relative; }
+section { padding-block: clamp(5.5rem, 11vw, 9rem); position: relative; }
+/* Divisor sutil entre secciones (excepto la primera) */
+section + section::before {
+  content: '';
+  position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, 1300px);
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    oklch(from var(--brand) l c h / 0.25) 30%,
+    oklch(from var(--mint) l c h / 0.25) 70%,
+    transparent);
+  pointer-events: none;
+}
+/* Highlights y proyectos: dar más aire */
+#highlights { padding-block: clamp(6rem, 12vw, 10rem); }
+#proyectos { padding-block: clamp(6rem, 12vw, 10rem); }
 
 /* ============ CUSTOM CURSOR ============ */
 .cursor-dot, .cursor-ring {
@@ -324,14 +341,28 @@ header.site {
   text-align: center;
 }
 
-.hero-eyebrow-wrap { margin-bottom: 1.75rem; }
+/* Combo HERO + ABOUT */
+.hero-combo {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+}
+@media (max-width: 1000px) {
+  .hero-combo { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-combo-portrait { order: -1; max-width: 360px; margin: 0 auto; }
+}
+
+.hero-combo-text { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.hero-eyebrow-wrap { margin-bottom: 0.25rem; }
 
 .hero-headline {
-  font-size: clamp(3rem, 9vw, 7rem);
-  line-height: 0.92;
-  letter-spacing: -0.055em;
+  font-size: clamp(2.4rem, 6.5vw, 5rem);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
   font-weight: 700;
-  margin: 1.5rem 0 1.75rem;
+  margin: 0;
 }
 .hero-headline .word {
   display: inline-block;
@@ -346,11 +377,100 @@ header.site {
 .hero-sub {
   font-size: var(--s-1);
   color: var(--fg-muted);
-  max-width: 60ch; margin: 0 auto;
+  max-width: 60ch; margin: 0;
 }
 .hero-sub strong { color: var(--fg); font-weight: 600; }
 
-.hero-cta { display: inline-flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2.25rem; justify-content: center; }
+.hero-cta { display: inline-flex; flex-wrap: wrap; gap: 0.7rem; margin: 0.5rem 0 0; }
+
+.role-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; }
+
+/* Bloques about dentro del hero */
+.hero-about-blocks {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  margin-top: 1.25rem; padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 900px) { .hero-about-blocks { grid-template-columns: 1fr; } }
+.hero-about-block {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: oklch(from var(--bg-elev) l c h / 0.5);
+  backdrop-filter: blur(8px);
+  transition: border-color 300ms, transform 300ms;
+}
+.hero-about-block:hover { border-color: var(--brand); transform: translateY(-3px); }
+.hero-about-icon {
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, oklch(from var(--brand) l c h / 0.2), oklch(from var(--mint) l c h / 0.15));
+  margin-bottom: 0.6rem;
+  color: var(--brand);
+}
+.hero-about-icon svg { width: 18px; height: 18px; }
+.hero-about-block h4 {
+  font-size: var(--s-0);
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+  letter-spacing: -0.01em;
+}
+.hero-about-block p {
+  font-size: var(--s--1);
+  color: var(--fg-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+.hero-about-block strong { color: var(--fg); font-weight: 600; }
+
+/* Portrait del combo */
+.hero-combo-portrait {
+  position: sticky; top: 6rem;
+}
+.hero-portrait-frame {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: var(--r-2xl);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 40px 80px oklch(0 0 0 / 0.4), 0 8px 24px oklch(from var(--brand) l c h / 0.2);
+}
+.hero-portrait-frame img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: contrast(1.05) saturate(1.05);
+  transition: transform 800ms cubic-bezier(0.2,0.8,0.2,1);
+}
+.hero-portrait-frame:hover img { transform: scale(1.04); }
+.hero-portrait-glow {
+  position: absolute; inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg,
+    oklch(from var(--brand) l c h / 0.5),
+    transparent 30%,
+    transparent 70%,
+    oklch(from var(--mint) l c h / 0.5));
+  z-index: -1;
+  filter: blur(20px);
+  opacity: 0.6;
+  animation: portrait-glow-pulse 6s ease-in-out infinite alternate;
+}
+@keyframes portrait-glow-pulse {
+  from { opacity: 0.4; }
+  to   { opacity: 0.85; }
+}
+.hero-portrait-caption {
+  display: flex; flex-direction: column; gap: 0.3rem;
+  text-align: center; margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--s--1);
+}
+.cap-name { font-weight: 600; color: var(--fg); letter-spacing: -0.005em; }
+.cap-loc {
+  color: var(--fg-muted);
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+}
+.cap-loc svg { width: 14px; height: 14px; }
 
 /* Marquee de tecnologías */
 .tech-marquee-wrap {
@@ -1001,7 +1121,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
       <span>Emanuel Ancco</span>
     </a>
     <nav class="nav-links" aria-label="Secciones">
-      <a href="#about">Sobre mí</a>
+      <a href="#hero">Inicio</a>
       <a href="#highlights">Highlights</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#stack">Stack</a>
@@ -1021,7 +1141,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
 
 <main id="main">
 
-  <!-- =================== HERO =================== -->
+  <!-- =================== HERO + SOBRE MÍ (combinado) =================== -->
   <section id="hero">
     <div class="hero-noise" aria-hidden="true"></div>
     <div class="hero-grid" aria-hidden="true"></div>
@@ -1030,109 +1150,106 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
     <div class="hero-orb c" aria-hidden="true"></div>
     <div class="hero-mouse-glow" id="hero-mouse-glow" aria-hidden="true"></div>
 
-    <div class="container hero-inner">
-      <div class="hero-eyebrow-wrap">
-        <span class="eyebrow">
-          <span class="pulse"></span>
-          Open to work · proyectos · colaboraciones · investigación
-        </span>
+    <div class="container hero-combo">
+      <div class="hero-combo-text">
+        <div class="hero-eyebrow-wrap">
+          <span class="eyebrow">
+            <span class="pulse"></span>
+            Open to work · AEC · electrónica · investigación
+          </span>
+        </div>
+
+        <h1 class="hero-headline">
+          Del <span class="serif" style="color: var(--brand);">cálculo estructural</span><br>
+          al <span class="word">silicio</span>:<br>
+          <span class="serif" style="color: var(--mint);">sistemas reales</span> para obra.
+        </h1>
+
+        <p class="hero-sub">
+          Ingeniero civil (UPC) con perfil de <strong>full-stack dev + edge AI + hardware</strong>.
+          Construyo plugins BIM en Revit, sensores SHM en FPGA, modelos de
+          visión EPP en obra y plataformas web para la industria AEC.
+        </p>
+
+        <div class="role-pills">
+          <span class="chip brand">Bachiller Ingeniería Civil · UPC</span>
+          <span class="chip mint">AI Automation Engineer · gen+</span>
+          <span class="chip amber">Co-founder · GAIATECH</span>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#proyectos" class="btn btn-primary">
+            Ver proyectos <i data-lucide="arrow-right"></i>
+          </a>
+          <a href="#contacto" class="btn btn-mint">
+            <i data-lucide="message-square"></i> Conversar
+          </a>
+          <a href="Ancco_Emanuel_CV_Mayo_2026.pdf" class="btn" download>
+            <i data-lucide="file-down"></i> CV PDF
+          </a>
+        </div>
+
+        <div class="hero-about-blocks">
+          <div class="hero-about-block">
+            <div class="hero-about-icon"><i data-lucide="hard-hat"></i></div>
+            <h4>AEC + estructura</h4>
+            <p>Suite de plugins Revit (9), modelado BIM (Teatro Yunguyo), Suite Tuberías TGD, HP Prime para hidráulica. <strong>Paper-ready</strong> MISM-GNN sobre Puente Junín (Elsevier).</p>
+          </div>
+          <div class="hero-about-block">
+            <div class="hero-about-icon"><i data-lucide="cpu"></i></div>
+            <h4>Edge AI + hardware</h4>
+            <p>FPGA Gowin GW1NR-9 con FFT real, sensores con panel solar, modelos YOLOv8 EPP a <strong>38 FPS</strong> en Jetson Orin Nano Super, robot Aecodito para AI Summit.</p>
+          </div>
+          <div class="hero-about-block">
+            <div class="hero-about-icon"><i data-lucide="microscope"></i></div>
+            <h4>Investigación aplicada</h4>
+            <p><strong>Co-fundador GAIATECH</strong>: VIGÍA (SHM en FPGA, 2° AI Talent 2026), G1 Agroecología Andina (PROCIENCIA S/ 896k), tesis FPGA dual + Cercha Bailey.</p>
+          </div>
+        </div>
       </div>
 
-      <h1 class="hero-headline">
-        Construyo<br>
-        <span class="word">sistemas</span><br>
-        de extremo a extremo.
-      </h1>
-
-      <p class="hero-sub">
-        Software, IA, hardware e investigación. He llevado <strong>40+ proyectos</strong>
-        desde idea hasta producción, paper o producto — combinando
-        ingeniería estructural rigurosa con delivery iterativo moderno.
-      </p>
-
-      <div class="hero-cta">
-        <a href="#proyectos" class="btn btn-primary">
-          Ver proyectos <i data-lucide="arrow-right"></i>
-        </a>
-        <a href="#contacto" class="btn btn-mint">
-          <i data-lucide="message-square"></i> Conversar
-        </a>
-        <a href="Ancco_Emanuel_CV_Mayo_2026.pdf" class="btn" download>
-          <i data-lucide="file-down"></i> CV PDF
-        </a>
+      <div class="hero-combo-portrait reveal">
+        <div class="hero-portrait-frame">
+          <img src="assets/images/profile_v2.jpg" alt="Emanuel Ancco" loading="lazy">
+          <div class="hero-portrait-glow"></div>
+        </div>
+        <div class="hero-portrait-caption">
+          <span class="cap-name">Emanuel Edgar Ancco Guaygua</span>
+          <span class="cap-loc"><i data-lucide="map-pin"></i> Puno / Lima · Perú</span>
+        </div>
       </div>
     </div>
 
     <!-- Tech marquee -->
     <div class="tech-marquee-wrap" aria-hidden="true">
       <div class="tech-marquee">
-        <span><span class="dot"></span> Next.js 16</span>
-        <span><span class="dot mint"></span> PyTorch</span>
-        <span><span class="dot amber"></span> YOLOv8</span>
-        <span><span class="dot"></span> n8n</span>
-        <span><span class="dot mint"></span> FPGA Gowin</span>
-        <span><span class="dot amber"></span> Jetson Orin</span>
-        <span><span class="dot"></span> TypeScript</span>
-        <span><span class="dot mint"></span> PostgreSQL pgvector</span>
-        <span><span class="dot amber"></span> Three.js / R3F</span>
-        <span><span class="dot"></span> GSAP</span>
-        <span><span class="dot mint"></span> Claude / Gemini</span>
-        <span><span class="dot amber"></span> Drizzle ORM</span>
         <span><span class="dot"></span> Revit C# / .NET</span>
-        <span><span class="dot mint"></span> ESP32</span>
-        <span><span class="dot amber"></span> Verilog</span>
-        <span><span class="dot"></span> FastAPI</span>
-        <span><span class="dot mint"></span> Docker</span>
-        <span><span class="dot amber"></span> Godot 4</span>
-        <!-- duplicado para loop -->
-        <span><span class="dot"></span> Next.js 16</span>
-        <span><span class="dot mint"></span> PyTorch</span>
-        <span><span class="dot amber"></span> YOLOv8</span>
-        <span><span class="dot"></span> n8n</span>
+        <span><span class="dot mint"></span> SAP2000</span>
+        <span><span class="dot amber"></span> ETABS</span>
+        <span><span class="dot"></span> Dynamo</span>
         <span><span class="dot mint"></span> FPGA Gowin</span>
-        <span><span class="dot amber"></span> Jetson Orin</span>
-        <span><span class="dot"></span> TypeScript</span>
-        <span><span class="dot mint"></span> PostgreSQL pgvector</span>
-        <span><span class="dot amber"></span> Three.js / R3F</span>
-        <span><span class="dot"></span> GSAP</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- =================== ABOUT =================== -->
-  <section id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-portrait reveal">
-          <img src="assets/images/profile_v2.jpg" alt="Emanuel Ancco" loading="lazy">
-        </div>
-        <div class="about-text">
-          <div class="sec-head-meta" style="margin-bottom: 0.5rem;">
-            <span class="sec-num">— 01</span>
-            <span class="chip brand">Sobre mí</span>
-          </div>
-          <h2>Ingeniero <span class="serif" style="color: var(--brand);">civil</span> con perfil real de <span class="serif" style="color: var(--mint);">full-stack dev</span>, IA e <span class="serif" style="color: var(--amber);">IoT</span>.</h2>
-          <p>
-            Vengo de la ingeniería estructural pero he pasado los últimos años
-            construyendo software, agentes IA, hardware FPGA y modelos de visión
-            que <strong>realmente se usan</strong>: en obra, en producción, en papers académicos.
-          </p>
-          <p>
-            Lidero el área de operaciones, automatización e IA en
-            <strong>gen+</strong>, co-fundé <strong>GAIATECH</strong> (research spin-off),
-            y produzco constantemente — desde plataformas web multi-tenant hasta
-            sensores edge con panel solar y modelos de detección que corren a 38 FPS en Jetson.
-          </p>
-          <p>
-            Combinación que me define: <em class="serif">rigor de método estructural + iteración rápida de software</em>.
-            Disfruto el ciclo completo: idea → prototipo → métricas → producto → mantenimiento.
-          </p>
-          <div class="role-pills">
-            <span class="chip brand">Bachiller Ingeniería Civil · UPC</span>
-            <span class="chip mint">AI Automation Engineer · gen+</span>
-            <span class="chip amber">Co-founder · GAIATECH</span>
-          </div>
-        </div>
+        <span><span class="dot amber"></span> Verilog</span>
+        <span><span class="dot"></span> ESP32 / ESP32-CAM</span>
+        <span><span class="dot mint"></span> Jetson Orin</span>
+        <span><span class="dot amber"></span> YOLOv8 / YOLO11</span>
+        <span><span class="dot"></span> PyTorch Geometric</span>
+        <span><span class="dot mint"></span> PINN / GNN</span>
+        <span><span class="dot amber"></span> LoRa SX1262</span>
+        <span><span class="dot"></span> Next.js 16</span>
+        <span><span class="dot mint"></span> TensorRT INT8</span>
+        <span><span class="dot amber"></span> OpenSeesPy</span>
+        <span><span class="dot"></span> HP PPL</span>
+        <!-- duplicado para loop -->
+        <span><span class="dot"></span> Revit C# / .NET</span>
+        <span><span class="dot mint"></span> SAP2000</span>
+        <span><span class="dot amber"></span> ETABS</span>
+        <span><span class="dot"></span> Dynamo</span>
+        <span><span class="dot mint"></span> FPGA Gowin</span>
+        <span><span class="dot amber"></span> Verilog</span>
+        <span><span class="dot"></span> ESP32 / ESP32-CAM</span>
+        <span><span class="dot mint"></span> Jetson Orin</span>
+        <span><span class="dot amber"></span> YOLOv8 / YOLO11</span>
+        <span><span class="dot"></span> PyTorch Geometric</span>
       </div>
     </div>
   </section>
@@ -1143,7 +1260,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
       <header class="sec-head">
         <div>
           <div class="sec-head-meta">
-            <span class="sec-num">— 02</span>
+            <span class="sec-num">— 01</span>
             <span class="chip mint">Highlights recientes</span>
           </div>
           <h2 class="sec-title">Logros con <span class="mint">contexto</span> — no números sueltos.</h2>
@@ -1249,529 +1366,29 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
       <header class="sec-head">
         <div>
           <div class="sec-head-meta">
-            <span class="sec-num">— 03</span>
+            <span class="sec-num">— 02</span>
             <span class="chip amber">Proyectos</span>
           </div>
-          <h2 class="sec-title">Lo que <span class="accent">construí</span>, agrupado por dominio.</h2>
+          <h2 class="sec-title">Lo que <span class="accent">construí</span> — enfocado en <span class="mint">AEC</span> + <span class="amber">electrónica</span>.</h2>
         </div>
         <p class="sec-desc">
-          Filtra por categoría. Cada tarjeta enlaza al stack técnico, métricas y
-          status actual. La mayoría son open-source o tienen demo disponible.
+          Filtra por categoría. Plugins BIM, modelado estructural, visión EPP en obra,
+          edge AI con FPGA, investigación SHM y plataformas para la industria de la construcción.
         </p>
       </header>
 
       <div class="cat-tabs" role="tablist">
-        <button class="cat-tab active" data-cat="all" role="tab">Todos <span class="count">48</span></button>
-        <button class="cat-tab" data-cat="plat" role="tab">Plataformas Web <span class="count">12</span></button>
-        <button class="cat-tab" data-cat="ai" role="tab">Agentes IA <span class="count">5</span></button>
-        <button class="cat-tab" data-cat="cv" role="tab">Visión & Edge AI <span class="count">6</span></button>
-        <button class="cat-tab" data-cat="hw" role="tab">Hardware & FPGA <span class="count">5</span></button>
-        <button class="cat-tab" data-cat="bim" role="tab">BIM & Ingeniería <span class="count">7</span></button>
-        <button class="cat-tab" data-cat="research" role="tab">Investigación <span class="count">5</span></button>
-        <button class="cat-tab" data-cat="3d" role="tab">3D & Inmersivo <span class="count">3</span></button>
-        <button class="cat-tab" data-cat="tools" role="tab">Toolkits <span class="count">5</span></button>
+        <button class="cat-tab active" data-cat="all" role="tab">Todos <span class="count">25</span></button>
+        <button class="cat-tab" data-cat="bim" role="tab">AEC & BIM <span class="count">7</span></button>
+        <button class="cat-tab" data-cat="cv" role="tab">Visión EPP / Obra <span class="count">6</span></button>
+        <button class="cat-tab" data-cat="hw" role="tab">Hardware FPGA & IoT <span class="count">5</span></button>
+        <button class="cat-tab" data-cat="research" role="tab">Investigación SHM <span class="count">5</span></button>
+        <button class="cat-tab" data-cat="aec-tech" role="tab">Inmobiliario + Licitaciones <span class="count">2</span></button>
       </div>
 
       <div class="proj-grid" id="proj-grid">
 
-        <!-- ============ PLATAFORMAS WEB ============ -->
-        <article class="proj feat reveal" data-cat="plat">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Plataforma · Eventos</span>
-              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> En curso</span>
-            </div>
-            <img src="assets/images/panels/aecode-live-tickets.png" alt="AECODE Live · tickets" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">AECODE Live</h3>
-            <p class="proj-desc">Clon de Luma multi-tenant para eventos AECODE: registro, tickets, WhatsApp notifs, certificados automáticos, pasarela Stripe Connect. 6 sprints.</p>
-            <div class="proj-meta">
-              <span class="tag">Next.js 16</span><span class="tag">Drizzle</span><span class="tag">Stripe Connect</span><span class="tag">WhatsApp</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj feat reveal" data-cat="plat">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Email Marketing</span>
-              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
-            </div>
-            <img src="assets/images/panels/email-certificados.png" alt="Email Studio · certificados" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Email Studio</h3>
-            <p class="proj-desc">Web app para correos masivos con bloques visuales tipo Notion + módulo <strong>/certificados</strong> que estampa nombres sobre templates Canva con pdf-lib y envía masivo via Gmail.</p>
-            <div class="proj-meta">
-              <span class="tag">Next.js</span><span class="tag">MJML</span><span class="tag">Claude API</span><span class="tag">Gmail API</span><span class="tag">pdf-lib</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj feat reveal" data-cat="plat">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Canvas Editor</span>
-              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
-            </div>
-            <img src="assets/images/panels/brochure-canva.png" alt="Brochure Studio · editor canvas" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Brochure Studio</h3>
-            <p class="proj-desc">Editor visual de brochures con IA: canvas Fabric.js + briefs de cliente + Vision API + generación de bloques. Puerto 3500. v2 (<strong>Publish Studio</strong>) genera masivamente desde CSV/Sheets/Notion.</p>
-            <div class="proj-meta">
-              <span class="tag">Fabric.js</span><span class="tag">Vision API</span><span class="tag">Next.js</span><span class="tag">Claude</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj feat reveal" data-cat="plat">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Coordinación</span>
-              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
-            </div>
-            <img src="assets/images/panels/coord-studio.png" alt="Coord Studio · home" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Coord Studio</h3>
-            <p class="proj-desc">Panel Next.js 16 para coordinar 14 áreas de AI Summit jun 2026: briefs, avances, dependencias, riesgos y leaderboard en vivo.</p>
-            <div class="proj-meta">
-              <span class="tag">Next.js 16</span><span class="tag">Drizzle</span><span class="tag">Postgres</span><span class="tag">VPS</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="plat">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Ticketing IA</span>
-              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> v2 build</span>
-            </div>
-            <img src="assets/images/panels/tickets-list.png" alt="Ticket Studio · listado" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Ticket Studio v2</h3>
-            <p class="proj-desc">Multi-canal (WhatsApp/Web/Email) con kanban, SLA y triage IA para operaciones en vivo del AI Summit jun 2026.</p>
-            <div class="proj-meta">
-              <span class="tag">Next.js</span><span class="tag">Postgres</span><span class="tag">Evolution API</span><span class="tag">LangChain</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="plat">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">CRM / Discovery</span>
-              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
-            </div>
-            <img src="assets/images/panels/finder-dashboard.png" alt="AECODE FINDER · dashboard" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">AECODE FINDER v2</h3>
-            <p class="proj-desc">Panel Next.js que enriquece la BD de empresas Notion (99+ filas) con Serper + Gemini en vivo. Dedupe seguro, puerto 3002.</p>
-            <div class="proj-meta">
-              <span class="tag">Serper</span><span class="tag">Gemini</span><span class="tag">Notion API</span><span class="tag">Next.js</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="plat">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Multi-tenant CRM</span>
-              <span class="proj-status beta"><i data-lucide="alert-circle"></i> Local</span>
-            </div>
-            <div class="img-grid-2">
-              <img src="assets/images/panels/operaciones-aecode.png" alt="Operaciones AECODE" loading="lazy">
-              <img src="assets/images/panels/operaciones-genplus.png" alt="Operaciones Gen+" loading="lazy">
-            </div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">AECODE Operaciones · CorpGranda</h3>
-            <p class="proj-desc">Panel multi-tenant para CorpGranda + 2 tenants más (Generative, CONEIC). Funcional local, deploy VPS bloqueado por firewall de IP.</p>
-            <div class="proj-meta">
-              <span class="tag">Next.js 16</span><span class="tag">Drizzle</span><span class="tag">NextAuth</span><span class="tag">Postgres RLS</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="plat">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Workflows OSS</span>
-              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
-            </div>
-            <img src="assets/images/panels/genflows-editor.png" alt="GEN+ FLOWS · editor" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">GEN+ FLOWS</h3>
-            <p class="proj-desc">Activepieces CE self-hosted en VPS para reemplazar n8n Cloud en Gen+. Multi-tenant, integraciones custom.</p>
-            <div class="proj-meta">
-              <span class="tag">Activepieces</span><span class="tag">Docker</span><span class="tag">Self-host VPS</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj feat reveal" data-cat="plat">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Acta Studio · Zoom</span>
-              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
-            </div>
-            <div class="img-grid-2">
-              <img src="assets/images/panels/acta-dashboard.png" alt="Acta Studio · dashboard" loading="lazy">
-              <img src="assets/images/panels/acta-pdf.png" alt="Acta Studio · PDF final" loading="lazy">
-            </div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Acta Studio</h3>
-            <p class="proj-desc">Panel multi-tenant (AECODE + Gen+) que transcribe reuniones Zoom y genera actas con IA + screenshots Playwright. VPS :3041.</p>
-            <div class="proj-meta">
-              <span class="tag">WhisperX</span><span class="tag">Zoom API</span><span class="tag">Playwright</span><span class="tag">Tiptap</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="plat">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Scraper · Licitaciones</span>
-              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> v1 build</span>
-            </div>
-            <img src="assets/images/panels/seace-radar.png" alt="SEACE Radar · panel" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">SEACE Radar</h3>
-            <p class="proj-desc">Worker Python + n8n + Postgres + panel Next.js para monitoreo de oportunidades de licitación. Alertas vía Telegram.</p>
-            <div class="proj-meta">
-              <span class="tag">Python</span><span class="tag">Crawl4AI</span><span class="tag">n8n</span><span class="tag">Postgres</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="plat">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Curso · Web Stack</span>
-              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> 16 sábados</span>
-            </div>
-            <div class="yt-embed">
-              <iframe src="https://www.youtube.com/embed/uqNimzK01M8?rel=0&modestbranding=1" title="n8n Workflow Automation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            </div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Curso n8n + IA · AECODE + CIP</h3>
-            <p class="proj-desc">100h, 16 sábados desde may 2026. <strong>11 alumnos</strong>, 11 misiones personalizadas, hexágono AECODE de competencias. Demo YouTube de workflow real.</p>
-            <div class="proj-meta">
-              <span class="tag">n8n</span><span class="tag">Claude</span><span class="tag">Gemini</span><span class="tag">RAG</span><span class="tag">YouTube</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="plat">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Turismo · Cusco</span>
-              <span class="proj-status award"><i data-lucide="medal"></i> Convocatoria</span>
-            </div>
-            <div class="img-grid-2">
-              <img src="assets/images/panels/qawari-hero.png" alt="Qawari AI · hero" loading="lazy">
-              <img src="assets/images/panels/qawari-intiraymi.png" alt="Qawari AI · Inti Raymi" loading="lazy">
-            </div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Qawari AI · Polo Turístico</h3>
-            <p class="proj-desc">Plataforma cliente cinemática + tour Gemini Kore (voz) + MEGA dashboard. InnovaSuyu Cusco 2026 EIN Polo Turístico.</p>
-            <div class="proj-meta">
-              <span class="tag">Next.js</span><span class="tag">Gemini Live</span><span class="tag">R3F</span><span class="tag">GSAP</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- ============ AGENTES IA ============ -->
-        <article class="proj feat reveal" data-cat="ai">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Agente WhatsApp · Centro Ops</span>
-              <span class="proj-status live"><i data-lucide="check"></i> v3.0 producción</span>
-            </div>
-            <div class="img-grid-2">
-              <img src="assets/images/panels/aecodito-flow.png" alt="Aecodito · flow n8n" loading="lazy">
-              <img src="assets/images/panels/aecodito-chat.png" alt="Aecodito · chat" loading="lazy">
-            </div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Aecodito v3.0 — Centro de Operaciones</h3>
-            <p class="proj-desc">Agente WhatsApp multifuncional con <strong>50 nodos n8n + 10 herramientas integradas</strong> (Sheets, Calendar, Gmail, Postgres pgvector). Memoria persistente, recordatorios, derivación inteligente a humanos. 23 funcionalidades.</p>
-            <div class="proj-meta">
-              <span class="tag">n8n</span><span class="tag">Evolution API</span><span class="tag">Gemini Pro</span><span class="tag">Postgres pgvector</span><span class="tag">Whisper</span><span class="tag">Edge TTS</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="ai">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Agente WhatsApp · Inmobiliario</span>
-              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
-            </div>
-            <img src="assets/images/panels/aecode-live-flow.png" alt="Flow inmobiliario" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Agente Inmobiliario Gen+</h3>
-            <p class="proj-desc">Captura de leads, programación de visitas, ficha técnica de propiedades con Drive/Sheets via WhatsApp. Desplegado mayo 2026.</p>
-            <div class="proj-meta">
-              <span class="tag">Evolution</span><span class="tag">n8n</span><span class="tag">Gemini</span><span class="tag">Drive API</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="ai">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Bot grupos · TTS Kore</span>
-            </div>
-            <img src="assets/images/panels/aecodito-chat.png" alt="Bot Aecodito chat" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Bot Aecodito · Grupos Gen+</h3>
-            <p class="proj-desc">Bot conversacional para grupos WhatsApp del equipo. Edge TTS (voz Kore femenina) para responder con audio.</p>
-            <div class="proj-meta">
-              <span class="tag">Evolution API</span><span class="tag">n8n</span><span class="tag">Gemini TTS</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="ai">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Instructor Finder · Serper+Gemini</span>
-            </div>
-            <img src="assets/images/panels/finder-summit.png" alt="Instructor Finder summit" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Instructor Finder Gen+</h3>
-            <p class="proj-desc">Panel web + workflow n8n + Serper + Gemini para encontrar y enriquecer perfiles de instructores. Desplegado en VPS.</p>
-            <div class="proj-meta">
-              <span class="tag">Serper</span><span class="tag">Gemini</span><span class="tag">n8n</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="ai">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Studio Ecosystem · Monorepo</span>
-            </div>
-            <div class="img-grid-2">
-              <img src="assets/images/panels/email-preview.png" alt="Email Studio preview" loading="lazy">
-              <img src="assets/images/panels/brochure-canva.png" alt="Brochure Studio" loading="lazy">
-            </div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">AECODE Studio Platform</h3>
-            <p class="proj-desc">Visión de ecosistema: Email + Brochure + Slides + Social + Certs con core compartido. Cada módulo es independiente pero comparte auth + tokens.</p>
-            <div class="proj-meta">
-              <span class="tag">Monorepo</span><span class="tag">Turborepo</span><span class="tag">shadcn</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- ============ VISION & EDGE AI ============ -->
-        <article class="proj feat reveal" data-cat="cv">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Vision · Edge AI</span>
-              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
-            </div>
-            <video src="assets/videos/vision-pro-pitch.mp4" autoplay muted loop playsinline poster="assets/images/emarc_vision_detection.png" preload="metadata"></video>
-            <span class="proj-video-tag"><span class="live-dot"></span> Pitch · 75s</span>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Gen+ Vision Pro PDK</h3>
-            <p class="proj-desc">Plataforma multi-rol admin/cliente para monitoreo de obra: detección EPP <strong>YOLOv8 (11 clases · 87.67% mAP · 38 FPS)</strong>, dashboard métricas SVG, alertas sintéticas con filtros, reportes a casillas.</p>
-            <div class="proj-meta">
-              <span class="tag">YOLOv8</span><span class="tag">Jetson Orin Nano Super</span><span class="tag">TensorRT INT8</span><span class="tag">Next.js 16</span><span class="tag">pdk.visionproai.net</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="cv">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Training Pipeline</span>
-              <span class="proj-status live"><i data-lucide="check"></i> Dataset 1182</span>
-            </div>
-            <img src="assets/images/labels_correlogram.jpg" alt="YOLOv8 cascos training" loading="lazy">
-            <span class="proj-video-tag"><span class="live-dot"></span> Roboflow 1182</span>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Vision Pro Cascos · Training</h3>
-            <p class="proj-desc">Fine-tune <strong>YOLO11s</strong> para detección de cascos. Dataset Roboflow 1182 imágenes. Scripts PyCharm, GPU RTX 4060.</p>
-            <div class="proj-meta">
-              <span class="tag">YOLO11s</span><span class="tag">Roboflow</span><span class="tag">PyTorch 2.5</span><span class="tag">CUDA 12</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="cv">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Diseño HW · Edge</span>
-              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> Diseño v3</span>
-            </div>
-            <video src="assets/videos/vision-pro-demo.mp4" autoplay muted loop playsinline preload="metadata"></video>
-            <span class="proj-video-tag"><span class="live-dot"></span> Live demo</span>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Gen+ Cámaras Edge AI</h3>
-            <p class="proj-desc">2 subsistemas (interno Jetson Orin Nano Super + PTZ 4K solar). CAPEX <strong>S/ 27,633</strong> · 47% más barato que Lisual. Versión 3PAG.</p>
-            <div class="proj-meta">
-              <span class="tag">Jetson Orin</span><span class="tag">PTZ 4K</span><span class="tag">Panel solar</span><span class="tag">LTE/LoRa</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="cv">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Reconocimiento facial + EPP</span>
-            </div>
-            <video src="assets/videos/vision-pro-demo-b.mp4" autoplay muted loop playsinline poster="assets/images/detecciónfacial.png" preload="metadata"></video>
-            <span class="proj-video-tag"><span class="live-dot"></span> Detect</span>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">ConstEdge — Acceso + EPP</h3>
-            <p class="proj-desc"><strong>DeepFace + ArcFace</strong> + YOLOv8 + 4 marcajes diarios + dashboard Vue.js + app móvil PWA. Reportes Excel con fotos embebidas, alertas tiempo real.</p>
-            <div class="proj-meta">
-              <span class="tag">DeepFace</span><span class="tag">ArcFace</span><span class="tag">YOLOv8</span><span class="tag">Vue.js</span><span class="tag">PWA</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="cv">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">NLP · Clasificación</span>
-            </div>
-            <img src="assets/images/confusion_matrix_event.png" alt="NLP Riesgos" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Predicción de Riesgos Laborales</h3>
-            <p class="proj-desc">API FastAPI con <strong>DistilBERT</strong> que clasifica narrativas (naturaleza, parte del cuerpo, tipo de evento) + Toolbox Talks automáticos de 5 min.</p>
-            <div class="proj-meta">
-              <span class="tag">FastAPI</span><span class="tag">DistilBERT</span><span class="tag">Hugging Face</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj feat reveal" data-cat="cv">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">EMARC VISIÓN · Demo YouTube</span>
-              <span class="proj-status award"><i data-lucide="play-circle"></i> Video</span>
-            </div>
-            <div class="yt-embed">
-              <iframe src="https://www.youtube.com/embed/K500tgJHRiY?rel=0&modestbranding=1" title="EMARC VISIÓN Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            </div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">EMARC VISIÓN · Detección EPP (origen)</h3>
-            <p class="proj-desc">Versión original del sistema EPP que dio origen a Vision Pro PDK. Detección en tiempo real de cascos, chalecos y arnés sobre RTSP IP cam. <em>Predecesor del modelo YOLOv8 actual.</em></p>
-            <div class="proj-meta">
-              <span class="tag">YOLOv5</span><span class="tag">OpenCV</span><span class="tag">Python</span><span class="tag">RTSP</span><span class="tag">YouTube demo</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- ============ HARDWARE & FPGA ============ -->
-        <article class="proj feat reveal" data-cat="hw">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">SHM Edge · FFT FPGA</span>
-              <span class="proj-status award"><i data-lucide="trophy"></i> 2° AI Talent 2026</span>
-            </div>
-            <video src="assets/videos/vision-pro-alert.mp4" autoplay muted loop playsinline poster="assets/images/gaiatech_results.png" preload="metadata"></video>
-            <span class="proj-video-tag"><span class="live-dot"></span> Alert clip</span>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">GAIATECH VIGÍA — Monitoreo estructural</h3>
-            <p class="proj-desc">Sistema completo: <strong>FFT en FPGA Gowin GW1NR-9</strong> (Explorer Edge-9K), ESP32 como bridge, modelo <strong>LSTM-Autoencoder F1 = 0.961</strong>, alertas WhatsApp &lt; 2s. Aplicable a presas, taludes, estructuras críticas.</p>
-            <div class="proj-meta">
-              <span class="tag">Verilog</span><span class="tag">FFT FPGA</span><span class="tag">Gowin GW1NR-9</span><span class="tag">ESP32</span><span class="tag">PyTorch LSTM-AE</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="hw">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">FPGA Gowin GW1NR-9</span>
-            </div>
-            <div class="yt-embed">
-              <iframe src="https://www.youtube.com/embed/YuHDxx74Gqk?rel=0&modestbranding=1" title="FPGA Seismic Simulation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            </div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">GAIATECH FPGA · Investigación</h3>
-            <p class="proj-desc">Explorer Edge-9K funcionando. 5 módulos para FFT. <strong>253 KB de investigación</strong> técnica documentada. Pinout completo, gotchas resueltos.</p>
-            <div class="proj-meta">
-              <span class="tag">Gowin EDA</span><span class="tag">openFPGALoader</span><span class="tag">JTAG</span><span class="tag">YouTube demo</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="hw">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">IoT Edge · LoRa</span>
-            </div>
-            <img src="assets/images/GRAPHOS/figure_8_graph_topology_comparison.png" alt="CultiGuard topology" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">CultiGuard · PachaGuard</h3>
-            <p class="proj-desc">Nodos IoT autónomos con <strong>Tang Nano 9K + ESP32-CAM + LoRa + panel solar</strong>. Edge AI sin internet. PachaGuard usa Tang Nano 1K + Verilog + UART.</p>
-            <div class="proj-meta">
-              <span class="tag">Tang Nano 9K/1K</span><span class="tag">ESP32-CAM</span><span class="tag">LoRa SX1262</span><span class="tag">Panel solar</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="hw">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">RPi 5 + AI HAT 26 TOPS</span>
-            </div>
-            <img src="assets/images/skills_tech_stack.png" alt="Aecodito robot stack" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Aecodito Robot Físico</h3>
-            <p class="proj-desc">Robot para AI Summit jun 2026: <strong>RPi 5 + AI HAT 26 TOPS + FPGA + ESP32-C6 + voz</strong>. BOM total ~$430 USD. Movimientos servo, voz Kore, integración con n8n.</p>
-            <div class="proj-meta">
-              <span class="tag">RPi 5</span><span class="tag">AI HAT Hailo-8</span><span class="tag">FPGA</span><span class="tag">ESP32-C6</span><span class="tag">XMOS mic array</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="hw">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">38 FPS · TensorRT</span>
-            </div>
-            <img src="assets/images/results.png" alt="Jetson Orin results" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Jetson Orin Nano Super · Setup Vision Pro 3.1</h3>
-            <p class="proj-desc">Stack <strong>torch nv24.08 + cuSPARSELt + torchvision compiled</strong>. 38 FPS sostenidos con emarc_v3.1 EPP. 7 gotchas críticos documentados.</p>
-            <div class="proj-meta">
-              <span class="tag">Jetson Orin Nano Super</span><span class="tag">TensorRT</span><span class="tag">JetPack</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- ============ BIM & INGENIERÍA ============ -->
+        <!-- ============ AEC & BIM ============ -->
         <article class="proj feat reveal" data-cat="bim">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1912,7 +1529,199 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           </div>
         </article>
 
-        <!-- ============ INVESTIGACIÓN ============ -->
+        <!-- ============ VISIÓN EPP / OBRA ============ -->
+        <article class="proj feat reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Vision Pro PDK · Edge AI obra</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
+            </div>
+            <video src="assets/videos/vision-pro-pitch.mp4" autoplay muted loop playsinline poster="assets/images/emarc_vision_detection.png" preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Pitch · 75s</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Gen+ Vision Pro PDK</h3>
+            <p class="proj-desc">Plataforma multi-rol admin/cliente para monitoreo de obra: detección EPP <strong>YOLOv8 (11 clases · 87.67% mAP · 38 FPS)</strong>, dashboard métricas SVG, alertas sintéticas con filtros, reportes a casillas.</p>
+            <div class="proj-meta">
+              <span class="tag">YOLOv8</span><span class="tag">Jetson Orin Nano Super</span><span class="tag">TensorRT INT8</span><span class="tag">Next.js 16</span><span class="tag">pdk.visionproai.net</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Training Pipeline</span>
+              <span class="proj-status live"><i data-lucide="check"></i> Dataset 1182</span>
+            </div>
+            <img src="assets/images/labels_correlogram.jpg" alt="YOLOv8 cascos training" loading="lazy">
+            <span class="proj-video-tag"><span class="live-dot"></span> Roboflow 1182</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Vision Pro Cascos · Training</h3>
+            <p class="proj-desc">Fine-tune <strong>YOLO11s</strong> para detección de cascos. Dataset Roboflow 1182 imágenes. Scripts PyCharm, GPU RTX 4060.</p>
+            <div class="proj-meta">
+              <span class="tag">YOLO11s</span><span class="tag">Roboflow</span><span class="tag">PyTorch 2.5</span><span class="tag">CUDA 12</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Diseño HW · Edge</span>
+              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> Diseño v3</span>
+            </div>
+            <video src="assets/videos/vision-pro-demo.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Live demo</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Gen+ Cámaras Edge AI</h3>
+            <p class="proj-desc">2 subsistemas (interno Jetson Orin Nano Super + PTZ 4K solar). CAPEX <strong>S/ 27,633</strong> · 47% más barato que Lisual. Versión 3PAG.</p>
+            <div class="proj-meta">
+              <span class="tag">Jetson Orin</span><span class="tag">PTZ 4K</span><span class="tag">Panel solar</span><span class="tag">LTE/LoRa</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj feat reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Reconocimiento facial + EPP</span>
+            </div>
+            <video src="assets/videos/vision-pro-demo-b.mp4" autoplay muted loop playsinline poster="assets/images/detecciónfacial.png" preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Detect</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">ConstEdge — Acceso + EPP</h3>
+            <p class="proj-desc"><strong>DeepFace + ArcFace</strong> + YOLOv8 + 4 marcajes diarios + dashboard Vue.js + app móvil PWA. Reportes Excel con fotos embebidas, alertas tiempo real.</p>
+            <div class="proj-meta">
+              <span class="tag">DeepFace</span><span class="tag">ArcFace</span><span class="tag">YOLOv8</span><span class="tag">Vue.js</span><span class="tag">PWA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">NLP · Clasificación riesgos</span>
+            </div>
+            <img src="assets/images/confusion_matrix_event.png" alt="NLP Riesgos" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Predicción de Riesgos Laborales</h3>
+            <p class="proj-desc">API FastAPI con <strong>DistilBERT</strong> que clasifica narrativas (naturaleza, parte del cuerpo, tipo de evento) + Toolbox Talks automáticos de 5 min para SSO en obra.</p>
+            <div class="proj-meta">
+              <span class="tag">FastAPI</span><span class="tag">DistilBERT</span><span class="tag">Hugging Face</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj feat reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">EMARC VISIÓN · Demo YouTube</span>
+              <span class="proj-status award"><i data-lucide="play-circle"></i> Video</span>
+            </div>
+            <div class="yt-embed">
+              <iframe src="https://www.youtube.com/embed/K500tgJHRiY?rel=0&modestbranding=1" title="EMARC VISIÓN Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">EMARC VISIÓN · Detección EPP (origen)</h3>
+            <p class="proj-desc">Versión original del sistema EPP que dio origen a Vision Pro PDK. Detección en tiempo real de cascos, chalecos y arnés sobre RTSP IP cam. <em>Predecesor del modelo YOLOv8 actual.</em></p>
+            <div class="proj-meta">
+              <span class="tag">YOLOv5</span><span class="tag">OpenCV</span><span class="tag">Python</span><span class="tag">RTSP</span><span class="tag">YouTube demo</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ HARDWARE FPGA & IoT ============ -->
+        <article class="proj feat reveal" data-cat="hw">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">SHM Edge · FFT FPGA</span>
+              <span class="proj-status award"><i data-lucide="trophy"></i> 2° AI Talent 2026</span>
+            </div>
+            <video src="assets/videos/vision-pro-alert.mp4" autoplay muted loop playsinline poster="assets/images/gaiatech_results.png" preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Alert clip</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIATECH VIGÍA — Monitoreo estructural</h3>
+            <p class="proj-desc">Sistema completo: <strong>FFT en FPGA Gowin GW1NR-9</strong> (Explorer Edge-9K), ESP32 como bridge, modelo <strong>LSTM-Autoencoder F1 = 0.961</strong>, alertas WhatsApp &lt; 2s. Aplicable a presas, taludes, estructuras críticas.</p>
+            <div class="proj-meta">
+              <span class="tag">Verilog</span><span class="tag">FFT FPGA</span><span class="tag">Gowin GW1NR-9</span><span class="tag">ESP32</span><span class="tag">PyTorch LSTM-AE</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="hw">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">FPGA Gowin GW1NR-9</span>
+            </div>
+            <div class="yt-embed">
+              <iframe src="https://www.youtube.com/embed/YuHDxx74Gqk?rel=0&modestbranding=1" title="FPGA Seismic Simulation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIATECH FPGA · Investigación</h3>
+            <p class="proj-desc">Explorer Edge-9K funcionando. 5 módulos para FFT. <strong>253 KB de investigación</strong> técnica documentada. Pinout completo, gotchas resueltos.</p>
+            <div class="proj-meta">
+              <span class="tag">Gowin EDA</span><span class="tag">openFPGALoader</span><span class="tag">JTAG</span><span class="tag">YouTube demo</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="hw">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">IoT Edge · LoRa</span>
+            </div>
+            <img src="assets/images/GRAPHOS/figure_8_graph_topology_comparison.png" alt="CultiGuard topology" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">CultiGuard · PachaGuard</h3>
+            <p class="proj-desc">Nodos IoT autónomos con <strong>Tang Nano 9K + ESP32-CAM + LoRa + panel solar</strong>. Edge AI sin internet. PachaGuard usa Tang Nano 1K + Verilog + UART. Sensores agrícolas + estructurales.</p>
+            <div class="proj-meta">
+              <span class="tag">Tang Nano 9K/1K</span><span class="tag">ESP32-CAM</span><span class="tag">LoRa SX1262</span><span class="tag">Panel solar</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="hw">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">RPi 5 + AI HAT 26 TOPS</span>
+            </div>
+            <img src="assets/images/skills_tech_stack.png" alt="Aecodito robot stack" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Aecodito Robot Físico</h3>
+            <p class="proj-desc">Robot para AI Summit jun 2026: <strong>RPi 5 + AI HAT 26 TOPS + FPGA + ESP32-C6 + voz</strong>. BOM total ~$430 USD. Movimientos servo, voz Kore, demos de obra y SHM.</p>
+            <div class="proj-meta">
+              <span class="tag">RPi 5</span><span class="tag">AI HAT Hailo-8</span><span class="tag">FPGA</span><span class="tag">ESP32-C6</span><span class="tag">XMOS mic array</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="hw">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">38 FPS · TensorRT</span>
+            </div>
+            <img src="assets/images/results.png" alt="Jetson Orin results" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Jetson Orin Nano Super · Setup Vision Pro 3.1</h3>
+            <p class="proj-desc">Stack <strong>torch nv24.08 + cuSPARSELt + torchvision compiled</strong>. 38 FPS sostenidos con emarc_v3.1 EPP. 7 gotchas críticos documentados.</p>
+            <div class="proj-meta">
+              <span class="tag">Jetson Orin Nano Super</span><span class="tag">TensorRT</span><span class="tag">JetPack</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ INVESTIGACIÓN SHM ============ -->
         <article class="proj feat reveal" data-cat="research">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1923,25 +1732,26 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Artículo MISM-GNN · Puente Junín</h3>
-            <p class="proj-desc">Modelo Graph Neural Network para identificación modal estructural. <strong>R² = 0.998</strong> vs 0.999 FFNN — con <strong>65× menos parámetros</strong>. 4 tablas + 15 figuras PDF, listo para manuscrito Elsevier <em>Structures</em>.</p>
+            <p class="proj-desc">Replica Parisi et al. 2024 sobre el <strong>Puente Junín</strong> (Lima): arco atirantado, 72 nodos, 123 frames. <strong>R² = 0.998</strong> vs 0.999 FFNN — con <strong>65× menos parámetros</strong>. 4 tablas + 15 figuras PDF, listo para manuscrito Elsevier <em>Structures</em> (IF 4.1).</p>
             <div class="proj-meta">
-              <span class="tag">PyTorch Geometric</span><span class="tag">GNN</span><span class="tag">PINN</span><span class="tag">DWT/FFT/CWT</span>
+              <span class="tag">PyTorch Geometric</span><span class="tag">GNN</span><span class="tag">PINN</span><span class="tag">DWT/FFT/CWT</span><span class="tag">OpenSeesPy</span>
             </div>
           </div>
         </article>
 
-        <article class="proj reveal" data-cat="research">
+        <article class="proj feat reveal" data-cat="research">
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">PROCIENCIA 2026 · S/ 896k</span>
+              <span class="proj-status award"><i data-lucide="award"></i> 36 meses</span>
             </div>
-            <img src="assets/images/GRAPHOS/figure_2_graph_topology.png" alt="GNN topology agro" loading="lazy">
+            <img src="assets/images/GRAPHOS/figure_2_graph_topology.png" alt="GNN topology G1" loading="lazy">
           </div>
           <div class="proj-body">
             <h3 class="proj-title">GAIATECH G1 · Agroecología Andina</h3>
-            <p class="proj-desc">Postulación PROCIENCIA 2026 (<strong>S/ 896,400 / 36 meses</strong>). 5 capas: edge + IA + satelital + chatbot + marketplace. Integra CultiGuard + PachaGuard + INIA Illpa-Puno.</p>
+            <p class="proj-desc">Postulación PROCIENCIA — Agroecología Andina (CONCYTEC × Fundación McKnight) hasta <strong>S/ 896,400</strong>. 5 capas: edge sin internet + IA + satelital + chatbot + marketplace. Alianza INIA Illpa-Puno. Línea base verificable (haba, trigo, avena · 8.5 ha · 30.98 t).</p>
             <div class="proj-meta">
-              <span class="tag">Edge AI</span><span class="tag">Sentinel-2</span><span class="tag">PostGIS</span><span class="tag">INIA</span>
+              <span class="tag">ESP32-CAM + FPGA</span><span class="tag">Sentinel-2</span><span class="tag">INIA</span><span class="tag">PostGIS</span><span class="tag">LoRa</span>
             </div>
           </div>
         </article>
@@ -1955,9 +1765,9 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           </div>
           <div class="proj-body">
             <h3 class="proj-title">ProCiencia Tesis 2026 · FPGA Dual + Cercha Bailey</h3>
-            <p class="proj-desc">Maqueta 1:10 + <strong>FPGA dual</strong> (FFT + GNN cuantizada) + 4 tipos de daño. 2 papers esperados. Cierre 19-jun, S/ 30k.</p>
+            <p class="proj-desc">Maqueta 1:10 + <strong>FPGA dual</strong> (FFT + GNN cuantizada) + 4 tipos de daño estructural. 2 papers esperados. Cierre 19-jun, S/ 30k.</p>
             <div class="proj-meta">
-              <span class="tag">Cercha Bailey</span><span class="tag">FPGA dual</span><span class="tag">GNN quantized</span>
+              <span class="tag">Cercha Bailey</span><span class="tag">FPGA dual</span><span class="tag">GNN quantized</span><span class="tag">SHM</span>
             </div>
           </div>
         </article>
@@ -1971,7 +1781,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Tesis Sheyla Ancco · PINN-GNN</h3>
-            <p class="proj-desc">Co-dirección. Modelos híbridos Physics-Informed + GNN para detección no supervisada de anomalías en infraestructura civil.</p>
+            <p class="proj-desc">Co-dirección. Modelos híbridos Physics-Informed + GNN para detección no supervisada de anomalías en infraestructura civil. APA 7 + figuras paper-ready.</p>
             <div class="proj-meta">
               <span class="tag">PINN</span><span class="tag">GNN</span><span class="tag">PyTorch</span>
             </div>
@@ -1994,8 +1804,8 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           </div>
         </article>
 
-        <!-- ============ 3D & INMERSIVO ============ -->
-        <article class="proj feat reveal" data-cat="3d">
+        <!-- ============ INMOBILIARIO + LICITACIONES ============ -->
+        <article class="proj feat reveal" data-cat="aec-tech">
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">3D Tour · Inmobiliario</span>
@@ -2013,121 +1823,19 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           </div>
         </article>
 
-        <article class="proj reveal" data-cat="3d">
-          <div class="proj-image stylish-bg" data-style="godot">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Godot 4.4 · AECODITO</span>
-            </div>
-            <div class="stylish-icon"><i data-lucide="gamepad-2"></i></div>
-            <div class="stylish-label">OFICINA VIRTUAL</div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Oficina Virtual AECODE · Godot 4.4</h3>
-            <p class="proj-desc">Oficina interactiva en Godot 4.4.1 con MCP configurado. <strong>AECODITO jugable</strong>. Sprites estilo pixel art con migración desde Unity.</p>
-            <div class="proj-meta">
-              <span class="tag">Godot 4.4</span><span class="tag">GDScript</span><span class="tag">MCP</span><span class="tag">LimeZu sprites</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="3d">
+        <article class="proj reveal" data-cat="aec-tech">
           <div class="proj-image">
             <div class="proj-image-tags">
-              <span class="proj-tag">Canvas WebGL · Fabric</span>
+              <span class="proj-tag">Scraper · Licitaciones SEACE</span>
+              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> v1 build</span>
             </div>
-            <img src="assets/images/panels/brochure-canva.png" alt="Brochure Studio canvas" loading="lazy">
+            <img src="assets/images/panels/seace-radar.png" alt="SEACE Radar · panel" loading="lazy">
           </div>
           <div class="proj-body">
-            <h3 class="proj-title">Brochure Studio · Canvas WebGL</h3>
-            <p class="proj-desc">Editor canvas con Fabric.js + assets generados por IA. Migración planeada a R3F para experiencia 3D más rica en v3.</p>
+            <h3 class="proj-title">SEACE Radar · Licitaciones de obra</h3>
+            <p class="proj-desc">Worker Python + n8n + Postgres + panel Next.js para monitoreo de oportunidades de licitación pública. Alertas Telegram con palabras clave AEC (Provias, MTC, MINEDU, etc).</p>
             <div class="proj-meta">
-              <span class="tag">Fabric.js</span><span class="tag">Replicate</span><span class="tag">Flux</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- ============ TOOLKITS ============ -->
-        <article class="proj reveal" data-cat="tools">
-          <div class="proj-image stylish-bg" data-style="skills">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Claude Skills · 19+</span>
-            </div>
-            <div class="stylish-icon"><i data-lucide="brain-circuit"></i></div>
-            <div class="stylish-label">SKILLS aecode-*</div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Skills aecode-* (19+ skills)</h3>
-            <p class="proj-desc">Sistema de skills auto-activables: <strong>panel-stack, rag-architecture, auth-multitenant, vps-management, billing-stack, design-system, motion-animation, accessibility, ai-ux, dashboard-ux, ui-inspiration</strong> y más.</p>
-            <div class="proj-meta">
-              <span class="tag">Claude Code</span><span class="tag">YAML + MD</span><span class="tag">Auto-trigger</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="tools">
-          <div class="proj-image stylish-bg" data-style="dossier">
-            <div class="proj-image-tags">
-              <span class="proj-tag">61 dominios · 90k palabras</span>
-            </div>
-            <div class="stylish-icon"><i data-lucide="library-big"></i></div>
-            <div class="stylish-label">DOSSIERES MASIVOS</div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Dossieres masivos (61 dominios)</h3>
-            <p class="proj-desc">Investigación paralela de <strong>61 dominios tecnológicos</strong>: 28 paneles + 17 UI/UX + 16 misc. ~400 herramientas evaluadas. Dossier maestro con stack decision tree.</p>
-            <div class="proj-meta">
-              <span class="tag">59 agentes paralelos</span><span class="tag">~90k palabras</span><span class="tag">Obsidian vault</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="tools">
-          <div class="proj-image stylish-bg" data-style="playwright">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Playwright · 18 specs</span>
-            </div>
-            <div class="stylish-icon"><i data-lucide="test-tube-2"></i></div>
-            <div class="stylish-label">UI/UX TOOLKIT</div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Playwright UI/UX Toolkit</h3>
-            <p class="proj-desc">Toolkit para equipo de diseño: guía HTML standalone con mascot video, efecto linterna, <strong>18 plantillas .spec.ts</strong> para testing visual de paneles. ZIP 6.69 MB.</p>
-            <div class="proj-meta">
-              <span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">Standalone HTML</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="tools">
-          <div class="proj-image stylish-bg" data-style="prototype">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Next.js · shadcn · 18 tpl</span>
-            </div>
-            <div class="stylish-icon"><i data-lucide="package-2"></i></div>
-            <div class="stylish-label">PROTOTYPE STUDIO</div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Prototype Studio</h3>
-            <p class="proj-desc">Toolkit con <strong>18 plantillas Next.js + shadcn + Awwwards</strong> (9 app + 9 landing) para prototipado rápido de productos digitales. ZIP 664 KB.</p>
-            <div class="proj-meta">
-              <span class="tag">Next.js 16</span><span class="tag">shadcn</span><span class="tag">Awwwards stack</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="tools">
-          <div class="proj-image stylish-bg" data-style="vps">
-            <div class="proj-image-tags">
-              <span class="proj-tag">10+ servicios Docker</span>
-            </div>
-            <div class="stylish-icon"><i data-lucide="server-cog"></i></div>
-            <div class="stylish-label">VPS SELF-HOST</div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">VPS Self-host Stack</h3>
-            <p class="proj-desc">Gestión VPS AECODE (10+ servicios Docker corriendo): n8n, finder, brochure, coord, ops, ClawdBot, Postgres pgvector, Activepieces, Acta Studio, Email Studio.</p>
-            <div class="proj-meta">
-              <span class="tag">Docker Compose</span><span class="tag">Coolify</span><span class="tag">Postgres :5433</span><span class="tag">Nginx</span>
+              <span class="tag">Python</span><span class="tag">Crawl4AI</span><span class="tag">n8n</span><span class="tag">Postgres</span>
             </div>
           </div>
         </article>
@@ -2142,7 +1850,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
       <header class="sec-head">
         <div>
           <div class="sec-head-meta">
-            <span class="sec-num">— 04</span>
+            <span class="sec-num">— 03</span>
             <span class="chip brand">Stack técnico</span>
           </div>
           <h2 class="sec-title">Del <span class="mint">silicio</span> al <span class="accent">panel web</span>.</h2>
@@ -2200,7 +1908,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
       <header class="sec-head">
         <div>
           <div class="sec-head-meta">
-            <span class="sec-num">— 05</span>
+            <span class="sec-num">— 04</span>
             <span class="chip mint">Trayectoria</span>
           </div>
           <h2 class="sec-title">Experiencia + <span class="amber">reconocimientos</span>.</h2>

@@ -540,15 +540,65 @@ header.site {
   display: flex; flex-direction: column;
   transition: transform 400ms cubic-bezier(0.2,0.8,0.2,1), box-shadow 400ms, border-color 400ms;
   cursor: inherit;
+  isolation: isolate;
+}
+.proj::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg,
+    oklch(from var(--brand) l c h / 0),
+    oklch(from var(--brand) l c h / 0.5) 35%,
+    oklch(from var(--mint) l c h / 0.5) 65%,
+    oklch(from var(--amber) l c h / 0));
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity 400ms;
+  pointer-events: none;
+  z-index: 1;
+}
+.proj::after {
+  content: '';
+  position: absolute; inset: -40% -10% auto auto;
+  width: 60%; height: 60%;
+  background: radial-gradient(circle, oklch(from var(--brand) l c h / 0.25) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 500ms;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(40px);
 }
 .proj.feat { grid-column: span 2; }
 @media (max-width: 800px) { .proj.feat { grid-column: span 1; } }
 
 .proj:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--sh-lg);
-  border-color: var(--brand);
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px oklch(0 0 0 / 0.35), 0 8px 16px oklch(from var(--brand) l c h / 0.15);
+  border-color: transparent;
 }
+.proj:hover::before { opacity: 1; }
+.proj:hover::after  { opacity: 1; }
+
+/* Tag de featured (sin pisar pseudo-elementos de proj-image) */
+.proj.feat .proj-body::before {
+  content: '★ FEATURED';
+  position: absolute;
+  top: -0.95rem; right: 1rem;
+  z-index: 4;
+  font-family: var(--font-mono);
+  font-size: var(--s--2);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.3rem 0.65rem;
+  background: linear-gradient(135deg, oklch(from var(--amber) l c h / 0.95), oklch(from var(--amber) l c h / 0.75));
+  color: oklch(0.13 0.020 285);
+  border-radius: 999px;
+  box-shadow: 0 4px 16px oklch(from var(--amber) l c h / 0.4);
+}
+.proj.feat .proj-body { position: relative; }
 
 .proj-tilt {
   transform-style: preserve-3d;
@@ -560,7 +610,9 @@ header.site {
   overflow: hidden;
   background: var(--bg-deep);
   border-bottom: 1px solid var(--border);
+  z-index: 2;
 }
+.proj-body { position: relative; z-index: 2; }
 .proj-image img,
 .proj-image video {
   width: 100%; height: 100%; object-fit: cover;
@@ -621,6 +673,93 @@ header.site {
 .proj-image .img-grid-4 img {
   width: 100%; height: 100%; object-fit: cover;
   filter: contrast(1.06) saturate(0.95);
+}
+/* 2-up split de imágenes */
+.proj-image .img-grid-2 {
+  position: absolute; inset: 0;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.proj-image .img-grid-2 img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: contrast(1.06) saturate(0.95);
+}
+
+/* Placeholders estilizados (cuando no hay screenshot) */
+.proj-image.stylish-bg {
+  position: relative;
+  background:
+    radial-gradient(circle at 20% 20%, oklch(from var(--brand) l c h / 0.55) 0%, transparent 50%),
+    radial-gradient(circle at 80% 30%, oklch(from var(--mint) l c h / 0.40) 0%, transparent 55%),
+    radial-gradient(circle at 50% 90%, oklch(from var(--amber) l c h / 0.35) 0%, transparent 50%),
+    linear-gradient(135deg, oklch(0.13 0.020 285) 0%, oklch(0.09 0.020 285) 100%);
+  background-size: 200% 200%;
+  animation: stylishShift 14s ease-in-out infinite;
+  overflow: hidden;
+}
+.proj-image.stylish-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(1 0 0 / 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: -1px -1px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+@keyframes stylishShift {
+  0%, 100% { background-position: 0% 0%, 100% 0%, 50% 100%, 0 0; }
+  50%      { background-position: 30% 20%, 70% 50%, 50% 70%, 0 0; }
+}
+.proj-image.stylish-bg .stylish-icon {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  z-index: 2;
+}
+.proj-image.stylish-bg .stylish-icon svg {
+  width: 80px; height: 80px;
+  color: oklch(from var(--brand) l c h / 0.9);
+  filter: drop-shadow(0 0 24px oklch(from var(--brand) l c h / 0.5));
+  transition: transform 600ms cubic-bezier(0.2,0.8,0.2,1);
+}
+.proj:hover .proj-image.stylish-bg .stylish-icon svg {
+  transform: scale(1.12) rotate(-3deg);
+}
+.proj-image.stylish-bg .stylish-label {
+  position: absolute;
+  bottom: 1rem; right: 1rem;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: var(--s--2);
+  font-weight: 600;
+  color: oklch(1 0 0 / 0.55);
+  letter-spacing: 0.18em;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid oklch(1 0 0 / 0.12);
+  border-radius: 999px;
+  background: oklch(0 0 0 / 0.35);
+  backdrop-filter: blur(8px);
+}
+/* Variantes de fondo por data-style */
+.proj-image.stylish-bg[data-style="godot"]    { --acc1: oklch(0.70 0.20 25);  --acc2: oklch(0.78 0.18 145); }
+.proj-image.stylish-bg[data-style="skills"]   { --acc1: oklch(0.75 0.20 195); --acc2: oklch(0.70 0.22 285); }
+.proj-image.stylish-bg[data-style="dossier"]  { --acc1: oklch(0.78 0.18 95);  --acc2: oklch(0.65 0.20 35); }
+.proj-image.stylish-bg[data-style="playwright"]{--acc1: oklch(0.72 0.20 145); --acc2: oklch(0.78 0.18 95); }
+.proj-image.stylish-bg[data-style="prototype"]{ --acc1: oklch(0.65 0.25 305); --acc2: oklch(0.75 0.20 195); }
+.proj-image.stylish-bg[data-style="vps"]      { --acc1: oklch(0.70 0.22 235); --acc2: oklch(0.78 0.18 165); }
+.proj-image.stylish-bg[data-style] {
+  background:
+    radial-gradient(circle at 25% 25%, oklch(from var(--acc1) l c h / 0.55) 0%, transparent 55%),
+    radial-gradient(circle at 78% 35%, oklch(from var(--acc2) l c h / 0.40) 0%, transparent 60%),
+    radial-gradient(circle at 50% 90%, oklch(from var(--brand) l c h / 0.30) 0%, transparent 55%),
+    linear-gradient(135deg, oklch(0.13 0.020 285) 0%, oklch(0.09 0.020 285) 100%);
+  background-size: 220% 220%;
+  animation: stylishShift 18s ease-in-out infinite;
+}
+.proj-image.stylish-bg[data-style] .stylish-icon svg {
+  color: oklch(from var(--acc1) l c h / 0.95);
+  filter: drop-shadow(0 0 28px oklch(from var(--acc1) l c h / 0.55));
 }
 /* placeholder con icono en proj-image normal (cuando no hay imagen real) */
 .proj-image-icon-wrap {
@@ -1136,13 +1275,13 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
       <div class="proj-grid" id="proj-grid">
 
         <!-- ============ PLATAFORMAS WEB ============ -->
-        <article class="proj reveal" data-cat="plat">
+        <article class="proj feat reveal" data-cat="plat">
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">Plataforma · Eventos</span>
               <span class="proj-status r-and-d"><i data-lucide="hammer"></i> En curso</span>
             </div>
-            <div class="proj-image-icon-wrap"><i data-lucide="calendar-days" class="proj-image-icon-svg"></i></div>
+            <img src="assets/images/panels/aecode-live-tickets.png" alt="AECODE Live · tickets" loading="lazy">
           </div>
           <div class="proj-body">
             <h3 class="proj-title">AECODE Live</h3>
@@ -1153,13 +1292,13 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           </div>
         </article>
 
-        <article class="proj reveal" data-cat="plat">
+        <article class="proj feat reveal" data-cat="plat">
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">Email Marketing</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <div class="proj-image-icon-wrap"><i data-lucide="mail" class="proj-image-icon-svg"></i></div>
+            <img src="assets/images/panels/email-certificados.png" alt="Email Studio · certificados" loading="lazy">
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Email Studio</h3>
@@ -1176,7 +1315,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Canvas Editor</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <img src="assets/images/revit_automation.png" alt="Brochure Studio" loading="lazy">
+            <img src="assets/images/panels/brochure-canva.png" alt="Brochure Studio · editor canvas" loading="lazy">
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Brochure Studio</h3>
@@ -1187,13 +1326,13 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           </div>
         </article>
 
-        <article class="proj reveal" data-cat="plat">
+        <article class="proj feat reveal" data-cat="plat">
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">Coordinación</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <div class="proj-image-icon-wrap"><i data-lucide="kanban-square" class="proj-image-icon-svg"></i></div>
+            <img src="assets/images/panels/coord-studio.png" alt="Coord Studio · home" loading="lazy">
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Coord Studio</h3>
@@ -1210,7 +1349,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Ticketing IA</span>
               <span class="proj-status r-and-d"><i data-lucide="hammer"></i> v2 build</span>
             </div>
-            <div class="proj-image-icon-wrap"><i data-lucide="ticket" class="proj-image-icon-svg"></i></div>
+            <img src="assets/images/panels/tickets-list.png" alt="Ticket Studio · listado" loading="lazy">
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Ticket Studio v2</h3>
@@ -1227,7 +1366,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">CRM / Discovery</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <div class="proj-image-icon-wrap"><i data-lucide="search-check" class="proj-image-icon-svg"></i></div>
+            <img src="assets/images/panels/finder-dashboard.png" alt="AECODE FINDER · dashboard" loading="lazy">
           </div>
           <div class="proj-body">
             <h3 class="proj-title">AECODE FINDER v2</h3>
@@ -1244,7 +1383,10 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Multi-tenant CRM</span>
               <span class="proj-status beta"><i data-lucide="alert-circle"></i> Local</span>
             </div>
-            <div class="proj-image-icon-wrap"><i data-lucide="building-2" class="proj-image-icon-svg"></i></div>
+            <div class="img-grid-2">
+              <img src="assets/images/panels/operaciones-aecode.png" alt="Operaciones AECODE" loading="lazy">
+              <img src="assets/images/panels/operaciones-genplus.png" alt="Operaciones Gen+" loading="lazy">
+            </div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">AECODE Operaciones · CorpGranda</h3>
@@ -1261,7 +1403,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Workflows OSS</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <div class="proj-image-icon-wrap"><i data-lucide="workflow" class="proj-image-icon-svg"></i></div>
+            <img src="assets/images/panels/genflows-editor.png" alt="GEN+ FLOWS · editor" loading="lazy">
           </div>
           <div class="proj-body">
             <h3 class="proj-title">GEN+ FLOWS</h3>
@@ -1272,13 +1414,16 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           </div>
         </article>
 
-        <article class="proj reveal" data-cat="plat">
+        <article class="proj feat reveal" data-cat="plat">
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">Acta Studio · Zoom</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <div class="proj-image-icon-wrap"><i data-lucide="mic" class="proj-image-icon-svg"></i></div>
+            <div class="img-grid-2">
+              <img src="assets/images/panels/acta-dashboard.png" alt="Acta Studio · dashboard" loading="lazy">
+              <img src="assets/images/panels/acta-pdf.png" alt="Acta Studio · PDF final" loading="lazy">
+            </div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Acta Studio</h3>
@@ -1295,7 +1440,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Scraper · Licitaciones</span>
               <span class="proj-status r-and-d"><i data-lucide="hammer"></i> v1 build</span>
             </div>
-            <div class="proj-image-icon-wrap"><i data-lucide="radar" class="proj-image-icon-svg"></i></div>
+            <img src="assets/images/panels/seace-radar.png" alt="SEACE Radar · panel" loading="lazy">
           </div>
           <div class="proj-body">
             <h3 class="proj-title">SEACE Radar</h3>
@@ -1331,7 +1476,10 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Turismo · Cusco</span>
               <span class="proj-status award"><i data-lucide="medal"></i> Convocatoria</span>
             </div>
-            <div class="proj-image-icon-wrap"><i data-lucide="mountain-snow" class="proj-image-icon-svg"></i></div>
+            <div class="img-grid-2">
+              <img src="assets/images/panels/qawari-hero.png" alt="Qawari AI · hero" loading="lazy">
+              <img src="assets/images/panels/qawari-intiraymi.png" alt="Qawari AI · Inti Raymi" loading="lazy">
+            </div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Qawari AI · Polo Turístico</h3>
@@ -1349,7 +1497,10 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Agente WhatsApp · Centro Ops</span>
               <span class="proj-status live"><i data-lucide="check"></i> v3.0 producción</span>
             </div>
-            <img src="assets/images/neural_network_architecture.png" alt="Aecodito v3.0" loading="lazy">
+            <div class="img-grid-2">
+              <img src="assets/images/panels/aecodito-flow.png" alt="Aecodito · flow n8n" loading="lazy">
+              <img src="assets/images/panels/aecodito-chat.png" alt="Aecodito · chat" loading="lazy">
+            </div>
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Aecodito v3.0 — Centro de Operaciones</h3>
@@ -1366,7 +1517,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
               <span class="proj-tag">Agente WhatsApp · Inmobiliario</span>
               <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <div class="proj-image-icon-wrap"><i data-lucide="home" class="proj-image-icon-svg"></i></div>
+            <img src="assets/images/panels/aecode-live-flow.png" alt="Flow inmobiliario" loading="lazy">
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Agente Inmobiliario Gen+</h3>
@@ -1378,7 +1529,12 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="ai">
-          <div class="proj-image no-img"><i data-lucide="bot"></i></div>
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Bot grupos · TTS Kore</span>
+            </div>
+            <img src="assets/images/panels/aecodito-chat.png" alt="Bot Aecodito chat" loading="lazy">
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">Bot Aecodito · Grupos Gen+</h3>
             <p class="proj-desc">Bot conversacional para grupos WhatsApp del equipo. Edge TTS (voz Kore femenina) para responder con audio.</p>
@@ -1389,7 +1545,12 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="ai">
-          <div class="proj-image no-img"><i data-lucide="users"></i></div>
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Instructor Finder · Serper+Gemini</span>
+            </div>
+            <img src="assets/images/panels/finder-summit.png" alt="Instructor Finder summit" loading="lazy">
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">Instructor Finder Gen+</h3>
             <p class="proj-desc">Panel web + workflow n8n + Serper + Gemini para encontrar y enriquecer perfiles de instructores. Desplegado en VPS.</p>
@@ -1400,7 +1561,15 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="ai">
-          <div class="proj-image no-img"><i data-lucide="layers"></i></div>
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Studio Ecosystem · Monorepo</span>
+            </div>
+            <div class="img-grid-2">
+              <img src="assets/images/panels/email-preview.png" alt="Email Studio preview" loading="lazy">
+              <img src="assets/images/panels/brochure-canva.png" alt="Brochure Studio" loading="lazy">
+            </div>
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">AECODE Studio Platform</h3>
             <p class="proj-desc">Visión de ecosistema: Email + Brochure + Slides + Social + Certs con core compartido. Cada módulo es independiente pero comparte auth + tokens.</p>
@@ -1845,7 +2014,13 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="3d">
-          <div class="proj-image no-img"><i data-lucide="gamepad-2"></i></div>
+          <div class="proj-image stylish-bg" data-style="godot">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Godot 4.4 · AECODITO</span>
+            </div>
+            <div class="stylish-icon"><i data-lucide="gamepad-2"></i></div>
+            <div class="stylish-label">OFICINA VIRTUAL</div>
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">Oficina Virtual AECODE · Godot 4.4</h3>
             <p class="proj-desc">Oficina interactiva en Godot 4.4.1 con MCP configurado. <strong>AECODITO jugable</strong>. Sprites estilo pixel art con migración desde Unity.</p>
@@ -1856,7 +2031,12 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="3d">
-          <div class="proj-image no-img"><i data-lucide="paintbrush-2"></i></div>
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Canvas WebGL · Fabric</span>
+            </div>
+            <img src="assets/images/panels/brochure-canva.png" alt="Brochure Studio canvas" loading="lazy">
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">Brochure Studio · Canvas WebGL</h3>
             <p class="proj-desc">Editor canvas con Fabric.js + assets generados por IA. Migración planeada a R3F para experiencia 3D más rica en v3.</p>
@@ -1868,7 +2048,13 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
 
         <!-- ============ TOOLKITS ============ -->
         <article class="proj reveal" data-cat="tools">
-          <div class="proj-image no-img"><i data-lucide="brain-circuit"></i></div>
+          <div class="proj-image stylish-bg" data-style="skills">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Claude Skills · 19+</span>
+            </div>
+            <div class="stylish-icon"><i data-lucide="brain-circuit"></i></div>
+            <div class="stylish-label">SKILLS aecode-*</div>
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">Skills aecode-* (19+ skills)</h3>
             <p class="proj-desc">Sistema de skills auto-activables: <strong>panel-stack, rag-architecture, auth-multitenant, vps-management, billing-stack, design-system, motion-animation, accessibility, ai-ux, dashboard-ux, ui-inspiration</strong> y más.</p>
@@ -1879,7 +2065,13 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="tools">
-          <div class="proj-image no-img"><i data-lucide="library-big"></i></div>
+          <div class="proj-image stylish-bg" data-style="dossier">
+            <div class="proj-image-tags">
+              <span class="proj-tag">61 dominios · 90k palabras</span>
+            </div>
+            <div class="stylish-icon"><i data-lucide="library-big"></i></div>
+            <div class="stylish-label">DOSSIERES MASIVOS</div>
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">Dossieres masivos (61 dominios)</h3>
             <p class="proj-desc">Investigación paralela de <strong>61 dominios tecnológicos</strong>: 28 paneles + 17 UI/UX + 16 misc. ~400 herramientas evaluadas. Dossier maestro con stack decision tree.</p>
@@ -1890,7 +2082,13 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="tools">
-          <div class="proj-image no-img"><i data-lucide="test-tube"></i></div>
+          <div class="proj-image stylish-bg" data-style="playwright">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Playwright · 18 specs</span>
+            </div>
+            <div class="stylish-icon"><i data-lucide="test-tube-2"></i></div>
+            <div class="stylish-label">UI/UX TOOLKIT</div>
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">Playwright UI/UX Toolkit</h3>
             <p class="proj-desc">Toolkit para equipo de diseño: guía HTML standalone con mascot video, efecto linterna, <strong>18 plantillas .spec.ts</strong> para testing visual de paneles. ZIP 6.69 MB.</p>
@@ -1901,7 +2099,13 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="tools">
-          <div class="proj-image no-img"><i data-lucide="package"></i></div>
+          <div class="proj-image stylish-bg" data-style="prototype">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Next.js · shadcn · 18 tpl</span>
+            </div>
+            <div class="stylish-icon"><i data-lucide="package-2"></i></div>
+            <div class="stylish-label">PROTOTYPE STUDIO</div>
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">Prototype Studio</h3>
             <p class="proj-desc">Toolkit con <strong>18 plantillas Next.js + shadcn + Awwwards</strong> (9 app + 9 landing) para prototipado rápido de productos digitales. ZIP 664 KB.</p>
@@ -1912,7 +2116,13 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </article>
 
         <article class="proj reveal" data-cat="tools">
-          <div class="proj-image no-img"><i data-lucide="server-cog"></i></div>
+          <div class="proj-image stylish-bg" data-style="vps">
+            <div class="proj-image-tags">
+              <span class="proj-tag">10+ servicios Docker</span>
+            </div>
+            <div class="stylish-icon"><i data-lucide="server-cog"></i></div>
+            <div class="stylish-label">VPS SELF-HOST</div>
+          </div>
           <div class="proj-body">
             <h3 class="proj-title">VPS Self-host Stack</h3>
             <p class="proj-desc">Gestión VPS AECODE (10+ servicios Docker corriendo): n8n, finder, brochure, coord, ops, ClawdBot, Postgres pgvector, Activepieces, Acta Studio, Email Studio.</p>

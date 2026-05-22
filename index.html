@@ -4,14 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<title>Emanuel Ancco · IA aplicada a Minería · Visión, FPGA, Agentes</title>
-<meta name="description" content="Bachiller en Ingeniería Civil (UPC) + AI Automation Engineer en gen+. Visión computacional, FPGA, agentes IA y dashboards para minería peruana. Innovadores en Acción 2026 / Talentos de Cobre.">
+<title>Emanuel Ancco · Portfolio · Ingeniería · IA · Hardware · Producto</title>
+<meta name="description" content="Construyo sistemas de extremo a extremo. 40+ proyectos en producción: plataformas web, agentes IA, visión computacional, FPGA, investigación académica y toolkits.">
 <meta name="author" content="Emanuel Edgar Ancco Guaygua">
-<meta property="og:title" content="Emanuel Ancco · IA para Minería Peruana">
-<meta property="og:description" content="EPP 87.67% mAP · 38 FPS Jetson · LSTM-AE F1=0.961 · MISM-GNN R²=0.998 · 2do lugar AI Talent Demo Day 2026">
-<meta property="og:image" content="assets/images/emarc_vision_detection.png">
-<meta property="og:type" content="profile">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2300629a'/%3E%3Ctext x='16' y='22' font-family='monospace' font-weight='700' font-size='16' fill='white' text-anchor='middle'%3EEA%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Emanuel Ancco · Portfolio">
+<meta property="og:description" content="Ingeniero civil + AI engineer + builder. 40+ proyectos en producción, investigación y producto.">
+<meta property="og:image" content="assets/images/profile_v2.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237b3aed'/%3E%3Ctext x='16' y='22' font-family='monospace' font-weight='700' font-size='15' fill='white' text-anchor='middle'%3EEA%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,42 +19,55 @@
 
 <style>
 /* =========================================================================
-   PORTFOLIO EMANUEL ANCCO · v3.1 · 2026-05-22
-   Stack UI/UX 2026 award-tier: OKLCH + Geist + scroll-driven + bento
-   + dashboard + image-first showcase + Las Bambas / Talentos Cobre focus
+   PORTFOLIO EMANUEL ANCCO · v4 · 2026-05-22
+   Paleta violeta+menta+ámbar · efectos: cursor + tilt + scramble + counter
+   + tabs + scroll-progress + magnetic + parallax
 ========================================================================= */
 
 :root {
   color-scheme: light dark;
-  /* Brand · azul minería tech */
-  --brand-50: oklch(0.97 0.02 220); --brand-100: oklch(0.93 0.05 220);
-  --brand-300: oklch(0.76 0.13 220); --brand-400: oklch(0.65 0.16 220);
-  --brand-500: oklch(0.58 0.17 220); --brand-600: oklch(0.48 0.16 220);
-  --brand-700: oklch(0.38 0.13 220); --brand-900: oklch(0.18 0.07 220);
-  /* Copper · acento cálido */
-  --copper-300: oklch(0.78 0.13 55); --copper-500: oklch(0.66 0.17 50);
-  --copper-600: oklch(0.55 0.16 50); --copper-700: oklch(0.45 0.14 55);
+
+  /* Brand · violeta eléctrico (dev-friendly, multi-domain) */
+  --b-50:  oklch(0.97 0.02 285); --b-100: oklch(0.93 0.05 285);
+  --b-200: oklch(0.85 0.10 285); --b-300: oklch(0.76 0.15 285);
+  --b-400: oklch(0.68 0.22 285); --b-500: oklch(0.62 0.25 285);
+  --b-600: oklch(0.54 0.24 285); --b-700: oklch(0.44 0.20 285);
+  --b-800: oklch(0.32 0.15 285); --b-900: oklch(0.20 0.08 285);
+
+  /* Mint · verde menta brillante */
+  --m-300: oklch(0.86 0.13 165); --m-500: oklch(0.80 0.18 165);
+  --m-700: oklch(0.62 0.16 165);
+
+  /* Amber · acento cálido */
+  --a-300: oklch(0.86 0.12 75); --a-500: oklch(0.80 0.17 75);
+  --a-700: oklch(0.65 0.16 75);
+
   /* Neutrales */
-  --n-50: oklch(0.985 0 0); --n-100: oklch(0.96 0 0); --n-200: oklch(0.92 0 0);
-  --n-300: oklch(0.84 0 0); --n-400: oklch(0.68 0 0); --n-500: oklch(0.55 0 0);
-  --n-600: oklch(0.42 0 0); --n-700: oklch(0.30 0 0); --n-800: oklch(0.20 0 0);
-  --n-900: oklch(0.14 0 0); --n-950: oklch(0.08 0 0);
-  /* Semantic */
-  --bg:        light-dark(var(--n-50),  oklch(0.10 0.015 220));
-  --bg-elev:   light-dark(white,        oklch(0.14 0.015 220));
-  --bg-muted:  light-dark(var(--n-100), oklch(0.18 0.015 220));
-  --bg-deep:   light-dark(var(--n-100), oklch(0.07 0.015 220));
+  --n-50: oklch(0.985 0.005 285); --n-100: oklch(0.96 0.005 285);
+  --n-200: oklch(0.92 0.008 285); --n-300: oklch(0.84 0.012 285);
+  --n-400: oklch(0.68 0.015 285); --n-500: oklch(0.55 0.018 285);
+  --n-600: oklch(0.42 0.018 285); --n-700: oklch(0.30 0.018 285);
+  --n-800: oklch(0.20 0.018 285); --n-900: oklch(0.13 0.018 285);
+  --n-950: oklch(0.08 0.018 285);
+
+  /* Semantic con light-dark() */
+  --bg:        light-dark(var(--n-50),  oklch(0.09 0.020 285));
+  --bg-elev:   light-dark(white,        oklch(0.13 0.020 285));
+  --bg-muted:  light-dark(var(--n-100), oklch(0.17 0.020 285));
+  --bg-deep:   light-dark(var(--n-100), oklch(0.06 0.020 285));
   --fg:        light-dark(var(--n-900), var(--n-100));
   --fg-muted:  light-dark(var(--n-600), var(--n-400));
   --fg-subtle: light-dark(var(--n-500), var(--n-500));
-  --border:    light-dark(var(--n-200), oklch(0.22 0.015 220));
-  --border-strong: light-dark(var(--n-300), oklch(0.30 0.015 220));
-  --brand:     var(--brand-500);
-  --brand-fg:  oklch(0.98 0.02 220);
-  --accent:    var(--copper-500);
-  --success:   oklch(0.65 0.18 145);
-  --warning:   oklch(0.78 0.18 75);
-  --danger:    oklch(0.62 0.22 25);
+  --border:    light-dark(var(--n-200), oklch(0.22 0.020 285));
+  --border-strong: light-dark(var(--n-300), oklch(0.32 0.020 285));
+
+  --brand:    var(--b-500);
+  --brand-fg: white;
+  --mint:     var(--m-500);
+  --amber:    var(--a-500);
+  --success:  oklch(0.70 0.18 145);
+  --warning:  var(--amber);
+  --danger:   oklch(0.62 0.22 25);
 
   --font-sans: 'Geist', system-ui, sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, monospace;
@@ -70,35 +82,39 @@
   --s-4:  clamp(2.07rem, calc(1.86rem + 1.05vw), 2.75rem);
   --s-5:  clamp(2.49rem, calc(2.20rem + 1.40vw), 3.43rem);
   --s-6:  clamp(2.99rem, calc(2.59rem + 1.87vw), 4.29rem);
+  --s-7:  clamp(3.59rem, calc(3.05rem + 2.49vw), 5.36rem);
 
   --r-sm: 0.375rem; --r: 0.625rem; --r-lg: 0.875rem; --r-xl: 1.25rem; --r-2xl: 1.75rem;
-  --sh-sm: 0 1px 2px oklch(0 0 0 / 0.05);
-  --sh:    0 4px 12px oklch(0 0 0 / 0.10), 0 1px 3px oklch(0 0 0 / 0.06);
-  --sh-lg: 0 16px 40px oklch(0 0 0 / 0.16), 0 4px 8px oklch(0 0 0 / 0.08);
+  --sh: 0 4px 14px oklch(0 0 0 / 0.10), 0 1px 3px oklch(0 0 0 / 0.06);
+  --sh-lg: 0 20px 50px oklch(0 0 0 / 0.18), 0 6px 12px oklch(0 0 0 / 0.10);
+  --glow: 0 0 40px oklch(from var(--brand) l c h / 0.5);
 }
 
 [data-theme="light"] { color-scheme: light; }
 [data-theme="dark"]  { color-scheme: dark; }
 
 *,*::before,*::after { box-sizing: border-box; margin: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 body {
   font-family: var(--font-sans); font-optical-sizing: auto;
   background: var(--bg); color: var(--fg);
   font-size: var(--s-0); line-height: 1.55;
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  cursor: none;
 }
+@media (max-width: 980px) { body { cursor: auto; } }
+
 img, svg { display: block; max-width: 100%; }
-button { font: inherit; cursor: pointer; border: 0; background: transparent; color: inherit; }
-a { color: inherit; text-decoration: none; transition: color 150ms; }
+button { font: inherit; cursor: inherit; border: 0; background: transparent; color: inherit; }
+a { color: inherit; text-decoration: none; transition: color 200ms; }
 a:hover { color: var(--brand); }
 :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: var(--r-sm); }
-::selection { background: oklch(from var(--brand) l c h / 0.35); }
+::selection { background: oklch(from var(--brand) l c h / 0.4); }
 
 .skip-link {
   position: absolute; top: -100px; left: 1rem;
-  background: var(--brand); color: var(--brand-fg);
+  background: var(--brand); color: white;
   padding: 0.75rem 1.25rem; border-radius: var(--r);
   font-weight: 600; z-index: 9999; transition: top 200ms;
 }
@@ -112,9 +128,9 @@ a:hover { color: var(--brand); }
   }
 }
 
-h1,h2,h3,h4 { font-weight: 600; line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance; }
-h1 { font-size: var(--s-6); font-weight: 700; letter-spacing: -0.04em; }
-h2 { font-size: var(--s-4); }
+h1,h2,h3,h4 { font-weight: 600; line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance; }
+h1 { font-size: var(--s-7); font-weight: 700; letter-spacing: -0.05em; }
+h2 { font-size: var(--s-5); }
 h3 { font-size: var(--s-2); }
 p  { text-wrap: pretty; max-width: 70ch; color: var(--fg-muted); }
 code,.mono { font-family: var(--font-mono); font-size: 0.92em; font-variant-numeric: tabular-nums; }
@@ -122,497 +138,595 @@ code,.mono { font-family: var(--font-mono); font-size: 0.92em; font-variant-nume
 
 .container { width: min(100% - 2.5rem, 1320px); margin-inline: auto; }
 section { padding-block: clamp(4rem, 9vw, 7rem); position: relative; }
-section + section { border-top: 1px solid var(--border); }
 
+/* ============ CUSTOM CURSOR ============ */
+.cursor-dot, .cursor-ring {
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9998;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--mint);
+  transition: transform 80ms ease-out;
+}
+.cursor-ring {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--mint);
+  transition: transform 240ms cubic-bezier(0.2,0.8,0.2,1), width 200ms, height 200ms, border-color 200ms;
+}
+.cursor-ring.hover {
+  width: 56px; height: 56px;
+  border-color: var(--brand);
+}
+@media (max-width: 980px) { .cursor-dot, .cursor-ring { display: none; } }
+
+/* ============ SCROLL PROGRESS BAR ============ */
+.scroll-progress {
+  position: fixed; top: 0; left: 0;
+  height: 3px; width: 0;
+  background: linear-gradient(90deg, var(--brand), var(--mint), var(--amber));
+  z-index: 200;
+  animation: scroll-prog linear;
+  animation-timeline: scroll();
+}
+@keyframes scroll-prog { to { width: 100%; } }
+
+/* ============ COMPONENTES BASE ============ */
 .eyebrow {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.4rem 0.85rem; background: var(--bg-muted);
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--bg-muted);
   border: 1px solid var(--border); border-radius: 999px;
   font-family: var(--font-mono); font-size: var(--s--2);
   color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.08em;
+  backdrop-filter: blur(8px);
 }
 .eyebrow .pulse {
-  width: 6px; height: 6px; background: var(--success); border-radius: 50%;
-  box-shadow: 0 0 12px var(--success); animation: pulse-dot 2s ease-in-out infinite;
+  width: 7px; height: 7px; background: var(--mint); border-radius: 50%;
+  box-shadow: 0 0 12px var(--mint);
+  animation: pulse-dot 2s ease-in-out infinite;
 }
-@keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes pulse-dot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
 
 .chip {
   display: inline-flex; align-items: center; gap: 0.35rem;
   padding: 0.25rem 0.65rem; border-radius: 999px;
   font-family: var(--font-mono); font-size: var(--s--2);
-  font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
+  font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em;
 }
-.chip.brand   { background: oklch(from var(--brand) l c h / 0.15); color: var(--brand); border: 1px solid oklch(from var(--brand) l c h / 0.30); }
-.chip.copper  { background: oklch(from var(--copper-500) l c h / 0.15); color: var(--copper-500); border: 1px solid oklch(from var(--copper-500) l c h / 0.30); }
-.chip.success { background: oklch(from var(--success) l c h / 0.15); color: var(--success); border: 1px solid oklch(from var(--success) l c h / 0.30); }
-.chip.warning { background: oklch(from var(--warning) l c h / 0.18); color: oklch(from var(--warning) calc(l - 0.15) c h); border: 1px solid oklch(from var(--warning) l c h / 0.30); }
+.chip.brand   { background: oklch(from var(--brand) l c h / 0.15); color: var(--b-400); border: 1px solid oklch(from var(--brand) l c h / 0.3); }
+.chip.mint    { background: oklch(from var(--mint) l c h / 0.15); color: var(--m-500); border: 1px solid oklch(from var(--mint) l c h / 0.3); }
+.chip.amber   { background: oklch(from var(--amber) l c h / 0.18); color: var(--a-500); border: 1px solid oklch(from var(--amber) l c h / 0.3); }
+.chip.success { background: oklch(from var(--success) l c h / 0.15); color: var(--success); border: 1px solid oklch(from var(--success) l c h / 0.3); }
 
 .btn {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.65rem 1.15rem; border-radius: var(--r);
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  padding: 0.7rem 1.25rem; border-radius: var(--r);
   font-weight: 500; font-size: var(--s--1);
   background: var(--bg-muted); border: 1px solid var(--border);
-  transition: background 150ms, transform 150ms, border-color 150ms;
-  white-space: nowrap;
+  transition: background 200ms, transform 200ms, border-color 200ms, box-shadow 200ms;
+  white-space: nowrap; position: relative;
 }
-.btn:hover { background: var(--border); color: var(--fg); border-color: var(--border-strong); }
-.btn:active { transform: scale(0.97); }
-.btn-primary { background: var(--brand); color: var(--brand-fg); border-color: var(--brand); box-shadow: 0 4px 14px oklch(from var(--brand) l c h / 0.35); }
-.btn-primary:hover { background: oklch(from var(--brand) calc(l - 0.06) c h); color: var(--brand-fg); border-color: var(--brand); }
-.btn-copper { background: var(--copper-500); color: white; border-color: var(--copper-500); box-shadow: 0 4px 14px oklch(from var(--copper-500) l c h / 0.35); }
-.btn-copper:hover { background: oklch(from var(--copper-500) calc(l - 0.06) c h); color: white; }
+.btn:hover { background: var(--border); color: var(--fg); transform: translateY(-2px); border-color: var(--border-strong); }
+.btn:active { transform: translateY(0); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand), var(--b-700));
+  color: white; border-color: var(--brand);
+  box-shadow: 0 4px 16px oklch(from var(--brand) l c h / 0.4);
+}
+.btn-primary:hover { color: white; box-shadow: 0 8px 24px oklch(from var(--brand) l c h / 0.55); transform: translateY(-2px); }
+.btn-mint {
+  background: linear-gradient(135deg, var(--mint), var(--m-700));
+  color: var(--n-950); border-color: var(--mint);
+  box-shadow: 0 4px 16px oklch(from var(--mint) l c h / 0.4);
+}
+.btn-mint:hover { color: var(--n-950); box-shadow: 0 8px 24px oklch(from var(--mint) l c h / 0.55); }
 .btn-ghost { background: transparent; }
 
-/* ========================================================================
-   HEADER STICKY
-======================================================================== */
+/* ============ HEADER STICKY ============ */
 header.site {
   position: sticky; top: 0; z-index: 100;
-  backdrop-filter: blur(20px) saturate(180%);
-  background: light-dark(oklch(1 0 0 / 0.78), oklch(0.10 0.015 220 / 0.78));
+  backdrop-filter: blur(24px) saturate(180%);
+  background: light-dark(oklch(1 0 0 / 0.78), oklch(0.09 0.020 285 / 0.78));
   border-bottom: 1px solid var(--border);
 }
-.nav { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 4.25rem; }
 .logo { display: flex; align-items: center; gap: 0.7rem; font-weight: 700; letter-spacing: -0.015em; }
 .logo-mark {
-  width: 36px; height: 36px; border-radius: 9px;
-  background: linear-gradient(135deg, var(--brand), var(--copper-500));
+  width: 38px; height: 38px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--mint) 100%);
   display: grid; place-items: center; color: white;
-  font-family: var(--font-mono); font-weight: 700; font-size: 13px;
-  box-shadow: 0 2px 8px oklch(from var(--brand) l c h / 0.4);
+  font-family: var(--font-mono); font-weight: 700; font-size: 14px;
+  box-shadow: 0 4px 14px oklch(from var(--brand) l c h / 0.5);
+  position: relative;
 }
+.logo-mark::after {
+  content: ''; position: absolute; inset: -3px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--brand), var(--mint), var(--amber), var(--brand));
+  background-size: 300% 300%;
+  z-index: -1; opacity: 0;
+  filter: blur(8px);
+  animation: glow-rotate 4s linear infinite;
+  transition: opacity 300ms;
+}
+.logo:hover .logo-mark::after { opacity: 0.7; }
+@keyframes glow-rotate { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+
 .nav-links { display: flex; gap: 1.5rem; }
-.nav-links a { font-size: var(--s--1); color: var(--fg-muted); font-weight: 500; transition: color 150ms; }
+.nav-links a {
+  font-size: var(--s--1); color: var(--fg-muted); font-weight: 500;
+  position: relative; transition: color 200ms;
+}
+.nav-links a::after {
+  content: ''; position: absolute;
+  left: 0; right: 0; bottom: -6px; height: 2px;
+  background: linear-gradient(90deg, var(--brand), var(--mint));
+  border-radius: 1px; transform: scaleX(0);
+  transition: transform 250ms cubic-bezier(0.2,0.8,0.2,1);
+  transform-origin: left;
+}
 .nav-links a:hover { color: var(--fg); }
-.nav-actions { display: flex; gap: 0.5rem; align-items: center; }
+.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+.nav-links a.active { color: var(--fg); font-weight: 600; }
+.nav-actions { display: flex; gap: 0.55rem; align-items: center; }
 @media (max-width: 980px) { .nav-links { display: none; } }
 
-/* ========================================================================
-   HERO · cinemático
-======================================================================== */
+/* ============ HERO CINEMÁTICO ============ */
 #hero {
   position: relative; overflow: hidden;
-  padding-block: clamp(4.5rem, 10vw, 9rem);
-  background: var(--bg);
+  padding-block: clamp(5rem, 12vw, 10rem);
+}
+.hero-noise {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  pointer-events: none;
+  mix-blend-mode: overlay;
 }
 .hero-grid {
   position: absolute; inset: 0;
   background-image:
     linear-gradient(to right, var(--border) 1px, transparent 1px),
     linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse at 50% 40%, black 25%, transparent 75%);
-  opacity: 0.5; pointer-events: none;
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 35%, black 25%, transparent 75%);
+  opacity: 0.45; pointer-events: none;
 }
 .hero-orb {
-  position: absolute; border-radius: 50%; filter: blur(100px);
-  pointer-events: none; animation: orb-drift 24s ease-in-out infinite alternate;
+  position: absolute; border-radius: 50%; filter: blur(120px);
+  pointer-events: none;
+  animation: orb-float 26s ease-in-out infinite alternate;
 }
-.hero-orb.a { background: var(--brand); width: 520px; height: 520px; top: -140px; right: -120px; opacity: 0.4; }
-.hero-orb.b { background: var(--copper-500); width: 420px; height: 420px; bottom: -140px; left: -100px; animation-delay: -10s; opacity: 0.35; }
-.hero-orb.c { background: oklch(0.65 0.20 290); width: 360px; height: 360px; top: 30%; left: 35%; opacity: 0.18; animation-delay: -5s; filter: blur(120px); }
-@keyframes orb-drift {
-  0%   { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(80px, -50px) scale(1.18); }
+.hero-orb.a { background: var(--brand); width: 560px; height: 560px; top: -160px; right: -140px; opacity: 0.45; }
+.hero-orb.b { background: var(--mint); width: 460px; height: 460px; bottom: -160px; left: -120px; animation-delay: -10s; opacity: 0.32; }
+.hero-orb.c { background: var(--amber); width: 320px; height: 320px; top: 40%; left: 30%; opacity: 0.18; animation-delay: -16s; }
+@keyframes orb-float { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(80px,-60px) scale(1.2); } }
+
+/* Mouse-tracking gradient */
+.hero-mouse-glow {
+  position: absolute; pointer-events: none;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, oklch(from var(--brand) l c h / 0.25) 0%, transparent 60%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: left 200ms cubic-bezier(0.2,0.8,0.2,1), top 200ms cubic-bezier(0.2,0.8,0.2,1);
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+#hero:hover .hero-mouse-glow { opacity: 1; }
+
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1000px; margin: 0 auto;
+  text-align: center;
 }
 
-.hero-grid-layout {
-  position: relative; z-index: 2;
-  display: grid; grid-template-columns: 1.4fr 1fr; gap: 4rem; align-items: center;
-}
-@media (max-width: 1100px) { .hero-grid-layout { grid-template-columns: 1fr; gap: 2.5rem; } }
+.hero-eyebrow-wrap { margin-bottom: 1.75rem; }
 
 .hero-headline {
-  font-size: clamp(2.6rem, 7.5vw, 5.5rem);
-  line-height: 0.94;
-  letter-spacing: -0.05em;
-  margin: 1.5rem 0;
+  font-size: clamp(3rem, 9vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  font-weight: 700;
+  margin: 1.5rem 0 1.75rem;
 }
-.hero-headline .grad {
-  background: linear-gradient(135deg, var(--brand) 0%, var(--copper-500) 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+.hero-headline .word {
   display: inline-block;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--mint) 50%, var(--amber) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  animation: grad-shift 6s linear infinite;
 }
-.hero-sub { font-size: var(--s-1); color: var(--fg-muted); max-width: 52ch; }
+@keyframes grad-shift { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+
+.hero-sub {
+  font-size: var(--s-1);
+  color: var(--fg-muted);
+  max-width: 60ch; margin: 0 auto;
+}
 .hero-sub strong { color: var(--fg); font-weight: 600; }
 
-.hero-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1.5rem 0 1.75rem; }
-.hero-cta { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+.hero-cta { display: inline-flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2.25rem; justify-content: center; }
 
-.hero-stats {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 0.75rem; margin-top: 2.25rem;
+/* Marquee de tecnologías */
+.tech-marquee-wrap {
+  margin-top: 4rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
-.qs {
-  padding: 0.95rem 1.05rem;
-  background: light-dark(white, oklch(0.14 0.015 220 / 0.7));
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border); border-radius: var(--r);
-  transition: border-color 200ms, transform 200ms;
+.tech-marquee {
+  display: flex; gap: 3rem;
+  animation: tech-scroll 35s linear infinite;
+  width: max-content;
+  font-family: var(--font-mono);
+  font-size: var(--s-0);
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  align-items: center;
 }
-.qs:hover { border-color: var(--brand); transform: translateY(-2px); }
-.qs-value { font-size: var(--s-2); font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.025em; line-height: 1; }
-.qs-value .unit { font-size: 0.55em; color: var(--fg-muted); font-weight: 500; margin-left: 0.15rem; }
-.qs-label { font-family: var(--font-mono); font-size: var(--s--2); color: var(--fg-muted); margin-top: 0.35rem; text-transform: uppercase; letter-spacing: 0.05em; }
-
-/* Hero side image */
-.hero-portrait {
-  position: relative; border-radius: var(--r-xl);
-  overflow: hidden; aspect-ratio: 4/5;
-  background: var(--bg-muted); border: 1px solid var(--border);
-  box-shadow: var(--sh-lg);
+.tech-marquee span { display: inline-flex; align-items: center; gap: 0.7rem; }
+.tech-marquee .dot {
+  width: 5px; height: 5px;
+  background: var(--brand); border-radius: 50%;
+  flex-shrink: 0;
 }
-.hero-portrait img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.06) saturate(0.96); }
-.hero-portrait::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, oklch(0.08 0.015 220 / 0.85) 100%);
-  pointer-events: none;
-}
-.portrait-badge {
-  position: absolute; bottom: 1.25rem; left: 1.25rem; right: 1.25rem;
-  z-index: 2; color: white;
-  display: flex; flex-direction: column; gap: 0.5rem;
-}
-.portrait-badge .role {
-  font-family: var(--font-mono); font-size: var(--s--2);
-  background: oklch(0 0 0 / 0.5); backdrop-filter: blur(8px);
-  padding: 0.4rem 0.7rem; border-radius: var(--r-sm);
-  border: 1px solid oklch(1 0 0 / 0.15);
-  text-transform: uppercase; letter-spacing: 0.08em;
-  align-self: start;
-}
-.portrait-badge .who {
-  font-size: var(--s-1); font-weight: 600; letter-spacing: -0.02em;
+.tech-marquee .dot.mint { background: var(--mint); }
+.tech-marquee .dot.amber { background: var(--amber); }
+@keyframes tech-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
-/* ========================================================================
-   SECTION HEAD
-======================================================================== */
+/* ============ SECTION HEAD ============ */
 .sec-head { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3.5rem; align-items: end; }
-@media (max-width: 900px) { .sec-head { grid-template-columns: 1fr; gap: 1.25rem; } }
+@media (max-width: 900px) { .sec-head { grid-template-columns: 1fr; gap: 1.5rem; } }
 .sec-head-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
 .sec-num { font-family: var(--font-mono); font-size: var(--s--1); color: var(--fg-subtle); }
 .sec-title { font-size: var(--s-5); letter-spacing: -0.035em; }
 .sec-title .accent { color: var(--brand); }
-.sec-title .copper { color: var(--copper-500); }
+.sec-title .mint { color: var(--mint); }
+.sec-title .amber { color: var(--amber); }
 .sec-desc { color: var(--fg-muted); font-size: var(--s-0); }
 
-/* ========================================================================
-   S1 · KPI DASHBOARD
-======================================================================== */
-.kpi-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+/* ============ ABOUT con foto ============ */
+.about-grid {
+  display: grid; grid-template-columns: 4fr 6fr; gap: 4rem;
+  align-items: center;
 }
-@media (max-width: 900px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
-.kpi {
-  padding: 1.5rem; background: var(--bg-elev);
-  border: 1px solid var(--border); border-radius: var(--r-lg);
-  position: relative; overflow: hidden;
-  transition: transform 280ms cubic-bezier(0.2,0.8,0.2,1), border-color 280ms, box-shadow 280ms;
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+.about-portrait {
+  position: relative; border-radius: var(--r-xl);
+  overflow: hidden; aspect-ratio: 4/5;
+  background: var(--bg-muted); border: 1px solid var(--border);
+  box-shadow: var(--sh-lg);
+  transition: transform 400ms cubic-bezier(0.2,0.8,0.2,1);
 }
-.kpi:hover { transform: translateY(-4px); box-shadow: var(--sh); border-color: var(--brand); }
-.kpi-head { display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.85rem; }
-.kpi-label { font-family: var(--font-mono); font-size: var(--s--2); color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em; }
-.kpi-icon { width: 32px; height: 32px; border-radius: var(--r-sm); background: oklch(from var(--brand) l c h / 0.12); display: grid; place-items: center; color: var(--brand); }
-.kpi-icon svg { width: 16px; height: 16px; }
-.kpi-value { font-size: var(--s-4); font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.035em; line-height: 1; }
-.kpi-value .unit { font-size: 0.5em; color: var(--fg-muted); font-weight: 500; margin-left: 0.15rem; }
-.kpi-desc { margin-top: 0.6rem; font-size: var(--s--1); color: var(--fg-muted); line-height: 1.45; }
-.kpi-spark {
-  margin-top: 0.85rem; width: 100%; height: 36px;
-  border-radius: var(--r-sm);
-  background: var(--bg-deep);
-  overflow: hidden;
-  border: 1px solid var(--border);
-}
-
-/* ========================================================================
-   S2 · IMAGE SHOWCASE STRIP (galería técnica prominente)
-======================================================================== */
-.showcase-strip {
-  position: relative; overflow: hidden;
-  padding: 0; margin: 0;
-}
-.showcase-track {
-  display: flex; gap: 1rem;
-  animation: showcase-scroll 60s linear infinite;
-  width: max-content;
-}
-.showcase-item {
-  position: relative;
-  width: 380px; height: 260px;
-  border-radius: var(--r-lg); overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--bg-elev);
-  flex-shrink: 0;
-}
-.showcase-item img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: contrast(1.05) saturate(0.95);
-  transition: transform 500ms;
-}
-.showcase-item:hover img { transform: scale(1.05); }
-.showcase-item::after {
+.about-portrait:hover { transform: scale(1.02) rotate(-1deg); }
+.about-portrait img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.05) saturate(0.95); }
+.about-portrait::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to top, oklch(0.10 0.015 220 / 0.85) 0%, transparent 50%);
+  background: linear-gradient(to bottom, transparent 55%, oklch(0.09 0.020 285 / 0.85) 100%);
   pointer-events: none;
 }
-.showcase-caption {
-  position: absolute; left: 1rem; right: 1rem; bottom: 1rem;
-  z-index: 2; color: white;
-  font-family: var(--font-mono);
-  font-size: var(--s--2);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+.about-text h2 { margin-bottom: 1.5rem; font-size: var(--s-4); }
+.about-text p { font-size: var(--s-0); line-height: 1.7; margin-bottom: 1rem; color: var(--fg-muted); max-width: none; }
+.about-text p strong { color: var(--fg); font-weight: 600; }
+.about-text .role-pills {
+  display: flex; flex-wrap: wrap; gap: 0.45rem;
+  margin-top: 1.5rem;
 }
-.showcase-caption strong { display: block; font-size: var(--s-0); font-family: var(--font-sans); text-transform: none; letter-spacing: -0.01em; margin-bottom: 0.2rem; font-weight: 600; }
-@keyframes showcase-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-.showcase-strip:hover .showcase-track { animation-play-state: paused; }
 
-/* ========================================================================
-   S3 · PROYECTOS BENTO IMAGE-FIRST
-======================================================================== */
-.proj-bento {
-  display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.25rem;
+/* ============ HIGHLIGHTS con contexto ============ */
+.highlights-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
 }
-.proj {
-  background: var(--bg-elev); border: 1px solid var(--border);
-  border-radius: var(--r-xl); overflow: hidden;
-  display: flex; flex-direction: column;
+@media (max-width: 1100px) { .highlights-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .highlights-grid { grid-template-columns: 1fr; } }
+.hl {
   position: relative;
-  transition: transform 350ms cubic-bezier(0.2,0.8,0.2,1), box-shadow 350ms, border-color 350ms;
-  container-type: inline-size;
+  padding: 1.75rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  transition: transform 350ms cubic-bezier(0.2,0.8,0.2,1), border-color 350ms, box-shadow 350ms;
+  overflow: hidden;
 }
-.proj:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); border-color: var(--brand); }
+.hl::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: var(--brand);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 350ms cubic-bezier(0.2,0.8,0.2,1);
+}
+.hl:hover { transform: translateY(-6px); box-shadow: var(--sh-lg); border-color: var(--brand); }
+.hl:hover::before { transform: scaleX(1); }
+.hl.mint::before { background: var(--mint); }
+.hl.mint:hover { border-color: var(--mint); }
+.hl.amber::before { background: var(--amber); }
+.hl.amber:hover { border-color: var(--amber); }
+.hl.success::before { background: var(--success); }
+.hl.success:hover { border-color: var(--success); }
 
-.proj.feature { grid-column: span 8; grid-row: span 2; min-height: 520px; }
-.proj.tall    { grid-column: span 4; grid-row: span 2; min-height: 520px; }
-.proj.wide    { grid-column: span 8; }
-.proj.half    { grid-column: span 6; }
-.proj.thin    { grid-column: span 4; }
-@media (max-width: 1100px) {
-  .proj.feature, .proj.wide { grid-column: span 12; min-height: auto; }
-  .proj.tall, .proj.thin, .proj.half { grid-column: span 12; min-height: auto; }
+.hl-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--r);
+  background: oklch(from var(--brand) l c h / 0.12);
+  display: grid; place-items: center;
+  color: var(--brand);
+  margin-bottom: 1rem;
+}
+.hl.mint .hl-icon { background: oklch(from var(--mint) l c h / 0.14); color: var(--mint); }
+.hl.amber .hl-icon { background: oklch(from var(--amber) l c h / 0.16); color: var(--amber); }
+.hl.success .hl-icon { background: oklch(from var(--success) l c h / 0.14); color: var(--success); }
+.hl-icon svg { width: 22px; height: 22px; }
+
+.hl-metric {
+  font-size: var(--s-4);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--mint) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+.hl.mint .hl-metric { background: linear-gradient(135deg, var(--mint) 0%, var(--amber) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hl.amber .hl-metric { background: linear-gradient(135deg, var(--amber) 0%, var(--brand) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hl.success .hl-metric { background: linear-gradient(135deg, var(--success) 0%, var(--mint) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+.hl-metric .unit { font-size: 0.45em; color: var(--fg-muted); font-weight: 500; margin-left: 0.15rem; -webkit-text-fill-color: var(--fg-muted); }
+.hl-title { font-size: var(--s-0); font-weight: 600; margin-top: 0.85rem; line-height: 1.3; }
+.hl-context { font-size: var(--s--1); color: var(--fg-muted); margin-top: 0.55rem; line-height: 1.5; }
+.hl-context strong { color: var(--fg); font-weight: 600; }
+
+/* ============ TABS DE CATEGORÍAS ============ */
+.cat-tabs {
+  display: flex; flex-wrap: wrap;
+  gap: 0.4rem; padding: 0.4rem;
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  width: fit-content; margin: 0 auto 3rem;
+  max-width: 100%;
+}
+.cat-tab {
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: var(--s--1);
+  font-weight: 500;
+  color: var(--fg-muted);
+  transition: all 200ms;
+  white-space: nowrap;
+}
+.cat-tab:hover { color: var(--fg); background: var(--bg); }
+.cat-tab.active {
+  background: var(--brand);
+  color: white;
+  box-shadow: 0 4px 12px oklch(from var(--brand) l c h / 0.45);
+}
+.cat-tab .count {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  opacity: 0.7;
+  margin-left: 0.3rem;
+}
+
+/* ============ PROYECTOS GRID ============ */
+.proj-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  transition: opacity 200ms;
+}
+.proj-grid[data-loading="true"] { opacity: 0.5; }
+
+.proj {
+  position: relative;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 400ms cubic-bezier(0.2,0.8,0.2,1), box-shadow 400ms, border-color 400ms;
+  cursor: inherit;
+}
+.proj.feat { grid-column: span 2; }
+@media (max-width: 800px) { .proj.feat { grid-column: span 1; } }
+
+.proj:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--sh-lg);
+  border-color: var(--brand);
+}
+
+.proj-tilt {
+  transform-style: preserve-3d;
+  transition: transform 200ms cubic-bezier(0.2,0.8,0.2,1);
 }
 
 .proj-image {
-  position: relative; aspect-ratio: 16/9;
+  position: relative; aspect-ratio: 16/10;
   overflow: hidden;
   background: var(--bg-deep);
   border-bottom: 1px solid var(--border);
 }
-.proj.feature .proj-image { aspect-ratio: 16/10; }
-.proj.tall .proj-image { aspect-ratio: 4/3; }
-
 .proj-image img {
   width: 100%; height: 100%; object-fit: cover;
-  filter: contrast(1.05) saturate(0.95);
+  filter: contrast(1.05) saturate(0.92);
   transition: transform 500ms cubic-bezier(0.2,0.8,0.2,1);
 }
-.proj:hover .proj-image img { transform: scale(1.07); }
+.proj:hover .proj-image img { transform: scale(1.08); }
 .proj-image::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, transparent 50%, oklch(0.08 0.015 220 / 0.4) 100%);
+  background: linear-gradient(135deg, transparent 40%, oklch(0.09 0.020 285 / 0.6) 100%);
   pointer-events: none;
 }
+.proj-image.no-img {
+  background: linear-gradient(135deg, oklch(from var(--brand) l c h / 0.15), oklch(from var(--mint) l c h / 0.10));
+  display: grid; place-items: center;
+}
+.proj-image.no-img svg {
+  width: 64px; height: 64px;
+  color: oklch(from var(--brand) l c h / 0.6);
+}
 
-.proj-image-overlay {
-  position: absolute; top: 1rem; left: 1rem; right: 1rem;
+.proj-image-tags {
+  position: absolute; top: 0.85rem; left: 0.85rem; right: 0.85rem;
   z-index: 2;
-  display: flex; justify-content: space-between; align-items: start; gap: 1rem;
+  display: flex; justify-content: space-between; align-items: start;
+  gap: 0.5rem;
 }
 .proj-tag {
   font-family: var(--font-mono); font-size: var(--s--2);
   color: white; background: oklch(0 0 0 / 0.55); backdrop-filter: blur(10px);
-  padding: 0.35rem 0.65rem; border-radius: var(--r-sm);
+  padding: 0.32rem 0.65rem; border-radius: var(--r-sm);
   border: 1px solid oklch(1 0 0 / 0.15);
   text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap;
+  font-weight: 500;
 }
-.proj-award {
-  display: inline-flex; align-items: center; gap: 0.35rem;
-  padding: 0.35rem 0.7rem;
-  background: oklch(from var(--copper-500) l c h / 0.95);
-  color: white; border: 1px solid oklch(from var(--copper-500) l c h / 1);
+.proj-status {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.32rem 0.65rem;
   border-radius: var(--r-sm);
   font-family: var(--font-mono); font-size: var(--s--2);
-  text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700;
-  box-shadow: 0 4px 12px oklch(from var(--copper-500) l c h / 0.4);
+  text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600;
+  backdrop-filter: blur(10px);
 }
-.proj-award svg { width: 12px; height: 12px; }
-.proj-award.production {
-  background: oklch(from var(--success) l c h / 0.95);
-  border-color: oklch(from var(--success) l c h / 1);
-  box-shadow: 0 4px 12px oklch(from var(--success) l c h / 0.4);
-}
+.proj-status.live    { background: oklch(from var(--success) l c h / 0.9); color: white; border: 1px solid oklch(from var(--success) l c h / 1); }
+.proj-status.beta    { background: oklch(from var(--amber) l c h / 0.9); color: oklch(0.20 0.10 75); border: 1px solid oklch(from var(--amber) l c h / 1); }
+.proj-status.award   { background: oklch(from var(--brand) l c h / 0.95); color: white; border: 1px solid oklch(from var(--brand) l c h / 1); }
+.proj-status.r-and-d { background: oklch(from var(--mint) l c h / 0.9); color: oklch(0.20 0.10 165); border: 1px solid oklch(from var(--mint) l c h / 1); }
+.proj-status svg { width: 11px; height: 11px; }
 
-.proj-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
-.proj-title { font-size: var(--s-2); font-weight: 600; line-height: 1.15; margin-bottom: 0.65rem; }
-.proj.feature .proj-title { font-size: var(--s-3); }
+.proj-body { padding: 1.25rem; display: flex; flex-direction: column; flex: 1; }
+.proj-title { font-size: var(--s-1); font-weight: 600; line-height: 1.2; margin-bottom: 0.55rem; }
 .proj-desc { color: var(--fg-muted); font-size: var(--s--1); line-height: 1.55; flex: 1; }
 .proj-desc strong { color: var(--fg); font-weight: 600; }
 
-.proj-metrics { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
-.metric {
-  font-family: var(--font-mono); font-size: var(--s--2);
-  padding: 0.32rem 0.7rem; background: var(--bg);
-  border: 1px solid var(--border); border-radius: 999px;
-  display: inline-flex; align-items: center; gap: 0.35rem;
-  white-space: nowrap;
+.proj-meta {
+  display: flex; flex-wrap: wrap; gap: 0.35rem;
+  margin-top: 0.95rem;
 }
-.metric strong { color: var(--brand); font-weight: 700; }
-.metric.copper strong { color: var(--copper-500); }
-.metric.success strong { color: var(--success); }
-
-.proj-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.85rem; }
 .tag {
   font-family: var(--font-mono); font-size: var(--s--2);
   color: var(--fg-muted); background: var(--bg-muted);
-  padding: 0.22rem 0.6rem; border-radius: var(--r-sm);
+  padding: 0.2rem 0.55rem; border-radius: var(--r-sm);
   border: 1px solid var(--border);
+  transition: border-color 200ms, color 200ms;
 }
+.proj:hover .tag { border-color: var(--border-strong); color: var(--fg); }
 
-.proj-applicable {
-  margin-top: 1.1rem; padding: 0.9rem 1rem;
-  background: oklch(from var(--copper-500) l c h / 0.08);
-  border: 1px solid oklch(from var(--copper-500) l c h / 0.28);
-  border-radius: var(--r);
-  display: flex; gap: 0.7rem; align-items: start;
-}
-.proj-applicable svg { width: 18px; height: 18px; color: var(--copper-500); flex-shrink: 0; margin-top: 2px; }
-.proj-applicable-label {
-  font-family: var(--font-mono); font-size: var(--s--2);
-  color: var(--copper-500); text-transform: uppercase; letter-spacing: 0.06em;
-  font-weight: 700; margin-bottom: 0.25rem; display: block;
-}
-.proj-applicable p { margin: 0; font-size: var(--s--1); color: var(--fg); line-height: 1.45; }
-
-/* ========================================================================
-   S · NORMATIVA dual panel
-======================================================================== */
-.norma-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-@media (max-width: 900px) { .norma-grid { grid-template-columns: 1fr; } }
-.norma-panel {
-  background: var(--bg-elev); border: 1px solid var(--border);
-  border-radius: var(--r-xl); padding: 2rem;
-}
-.norma-panel h3 { font-size: var(--s-1); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.6rem; }
-.norma-panel h3 svg { color: var(--brand); width: 24px; height: 24px; }
-.norma-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.65rem; }
-.norma-item {
-  display: grid; grid-template-columns: auto 1fr; gap: 0.85rem;
-  align-items: start; padding: 0.65rem 0.8rem;
-  background: var(--bg); border: 1px solid var(--border); border-radius: var(--r);
-  transition: border-color 200ms;
-}
-.norma-item:hover { border-color: var(--brand); }
-.norma-code {
-  font-family: var(--font-mono); font-size: var(--s--1);
-  color: var(--brand); font-weight: 700;
-  background: oklch(from var(--brand) l c h / 0.12);
-  padding: 0.3rem 0.6rem; border-radius: var(--r-sm);
-  white-space: nowrap; align-self: center;
-}
-.norma-desc { font-size: var(--s--1); color: var(--fg-muted); line-height: 1.45; align-self: center; }
-.norma-desc strong { color: var(--fg); font-weight: 600; }
-
-.origin-card {
-  margin-top: 1.5rem; padding: 1.1rem 1.25rem;
-  background: linear-gradient(135deg, oklch(from var(--brand) l c h / 0.10) 0%, oklch(from var(--copper-500) l c h / 0.10) 100%);
-  border: 1px solid oklch(from var(--brand) l c h / 0.3);
-  border-radius: var(--r);
-}
-.origin-card p { font-size: var(--s--1); color: var(--fg); margin: 0; line-height: 1.55; }
-.origin-card strong { color: var(--brand); }
-
-/* ========================================================================
-   S · STACK
-======================================================================== */
+/* ============ STACK ============ */
 .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
 .stack-card {
   padding: 1.5rem; background: var(--bg-elev);
   border: 1px solid var(--border); border-radius: var(--r-lg);
   transition: border-color 250ms, transform 250ms, box-shadow 250ms;
+  position: relative; overflow: hidden;
+}
+.stack-card::before {
+  content: ''; position: absolute;
+  top: -50%; right: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle, oklch(from var(--brand) l c h / 0.08) 0%, transparent 60%);
+  opacity: 0; transition: opacity 400ms;
+  pointer-events: none;
 }
 .stack-card:hover { border-color: var(--brand); transform: translateY(-3px); box-shadow: var(--sh); }
-.stack-card h4 { font-size: var(--s-0); font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+.stack-card:hover::before { opacity: 1; }
+.stack-card h4 { font-size: var(--s-0); font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; position: relative; }
 .stack-card h4 svg { color: var(--brand); width: 20px; height: 20px; }
-.stack-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.stack-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; position: relative; }
 
-/* ========================================================================
-   S · TIMELINE
-======================================================================== */
-.timeline { position: relative; }
+/* ============ TIMELINE ============ */
+.timeline { position: relative; max-width: 880px; margin: 0 auto; }
 .timeline::before {
   content: ''; position: absolute;
-  left: 17px; top: 8px; bottom: 8px; width: 2px;
-  background: linear-gradient(to bottom, var(--brand), oklch(from var(--brand) l c h / 0.2), transparent);
+  left: 18px; top: 8px; bottom: 8px; width: 2px;
+  background: linear-gradient(to bottom, var(--brand), var(--mint), transparent);
 }
 .exp { position: relative; padding-left: 3.5rem; padding-bottom: 2.5rem; }
 .exp::before {
   content: ''; position: absolute;
-  left: 8px; top: 6px;
+  left: 9px; top: 5px;
   width: 20px; height: 20px; border-radius: 50%;
-  background: var(--bg); border: 3px solid var(--brand);
-  box-shadow: 0 0 0 4px var(--bg), 0 4px 12px oklch(from var(--brand) l c h / 0.4);
+  background: var(--bg);
+  border: 3px solid var(--brand);
+  box-shadow: 0 0 0 4px var(--bg), 0 4px 14px oklch(from var(--brand) l c h / 0.5);
 }
+.exp:nth-child(2)::before { border-color: var(--mint); box-shadow: 0 0 0 4px var(--bg), 0 4px 14px oklch(from var(--mint) l c h / 0.5); }
+.exp:nth-child(3)::before { border-color: var(--amber); box-shadow: 0 0 0 4px var(--bg), 0 4px 14px oklch(from var(--amber) l c h / 0.5); }
 .exp-meta { font-family: var(--font-mono); font-size: var(--s--2); color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
 .exp-title { font-size: var(--s-1); font-weight: 600; }
 .exp-org { margin-top: 0.3rem; color: var(--brand); font-size: var(--s-0); font-weight: 500; }
-.exp-bullets { margin-top: 0.85rem; list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.55rem; }
-.exp-bullets li { position: relative; padding-left: 1.25rem; font-size: var(--s--1); color: var(--fg-muted); line-height: 1.55; }
+.exp:nth-child(2) .exp-org { color: var(--mint); }
+.exp:nth-child(3) .exp-org { color: var(--amber); }
+.exp-bullets { margin-top: 0.85rem; list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.exp-bullets li { position: relative; padding-left: 1.2rem; font-size: var(--s--1); color: var(--fg-muted); line-height: 1.55; }
 .exp-bullets li::before { content: '→'; position: absolute; left: 0; top: 0; color: var(--brand); font-family: var(--font-mono); font-weight: 700; }
+.exp:nth-child(2) .exp-bullets li::before { color: var(--mint); }
+.exp:nth-child(3) .exp-bullets li::before { color: var(--amber); }
 .exp-bullets li strong { color: var(--fg); font-weight: 600; }
 
-/* ========================================================================
-   S · AWARDS
-======================================================================== */
+/* ============ AWARDS ============ */
 .awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 0.9rem; }
 .award {
-  padding: 1.1rem 1.25rem; background: var(--bg-elev);
+  padding: 1.15rem 1.3rem; background: var(--bg-elev);
   border: 1px solid var(--border); border-radius: var(--r);
   display: flex; align-items: start; gap: 1rem;
   transition: border-color 250ms, transform 250ms;
 }
-.award:hover { border-color: var(--copper-500); transform: translateY(-2px); }
+.award:hover { border-color: var(--amber); transform: translateY(-2px); }
 .award-icon {
-  width: 40px; height: 40px; flex-shrink: 0;
+  width: 42px; height: 42px; flex-shrink: 0;
   border-radius: var(--r-sm);
-  background: linear-gradient(135deg, oklch(from var(--copper-500) l c h / 0.18) 0%, oklch(from var(--copper-500) l c h / 0.08) 100%);
-  display: grid; place-items: center; color: var(--copper-500);
-  border: 1px solid oklch(from var(--copper-500) l c h / 0.25);
+  background: linear-gradient(135deg, oklch(from var(--amber) l c h / 0.20) 0%, oklch(from var(--amber) l c h / 0.08) 100%);
+  display: grid; place-items: center; color: var(--amber);
+  border: 1px solid oklch(from var(--amber) l c h / 0.25);
 }
 .award-icon svg { width: 20px; height: 20px; }
 .award-body { flex: 1; }
 .award-title { font-size: var(--s--1); font-weight: 600; line-height: 1.3; }
 .award-sub { font-family: var(--font-mono); font-size: var(--s--2); color: var(--fg-subtle); margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.05em; }
 
-/* ========================================================================
-   S · CONTACTO CTA
-======================================================================== */
+/* ============ CONTACTO ============ */
 .cta-card {
-  background: linear-gradient(135deg, oklch(from var(--brand) l c h / 0.12) 0%, oklch(from var(--copper-500) l c h / 0.12) 100%);
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, oklch(from var(--brand) l c h / 0.10) 0%, oklch(from var(--mint) l c h / 0.10) 100%);
   border: 1px solid var(--border);
   border-radius: var(--r-2xl);
   padding: clamp(2.5rem, 6vw, 5rem);
   display: grid; grid-template-columns: 6fr 5fr;
   gap: 3.5rem; align-items: center;
-  position: relative; overflow: hidden;
 }
 @media (max-width: 900px) { .cta-card { grid-template-columns: 1fr; gap: 2rem; } }
 .cta-card::before {
   content: ''; position: absolute;
-  width: 360px; height: 360px;
+  width: 400px; height: 400px;
   background: var(--brand); filter: blur(120px);
-  border-radius: 50%; opacity: 0.18;
-  top: -100px; right: -100px;
+  border-radius: 50%; opacity: 0.20;
+  top: -120px; right: -120px;
   pointer-events: none;
 }
-.cta-card h2 { font-size: var(--s-4); margin-bottom: 1.2rem; position: relative; z-index: 1; }
+.cta-card::after {
+  content: ''; position: absolute;
+  width: 320px; height: 320px;
+  background: var(--mint); filter: blur(110px);
+  border-radius: 50%; opacity: 0.15;
+  bottom: -100px; left: -80px;
+  pointer-events: none;
+}
+.cta-card h2 { font-size: var(--s-4); margin-bottom: 1.25rem; position: relative; z-index: 1; }
 .cta-card > div { position: relative; z-index: 1; }
 .cta-list { display: flex; flex-direction: column; gap: 0.75rem; }
 .cta-item {
@@ -627,23 +741,19 @@ header.site {
 .cta-item-label { font-family: var(--font-mono); font-size: var(--s--2); color: var(--fg-subtle); text-transform: uppercase; letter-spacing: 0.05em; }
 .cta-item-value { font-size: var(--s-0); font-weight: 500; margin-top: 0.15rem; }
 
-/* ========================================================================
-   FOOTER
-======================================================================== */
+/* ============ FOOTER ============ */
 footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; background: var(--bg-elev); }
 .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; font-family: var(--font-mono); font-size: var(--s--2); color: var(--fg-subtle); }
-.footer-social { display: flex; gap: 0.6rem; }
+.footer-social { display: flex; gap: 0.65rem; }
 .footer-social a {
-  width: 38px; height: 38px; display: grid; place-items: center;
+  width: 40px; height: 40px; display: grid; place-items: center;
   background: var(--bg-muted); border: 1px solid var(--border);
   border-radius: var(--r); color: var(--fg-muted);
-  transition: all 200ms;
+  transition: all 250ms;
 }
-.footer-social a:hover { background: var(--brand); border-color: var(--brand); color: var(--brand-fg); transform: translateY(-2px); }
+.footer-social a:hover { background: var(--brand); border-color: var(--brand); color: white; transform: translateY(-3px) rotate(-3deg); }
 
-/* ========================================================================
-   SCROLL REVEAL
-======================================================================== */
+/* ============ SCROLL REVEAL ============ */
 .reveal {
   opacity: 0; transform: translateY(28px);
   animation: reveal-in linear both;
@@ -652,48 +762,56 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
 }
 @keyframes reveal-in { to { opacity: 1; transform: translateY(0); } }
 
-/* Floating CV button mobile */
+/* Floating CV button */
 .floating-cv {
   position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;
   padding: 0.9rem 1.4rem;
-  background: var(--copper-500); color: white;
+  background: linear-gradient(135deg, var(--brand), var(--m-700));
+  color: white;
   border-radius: 999px;
   font-weight: 600; font-size: var(--s--1);
   display: none;
   align-items: center; gap: 0.5rem;
-  box-shadow: 0 8px 24px oklch(from var(--copper-500) l c h / 0.5);
-  transition: transform 200ms;
+  box-shadow: 0 8px 24px oklch(from var(--brand) l c h / 0.5);
+  transition: transform 250ms;
 }
 .floating-cv:hover { transform: scale(1.05); color: white; }
 @media (max-width: 980px) { .floating-cv { display: inline-flex; } }
 
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 5px; border: 2px solid var(--bg); }
-::-webkit-scrollbar-thumb:hover { background: var(--fg-subtle); }
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 6px; border: 3px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--brand); }
 </style>
 </head>
 <body>
 
 <a href="#main" class="skip-link">Saltar al contenido</a>
 
+<!-- Custom cursor -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+<!-- Scroll progress bar -->
+<div class="scroll-progress" aria-hidden="true"></div>
+
 <header class="site">
   <div class="container nav">
     <a href="#" class="logo" aria-label="Emanuel Ancco">
       <span class="logo-mark">EA</span>
-      <span>Emanuel Ancco<span style="color: var(--fg-muted); font-weight: 400;"> · IA Minera</span></span>
+      <span>Emanuel Ancco</span>
     </a>
     <nav class="nav-links" aria-label="Secciones">
-      <a href="#showcase">Galería</a>
+      <a href="#about">Sobre mí</a>
+      <a href="#highlights">Highlights</a>
       <a href="#proyectos">Proyectos</a>
-      <a href="#normativa">Normativa</a>
       <a href="#stack">Stack</a>
       <a href="#experiencia">Experiencia</a>
       <a href="#contacto">Contacto</a>
     </nav>
     <div class="nav-actions">
-      <a href="CV_Las_Bambas_Innovadores_2026.pdf" class="btn btn-copper" download>
-        <i data-lucide="download"></i> CV PDF
+      <a href="CV_Las_Bambas_Innovadores_2026.pdf" class="btn btn-primary" download>
+        <i data-lucide="download"></i> CV
       </a>
       <button class="btn btn-ghost" id="theme-toggle" aria-label="Cambiar tema">
         <i data-lucide="moon-star" id="theme-icon"></i>
@@ -706,533 +824,833 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
 
   <!-- =================== HERO =================== -->
   <section id="hero">
+    <div class="hero-noise" aria-hidden="true"></div>
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-orb a" aria-hidden="true"></div>
     <div class="hero-orb b" aria-hidden="true"></div>
     <div class="hero-orb c" aria-hidden="true"></div>
+    <div class="hero-mouse-glow" id="hero-mouse-glow" aria-hidden="true"></div>
 
-    <div class="container hero-grid-layout">
-      <div class="hero-text">
+    <div class="container hero-inner">
+      <div class="hero-eyebrow-wrap">
         <span class="eyebrow">
           <span class="pulse"></span>
-          Disponible · Innovadores en Acción 2026 · Talentos de Cobre
+          Open to work · proyectos · colaboraciones · investigación
         </span>
-
-        <h1 class="hero-headline">
-          IA aplicada a<br>
-          <span class="grad">seguridad operacional</span><br>
-          y monitoreo industrial.
-        </h1>
-
-        <p class="hero-sub">
-          <strong>Bachiller en Ingeniería Civil (UPC)</strong> +
-          <strong>AI Automation Engineer en gen+</strong>. Construyo soluciones
-          end-to-end: visión computacional, FPGA, agentes IA y dashboards
-          en producción — con foco en minería peruana.
-        </p>
-
-        <div class="hero-chips">
-          <span class="chip brand">📍 Puno / Lima</span>
-          <span class="chip copper">⛏ Sierra +4,000 msnm</span>
-          <span class="chip success">14×7 / 10×10</span>
-          <span class="chip">ES · EN intermedio</span>
-        </div>
-
-        <div class="hero-cta">
-          <a href="#proyectos" class="btn btn-primary">
-            Ver evidencia técnica <i data-lucide="arrow-right"></i>
-          </a>
-          <a href="CV_Las_Bambas_Innovadores_2026.pdf" class="btn btn-copper" download>
-            <i data-lucide="file-down"></i> CV PDF
-          </a>
-          <a href="https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352" class="btn" target="_blank" rel="noopener">
-            <i data-lucide="linkedin"></i> LinkedIn
-          </a>
-        </div>
-
-        <div class="hero-stats">
-          <div class="qs">
-            <div class="qs-value">87.67<span class="unit">%</span></div>
-            <div class="qs-label">mAP YOLOv8 EPP</div>
-          </div>
-          <div class="qs">
-            <div class="qs-value">38<span class="unit"> FPS</span></div>
-            <div class="qs-label">Jetson Orin</div>
-          </div>
-          <div class="qs">
-            <div class="qs-value">0.961</div>
-            <div class="qs-label">F1 LSTM-AE</div>
-          </div>
-          <div class="qs">
-            <div class="qs-value">0.998</div>
-            <div class="qs-label">R² MISM-GNN</div>
-          </div>
-        </div>
       </div>
 
-      <div class="hero-portrait">
-        <img src="assets/images/profile_v2.jpg" alt="Emanuel Ancco en campo" loading="eager" decoding="sync" fetchpriority="high">
-        <div class="portrait-badge">
-          <span class="role">AI Automation Engineer · gen+</span>
-          <span class="who">Emanuel Ancco</span>
+      <h1 class="hero-headline">
+        Construyo<br>
+        <span class="word">sistemas</span><br>
+        de extremo a extremo.
+      </h1>
+
+      <p class="hero-sub">
+        Software, IA, hardware e investigación. He llevado <strong>40+ proyectos</strong>
+        desde idea hasta producción, paper o producto — combinando
+        ingeniería estructural rigurosa con delivery iterativo moderno.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#proyectos" class="btn btn-primary">
+          Ver proyectos <i data-lucide="arrow-right"></i>
+        </a>
+        <a href="#contacto" class="btn btn-mint">
+          <i data-lucide="message-square"></i> Conversar
+        </a>
+        <a href="CV_Las_Bambas_Innovadores_2026.pdf" class="btn" download>
+          <i data-lucide="file-down"></i> CV PDF
+        </a>
+      </div>
+    </div>
+
+    <!-- Tech marquee -->
+    <div class="tech-marquee-wrap" aria-hidden="true">
+      <div class="tech-marquee">
+        <span><span class="dot"></span> Next.js 16</span>
+        <span><span class="dot mint"></span> PyTorch</span>
+        <span><span class="dot amber"></span> YOLOv8</span>
+        <span><span class="dot"></span> n8n</span>
+        <span><span class="dot mint"></span> FPGA Gowin</span>
+        <span><span class="dot amber"></span> Jetson Orin</span>
+        <span><span class="dot"></span> TypeScript</span>
+        <span><span class="dot mint"></span> PostgreSQL pgvector</span>
+        <span><span class="dot amber"></span> Three.js / R3F</span>
+        <span><span class="dot"></span> GSAP</span>
+        <span><span class="dot mint"></span> Claude / Gemini</span>
+        <span><span class="dot amber"></span> Drizzle ORM</span>
+        <span><span class="dot"></span> Revit C# / .NET</span>
+        <span><span class="dot mint"></span> ESP32</span>
+        <span><span class="dot amber"></span> Verilog</span>
+        <span><span class="dot"></span> FastAPI</span>
+        <span><span class="dot mint"></span> Docker</span>
+        <span><span class="dot amber"></span> Godot 4</span>
+        <!-- duplicado para loop -->
+        <span><span class="dot"></span> Next.js 16</span>
+        <span><span class="dot mint"></span> PyTorch</span>
+        <span><span class="dot amber"></span> YOLOv8</span>
+        <span><span class="dot"></span> n8n</span>
+        <span><span class="dot mint"></span> FPGA Gowin</span>
+        <span><span class="dot amber"></span> Jetson Orin</span>
+        <span><span class="dot"></span> TypeScript</span>
+        <span><span class="dot mint"></span> PostgreSQL pgvector</span>
+        <span><span class="dot amber"></span> Three.js / R3F</span>
+        <span><span class="dot"></span> GSAP</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== ABOUT =================== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-portrait reveal">
+          <img src="assets/images/profile_v2.jpg" alt="Emanuel Ancco" loading="lazy">
+        </div>
+        <div class="about-text">
+          <div class="sec-head-meta" style="margin-bottom: 0.5rem;">
+            <span class="sec-num">— 01</span>
+            <span class="chip brand">Sobre mí</span>
+          </div>
+          <h2>Ingeniero <span class="serif" style="color: var(--brand);">civil</span> con perfil real de <span class="serif" style="color: var(--mint);">full-stack dev</span>, IA e <span class="serif" style="color: var(--amber);">IoT</span>.</h2>
+          <p>
+            Vengo de la ingeniería estructural pero he pasado los últimos años
+            construyendo software, agentes IA, hardware FPGA y modelos de visión
+            que <strong>realmente se usan</strong>: en obra, en producción, en papers académicos.
+          </p>
+          <p>
+            Lidero el área de operaciones, automatización e IA en
+            <strong>gen+</strong>, co-fundé <strong>GAIATECH</strong> (research spin-off),
+            y produzco constantemente — desde plataformas web multi-tenant hasta
+            sensores edge con panel solar y modelos de detección que corren a 38 FPS en Jetson.
+          </p>
+          <p>
+            Combinación que me define: <em class="serif">rigor de método estructural + iteración rápida de software</em>.
+            Disfruto el ciclo completo: idea → prototipo → métricas → producto → mantenimiento.
+          </p>
+          <div class="role-pills">
+            <span class="chip brand">Bachiller Ingeniería Civil · UPC</span>
+            <span class="chip mint">AI Automation Engineer · gen+</span>
+            <span class="chip amber">Co-founder · GAIATECH</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- =================== KPI DASHBOARD =================== -->
-  <section id="kpis">
+  <!-- =================== HIGHLIGHTS con contexto =================== -->
+  <section id="highlights">
     <div class="container">
       <header class="sec-head">
         <div>
           <div class="sec-head-meta">
-            <span class="sec-num">— 01 / 06</span>
-            <span class="chip brand">Resultados duros</span>
+            <span class="sec-num">— 02</span>
+            <span class="chip mint">Highlights recientes</span>
           </div>
-          <h2 class="sec-title">Métricas en <span class="accent">producción</span>, no en slides.</h2>
+          <h2 class="sec-title">Logros con <span class="mint">contexto</span> — no números sueltos.</h2>
         </div>
         <p class="sec-desc">
-          Modelos entrenados con datasets propios, desplegados en hardware
-          de borde real, midiendo en obra. Cada cifra es trazable a un
-          experimento, repositorio o demo.
+          Cada métrica corresponde a un proyecto real con dataset propio, hardware
+          específico y validación reproducible. Los detalles técnicos están en los
+          repositorios y demos.
         </p>
       </header>
 
-      <div class="kpi-grid">
-        <div class="kpi reveal">
-          <div class="kpi-head">
-            <span class="kpi-label">EPP Detection</span>
-            <div class="kpi-icon"><i data-lucide="hard-hat"></i></div>
+      <div class="highlights-grid">
+        <div class="hl reveal">
+          <div class="hl-icon"><i data-lucide="trophy"></i></div>
+          <div class="hl-metric">2° lugar</div>
+          <div class="hl-title">AI Talent Demo Day 2026</div>
+          <div class="hl-context">
+            Con <strong>GAIATECH VIGÍA</strong>: monitoreo estructural con FFT directo
+            en FPGA Gowin GW1NR-9 + LSTM-Autoencoder. Reconocimiento por
+            jurado técnico nacional.
           </div>
-          <div class="kpi-value">87.67<span class="unit">%</span></div>
-          <div class="kpi-desc">mAP@50 · YOLOv8 · 11 clases · Jetson Orin Nano Super INT8</div>
-          <svg class="kpi-spark" viewBox="0 0 200 36" preserveAspectRatio="none">
-            <defs><linearGradient id="g1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="oklch(0.58 0.17 220)" stop-opacity="0.4"/><stop offset="1" stop-color="oklch(0.58 0.17 220)" stop-opacity="0"/></linearGradient></defs>
-            <path d="M0,30 L20,26 L40,22 L60,20 L80,18 L100,14 L120,11 L140,8 L160,6 L180,5 L200,3 L200,36 L0,36 Z" fill="url(#g1)"/>
-            <polyline fill="none" stroke="oklch(0.58 0.17 220)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              points="0,30 20,26 40,22 60,20 80,18 100,14 120,11 140,8 160,6 180,5 200,3"/>
-          </svg>
         </div>
 
-        <div class="kpi reveal">
-          <div class="kpi-head">
-            <span class="kpi-label">VIGÍA · LSTM-AE</span>
-            <div class="kpi-icon" style="background: oklch(from var(--copper-500) l c h / 0.12); color: var(--copper-500);"><i data-lucide="activity"></i></div>
+        <div class="hl mint reveal">
+          <div class="hl-icon"><i data-lucide="cpu"></i></div>
+          <div class="hl-metric">38<span class="unit"> FPS</span></div>
+          <div class="hl-title">Inferencia edge sostenida</div>
+          <div class="hl-context">
+            Modelo <strong>YOLOv8 (11 clases)</strong> compilado a TensorRT INT8
+            corriendo en Jetson Orin Nano Super para Vision Pro PDK. Throughput sostenido en obra real.
           </div>
-          <div class="kpi-value">0.961</div>
-          <div class="kpi-desc">F1 anomalías · FFT FPGA Gowin GW1NR-9 · alerta &lt; 2s</div>
-          <svg class="kpi-spark" viewBox="0 0 200 36" preserveAspectRatio="none">
-            <defs><linearGradient id="g2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="oklch(0.66 0.17 50)" stop-opacity="0.4"/><stop offset="1" stop-color="oklch(0.66 0.17 50)" stop-opacity="0"/></linearGradient></defs>
-            <path d="M0,28 L20,22 L40,26 L60,18 L80,12 L100,16 L120,10 L140,8 L160,12 L180,6 L200,4 L200,36 L0,36 Z" fill="url(#g2)"/>
-            <polyline fill="none" stroke="oklch(0.66 0.17 50)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              points="0,28 20,22 40,26 60,18 80,12 100,16 120,10 140,8 160,12 180,6 200,4"/>
-          </svg>
         </div>
 
-        <div class="kpi reveal">
-          <div class="kpi-head">
-            <span class="kpi-label">MISM-GNN · R²</span>
-            <div class="kpi-icon" style="background: oklch(from var(--success) l c h / 0.12); color: var(--success);"><i data-lucide="git-branch"></i></div>
+        <div class="hl amber reveal">
+          <div class="hl-icon"><i data-lucide="target"></i></div>
+          <div class="hl-metric">87.67<span class="unit">%</span></div>
+          <div class="hl-title">mAP@50 detección EPP</div>
+          <div class="hl-context">
+            Modelo de detección de equipo de protección personal con
+            <strong>dataset propio</strong> (cascos, chalecos, botas, guantes…)
+            entrenado para 11 categorías. Validado en producción.
           </div>
-          <div class="kpi-value">0.998</div>
-          <div class="kpi-desc">Identificación modal Puente Junín · 65× menos params que FFNN</div>
-          <svg class="kpi-spark" viewBox="0 0 200 36" preserveAspectRatio="none">
-            <defs><linearGradient id="g3" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="oklch(0.65 0.18 145)" stop-opacity="0.4"/><stop offset="1" stop-color="oklch(0.65 0.18 145)" stop-opacity="0"/></linearGradient></defs>
-            <path d="M0,32 L20,28 L40,22 L60,18 L80,14 L100,10 L120,7 L140,5 L160,4 L180,3 L200,2 L200,36 L0,36 Z" fill="url(#g3)"/>
-            <polyline fill="none" stroke="oklch(0.65 0.18 145)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              points="0,32 20,28 40,22 60,18 80,14 100,10 120,7 140,5 160,4 180,3 200,2"/>
-          </svg>
         </div>
 
-        <div class="kpi reveal">
-          <div class="kpi-head">
-            <span class="kpi-label">CAPEX Edge AI</span>
-            <div class="kpi-icon" style="background: oklch(from var(--success) l c h / 0.12); color: var(--success);"><i data-lucide="trending-down"></i></div>
+        <div class="hl success reveal">
+          <div class="hl-icon"><i data-lucide="git-branch"></i></div>
+          <div class="hl-metric">R² 0.998</div>
+          <div class="hl-title">MISM-GNN · Puente Junín</div>
+          <div class="hl-context">
+            Identificación modal con <strong>65× menos parámetros</strong> que arquitectura FFNN equivalente.
+            Artículo paper-ready para revista Elsevier <em>Structures</em>.
           </div>
-          <div class="kpi-value">−47<span class="unit">%</span></div>
-          <div class="kpi-desc">vs. alternativa comercial · ~S/ 27,600 · 2 subsistemas</div>
-          <svg class="kpi-spark" viewBox="0 0 200 36" preserveAspectRatio="none">
-            <defs><linearGradient id="g4" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="oklch(0.65 0.18 145)" stop-opacity="0.4"/><stop offset="1" stop-color="oklch(0.65 0.18 145)" stop-opacity="0"/></linearGradient></defs>
-            <path d="M0,8 L20,12 L40,14 L60,16 L80,18 L100,22 L120,24 L140,26 L160,28 L180,30 L200,32 L200,36 L0,36 Z" fill="url(#g4)"/>
-            <polyline fill="none" stroke="oklch(0.65 0.18 145)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              points="0,8 20,12 40,14 60,16 80,18 100,22 120,24 140,26 160,28 180,30 200,32"/>
-          </svg>
+        </div>
+
+        <div class="hl reveal">
+          <div class="hl-icon"><i data-lucide="award"></i></div>
+          <div class="hl-metric">1° lugar</div>
+          <div class="hl-title">XIV COREIC Lima 2023</div>
+          <div class="hl-context">
+            Concurso de ponencias académicas de ingeniería civil — UNFV.
+            Más: 2° CONEIC Huaraz 2025, ponente CONEIC Ucayali 2024.
+          </div>
+        </div>
+
+        <div class="hl mint reveal">
+          <div class="hl-icon"><i data-lucide="activity"></i></div>
+          <div class="hl-metric">F1 0.961</div>
+          <div class="hl-title">LSTM-AE anomalías estructurales</div>
+          <div class="hl-context">
+            Autoencoder recurrente entrenado sobre señales vibracionales sin
+            supervisión. Latencia <strong>&lt; 2s</strong> de alerta vía WhatsApp.
+            Aplicable a presas, taludes, estructuras críticas.
+          </div>
+        </div>
+
+        <div class="hl amber reveal">
+          <div class="hl-icon"><i data-lucide="layers"></i></div>
+          <div class="hl-metric">40<span class="unit">+</span></div>
+          <div class="hl-title">Proyectos entregados</div>
+          <div class="hl-context">
+            Plataformas web, agentes IA, sistemas de visión, hardware FPGA,
+            modelos de investigación y toolkits — entre producción,
+            research y producto.
+          </div>
+        </div>
+
+        <div class="hl success reveal">
+          <div class="hl-icon"><i data-lucide="star"></i></div>
+          <div class="hl-metric">EU</div>
+          <div class="hl-title">Innovador Destacado · DigiEduHack 2023</div>
+          <div class="hl-context">
+            Reconocimiento de la <strong>Comisión Europea</strong> en hackathon
+            internacional de innovación educativa.
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- =================== GALERÍA TÉCNICA SCROLLING =================== -->
-  <section id="showcase" style="padding-block: 4rem 5rem;">
-    <div class="container">
-      <header class="sec-head" style="margin-bottom: 2rem;">
-        <div>
-          <div class="sec-head-meta">
-            <span class="sec-num">— 02 / 06</span>
-            <span class="chip copper">Galería técnica</span>
-          </div>
-          <h2 class="sec-title">Evidencia <span class="copper">visual</span>, no claims.</h2>
-        </div>
-        <p class="sec-desc">
-          Capturas de modelos en producción: detecciones YOLO en obra,
-          arquitecturas de red, matrices de confusión, curvas de aprendizaje
-          y resultados experimentales. Pasa el cursor para pausar.
-        </p>
-      </header>
-    </div>
-
-    <div class="showcase-strip" aria-label="Galería técnica">
-      <div class="showcase-track">
-        <div class="showcase-item">
-          <img src="assets/images/emarc_vision_detection.png" alt="Detección EPP en obra YOLOv8" loading="lazy">
-          <div class="showcase-caption"><strong>Detección EPP en obra</strong>YOLOv8 · Jetson Orin · 11 clases</div>
-        </div>
-        <div class="showcase-item">
-          <img src="assets/images/emarc_results.png" alt="Curvas de entrenamiento YOLO" loading="lazy">
-          <div class="showcase-caption"><strong>Resultados Vision PDK</strong>87.67% mAP@50 · 38 FPS sostenidos</div>
-        </div>
-        <div class="showcase-item">
-          <img src="assets/images/gaiatech_results.png" alt="LSTM Autoencoder VIGÍA" loading="lazy">
-          <div class="showcase-caption"><strong>GAIATECH VIGÍA · LSTM-AE</strong>F1 = 0.961 · 2° AI Talent Demo 2026</div>
-        </div>
-        <div class="showcase-item">
-          <img src="assets/images/gaiatech_model_comparison.png" alt="Comparación de modelos" loading="lazy">
-          <div class="showcase-caption"><strong>Comparación de arquitecturas</strong>GNN vs FFNN vs LSTM</div>
-        </div>
-        <div class="showcase-item">
-          <img src="assets/images/neural_network_architecture.png" alt="Arquitectura de red neuronal" loading="lazy">
-          <div class="showcase-caption"><strong>Arquitectura MISM-GNN</strong>R² = 0.998 · Puente Junín</div>
-        </div>
-        <div class="showcase-item">
-          <img src="assets/images/detecciónfacial.png" alt="Reconocimiento facial ConstEdge" loading="lazy">
-          <div class="showcase-caption"><strong>ConstEdge · Acceso facial</strong>DeepFace + ArcFace + EPP</div>
-        </div>
-        <div class="showcase-item">
-          <img src="assets/images/BoxF1_curve.png" alt="Curva F1 por clase" loading="lazy">
-          <div class="showcase-caption"><strong>F1 por clase EPP</strong>Casco · chaleco · botas · guantes...</div>
-        </div>
-        <div class="showcase-item">
-          <img src="assets/images/confusion_matrix_event.png" alt="Matriz de confusión NLP" loading="lazy">
-          <div class="showcase-caption"><strong>NLP Riesgos · DistilBERT</strong>Clasificación de eventos SHE</div>
-        </div>
-        <!-- Duplicado para loop -->
-        <div class="showcase-item">
-          <img src="assets/images/emarc_vision_detection.png" alt="" loading="lazy">
-          <div class="showcase-caption"><strong>Detección EPP en obra</strong>YOLOv8 · Jetson Orin · 11 clases</div>
-        </div>
-        <div class="showcase-item">
-          <img src="assets/images/emarc_results.png" alt="" loading="lazy">
-          <div class="showcase-caption"><strong>Resultados Vision PDK</strong>87.67% mAP@50 · 38 FPS</div>
-        </div>
-        <div class="showcase-item">
-          <img src="assets/images/gaiatech_results.png" alt="" loading="lazy">
-          <div class="showcase-caption"><strong>GAIATECH VIGÍA · LSTM-AE</strong>F1 = 0.961</div>
-        </div>
-        <div class="showcase-item">
-          <img src="assets/images/gaiatech_model_comparison.png" alt="" loading="lazy">
-          <div class="showcase-caption"><strong>Comparación arquitecturas</strong>GNN vs FFNN vs LSTM</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =================== PROYECTOS BENTO IMAGE-FIRST =================== -->
+  <!-- =================== PROYECTOS con tabs =================== -->
   <section id="proyectos">
     <div class="container">
       <header class="sec-head">
         <div>
           <div class="sec-head-meta">
-            <span class="sec-num">— 03 / 06</span>
-            <span class="chip brand">Proyectos</span>
+            <span class="sec-num">— 03</span>
+            <span class="chip amber">Proyectos</span>
           </div>
-          <h2 class="sec-title">7 sistemas <span class="copper">aplicables a minería</span>.</h2>
+          <h2 class="sec-title">Lo que <span class="accent">construí</span>, agrupado por dominio.</h2>
         </div>
         <p class="sec-desc">
-          Demo funcional desde día 1 · datos peruanos · stack open-source.
-          Mantenibles localmente y desplegables en zonas remotas sin
-          conectividad estable.
+          Filtra por categoría. Cada tarjeta enlaza al stack técnico, métricas y
+          status actual. La mayoría son open-source o tienen demo disponible.
         </p>
       </header>
 
-      <div class="proj-bento">
+      <div class="cat-tabs" role="tablist">
+        <button class="cat-tab active" data-cat="all" role="tab">Todos <span class="count">40</span></button>
+        <button class="cat-tab" data-cat="plat" role="tab">Plataformas Web <span class="count">12</span></button>
+        <button class="cat-tab" data-cat="ai" role="tab">Agentes IA <span class="count">5</span></button>
+        <button class="cat-tab" data-cat="cv" role="tab">Visión & Edge AI <span class="count">5</span></button>
+        <button class="cat-tab" data-cat="hw" role="tab">Hardware & FPGA <span class="count">5</span></button>
+        <button class="cat-tab" data-cat="research" role="tab">Investigación <span class="count">5</span></button>
+        <button class="cat-tab" data-cat="3d" role="tab">3D & Inmersivo <span class="count">3</span></button>
+        <button class="cat-tab" data-cat="tools" role="tab">Toolkits <span class="count">5</span></button>
+      </div>
 
-        <!-- 1. GAIATECH M1.0 (FEATURE) -->
-        <article class="proj feature reveal">
+      <div class="proj-grid" id="proj-grid">
+
+        <!-- ============ PLATAFORMAS WEB ============ -->
+        <article class="proj reveal" data-cat="plat">
           <div class="proj-image">
-            <div class="proj-image-overlay">
-              <span class="proj-tag">PROPUESTA · LAS BAMBAS</span>
-              <span class="proj-award"><i data-lucide="target"></i> Innovadores 2026</span>
+            <div class="proj-image-tags">
+              <span class="proj-tag">Plataforma · Eventos</span>
+              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> En curso</span>
             </div>
-            <img src="assets/images/emarc_vision_detection.png" alt="Vision Pro PDK · detección EPP en obra" loading="lazy">
+            <img src="assets/images/profile_v2.jpg" alt="AECODE Live" loading="lazy" style="opacity: 0.3;">
           </div>
           <div class="proj-body">
-            <h3 class="proj-title">GAIATECH M1.0 — Plataforma IA para Casos 13 (LRAC) y 12 (Relaves)</h3>
-            <p class="proj-desc">
-              Integración de <strong>4 activos en producción</strong> alineados con el VP SHE:
-              ConstEdge (acceso + EPP), Gen+ Vision PDK (monitoreo de obra), GAIATECH VIGÍA
-              (vibraciones edge) y Aecodito Minero (captura conversacional de RACS / Tarjetas
-              Verdes en WhatsApp).
-            </p>
-            <div class="proj-metrics">
-              <span class="metric"><strong>4</strong> activos en prod</span>
-              <span class="metric"><strong>5</strong> normas alineadas</span>
-              <span class="metric success"><strong>1 día</strong> demo funcional</span>
-            </div>
-            <div class="proj-stack">
-              <span class="tag">YOLOv8</span>
-              <span class="tag">FPGA Gowin</span>
-              <span class="tag">Jetson Orin</span>
-              <span class="tag">n8n + WhatsApp</span>
-              <span class="tag">Postgres pgvector</span>
-            </div>
-            <div class="proj-applicable">
-              <i data-lucide="shield-check"></i>
-              <div>
-                <span class="proj-applicable-label">Aplicabilidad</span>
-                <p>Caso 13 LRAC + Caso 12 Relaves · cumple DS 024-2016-EM, DS 023-2017-EM, DS 034-2023-EM Cap. XII (arts. 418-423), Res. 122-2024-OS/CD, GISTM 2020, ICMM CCM.</p>
-              </div>
+            <h3 class="proj-title">AECODE Live</h3>
+            <p class="proj-desc">Clon de Luma multi-tenant para eventos AECODE: registro, tickets, WhatsApp notifs, certificados automáticos, pasarela Stripe Connect. 6 sprints.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js 16</span><span class="tag">Drizzle</span><span class="tag">Stripe Connect</span><span class="tag">WhatsApp</span>
             </div>
           </div>
         </article>
 
-        <!-- 2. GAIATECH VIGÍA (TALL) -->
-        <article class="proj tall reveal">
+        <article class="proj reveal" data-cat="plat">
           <div class="proj-image">
-            <div class="proj-image-overlay">
-              <span class="proj-tag">SHM EDGE</span>
-              <span class="proj-award"><i data-lucide="trophy"></i> 2° AI Talent 2026</span>
+            <div class="proj-image-tags">
+              <span class="proj-tag">Email Marketing</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <img src="assets/images/gaiatech_results.png" alt="GAIATECH VIGÍA · LSTM-AE para SHM" loading="lazy">
+            <img src="assets/images/profile_v2.jpg" alt="Email Studio" loading="lazy" style="opacity: 0.3;">
           </div>
           <div class="proj-body">
-            <h3 class="proj-title">GAIATECH VIGÍA</h3>
-            <p class="proj-desc">
-              Monitoreo estructural en tiempo real con <strong>FFT directo en FPGA Gowin GW1NR-9</strong>,
-              ESP32 como bridge y LSTM-Autoencoder en PyTorch para detección no supervisada de anomalías.
-            </p>
-            <div class="proj-metrics">
-              <span class="metric"><strong>F1 = 0.961</strong></span>
-              <span class="metric success">Alerta <strong>&lt; 2s</strong></span>
-            </div>
-            <div class="proj-stack">
-              <span class="tag">Verilog</span>
-              <span class="tag">FFT FPGA</span>
-              <span class="tag">ESP32</span>
-              <span class="tag">LSTM-AE</span>
-              <span class="tag">PyTorch</span>
-            </div>
-            <div class="proj-applicable">
-              <i data-lucide="activity"></i>
-              <div>
-                <span class="proj-applicable-label">Minería</span>
-                <p>Monitoreo de <strong>presas de relaves, taludes y estructuras de procesamiento</strong>.</p>
-              </div>
+            <h3 class="proj-title">Email Studio</h3>
+            <p class="proj-desc">Web app para correos masivos con bloques visuales tipo Notion + módulo <strong>/certificados</strong> que estampa nombres sobre templates Canva con pdf-lib y envía masivo via Gmail.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js</span><span class="tag">MJML</span><span class="tag">Claude API</span><span class="tag">Gmail API</span><span class="tag">pdf-lib</span>
             </div>
           </div>
         </article>
 
-        <!-- 3. Vision Pro PDK (HALF) -->
-        <article class="proj half reveal">
+        <article class="proj feat reveal" data-cat="plat">
           <div class="proj-image">
-            <div class="proj-image-overlay">
-              <span class="proj-tag">EPP · OBRAS</span>
-              <span class="proj-award production"><i data-lucide="check-circle-2"></i> En producción</span>
+            <div class="proj-image-tags">
+              <span class="proj-tag">Canvas Editor</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
-            <img src="assets/images/emarc_results.png" alt="Resultados YOLO Vision Pro PDK" loading="lazy">
+            <img src="assets/images/revit_automation.png" alt="Brochure Studio" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Brochure Studio</h3>
+            <p class="proj-desc">Editor visual de brochures con IA: canvas Fabric.js + briefs de cliente + Vision API + generación de bloques. Puerto 3500. v2 (<strong>Publish Studio</strong>) genera masivamente desde CSV/Sheets/Notion.</p>
+            <div class="proj-meta">
+              <span class="tag">Fabric.js</span><span class="tag">Vision API</span><span class="tag">Next.js</span><span class="tag">Claude</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="plat">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Coordinación</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
+            </div>
+            <img src="assets/images/profile_v2.jpg" alt="Coord Studio" loading="lazy" style="opacity: 0.3;">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Coord Studio</h3>
+            <p class="proj-desc">Panel Next.js 16 para coordinar 14 áreas de AI Summit jun 2026: briefs, avances, dependencias, riesgos y leaderboard en vivo.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js 16</span><span class="tag">Drizzle</span><span class="tag">Postgres</span><span class="tag">VPS</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="plat">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Ticketing IA</span>
+              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> v2 build</span>
+            </div>
+            <img src="assets/images/profile_v2.jpg" alt="Ticket Studio v2" loading="lazy" style="opacity: 0.3;">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Ticket Studio v2</h3>
+            <p class="proj-desc">Multi-canal (WhatsApp/Web/Email) con kanban, SLA y triage IA para operaciones en vivo del AI Summit jun 2026.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js</span><span class="tag">Postgres</span><span class="tag">Evolution API</span><span class="tag">LangChain</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="plat">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">CRM / Discovery</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
+            </div>
+            <img src="assets/images/profile_v2.jpg" alt="AECODE FINDER" loading="lazy" style="opacity: 0.3;">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">AECODE FINDER v2</h3>
+            <p class="proj-desc">Panel Next.js que enriquece la BD de empresas Notion (99+ filas) con Serper + Gemini en vivo. Dedupe seguro, puerto 3002.</p>
+            <div class="proj-meta">
+              <span class="tag">Serper</span><span class="tag">Gemini</span><span class="tag">Notion API</span><span class="tag">Next.js</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="plat">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Multi-tenant CRM</span>
+              <span class="proj-status beta"><i data-lucide="alert-circle"></i> Local</span>
+            </div>
+            <img src="assets/images/profile_v2.jpg" alt="AECODE Operaciones" loading="lazy" style="opacity: 0.3;">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">AECODE Operaciones · CorpGranda</h3>
+            <p class="proj-desc">Panel multi-tenant para CorpGranda + 2 tenants más (Generative, CONEIC). Funcional local, deploy VPS bloqueado por firewall de IP.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js 16</span><span class="tag">Drizzle</span><span class="tag">NextAuth</span><span class="tag">Postgres RLS</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="plat">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Workflows OSS</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
+            </div>
+            <img src="assets/images/profile_v2.jpg" alt="GEN+ FLOWS" loading="lazy" style="opacity: 0.3;">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">GEN+ FLOWS</h3>
+            <p class="proj-desc">Activepieces CE self-hosted en VPS para reemplazar n8n Cloud en Gen+. Multi-tenant, integraciones custom.</p>
+            <div class="proj-meta">
+              <span class="tag">Activepieces</span><span class="tag">Docker</span><span class="tag">Self-host VPS</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="plat">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Acta Studio · Zoom</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
+            </div>
+            <img src="assets/images/profile_v2.jpg" alt="Acta Studio" loading="lazy" style="opacity: 0.3;">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Acta Studio</h3>
+            <p class="proj-desc">Panel multi-tenant (AECODE + Gen+) que transcribe reuniones Zoom y genera actas con IA + screenshots Playwright. VPS :3041.</p>
+            <div class="proj-meta">
+              <span class="tag">WhisperX</span><span class="tag">Zoom API</span><span class="tag">Playwright</span><span class="tag">Tiptap</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="plat">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Scraper · Licitaciones</span>
+              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> v1 build</span>
+            </div>
+            <img src="assets/images/profile_v2.jpg" alt="SEACE Radar" loading="lazy" style="opacity: 0.3;">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">SEACE Radar</h3>
+            <p class="proj-desc">Worker Python + n8n + Postgres + panel Next.js para monitoreo de oportunidades de licitación. Alertas vía Telegram.</p>
+            <div class="proj-meta">
+              <span class="tag">Python</span><span class="tag">Crawl4AI</span><span class="tag">n8n</span><span class="tag">Postgres</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="plat">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Curso · Web Stack</span>
+              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> 16 sábados</span>
+            </div>
+            <img src="assets/images/profile_v2.jpg" alt="Curso n8n AECODE" loading="lazy" style="opacity: 0.3;">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Curso n8n + IA · AECODE + CIP</h3>
+            <p class="proj-desc">100h, 16 sábados desde may 2026. 11 alumnos, 11 misiones personalizadas, hexágono AECODE de competencias.</p>
+            <div class="proj-meta">
+              <span class="tag">n8n</span><span class="tag">Claude</span><span class="tag">Gemini</span><span class="tag">RAG</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="plat">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Turismo · Cusco</span>
+              <span class="proj-status award"><i data-lucide="medal"></i> Convocatoria</span>
+            </div>
+            <img src="assets/images/profile_v2.jpg" alt="Qawari AI" loading="lazy" style="opacity: 0.3;">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Qawari AI · Polo Turístico</h3>
+            <p class="proj-desc">Plataforma cliente cinemática + tour Gemini Kore (voz) + MEGA dashboard. InnovaSuyu Cusco 2026 EIN Polo Turístico.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js</span><span class="tag">Gemini Live</span><span class="tag">R3F</span><span class="tag">GSAP</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ AGENTES IA ============ -->
+        <article class="proj feat reveal" data-cat="ai">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Agente WhatsApp · Centro Ops</span>
+              <span class="proj-status live"><i data-lucide="check"></i> v3.0 producción</span>
+            </div>
+            <img src="assets/images/neural_network_architecture.png" alt="Aecodito v3.0" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Aecodito v3.0 — Centro de Operaciones</h3>
+            <p class="proj-desc">Agente WhatsApp multifuncional con <strong>50 nodos n8n + 10 herramientas integradas</strong> (Sheets, Calendar, Gmail, Postgres pgvector). Memoria persistente, recordatorios, derivación inteligente a humanos. 23 funcionalidades.</p>
+            <div class="proj-meta">
+              <span class="tag">n8n</span><span class="tag">Evolution API</span><span class="tag">Gemini Pro</span><span class="tag">Postgres pgvector</span><span class="tag">Whisper</span><span class="tag">Edge TTS</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="ai">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Agente WhatsApp · Inmobiliario</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
+            </div>
+            <img src="assets/images/profile_v2.jpg" alt="Agente Inmobiliario" loading="lazy" style="opacity: 0.3;">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Agente Inmobiliario Gen+</h3>
+            <p class="proj-desc">Captura de leads, programación de visitas, ficha técnica de propiedades con Drive/Sheets via WhatsApp. Desplegado mayo 2026.</p>
+            <div class="proj-meta">
+              <span class="tag">Evolution</span><span class="tag">n8n</span><span class="tag">Gemini</span><span class="tag">Drive API</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="ai">
+          <div class="proj-image no-img"><i data-lucide="bot"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">Bot Aecodito · Grupos Gen+</h3>
+            <p class="proj-desc">Bot conversacional para grupos WhatsApp del equipo. Edge TTS (voz Kore femenina) para responder con audio.</p>
+            <div class="proj-meta">
+              <span class="tag">Evolution API</span><span class="tag">n8n</span><span class="tag">Gemini TTS</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="ai">
+          <div class="proj-image no-img"><i data-lucide="users"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">Instructor Finder Gen+</h3>
+            <p class="proj-desc">Panel web + workflow n8n + Serper + Gemini para encontrar y enriquecer perfiles de instructores. Desplegado en VPS.</p>
+            <div class="proj-meta">
+              <span class="tag">Serper</span><span class="tag">Gemini</span><span class="tag">n8n</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="ai">
+          <div class="proj-image no-img"><i data-lucide="layers"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">AECODE Studio Platform</h3>
+            <p class="proj-desc">Visión de ecosistema: Email + Brochure + Slides + Social + Certs con core compartido. Cada módulo es independiente pero comparte auth + tokens.</p>
+            <div class="proj-meta">
+              <span class="tag">Monorepo</span><span class="tag">Turborepo</span><span class="tag">shadcn</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ VISION & EDGE AI ============ -->
+        <article class="proj feat reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Vision · Edge AI</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
+            </div>
+            <img src="assets/images/emarc_vision_detection.png" alt="Vision Pro PDK" loading="lazy">
           </div>
           <div class="proj-body">
             <h3 class="proj-title">Gen+ Vision Pro PDK</h3>
-            <p class="proj-desc">
-              Plataforma de monitoreo de obra con detección automática de EPP (11 clases),
-              dashboard web con alertas filtrables y reportes automáticos por casilla.
-            </p>
-            <div class="proj-metrics">
-              <span class="metric"><strong>87.67%</strong> mAP@50</span>
-              <span class="metric copper"><strong>38 FPS</strong></span>
-              <span class="metric"><strong>11</strong> clases EPP</span>
-            </div>
-            <div class="proj-stack">
-              <span class="tag">YOLOv8</span>
-              <span class="tag">Jetson Orin Nano Super</span>
-              <span class="tag">TensorRT INT8</span>
-              <span class="tag">Next.js 16</span>
+            <p class="proj-desc">Plataforma multi-rol admin/cliente para monitoreo de obra: detección EPP <strong>YOLOv8 (11 clases · 87.67% mAP · 38 FPS)</strong>, dashboard métricas SVG, alertas sintéticas con filtros, reportes a casillas.</p>
+            <div class="proj-meta">
+              <span class="tag">YOLOv8</span><span class="tag">Jetson Orin Nano Super</span><span class="tag">TensorRT INT8</span><span class="tag">Next.js 16</span><span class="tag">pdk.visionproai.net</span>
             </div>
           </div>
         </article>
 
-        <!-- 4. ConstEdge (HALF) -->
-        <article class="proj half reveal">
+        <article class="proj reveal" data-cat="cv">
           <div class="proj-image">
-            <div class="proj-image-overlay">
-              <span class="proj-tag">ASISTENCIA · SEGURIDAD</span>
+            <div class="proj-image-tags">
+              <span class="proj-tag">Training Pipeline</span>
+              <span class="proj-status live"><i data-lucide="check"></i> Dataset 1182</span>
             </div>
-            <img src="assets/images/detecciónfacial.png" alt="Reconocimiento facial ConstEdge" loading="lazy">
+            <img src="assets/images/BoxF1_curve.png" alt="YOLO Cascos" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Vision Pro Cascos · Training</h3>
+            <p class="proj-desc">Fine-tune <strong>YOLO11s</strong> para detección de cascos. Dataset Roboflow 1182 imágenes. Scripts PyCharm, GPU RTX 4060.</p>
+            <div class="proj-meta">
+              <span class="tag">YOLO11s</span><span class="tag">Roboflow</span><span class="tag">PyTorch 2.5</span><span class="tag">CUDA 12</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Diseño HW · Edge</span>
+              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> Diseño v3</span>
+            </div>
+            <img src="assets/images/profile_v2.jpg" alt="Cámaras Edge AI" loading="lazy" style="opacity: 0.3;">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Gen+ Cámaras Edge AI</h3>
+            <p class="proj-desc">2 subsistemas (interno Jetson Orin Nano Super + PTZ 4K solar). CAPEX <strong>S/ 27,633</strong> · 47% más barato que Lisual. Versión 3PAG.</p>
+            <div class="proj-meta">
+              <span class="tag">Jetson Orin</span><span class="tag">PTZ 4K</span><span class="tag">Panel solar</span><span class="tag">LTE/LoRa</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Reconocimiento facial + EPP</span>
+            </div>
+            <img src="assets/images/detecciónfacial.png" alt="ConstEdge" loading="lazy">
           </div>
           <div class="proj-body">
             <h3 class="proj-title">ConstEdge — Acceso + EPP</h3>
-            <p class="proj-desc">
-              Reconocimiento facial (DeepFace/ArcFace) + detección de EPP (YOLOv8) +
-              4 marcajes diarios + dashboard Vue.js + app móvil PWA. Reportes Excel
-              con fotos embebidas.
-            </p>
-            <div class="proj-stack">
-              <span class="tag">DeepFace</span>
-              <span class="tag">ArcFace</span>
-              <span class="tag">YOLOv8</span>
-              <span class="tag">Vue.js</span>
-              <span class="tag">PWA</span>
+            <p class="proj-desc"><strong>DeepFace + ArcFace</strong> + YOLOv8 + 4 marcajes diarios + dashboard Vue.js + app móvil PWA. Reportes Excel con fotos embebidas, alertas tiempo real.</p>
+            <div class="proj-meta">
+              <span class="tag">DeepFace</span><span class="tag">ArcFace</span><span class="tag">YOLOv8</span><span class="tag">Vue.js</span><span class="tag">PWA</span>
             </div>
           </div>
         </article>
 
-        <!-- 5. Aecodito Minero (WIDE) -->
-        <article class="proj wide reveal">
-          <div class="proj-image" style="aspect-ratio: 21/9;">
-            <div class="proj-image-overlay">
-              <span class="proj-tag">AGENTE IA · SHE</span>
-            </div>
-            <img src="assets/images/neural_network_architecture.png" alt="Arquitectura agente IA Aecodito" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Aecodito Minero — Agente WhatsApp para RACS / Tarjetas Verdes</h3>
-            <p class="proj-desc">
-              Bot conversacional que guía al operador en el reporte de actos y condiciones
-              subestándar. <strong>Procesa texto, audio (transcripción), imagen y PDF</strong>
-              en un único flujo; deriva a SHE cuando aplica. Memoria persistente con pgvector
-              + recordatorios automáticos.
-            </p>
-            <div class="proj-metrics">
-              <span class="metric"><strong>50</strong> nodos n8n</span>
-              <span class="metric"><strong>10</strong> herramientas</span>
-              <span class="metric success">Multi-modal</span>
-              <span class="metric copper">Derivación SHE</span>
-            </div>
-            <div class="proj-stack">
-              <span class="tag">n8n</span>
-              <span class="tag">Evolution API</span>
-              <span class="tag">Gemini Pro</span>
-              <span class="tag">Postgres pgvector</span>
-              <span class="tag">Whisper</span>
-            </div>
-            <div class="proj-applicable">
-              <i data-lucide="message-square"></i>
-              <div>
-                <span class="proj-applicable-label">Minería</span>
-                <p>Captura conversacional de incidentes desde la línea operativa <strong>sin app extra a instalar</strong>. Compatible con sistemas internos SHE.</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 6. NLP (HALF) -->
-        <article class="proj half reveal">
+        <article class="proj reveal" data-cat="cv">
           <div class="proj-image">
-            <div class="proj-image-overlay">
-              <span class="proj-tag">NLP · DistilBERT</span>
+            <div class="proj-image-tags">
+              <span class="proj-tag">NLP · Clasificación</span>
             </div>
-            <img src="assets/images/confusion_matrix_event.png" alt="Matriz de confusión clasificador" loading="lazy">
+            <img src="assets/images/confusion_matrix_event.png" alt="NLP Riesgos" loading="lazy">
           </div>
           <div class="proj-body">
-            <h3 class="proj-title">Predicción de Riesgos Laborales (NLP)</h3>
-            <p class="proj-desc">
-              API FastAPI con DistilBERT que clasifica narrativas de incidentes
-              (naturaleza, parte del cuerpo, tipo de evento) y genera
-              <strong>Toolbox Talks automáticos</strong> de 5 min basados en patrones detectados.
-            </p>
-            <div class="proj-stack">
-              <span class="tag">FastAPI</span>
-              <span class="tag">DistilBERT</span>
-              <span class="tag">Hugging Face</span>
-              <span class="tag">Plotly</span>
+            <h3 class="proj-title">Predicción de Riesgos Laborales</h3>
+            <p class="proj-desc">API FastAPI con <strong>DistilBERT</strong> que clasifica narrativas (naturaleza, parte del cuerpo, tipo de evento) + Toolbox Talks automáticos de 5 min.</p>
+            <div class="proj-meta">
+              <span class="tag">FastAPI</span><span class="tag">DistilBERT</span><span class="tag">Hugging Face</span>
             </div>
           </div>
         </article>
 
-        <!-- 7. Hardware IoT (HALF) -->
-        <article class="proj half reveal">
+        <!-- ============ HARDWARE & FPGA ============ -->
+        <article class="proj feat reveal" data-cat="hw">
           <div class="proj-image">
-            <div class="proj-image-overlay">
-              <span class="proj-tag">EDGE · OFFLINE</span>
+            <div class="proj-image-tags">
+              <span class="proj-tag">SHM Edge · FFT FPGA</span>
+              <span class="proj-status award"><i data-lucide="trophy"></i> 2° AI Talent 2026</span>
             </div>
-            <img src="assets/images/BoxF1_curve.png" alt="Curva F1 hardware IoT" loading="lazy">
+            <img src="assets/images/gaiatech_results.png" alt="GAIATECH VIGÍA" loading="lazy">
           </div>
           <div class="proj-body">
-            <h3 class="proj-title">Hardware IoT + FPGA para zonas remotas</h3>
-            <p class="proj-desc">
-              <strong>CultiGuard</strong> (Tang Nano 9K + ESP32-CAM + LoRa + panel solar),
-              <strong>PachaGuard</strong> (Tang Nano 1K + Verilog + UART) y módulos VHDL de
-              fusión sensorial. Edge AI <strong>sin internet</strong>.
-            </p>
-            <div class="proj-metrics">
-              <span class="metric copper">Panel solar</span>
-              <span class="metric">LoRa &gt;10 km</span>
-              <span class="metric success">100% open</span>
-            </div>
-            <div class="proj-stack">
-              <span class="tag">Verilog · VHDL</span>
-              <span class="tag">Tang Nano 9K/1K</span>
-              <span class="tag">ESP32-CAM</span>
-              <span class="tag">LoRa SX1262</span>
-            </div>
-            <div class="proj-applicable">
-              <i data-lucide="radio-tower"></i>
-              <div>
-                <span class="proj-applicable-label">Minería</span>
-                <p>Sensores de presa de relaves, perímetro mina, taludes y zonas sin cobertura.</p>
-              </div>
+            <h3 class="proj-title">GAIATECH VIGÍA — Monitoreo estructural</h3>
+            <p class="proj-desc">Sistema completo: <strong>FFT en FPGA Gowin GW1NR-9</strong> (Explorer Edge-9K), ESP32 como bridge, modelo <strong>LSTM-Autoencoder F1 = 0.961</strong>, alertas WhatsApp &lt; 2s. Aplicable a presas, taludes, estructuras críticas.</p>
+            <div class="proj-meta">
+              <span class="tag">Verilog</span><span class="tag">FFT FPGA</span><span class="tag">Gowin GW1NR-9</span><span class="tag">ESP32</span><span class="tag">PyTorch LSTM-AE</span>
             </div>
           </div>
         </article>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- =================== NORMATIVA =================== -->
-  <section id="normativa">
-    <div class="container">
-      <header class="sec-head">
-        <div>
-          <div class="sec-head-meta">
-            <span class="sec-num">— 04 / 06</span>
-            <span class="chip brand">Cumplimiento</span>
+        <article class="proj reveal" data-cat="hw">
+          <div class="proj-image no-img"><i data-lucide="microchip"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIATECH FPGA · Investigación</h3>
+            <p class="proj-desc">Explorer Edge-9K funcionando. 5 módulos para FFT. <strong>253 KB de investigación</strong> técnica documentada. Pinout completo, gotchas resueltos.</p>
+            <div class="proj-meta">
+              <span class="tag">Gowin EDA</span><span class="tag">openFPGALoader</span><span class="tag">JTAG</span>
+            </div>
           </div>
-          <h2 class="sec-title">Normativa minera <span class="accent">peruana</span> integrada en el diseño.</h2>
-        </div>
-        <p class="sec-desc">
-          Cada solución arranca con el marco regulatorio aplicable. No se
-          adapta la normativa al producto: se diseña el producto sobre la norma.
-        </p>
-      </header>
+        </article>
 
-      <div class="norma-grid">
-        <div class="norma-panel">
-          <h3><i data-lucide="scale"></i> Marco regulatorio peruano</h3>
-          <ul class="norma-list">
-            <li class="norma-item"><span class="norma-code">DS 024-2016-EM</span><span class="norma-desc">Reglamento de Seguridad y Salud Ocupacional en Minería</span></li>
-            <li class="norma-item"><span class="norma-code">DS 023-2017-EM</span><span class="norma-desc">Modificatoria · medidas preventivas y plan de gestión</span></li>
-            <li class="norma-item"><span class="norma-code">DS 034-2023-EM</span><span class="norma-desc"><strong>Cap. XII Relaves</strong> · arts. 418-423</span></li>
-            <li class="norma-item"><span class="norma-code">Res. 122-2024-OS/CD</span><span class="norma-desc">OSINERGMIN · supervisión técnica</span></li>
-            <li class="norma-item"><span class="norma-code">Ley 29783</span><span class="norma-desc">Ley de Seguridad y Salud en el Trabajo</span></li>
-            <li class="norma-item"><span class="norma-code">ISO 45001:2018</span><span class="norma-desc">Sistemas de gestión SST</span></li>
-          </ul>
-        </div>
-
-        <div class="norma-panel">
-          <h3><i data-lucide="globe"></i> Estándares internacionales</h3>
-          <ul class="norma-list">
-            <li class="norma-item"><span class="norma-code">GISTM 2020</span><span class="norma-desc">Global Industry Standard on Tailings Management</span></li>
-            <li class="norma-item"><span class="norma-code">ICMM CCM</span><span class="norma-desc">Critical Control Management framework</span></li>
-            <li class="norma-item"><span class="norma-code">ISO 31000:2018</span><span class="norma-desc">Gestión del riesgo</span></li>
-            <li class="norma-item"><span class="norma-code">ANSI/ASSP Z10</span><span class="norma-desc">Occupational Safety and Health Management</span></li>
-          </ul>
-
-          <div class="origin-card">
-            <p>
-              <strong>Origen:</strong> Puno, Perú · familiarizado con altura (4,000+ msnm) y condiciones de sierra. Disponibilidad inmediata para régimen atípico <strong>14×7 / 10×10</strong>.
-            </p>
+        <article class="proj reveal" data-cat="hw">
+          <div class="proj-image no-img"><i data-lucide="leaf"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">CultiGuard · PachaGuard</h3>
+            <p class="proj-desc">Nodos IoT autónomos con <strong>Tang Nano 9K + ESP32-CAM + LoRa + panel solar</strong>. Edge AI sin internet. PachaGuard usa Tang Nano 1K + Verilog + UART.</p>
+            <div class="proj-meta">
+              <span class="tag">Tang Nano 9K/1K</span><span class="tag">ESP32-CAM</span><span class="tag">LoRa SX1262</span><span class="tag">Panel solar</span>
+            </div>
           </div>
-        </div>
+        </article>
+
+        <article class="proj reveal" data-cat="hw">
+          <div class="proj-image no-img"><i data-lucide="bot"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">Aecodito Robot Físico</h3>
+            <p class="proj-desc">Robot para AI Summit jun 2026: <strong>RPi 5 + AI HAT 26 TOPS + FPGA + ESP32-C6 + voz</strong>. BOM total ~$430 USD. Movimientos servo, voz Kore, integración con n8n.</p>
+            <div class="proj-meta">
+              <span class="tag">RPi 5</span><span class="tag">AI HAT Hailo-8</span><span class="tag">FPGA</span><span class="tag">ESP32-C6</span><span class="tag">XMOS mic array</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="hw">
+          <div class="proj-image no-img"><i data-lucide="cpu"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">Jetson Orin Nano Super · Setup Vision Pro 3.1</h3>
+            <p class="proj-desc">Stack <strong>torch nv24.08 + cuSPARSELt + torchvision compiled</strong>. 38 FPS sostenidos con emarc_v3.1 EPP. 7 gotchas críticos documentados.</p>
+            <div class="proj-meta">
+              <span class="tag">Jetson Orin Nano Super</span><span class="tag">TensorRT</span><span class="tag">JetPack</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ INVESTIGACIÓN ============ -->
+        <article class="proj feat reveal" data-cat="research">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Paper · Elsevier Structures</span>
+              <span class="proj-status award"><i data-lucide="file-text"></i> Paper-ready</span>
+            </div>
+            <img src="assets/images/gaiatech_model_comparison.png" alt="MISM-GNN" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Artículo MISM-GNN · Puente Junín</h3>
+            <p class="proj-desc">Modelo Graph Neural Network para identificación modal estructural. <strong>R² = 0.998</strong> vs 0.999 FFNN — con <strong>65× menos parámetros</strong>. 4 tablas + 15 figuras PDF, listo para manuscrito Elsevier <em>Structures</em>.</p>
+            <div class="proj-meta">
+              <span class="tag">PyTorch Geometric</span><span class="tag">GNN</span><span class="tag">PINN</span><span class="tag">DWT/FFT/CWT</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="research">
+          <div class="proj-image no-img"><i data-lucide="sprout"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIATECH G1 · Agroecología Andina</h3>
+            <p class="proj-desc">Postulación PROCIENCIA 2026 (<strong>S/ 896,400 / 36 meses</strong>). 5 capas: edge + IA + satelital + chatbot + marketplace. Integra CultiGuard + PachaGuard + INIA Illpa-Puno.</p>
+            <div class="proj-meta">
+              <span class="tag">Edge AI</span><span class="tag">Sentinel-2</span><span class="tag">PostGIS</span><span class="tag">INIA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="research">
+          <div class="proj-image no-img"><i data-lucide="bridge"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">ProCiencia Tesis 2026 · FPGA Dual + Cercha Bailey</h3>
+            <p class="proj-desc">Maqueta 1:10 + <strong>FPGA dual</strong> (FFT + GNN cuantizada) + 4 tipos de daño. 2 papers esperados. Cierre 19-jun, S/ 30k.</p>
+            <div class="proj-meta">
+              <span class="tag">Cercha Bailey</span><span class="tag">FPGA dual</span><span class="tag">GNN quantized</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="research">
+          <div class="proj-image no-img"><i data-lucide="graduation-cap"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">Tesis Sheyla Ancco · PINN-GNN</h3>
+            <p class="proj-desc">Co-dirección. Modelos híbridos Physics-Informed + GNN para detección no supervisada de anomalías en infraestructura civil.</p>
+            <div class="proj-meta">
+              <span class="tag">PINN</span><span class="tag">GNN</span><span class="tag">PyTorch</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="research">
+          <div class="proj-image no-img"><i data-lucide="atom"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">IDI UPC · Director Investigaciones IA/SHM</h3>
+            <p class="proj-desc">Equipo multidisciplinario (8 estudiantes) en modelos PINN-GNN. Red de sensores MEMS + RPi. Pipeline ETL + features + dashboards Plotly.</p>
+            <div class="proj-meta">
+              <span class="tag">MEMS</span><span class="tag">Arduino</span><span class="tag">Plotly/Dash</span><span class="tag">ETL</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ 3D & INMERSIVO ============ -->
+        <article class="proj feat reveal" data-cat="3d">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">3D Tour · Inmobiliario</span>
+              <span class="proj-status live"><i data-lucide="check"></i> Entregado</span>
+            </div>
+            <img src="assets/images/profile_v2.jpg" alt="Ainy Inmobiliaria" loading="lazy" style="opacity: 0.3;">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Ainy Inmobiliaria · 3 Fases</h3>
+            <p class="proj-desc">Web inmobiliario con <strong>3 fases</strong>: landing inmersiva + tour 360 R3F + pasarela Culqi. Entrega lun 04-may-2026. Marca Daniella/Anytime.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js</span><span class="tag">React Three Fiber</span><span class="tag">GSAP</span><span class="tag">Lenis</span><span class="tag">Culqi</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="3d">
+          <div class="proj-image no-img"><i data-lucide="gamepad-2"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">Oficina Virtual AECODE · Godot 4.4</h3>
+            <p class="proj-desc">Oficina interactiva en Godot 4.4.1 con MCP configurado. <strong>AECODITO jugable</strong>. Sprites estilo pixel art con migración desde Unity.</p>
+            <div class="proj-meta">
+              <span class="tag">Godot 4.4</span><span class="tag">GDScript</span><span class="tag">MCP</span><span class="tag">LimeZu sprites</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="3d">
+          <div class="proj-image no-img"><i data-lucide="paintbrush-2"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">Brochure Studio · Canvas WebGL</h3>
+            <p class="proj-desc">Editor canvas con Fabric.js + assets generados por IA. Migración planeada a R3F para experiencia 3D más rica en v3.</p>
+            <div class="proj-meta">
+              <span class="tag">Fabric.js</span><span class="tag">Replicate</span><span class="tag">Flux</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ TOOLKITS ============ -->
+        <article class="proj reveal" data-cat="tools">
+          <div class="proj-image no-img"><i data-lucide="brain-circuit"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">Skills aecode-* (19+ skills)</h3>
+            <p class="proj-desc">Sistema de skills auto-activables: <strong>panel-stack, rag-architecture, auth-multitenant, vps-management, billing-stack, design-system, motion-animation, accessibility, ai-ux, dashboard-ux, ui-inspiration</strong> y más.</p>
+            <div class="proj-meta">
+              <span class="tag">Claude Code</span><span class="tag">YAML + MD</span><span class="tag">Auto-trigger</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="tools">
+          <div class="proj-image no-img"><i data-lucide="library-big"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">Dossieres masivos (61 dominios)</h3>
+            <p class="proj-desc">Investigación paralela de <strong>61 dominios tecnológicos</strong>: 28 paneles + 17 UI/UX + 16 misc. ~400 herramientas evaluadas. Dossier maestro con stack decision tree.</p>
+            <div class="proj-meta">
+              <span class="tag">59 agentes paralelos</span><span class="tag">~90k palabras</span><span class="tag">Obsidian vault</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="tools">
+          <div class="proj-image no-img"><i data-lucide="test-tube"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">Playwright UI/UX Toolkit · Yary</h3>
+            <p class="proj-desc">Toolkit para colega diseñadora: guía HTML standalone con mascot video, efecto linterna, <strong>18 plantillas .spec.ts</strong>. ZIP 6.69 MB.</p>
+            <div class="proj-meta">
+              <span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">Standalone HTML</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="tools">
+          <div class="proj-image no-img"><i data-lucide="package"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">Prototype Studio · Yary</h3>
+            <p class="proj-desc">Segundo toolkit con <strong>18 plantillas Next.js + shadcn + Awwwards</strong> (9 app + 9 landing). ZIP 664 KB.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js 16</span><span class="tag">shadcn</span><span class="tag">Awwwards stack</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="tools">
+          <div class="proj-image no-img"><i data-lucide="server-cog"></i></div>
+          <div class="proj-body">
+            <h3 class="proj-title">VPS Self-host Stack</h3>
+            <p class="proj-desc">Gestión VPS AECODE (10+ servicios Docker corriendo): n8n, finder, brochure, coord, ops, ClawdBot, Postgres pgvector, Activepieces, Acta Studio, Email Studio.</p>
+            <div class="proj-meta">
+              <span class="tag">Docker Compose</span><span class="tag">Coolify</span><span class="tag">Postgres :5433</span><span class="tag">Nginx</span>
+            </div>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
@@ -1243,103 +1661,73 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
       <header class="sec-head">
         <div>
           <div class="sec-head-meta">
-            <span class="sec-num">— 05 / 06</span>
+            <span class="sec-num">— 04</span>
             <span class="chip brand">Stack técnico</span>
           </div>
-          <h2 class="sec-title">Herramientas <span class="accent">end-to-end</span>.</h2>
+          <h2 class="sec-title">Del <span class="mint">silicio</span> al <span class="accent">panel web</span>.</h2>
         </div>
         <p class="sec-desc">
-          Desde el silicio (FPGA / ESP32) hasta el panel web. Stack
-          open-source en su mayoría, con elecciones específicas por escenario.
+          Herramientas que uso activamente. Open-source en su mayoría, con
+          elecciones específicas por escenario.
         </p>
       </header>
 
       <div class="stack-grid">
-        <div class="stack-card">
-          <h4><i data-lucide="brain-circuit"></i> IA & Computer Vision</h4>
-          <div class="stack-tags">
-            <span class="tag">PyTorch</span><span class="tag">YOLOv8/v11</span>
-            <span class="tag">SegFormer</span><span class="tag">DeepFace</span>
-            <span class="tag">PyTorch Geometric</span><span class="tag">LSTM</span>
-            <span class="tag">Hugging Face</span><span class="tag">TensorRT INT8</span>
-          </div>
+        <div class="stack-card"><h4><i data-lucide="brain-circuit"></i> IA & Computer Vision</h4>
+          <div class="stack-tags"><span class="tag">PyTorch</span><span class="tag">YOLOv8/v11</span><span class="tag">SegFormer</span><span class="tag">DeepFace · ArcFace</span><span class="tag">PyTorch Geometric</span><span class="tag">LSTM/GRU</span><span class="tag">Hugging Face</span><span class="tag">TensorRT INT8</span></div>
         </div>
-        <div class="stack-card">
-          <h4><i data-lucide="bot"></i> Agentes IA & Automatización</h4>
-          <div class="stack-tags">
-            <span class="tag">n8n avanzado</span><span class="tag">MCP</span>
-            <span class="tag">Evolution API</span><span class="tag">Telegram Bot</span>
-            <span class="tag">Activepieces</span><span class="tag">Claude/Gemini/Qwen</span>
-          </div>
+        <div class="stack-card"><h4><i data-lucide="bot"></i> Agentes IA & LLMs</h4>
+          <div class="stack-tags"><span class="tag">n8n avanzado</span><span class="tag">Activepieces</span><span class="tag">MCP</span><span class="tag">Evolution API</span><span class="tag">Vercel AI SDK</span><span class="tag">Claude/Gemini/Qwen</span><span class="tag">Mastra</span></div>
         </div>
-        <div class="stack-card">
-          <h4><i data-lucide="cpu"></i> Hardware & IoT</h4>
-          <div class="stack-tags">
-            <span class="tag">FPGA Gowin GW1NR-9</span><span class="tag">Verilog/VHDL</span>
-            <span class="tag">ESP32</span><span class="tag">Arduino</span>
-            <span class="tag">RPi 5</span><span class="tag">Jetson Orin Nano Super</span>
-            <span class="tag">MEMS</span><span class="tag">LoRa SX1262</span>
-          </div>
+        <div class="stack-card"><h4><i data-lucide="cpu"></i> Hardware & IoT</h4>
+          <div class="stack-tags"><span class="tag">FPGA Gowin GW1NR-9</span><span class="tag">Verilog/VHDL</span><span class="tag">ESP32 / C6</span><span class="tag">Arduino</span><span class="tag">RPi 5 + Hailo-8</span><span class="tag">Jetson Orin Nano Super</span><span class="tag">MEMS</span><span class="tag">LoRa SX1262</span></div>
         </div>
-        <div class="stack-card">
-          <h4><i data-lucide="line-chart"></i> Análisis & Señales</h4>
-          <div class="stack-tags">
-            <span class="tag">Python</span><span class="tag">R</span>
-            <span class="tag">MATLAB</span><span class="tag">Power BI</span>
-            <span class="tag">Plotly/Dash</span><span class="tag">FFT/Wavelets</span>
-          </div>
+        <div class="stack-card"><h4><i data-lucide="layout"></i> Frontend & UI</h4>
+          <div class="stack-tags"><span class="tag">Next.js 16</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Tailwind v4</span><span class="tag">shadcn/ui</span><span class="tag">GSAP + Lenis</span><span class="tag">React Three Fiber</span><span class="tag">Motion</span></div>
         </div>
-        <div class="stack-card">
-          <h4><i data-lucide="code-2"></i> Desarrollo Software</h4>
-          <div class="stack-tags">
-            <span class="tag">Next.js 16</span><span class="tag">TypeScript</span>
-            <span class="tag">React</span><span class="tag">FastAPI</span>
-            <span class="tag">C#/.NET Revit API</span><span class="tag">WebSocket</span>
-            <span class="tag">Drizzle ORM</span>
-          </div>
+        <div class="stack-card"><h4><i data-lucide="server"></i> Backend & APIs</h4>
+          <div class="stack-tags"><span class="tag">FastAPI</span><span class="tag">Node.js</span><span class="tag">tRPC</span><span class="tag">WebSocket</span><span class="tag">Server Actions</span><span class="tag">REST</span></div>
         </div>
-        <div class="stack-card">
-          <h4><i data-lucide="database"></i> Datos & RAG</h4>
-          <div class="stack-tags">
-            <span class="tag">PostgreSQL</span><span class="tag">pgvector</span>
-            <span class="tag">pg_search BM25</span><span class="tag">SQLite</span>
-            <span class="tag">Notion API</span>
-          </div>
+        <div class="stack-card"><h4><i data-lucide="database"></i> Datos & RAG</h4>
+          <div class="stack-tags"><span class="tag">PostgreSQL</span><span class="tag">pgvector</span><span class="tag">pg_search BM25</span><span class="tag">Drizzle ORM</span><span class="tag">SQLite</span><span class="tag">Notion API</span></div>
         </div>
-        <div class="stack-card">
-          <h4><i data-lucide="hard-hat"></i> Ingeniería & BIM</h4>
-          <div class="stack-tags">
-            <span class="tag">Revit (plugins C#)</span><span class="tag">AutoCAD/Civil 3D</span>
-            <span class="tag">AutoLISP</span><span class="tag">SAP2000</span>
-            <span class="tag">S10/Primavera P6</span>
-          </div>
+        <div class="stack-card"><h4><i data-lucide="line-chart"></i> Datos & Señales</h4>
+          <div class="stack-tags"><span class="tag">Python · NumPy · SciPy</span><span class="tag">R</span><span class="tag">MATLAB</span><span class="tag">Power BI</span><span class="tag">Plotly/Dash</span><span class="tag">FFT · Wavelets</span></div>
         </div>
-        <div class="stack-card">
-          <h4><i data-lucide="mountain"></i> Geotécnico & Minero</h4>
-          <div class="stack-tags">
-            <span class="tag">Leapfrog Geo</span><span class="tag">Rocscience RS2/3 · Slide2</span>
-            <span class="tag">MineSight / MinePlan</span><span class="tag">QGIS · ArcGIS</span>
-          </div>
+        <div class="stack-card"><h4><i data-lucide="cloud"></i> DevOps & Self-host</h4>
+          <div class="stack-tags"><span class="tag">Docker / Compose</span><span class="tag">Coolify</span><span class="tag">Cloudflare</span><span class="tag">Nginx</span><span class="tag">VPS Hetzner/Hostinger</span><span class="tag">GitHub Actions</span></div>
+        </div>
+        <div class="stack-card"><h4><i data-lucide="hard-hat"></i> Ingeniería & BIM</h4>
+          <div class="stack-tags"><span class="tag">Revit (plugins C#)</span><span class="tag">AutoCAD / Civil 3D</span><span class="tag">AutoLISP</span><span class="tag">SAP2000</span><span class="tag">S10 / Primavera P6</span></div>
+        </div>
+        <div class="stack-card"><h4><i data-lucide="mountain"></i> Geotécnico & Minero</h4>
+          <div class="stack-tags"><span class="tag">Leapfrog Geo</span><span class="tag">Rocscience RS2/3 · Slide2</span><span class="tag">MineSight / MinePlan</span><span class="tag">QGIS · ArcGIS</span></div>
+        </div>
+        <div class="stack-card"><h4><i data-lucide="gamepad-2"></i> 3D & Game</h4>
+          <div class="stack-tags"><span class="tag">Three.js · R3F</span><span class="tag">Drei</span><span class="tag">Blender</span><span class="tag">Godot 4.4</span><span class="tag">GLB/GLTF</span></div>
+        </div>
+        <div class="stack-card"><h4><i data-lucide="film"></i> Media & DaVinci</h4>
+          <div class="stack-tags"><span class="tag">DaVinci Resolve Studio</span><span class="tag">GPT Image 2</span><span class="tag">Kling 3.0</span><span class="tag">Veo 3</span><span class="tag">Suno / ElevenLabs</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- =================== EXPERIENCIA =================== -->
+  <!-- =================== EXPERIENCIA + AWARDS =================== -->
   <section id="experiencia">
     <div class="container">
       <header class="sec-head">
         <div>
           <div class="sec-head-meta">
-            <span class="sec-num">— 06 / 06</span>
-            <span class="chip brand">Trayectoria</span>
+            <span class="sec-num">— 05</span>
+            <span class="chip mint">Trayectoria</span>
           </div>
-          <h2 class="sec-title">Experiencia <span class="accent">profesional</span>.</h2>
+          <h2 class="sec-title">Experiencia + <span class="amber">reconocimientos</span>.</h2>
         </div>
         <p class="sec-desc">
-          De oficina técnica de obra civil a liderazgo del área de IA y
-          automatización en gen+. Combinación inusual:
-          <em class="serif">métodos rigurosos de ingeniería estructural + delivery iterativo de software</em>.
+          De oficina técnica de obra civil a liderazgo del área de IA en gen+
+          y co-fundación de GAIATECH. Combinación inusual:
+          <em class="serif">rigor estructural + iteración software</em>.
         </p>
       </header>
 
@@ -1349,22 +1737,20 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="exp-title">AI Automation Engineer</div>
           <div class="exp-org">gen+ (Generative Design &amp; Construction)</div>
           <ul class="exp-bullets">
-            <li>Lidero el área de <strong>operaciones, automatización e IA</strong>: arquitectura de agentes conversacionales, despliegue de modelos de visión y orquestación de workflows entre WhatsApp, Notion, Google Workspace, Postgres y Drive.</li>
-            <li><strong>Gen+ Vision Pro PDK</strong> en producción: plataforma de monitoreo de obra con detección de EPP (YOLOv8 · 11 clases · 87.67% mAP · 38 FPS sostenidos), dashboard web con alertas y reportes automáticos.</li>
-            <li>Diseño de <strong>sistema de cámaras Edge AI</strong> (Jetson Orin fijo + PTZ 4K solar con LTE/LoRa). CAPEX <strong>47% más barato</strong> que alternativa comercial (~S/ 27,600).</li>
-            <li><strong>Aecodito v3.0</strong>: agente WhatsApp con 50 nodos n8n, 10 herramientas, memoria persistente y derivación a humanos.</li>
+            <li>Lidero el área de <strong>operaciones, automatización e IA</strong>: arquitectura de agentes, despliegue de modelos de visión, orquestación de workflows.</li>
+            <li><strong>Gen+ Vision Pro PDK</strong> en producción · <strong>Aecodito v3.0</strong> (50 nodos, 10 tools) · diseño cámaras Edge AI con CAPEX 47% menor que alternativa comercial.</li>
+            <li>Stack: Next.js 16, n8n + Activepieces, Postgres pgvector, Jetson Orin Nano Super, YOLOv8 INT8.</li>
           </ul>
         </div>
 
         <div class="exp reveal">
           <div class="exp-meta">Junio 2024 — Presente · Lima / Puno</div>
           <div class="exp-title">Líder Técnico y Co-fundador</div>
-          <div class="exp-org">GAIATECH (spin-off de investigación UPC)</div>
+          <div class="exp-org">GAIATECH · Research spin-off</div>
           <ul class="exp-bullets">
-            <li><strong>2° lugar AI Talent Demo Day 2026</strong> con GAIATECH VIGÍA: FFT en FPGA Gowin GW1NR-9 + LSTM-Autoencoder (F1 = 0.961) + alertas WhatsApp.</li>
-            <li><strong>GAIATECH SHM</strong> (paper-ready Elsevier <em>Structures</em>): MISM-GNN para Puente Junín (R² = 0.998, 65× menos parámetros).</li>
-            <li><strong>GAIATECH G1 — Agroecología Andina</strong>: postulación PROCIENCIA 2026 S/ 896,400 · 36 meses · INIA Illpa-Puno.</li>
-            <li>Ponente <strong>CONEIC Ucayali 2024</strong>; <strong>2° lugar</strong> Concurso de Conocimientos CONEIC Huaraz 2025.</li>
+            <li><strong>2° lugar AI Talent Demo Day 2026</strong> con GAIATECH VIGÍA (FFT FPGA + LSTM-AE · F1 0.961).</li>
+            <li><strong>Paper MISM-GNN</strong> Puente Junín (R² 0.998, 65× menos params) para Elsevier <em>Structures</em>.</li>
+            <li><strong>GAIATECH G1 Agroecología</strong> postulación PROCIENCIA 2026 S/ 896,400.</li>
           </ul>
         </div>
 
@@ -1373,23 +1759,22 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="exp-title">Director del Área de Investigaciones (IA &amp; SHM)</div>
           <div class="exp-org">Capítulo Estudiantil de Ingeniería Civil — IDI UPC</div>
           <ul class="exp-bullets">
-            <li>Lideré equipo multidisciplinario (8 estudiantes) en modelos híbridos <strong>PINN-GNN</strong> para detección no supervisada de anomalías en infraestructura civil.</li>
-            <li>Red de adquisición con sensores MEMS + Arduino/Raspberry Pi para captura sincronizada de señales vibracionales.</li>
-            <li>Pipeline completo: ETL, extracción de features (DWT, FFT, CWT), entrenamiento y dashboards interactivos (Plotly/Dash).</li>
+            <li>Lideré equipo (8 estudiantes) en modelos híbridos PINN-GNN para detección no supervisada de anomalías.</li>
+            <li>Red de adquisición con sensores MEMS + Arduino/RPi · pipeline ETL/features (DWT, FFT, CWT) · dashboards Plotly/Dash.</li>
           </ul>
         </div>
 
         <div class="exp reveal">
-          <div class="exp-meta">Septiembre 2025 — Diciembre 2025 · Yunguyo, Puno</div>
+          <div class="exp-meta">Sep 2025 — Dic 2025 · Yunguyo, Puno</div>
           <div class="exp-title">Asistente de Oficina Técnica</div>
           <div class="exp-org">Obra "Teatro Municipal de Yunguyo"</div>
           <ul class="exp-bullets">
-            <li>Informes mensuales de avance, valorizaciones, modelado BIM estructural (Revit 2026) y plugins propios para armado de vigas y losas.</li>
+            <li>Informes mensuales de avance, valorizaciones, modelado BIM (Revit 2026) y plugins propios para armado de vigas y losas.</li>
           </ul>
         </div>
 
         <div class="exp reveal">
-          <div class="exp-meta">Junio 2024 — Noviembre 2024 · Lima, Perú</div>
+          <div class="exp-meta">Jun 2024 — Nov 2024 · Lima, Perú</div>
           <div class="exp-title">Asistente de Oficina Técnica</div>
           <div class="exp-org">Constructora Talgus S.A.C.</div>
           <ul class="exp-bullets">
@@ -1398,11 +1783,8 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </div>
       </div>
 
-      <!-- Awards integrated -->
-      <div style="margin-top: 4rem;">
-        <header style="margin-bottom: 1.75rem;">
-          <h3 style="font-size: var(--s-2);">Reconocimientos y certificaciones</h3>
-        </header>
+      <div style="margin-top: 5rem;">
+        <h3 style="font-size: var(--s-2); margin-bottom: 1.75rem;">Reconocimientos y certificaciones</h3>
         <div class="awards-grid">
           <div class="award"><div class="award-icon"><i data-lucide="trophy"></i></div><div class="award-body"><div class="award-title">2° lugar — AI Talent Demo Day 2026</div><div class="award-sub">GAIATECH VIGÍA · FPGA + LSTM-AE</div></div></div>
           <div class="award"><div class="award-icon"><i data-lucide="award"></i></div><div class="award-body"><div class="award-title">2° lugar — Concurso de Conocimientos CONEIC</div><div class="award-sub">Huaraz, 2025</div></div></div>
@@ -1423,21 +1805,19 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
     <div class="container">
       <div class="cta-card">
         <div>
-          <span class="eyebrow"><span class="pulse"></span> Disponible inmediato</span>
-          <h2 style="margin-top: 1.25rem;">¿Conversamos sobre <span class="serif" style="color: var(--copper-500);">tu</span> caso?</h2>
+          <span class="eyebrow"><span class="pulse"></span> Disponible para proyectos</span>
+          <h2 style="margin-top: 1.25rem;">¿Tienes algo que <span class="serif" style="color: var(--brand);">construir</span>?</h2>
           <p style="margin-top: 1.25rem; max-width: 52ch; font-size: var(--s-0);">
-            Postulando a <strong>Innovadores en Acción 2026</strong> y
-            <strong>Talentos de Cobre</strong> con foco en aplicar IA en
-            seguridad y operaciones mineras. Disponibilidad inmediata para
-            régimen atípico (14×7 / 10×10). Origen Puno: familiarizado con
-            altura y sierra.
+            Open to work: producto, investigación, consultoría técnica,
+            arquitectura de IA o hardware embebido. Conversemos sobre
+            lo que necesitas — usualmente respondo en menos de 24 h.
           </p>
           <div style="margin-top: 1.75rem; display: flex; gap: 0.65rem; flex-wrap: wrap;">
-            <a href="CV_Las_Bambas_Innovadores_2026.pdf" class="btn btn-copper" download>
+            <a href="CV_Las_Bambas_Innovadores_2026.pdf" class="btn btn-primary" download>
               <i data-lucide="file-down"></i> Descargar CV (PDF)
             </a>
-            <a href="https://github.com/EmanuelAncco" class="btn" target="_blank" rel="noopener">
-              <i data-lucide="github"></i> Repositorios
+            <a href="https://github.com/EmanuelAncco" class="btn btn-mint" target="_blank" rel="noopener">
+              <i data-lucide="github"></i> Ver GitHub
             </a>
           </div>
         </div>
@@ -1459,10 +1839,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             <i data-lucide="github"></i>
             <div class="cta-item-info"><div class="cta-item-label">GitHub</div><div class="cta-item-value">EmanuelAncco</div></div>
           </a>
-          <div class="cta-item" style="cursor: default;">
-            <i data-lucide="map-pin"></i>
-            <div class="cta-item-info"><div class="cta-item-label">Ubicación</div><div class="cta-item-value">Lima / Puno · Perú</div></div>
-          </div>
         </div>
       </div>
     </div>
@@ -1476,7 +1852,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
 
 <footer class="site">
   <div class="container footer-content">
-    <div>© 2026 Emanuel Edgar Ancco Guaygua · Ingeniería Civil + IA · Puno · Perú</div>
+    <div>© 2026 Emanuel Edgar Ancco Guaygua · Ingeniería · IA · Hardware</div>
     <div class="footer-social">
       <a href="https://www.linkedin.com/in/emanuel-edgar-ancco-guaygua-a61210352" aria-label="LinkedIn" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
       <a href="https://github.com/EmanuelAncco" aria-label="GitHub" target="_blank" rel="noopener"><i data-lucide="github"></i></a>
@@ -1488,18 +1864,59 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
 <script>
   if (window.lucide) lucide.createIcons();
 
+  // ===== CUSTOM CURSOR =====
+  const dot = document.querySelector('.cursor-dot');
+  const ring = document.querySelector('.cursor-ring');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  });
+  function animRing() {
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+  document.querySelectorAll('a, button, .proj, .hl, .stack-card, .award, .cta-item').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+  });
+
+  // ===== HERO MOUSE GLOW =====
+  const heroGlow = document.getElementById('hero-mouse-glow');
+  const hero = document.getElementById('hero');
+  hero.addEventListener('mousemove', (e) => {
+    const r = hero.getBoundingClientRect();
+    heroGlow.style.left = (e.clientX - r.left) + 'px';
+    heroGlow.style.top = (e.clientY - r.top) + 'px';
+  });
+
+  // ===== TILT 3D en cards =====
+  document.querySelectorAll('.proj, .hl').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `translateY(-6px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+
+  // ===== THEME TOGGLE con View Transitions =====
   const themeToggle = document.getElementById('theme-toggle');
   const themeIcon = document.getElementById('theme-icon');
   const saved = localStorage.getItem('ea-portfolio-theme') || 'dark';
   document.documentElement.dataset.theme = saved;
-
   function syncIcon() {
     const dark = document.documentElement.dataset.theme === 'dark';
     themeIcon.setAttribute('data-lucide', dark ? 'sun' : 'moon-star');
     if (window.lucide) lucide.createIcons();
   }
   syncIcon();
-
   themeToggle.addEventListener('click', () => {
     const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
     if (document.startViewTransition) {
@@ -1511,29 +1928,49 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
     syncIcon();
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 't' && !e.metaKey && !e.ctrlKey && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-      themeToggle.click();
-    }
+  // ===== TABS DE CATEGORÍAS =====
+  const tabs = document.querySelectorAll('.cat-tab');
+  const projects = document.querySelectorAll('#proj-grid .proj');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const cat = tab.dataset.cat;
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const grid = document.getElementById('proj-grid');
+      grid.dataset.loading = 'true';
+      setTimeout(() => {
+        projects.forEach(p => {
+          const match = cat === 'all' || p.dataset.cat === cat;
+          p.style.display = match ? '' : 'none';
+        });
+        grid.dataset.loading = 'false';
+      }, 120);
+    });
   });
 
+  // ===== SCROLL SPY NAV =====
   const sections = document.querySelectorAll('main section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   const spy = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         navLinks.forEach(a => {
-          const isActive = a.getAttribute('href') === '#' + entry.target.id;
-          a.style.color = isActive ? 'var(--brand)' : '';
-          a.style.fontWeight = isActive ? '600' : '';
+          a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
         });
       }
     });
   }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(s => spy.observe(s));
 
-  console.log('%c Emanuel Ancco · Portfolio v3.1 ', 'background: oklch(0.58 0.17 220); color: white; font-weight: 700; padding: 8px 16px; font-size: 13px;');
-  console.log('%c OKLCH · Geist · light-dark() · View Transitions · Scroll-driven CSS · Las Bambas focus ', 'color: oklch(0.66 0.17 50); font-family: monospace;');
+  // ===== T shortcut for theme =====
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 't' && !e.metaKey && !e.ctrlKey && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      themeToggle.click();
+    }
+  });
+
+  console.log('%c Emanuel Ancco · Portfolio v4 ', 'background: linear-gradient(135deg, oklch(0.62 0.25 285), oklch(0.80 0.18 165)); color: white; font-weight: 700; padding: 8px 16px; font-size: 13px;');
+  console.log('%c 40+ proyectos · Construyo sistemas de extremo a extremo ', 'color: oklch(0.80 0.18 165); font-family: monospace;');
   console.log('Tip: pulsa T para alternar tema');
 </script>
 

@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<title>Emanuel Ancco · Portfolio · Ingeniería · IA · Hardware · Producto</title>
-<meta name="description" content="Construyo sistemas de extremo a extremo. 40+ proyectos en producción: plataformas web, agentes IA, visión computacional, FPGA, investigación académica y toolkits.">
+<title>Emanuel Ancco · Portfolio · IA aplicada · Ingeniería · Hardware</title>
+<meta name="description" content="Ingeniero civil que construye software de IA. 47 proyectos: plataformas de agentes, extracción documental con LLMs, visión computacional en obra, hardware FPGA e investigación aplicada.">
 <meta name="author" content="Emanuel Edgar Ancco Guaygua">
 <meta property="og:title" content="Emanuel Ancco · Portfolio">
-<meta property="og:description" content="Ingeniero civil + AI engineer + builder. 40+ proyectos en producción, investigación y producto.">
+<meta property="og:description" content="Ingeniero civil + AI engineer. Agentes, LLMs y visión computacional aplicados a la construcción. 47 proyectos entre producción, investigación y producto.">
 <meta property="og:image" content="assets/images/profile_v2.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237b3aed'/%3E%3Ctext x='16' y='22' font-family='monospace' font-weight='700' font-size='15' fill='white' text-anchor='middle'%3EEA%3C/text%3E%3C/svg%3E">
 
@@ -646,6 +646,7 @@ header.site {
 /* ============ PROYECTOS GRID ============ */
 .proj-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-auto-flow: row dense;
   gap: 1.25rem;
   transition: opacity 200ms;
 }
@@ -868,6 +869,13 @@ header.site {
 .proj-image.stylish-bg[data-style="playwright"]{--acc1: oklch(0.72 0.20 145); --acc2: oklch(0.78 0.18 95); }
 .proj-image.stylish-bg[data-style="prototype"]{ --acc1: oklch(0.65 0.25 305); --acc2: oklch(0.75 0.20 195); }
 .proj-image.stylish-bg[data-style="vps"]      { --acc1: oklch(0.70 0.22 235); --acc2: oklch(0.78 0.18 165); }
+.proj-image.stylish-bg[data-style="agents"]   { --acc1: oklch(0.68 0.22 285); --acc2: oklch(0.80 0.18 165); }
+.proj-image.stylish-bg[data-style="docs"]     { --acc1: oklch(0.75 0.20 215); --acc2: oklch(0.78 0.18 95);  }
+.proj-image.stylish-bg[data-style="paper"]    { --acc1: oklch(0.80 0.16 95);  --acc2: oklch(0.70 0.20 25);  }
+.proj-image.stylish-bg[data-style="media"]    { --acc1: oklch(0.70 0.24 340); --acc2: oklch(0.75 0.20 285); }
+.proj-image.stylish-bg[data-style="voice"]    { --acc1: oklch(0.78 0.18 165); --acc2: oklch(0.72 0.20 215); }
+.proj-image.stylish-bg[data-style="chat"]     { --acc1: oklch(0.80 0.18 150); --acc2: oklch(0.72 0.20 200); }
+.proj-image.stylish-bg[data-style="ticket"]   { --acc1: oklch(0.75 0.20 320); --acc2: oklch(0.78 0.18 95);  }
 .proj-image.stylish-bg[data-style] {
   background:
     radial-gradient(circle at 25% 25%, oklch(from var(--acc1) l c h / 0.55) 0%, transparent 55%),
@@ -1155,25 +1163,25 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         <div class="hero-eyebrow-wrap">
           <span class="eyebrow">
             <span class="pulse"></span>
-            Open to work · AEC · electrónica · investigación
+            Open to work · IA aplicada · agentes · visión en obra
           </span>
         </div>
 
         <h1 class="hero-headline">
-          Diseño <span class="serif" style="color: var(--brand);">estructuras</span>,<br>
-          construyo <span class="serif" style="color: var(--mint);">electrónica</span><br>
-          y opero la <span class="word">data</span> que generan.
+          Construyo <span class="serif" style="color: var(--brand);">agentes de IA</span><br>
+          y <span class="serif" style="color: var(--mint);">visión en obra</span><br>
+          sobre la <span class="word">data</span> de la construcción.
         </h1>
 
         <p class="hero-sub">
-          <strong>Ingeniero civil + electrónica + sensores + data masiva</strong>.
-          Diseño PCBs con FPGA, despliego redes de sensores SHM y EPP en obra,
-          y opero la data que producen — desde el silicio hasta el dashboard.
+          <strong>Ingeniero civil que construye software de IA</strong>.
+          Plataformas de agentes, extracción documental con LLMs, visión computacional en obra
+          y el hardware edge que la sostiene: del silicio hasta el panel web.
         </p>
 
         <div class="role-pills">
-          <span class="chip brand">Bachiller Ingeniería Civil · UPC</span>
-          <span class="chip mint">AI Automation Engineer · gen+</span>
+          <span class="chip brand">AI Automation Engineer · gen+</span>
+          <span class="chip mint">Bachiller Ingeniería Civil · UPC</span>
           <span class="chip amber">Co-founder · GAIATECH</span>
         </div>
 
@@ -1191,19 +1199,19 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
 
         <div class="hero-about-blocks">
           <div class="hero-about-block">
-            <div class="hero-about-icon"><i data-lucide="hard-hat"></i></div>
-            <h4>AEC + estructura</h4>
-            <p>Suite de plugins Revit (9), modelado BIM (Teatro Yunguyo), Suite Tuberías TGD, HP Prime para hidráulica. <strong>Paper-ready</strong> MISM-GNN sobre Puente Junín (Elsevier).</p>
+            <div class="hero-about-icon"><i data-lucide="bot"></i></div>
+            <h4>IA aplicada + agentes</h4>
+            <p>Plataforma de agentes propia (Agent Flow), agente de operaciones en WhatsApp, actas automáticas de Zoom y extracción documental con LLMs. <strong>42 automatizaciones</strong> corriendo en dos VPS.</p>
           </div>
           <div class="hero-about-block">
-            <div class="hero-about-icon"><i data-lucide="cpu"></i></div>
-            <h4>Edge AI + hardware</h4>
-            <p>FPGA Gowin GW1NR-9 con FFT real, sensores con panel solar, modelos YOLOv8 EPP a <strong>38 FPS</strong> en Jetson Orin Nano Super, robot Aecodito para AI Summit.</p>
+            <div class="hero-about-icon"><i data-lucide="scan-eye"></i></div>
+            <h4>Visión en obra + edge</h4>
+            <p>YOLOv8 de 11 clases a <strong>38 FPS</strong> en Jetson Orin Nano Super, cámaras edge AI y FPGA Gowin GW1NR-9 con FFT en hardware. Alertas de EPP desplegadas en campo.</p>
           </div>
           <div class="hero-about-block">
             <div class="hero-about-icon"><i data-lucide="microscope"></i></div>
-            <h4>Investigación aplicada</h4>
-            <p><strong>Co-fundador GAIATECH</strong>: VIGÍA (SHM en FPGA, 2° AI Talent 2026), G1 Agroecología Andina (PROCIENCIA S/ 896k), tesis FPGA dual + Cercha Bailey.</p>
+            <h4>Investigación + AEC</h4>
+            <p>MISM-GNN sobre Puente Junín (R² 0,998 con <strong>65× menos parámetros</strong>) y artículo IEEE sobre LLM + RAG + HITL. Suite de 9 plugins Revit y modelado BIM del Teatro Yunguyo.</p>
           </div>
         </div>
       </div>
@@ -1223,33 +1231,43 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
     <!-- Tech marquee -->
     <div class="tech-marquee-wrap" aria-hidden="true">
       <div class="tech-marquee">
-        <span><span class="dot"></span> Revit C# / .NET</span>
-        <span><span class="dot mint"></span> SAP2000</span>
-        <span><span class="dot amber"></span> ETABS</span>
-        <span><span class="dot"></span> Dynamo</span>
-        <span><span class="dot mint"></span> FPGA Gowin</span>
-        <span><span class="dot amber"></span> Verilog</span>
-        <span><span class="dot"></span> ESP32 / ESP32-CAM</span>
-        <span><span class="dot mint"></span> Jetson Orin</span>
-        <span><span class="dot amber"></span> YOLOv8 / YOLO11</span>
-        <span><span class="dot"></span> PyTorch Geometric</span>
-        <span><span class="dot mint"></span> PINN / GNN</span>
-        <span><span class="dot amber"></span> LoRa SX1262</span>
+        <span><span class="dot"></span> Claude Code / Opus</span>
+        <span><span class="dot mint"></span> MCP</span>
+        <span><span class="dot amber"></span> n8n / Agent Flow</span>
+        <span><span class="dot"></span> Gemini multimodal</span>
+        <span><span class="dot mint"></span> RAG · pgvector</span>
+        <span><span class="dot amber"></span> Evolution API</span>
         <span><span class="dot"></span> Next.js 16</span>
-        <span><span class="dot mint"></span> TensorRT INT8</span>
-        <span><span class="dot amber"></span> OpenSeesPy</span>
-        <span><span class="dot"></span> HP PPL</span>
-        <!-- duplicado para loop -->
-        <span><span class="dot"></span> Revit C# / .NET</span>
-        <span><span class="dot mint"></span> SAP2000</span>
-        <span><span class="dot amber"></span> ETABS</span>
-        <span><span class="dot"></span> Dynamo</span>
-        <span><span class="dot mint"></span> FPGA Gowin</span>
-        <span><span class="dot amber"></span> Verilog</span>
-        <span><span class="dot"></span> ESP32 / ESP32-CAM</span>
-        <span><span class="dot mint"></span> Jetson Orin</span>
+        <span><span class="dot mint"></span> Drizzle + Postgres</span>
         <span><span class="dot amber"></span> YOLOv8 / YOLO11</span>
-        <span><span class="dot"></span> PyTorch Geometric</span>
+        <span><span class="dot"></span> Jetson Orin</span>
+        <span><span class="dot mint"></span> TensorRT INT8</span>
+        <span><span class="dot amber"></span> FPGA Gowin</span>
+        <span><span class="dot"></span> Verilog</span>
+        <span><span class="dot mint"></span> ESP32 / ESP32-CAM</span>
+        <span><span class="dot amber"></span> PyTorch Geometric</span>
+        <span><span class="dot"></span> Revit C# / .NET</span>
+        <span><span class="dot mint"></span> SAP2000 / ETABS</span>
+        <span><span class="dot amber"></span> OpenSeesPy</span>
+        <!-- duplicado para loop -->
+        <span><span class="dot"></span> Claude Code / Opus</span>
+        <span><span class="dot mint"></span> MCP</span>
+        <span><span class="dot amber"></span> n8n / Agent Flow</span>
+        <span><span class="dot"></span> Gemini multimodal</span>
+        <span><span class="dot mint"></span> RAG · pgvector</span>
+        <span><span class="dot amber"></span> Evolution API</span>
+        <span><span class="dot"></span> Next.js 16</span>
+        <span><span class="dot mint"></span> Drizzle + Postgres</span>
+        <span><span class="dot amber"></span> YOLOv8 / YOLO11</span>
+        <span><span class="dot"></span> Jetson Orin</span>
+        <span><span class="dot mint"></span> TensorRT INT8</span>
+        <span><span class="dot amber"></span> FPGA Gowin</span>
+        <span><span class="dot"></span> Verilog</span>
+        <span><span class="dot mint"></span> ESP32 / ESP32-CAM</span>
+        <span><span class="dot amber"></span> PyTorch Geometric</span>
+        <span><span class="dot"></span> Revit C# / .NET</span>
+        <span><span class="dot mint"></span> SAP2000 / ETABS</span>
+        <span><span class="dot amber"></span> OpenSeesPy</span>
       </div>
     </div>
   </section>
@@ -1273,6 +1291,39 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
       </header>
 
       <div class="highlights-grid">
+        <div class="hl reveal">
+          <div class="hl-icon"><i data-lucide="bot"></i></div>
+          <div class="hl-metric">42</div>
+          <div class="hl-title">Automatizaciones en producción</div>
+          <div class="hl-context">
+            Agentes y flujos operando sobre <strong>dos VPS propios</strong>: WhatsApp,
+            correo masivo, actas de Zoom, radar de licitaciones y paneles internos.
+            Inventario documentado, no una lista de ideas.
+          </div>
+        </div>
+
+        <div class="hl mint reveal">
+          <div class="hl-icon"><i data-lucide="file-search"></i></div>
+          <div class="hl-metric">60<span class="unit">/60</span></div>
+          <div class="hl-title">Ítems extraídos por el agente documental</div>
+          <div class="hl-context">
+            Oficio de supervisión vial en PDF nativo: clasificación del defecto,
+            progresiva y validación del plazo contractual. En escaneos reales el recall
+            baja, y por eso la <strong>revisión humana es obligatoria</strong> antes de emitir.
+          </div>
+        </div>
+
+        <div class="hl amber reveal">
+          <div class="hl-icon"><i data-lucide="library"></i></div>
+          <div class="hl-metric">113</div>
+          <div class="hl-title">Artículos en revisión sistemática</div>
+          <div class="hl-context">
+            Fichas normalizadas y matriz comparativa como base del artículo IEEE sobre
+            LLM + RAG + validación humana. <strong>Finalista nacional</strong> en Cátedra Civil,
+            XXXIII CONEIC Cusco 2026.
+          </div>
+        </div>
+
         <div class="hl reveal">
           <div class="hl-icon"><i data-lucide="trophy"></i></div>
           <div class="hl-metric">2° lugar</div>
@@ -1338,7 +1389,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
 
         <div class="hl amber reveal">
           <div class="hl-icon"><i data-lucide="layers"></i></div>
-          <div class="hl-metric">40<span class="unit">+</span></div>
+          <div class="hl-metric">47<span class="unit">+</span></div>
           <div class="hl-title">Proyectos entregados</div>
           <div class="hl-context">
             Plataformas web, agentes IA, sistemas de visión, hardware FPGA,
@@ -1369,24 +1420,539 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             <span class="sec-num">— 02</span>
             <span class="chip amber">Proyectos</span>
           </div>
-          <h2 class="sec-title">Lo que <span class="accent">construí</span> — enfocado en <span class="mint">AEC</span> + <span class="amber">electrónica</span>.</h2>
+          <h2 class="sec-title">Lo que <span class="accent">construí</span> — con foco en <span class="mint">IA aplicada</span>.</h2>
         </div>
         <p class="sec-desc">
-          Filtra por categoría. Plugins BIM, modelado estructural, visión EPP en obra,
-          edge AI con FPGA, investigación SHM y plataformas para la industria de la construcción.
+          Arranca por IA y agentes, que es donde está el trabajo reciente: plataformas de
+          automatización, extracción documental con LLMs y paneles internos. Debajo sigue todo
+          lo demás: visión en obra, investigación estructural, plugins BIM y hardware FPGA.
         </p>
       </header>
 
       <div class="cat-tabs" role="tablist">
-        <button class="cat-tab active" data-cat="all" role="tab">Todos <span class="count">31</span></button>
-        <button class="cat-tab" data-cat="bim" role="tab">AEC & BIM <span class="count">7</span></button>
-        <button class="cat-tab" data-cat="cv" role="tab">Visión EPP / Obra <span class="count">6</span></button>
-        <button class="cat-tab" data-cat="hw" role="tab">GAIATECH · Hardware FPGA <span class="count">8</span></button>
-        <button class="cat-tab" data-cat="research" role="tab">Investigación SHM <span class="count">8</span></button>
-        <button class="cat-tab" data-cat="aec-tech" role="tab">Inmobiliario + Licitaciones <span class="count">2</span></button>
+        <button class="cat-tab active" data-cat="all" role="tab">Todos <span class="count">47</span></button>
+        <button class="cat-tab" data-cat="ai" role="tab">IA &amp; Agentes <span class="count">16</span></button>
+        <button class="cat-tab" data-cat="cv" role="tab">Visión en obra <span class="count">6</span></button>
+        <button class="cat-tab" data-cat="research" role="tab">Investigación <span class="count">8</span></button>
+        <button class="cat-tab" data-cat="bim" role="tab">AEC &amp; BIM <span class="count">7</span></button>
+        <button class="cat-tab" data-cat="hw" role="tab">Hardware &amp; FPGA <span class="count">8</span></button>
+        <button class="cat-tab" data-cat="aec-tech" role="tab">Web &amp; producto <span class="count">2</span></button>
       </div>
 
       <div class="proj-grid" id="proj-grid">
+        <!-- ============ IA & AGENTES ============ -->
+        <article class="proj feat reveal" data-cat="ai">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Gen+ Agent Flow · motor propio</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
+            </div>
+            <img src="assets/images/panels/genflows-editor.png" alt="Agent Flow: editor de flujos con paleta de piezas" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Gen+ Agent Flow · Plataforma de agentes</h3>
+            <p class="proj-desc">Plataforma de automatización con agentes <strong>construida desde cero</strong>, no un n8n configurado: editor de canvas, catálogo de piezas (triggers, IA, integraciones), conexiones OAuth, ejecuciones con métricas de tokens y costo por corrida, y agentes conversacionales. <strong>5 flujos</strong> operando para equipos comerciales y de operaciones.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js 16</span><span class="tag">TypeScript</span><span class="tag">Drizzle + Postgres</span><span class="tag">OAuth Google</span><span class="tag">Claude / Gemini</span><span class="tag">MCP</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="ai">
+          <div class="proj-image stylish-bg" data-style="agents">
+            <div class="proj-image-tags">
+              <span class="proj-tag">GAIA FLOW · gestión vial</span>
+              <span class="proj-status live"><i data-lucide="check"></i> 3 flujos activos</span>
+            </div>
+            <div class="stylish-icon"><i data-lucide="workflow"></i></div>
+            <span class="stylish-label">FLOW ENGINE</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIA FLOW · Motor de flujos para vialidad</h3>
+            <p class="proj-desc">Fork propio del motor de flujos, especializado en conservación vial con piezas de extracción, validación de plazos y persistencia geoespacial. <strong>3 flujos en producción</strong>: órdenes por defecto no admitido, vigilancia de vencimientos e integración con el entorno documental del cliente.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js</span><span class="tag">PostGIS</span><span class="tag">pgvector</span><span class="tag">Docker</span><span class="tag">Gemini</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj feat reveal" data-cat="ai">
+          <div class="proj-image stylish-bg" data-style="chat">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Aecodito · agente de operaciones</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
+            </div>
+            <div class="stylish-icon"><i data-lucide="message-circle"></i></div>
+            <span class="stylish-label">WHATSAPP · n8n · GEMINI</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Aecodito · Agente de operaciones en WhatsApp</h3>
+            <p class="proj-desc">Agente que vive donde el equipo ya trabaja: responde consultas sobre cursos y procesos, <strong>compila la agenda del día a las 7am</strong> y dispara recordatorios. Detrás hay un centro de operaciones con <strong>~50 nodos</strong> de automatización encadenados.</p>
+            <div class="proj-meta">
+              <span class="tag">Evolution API</span><span class="tag">n8n</span><span class="tag">Gemini</span><span class="tag">WhatsApp</span><span class="tag">Postgres</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="ai">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">AECODE Live · eventos multi-tenant</span>
+            </div>
+            <img src="assets/images/panels/aecode-live-tickets.png" alt="AECODE Live: administracion de tipos de ticket del evento" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">AECODE Live · Plataforma de eventos</h3>
+            <p class="proj-desc">Página pública por evento, inscripción, tipos de ticket con aforo y precio, y emisión de certificados, con <strong>una instancia lógica por organización</strong>. Sustituye la cadena de formulario + hoja de cálculo + correo manual.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js 16</span><span class="tag">NextAuth</span><span class="tag">Drizzle</span><span class="tag">Postgres</span><span class="tag">QR</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj feat reveal" data-cat="ai">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Acta Studio · reuniones a acta</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
+            </div>
+            <img src="assets/images/panels/acta-dashboard.png" alt="Acta Studio: panel de actas automaticas" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Acta Studio · Actas automáticas de reuniones</h3>
+            <p class="proj-desc">Webhooks de <strong>5 cuentas Zoom</strong> disparan el pipeline: grabación, transcripción, acta estructurada con agenda, desarrollo y acuerdos, PDF y registro en el Sheet maestro. Inventario levantado sobre el histórico: <strong>496 sesiones, 1,598 horas</strong>.</p>
+            <div class="proj-meta">
+              <span class="tag">Zoom S2S webhooks</span><span class="tag">Next.js</span><span class="tag">Gemini</span><span class="tag">Google Sheets</span><span class="tag">PDF</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="ai">
+          <div class="proj-image stylish-bg" data-style="ticket">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Ticket Studio · credenciales</span>
+              <span class="proj-status live"><i data-lucide="check"></i> v2 en uso</span>
+            </div>
+            <div class="stylish-icon"><i data-lucide="ticket"></i></div>
+            <span class="stylish-label">LOTE · QR</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Ticket Studio v2 · Tickets por lote</h3>
+            <p class="proj-desc">Genera tickets y credenciales de evento desde base de datos: plantilla de diseño, lote masivo con QR único por asistente y despacho por correo. Nació para un diplomado y quedó como herramienta reutilizable.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js</span><span class="tag">QR</span><span class="tag">PDF</span><span class="tag">Postgres</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj feat reveal" data-cat="ai">
+          <div class="proj-image stylish-bg" data-style="docs">
+            <div class="proj-image-tags">
+              <span class="proj-tag">GAIA DOCS · extracción documental</span>
+              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> Piloto</span>
+            </div>
+            <div class="stylish-icon"><i data-lucide="file-search"></i></div>
+            <span class="stylish-label">LLM · OCR · HITL</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIA DOCS · Extracción documental con LLM</h3>
+            <p class="proj-desc">Lee oficios de supervisión vial y expedientes técnicos con un modelo multimodal: clasifica el defecto, ubica la progresiva, valida el plazo contractual y <strong>detecta discrepancias antes de que el plazo venza</strong>. Sobre oficio de prueba en PDF nativo recuperó <strong>60 de 60 ítems</strong>; en escaneos reales baja, y por eso la validación humana es obligatoria antes de emitir.</p>
+            <div class="proj-meta">
+              <span class="tag">Gemini 2.5 multimodal</span><span class="tag">OCR</span><span class="tag">HITL</span><span class="tag">Python</span><span class="tag">PostGIS + pgvector</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="ai">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Coord Studio · panel de coordinación</span>
+              <span class="proj-status live"><i data-lucide="check"></i> Desplegado</span>
+            </div>
+            <img src="assets/images/panels/coord-studio.png" alt="Coord Studio: tablero de areas y entregables" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Coord Studio · 14 áreas en un tablero</h3>
+            <p class="proj-desc">Panel de coordinación de un summit con <strong>14 áreas</strong>: entregables, responsables, estado y avance por área, sincronizado con la base de Notion que el equipo ya usaba. Desplegado en VPS propio.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js</span><span class="tag">Notion API</span><span class="tag">Postgres</span><span class="tag">VPS</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj feat reveal" data-cat="ai">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Email Studio · correo del equipo</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
+            </div>
+            <img src="assets/images/panels/email-certificados.png" alt="Email Studio: generacion y envio de certificados" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Email Studio · Envíos masivos y certificados</h3>
+            <p class="proj-desc">Editor con MJML, plantillas versionadas, segmentación de contactos y envío masivo desde cuenta propia con capacidad verificada de <strong>2,000 correos/día</strong>. Módulo de certificados que genera el documento por participante, lo previsualiza y lo despacha. Operable también desde el asistente vía MCP.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js</span><span class="tag">MJML</span><span class="tag">MCP</span><span class="tag">Postgres</span><span class="tag">SMTP</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="ai">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">AECODE Finder · búsqueda de perfiles</span>
+            </div>
+            <img src="assets/images/panels/finder-dashboard.png" alt="AECODE Finder: panel con empresas y metricas" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">AECODE Finder v2 · Búsqueda de perfiles</h3>
+            <p class="proj-desc">Agrega fuentes públicas, normaliza los datos y rankea empresas e instituciones según los criterios de la convocatoria, con contacto, estado de contacto y exportación. Reemplaza el rastreo manual en LinkedIn.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js</span><span class="tag">Python</span><span class="tag">Postgres</span><span class="tag">Gemini</span><span class="tag">Scraping</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj feat reveal" data-cat="ai">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Operaciones · dos organizaciones</span>
+              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> Local, deploy pendiente</span>
+            </div>
+            <img src="assets/images/panels/operaciones-aecode.png" alt="Panel de operaciones en tiempo real" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Panel de Operaciones · Consolidado ejecutivo</h3>
+            <p class="proj-desc">Un solo tablero para la operación y la facturación de dos organizaciones: consume la API del sistema contable del cliente, muestra ventas, comprobantes pendientes ante SUNAT, tasa de aceptación y top de clientes. Corriendo en local mientras se resuelve el acceso de red del cliente.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js</span><span class="tag">API REST</span><span class="tag">Postgres</span><span class="tag">Bearer auth</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="ai">
+          <div class="proj-image stylish-bg" data-style="dossier">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Brochure Studio · propuestas</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En uso</span>
+            </div>
+            <div class="stylish-icon"><i data-lucide="layout-template"></i></div>
+            <span class="stylish-label">PLANTILLAS · PDF</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Brochure Studio · Propuestas con plantilla</h3>
+            <p class="proj-desc">Editor de brochures y propuestas comerciales con plantillas de marca y export a PDF. Quita la dependencia de rearmar cada propuesta a mano en una herramienta de diseño.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js</span><span class="tag">HTML → PDF</span><span class="tag">Plantillas de marca</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj feat reveal" data-cat="ai">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Qawari AI · turismo andino</span>
+              <span class="proj-status award"><i data-lucide="medal"></i> Aprobado ProInnóvate</span>
+            </div>
+            <img src="assets/images/panels/qawari-demo.png" alt="Qawari AI: el turismo de Cusco se orquesta por IA" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Qawari AI · Turismo inteligente en el sur andino</h3>
+            <p class="proj-desc">Plataforma que arma itinerarios y contenido por destino con modelos de lenguaje, pensada para operadores turísticos del sur del país. <strong>Aprobada en la evaluación externa</strong> de Emprendimientos Innovadores Cusco 2026 (ProInnóvate): 25 seleccionadas de 147 postulaciones.</p>
+            <div class="proj-meta">
+              <span class="tag">Next.js</span><span class="tag">LLM</span><span class="tag">Postgres</span><span class="tag">Cofundador</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="ai">
+          <div class="proj-image stylish-bg" data-style="paper">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Artículo IEEE · LLM + RAG + HITL</span>
+              <span class="proj-status award"><i data-lucide="medal"></i> Finalista nacional</span>
+            </div>
+            <div class="stylish-icon"><i data-lucide="file-text"></i></div>
+            <span class="stylish-label">113 ARTÍCULOS</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Artículo IEEE · Agentes documentales en obra vial</h3>
+            <p class="proj-desc">Artículo sobre extracción documental con modelos de lenguaje, recuperación aumentada y validación humana aplicada al seguimiento de hallazgos contractuales en conservación vial. Base metodológica: <strong>revisión sistemática de 113 artículos</strong> con fichas normalizadas y matriz comparativa. <strong>Finalista nacional</strong>, Cátedra Civil XXXIII CONEIC (Cusco, agosto 2026).</p>
+            <div class="proj-meta">
+              <span class="tag">IEEE</span><span class="tag">RAG</span><span class="tag">HITL</span><span class="tag">Revisión sistemática</span><span class="tag">Contrafactual 2025</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="ai">
+          <div class="proj-image stylish-bg" data-style="media">
+            <div class="proj-image-tags">
+              <span class="proj-tag">adflow · contenido por nodos</span>
+              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> En construcción</span>
+            </div>
+            <div class="stylish-icon"><i data-lucide="git-fork"></i></div>
+            <span class="stylish-label">CANVAS · RENDER</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">adflow · Producción de contenido por nodos</h3>
+            <p class="proj-desc">Editor de piezas para redes sociales con grafo de nodos: composición en lienzo, variantes por plantilla y render por lotes a imagen o video. Canvas con Konva, render con skia y ffmpeg del lado del servidor.</p>
+            <div class="proj-meta">
+              <span class="tag">Konva</span><span class="tag">skia</span><span class="tag">ffmpeg</span><span class="tag">Node.js</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" data-cat="ai">
+          <div class="proj-image stylish-bg" data-style="voice">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Agente de voz · stand AI Summit</span>
+              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> Demo</span>
+            </div>
+            <div class="stylish-icon"><i data-lucide="mic"></i></div>
+            <span class="stylish-label">EDGE VOICE</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Agente de voz para stand presencial</h3>
+            <p class="proj-desc">Agente conversacional hablado para atender visitantes en el stand del AI Summit: captura de voz, transcripción y respuesta en audio con latencia baja, ejecutándose en el equipo del stand.</p>
+            <div class="proj-meta">
+              <span class="tag">STT / TTS</span><span class="tag">Edge</span><span class="tag">Python</span><span class="tag">Gemini</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ VISIÓN EN OBRA ============ -->
+        <article class="proj feat reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Vision Pro PDK · Edge AI obra</span>
+              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
+            </div>
+            <video src="assets/videos/vision-pro-pitch.mp4" autoplay muted loop playsinline poster="assets/images/emarc_vision_detection.png" preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Pitch · 75s</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Gen+ Vision Pro PDK</h3>
+            <p class="proj-desc">Plataforma multi-rol admin/cliente para monitoreo de obra: detección EPP <strong>YOLOv8 (11 clases · 87.67% mAP · 38 FPS)</strong>, dashboard métricas SVG, alertas sintéticas con filtros, reportes a casillas.</p>
+            <div class="proj-meta">
+              <span class="tag">YOLOv8</span><span class="tag">Jetson Orin Nano Super</span><span class="tag">TensorRT INT8</span><span class="tag">Next.js 16</span><span class="tag">pdk.visionproai.net</span>
+            </div>
+          </div>
+        </article>
+        <article class="proj reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Training Pipeline</span>
+              <span class="proj-status live"><i data-lucide="check"></i> Dataset 1182</span>
+            </div>
+            <img src="assets/images/labels_correlogram.jpg" alt="YOLOv8 cascos training" loading="lazy">
+            <span class="proj-video-tag"><span class="live-dot"></span> Roboflow 1182</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Vision Pro Cascos · Training</h3>
+            <p class="proj-desc">Fine-tune <strong>YOLO11s</strong> para detección de cascos. Dataset Roboflow 1182 imágenes. Scripts PyCharm, GPU RTX 4060.</p>
+            <div class="proj-meta">
+              <span class="tag">YOLO11s</span><span class="tag">Roboflow</span><span class="tag">PyTorch 2.5</span><span class="tag">CUDA 12</span>
+            </div>
+          </div>
+        </article>
+        <article class="proj reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Diseño HW · Edge</span>
+              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> Diseño v3</span>
+            </div>
+            <video src="assets/videos/vision-pro-demo.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Live demo</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Gen+ Cámaras Edge AI</h3>
+            <p class="proj-desc">2 subsistemas (interno Jetson Orin Nano Super + PTZ 4K solar). CAPEX <strong>S/ 27,633</strong> · 47% más barato que Lisual. Versión 3PAG.</p>
+            <div class="proj-meta">
+              <span class="tag">Jetson Orin</span><span class="tag">PTZ 4K</span><span class="tag">Panel solar</span><span class="tag">LTE/LoRa</span>
+            </div>
+          </div>
+        </article>
+        <article class="proj feat reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Reconocimiento facial + EPP</span>
+            </div>
+            <video src="assets/videos/vision-pro-demo-b.mp4" autoplay muted loop playsinline poster="assets/images/detecciónfacial.png" preload="metadata"></video>
+            <span class="proj-video-tag"><span class="live-dot"></span> Detect</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">ConstEdge — Acceso + EPP</h3>
+            <p class="proj-desc"><strong>DeepFace + ArcFace</strong> + YOLOv8 + 4 marcajes diarios + dashboard Vue.js + app móvil PWA. Reportes Excel con fotos embebidas, alertas tiempo real.</p>
+            <div class="proj-meta">
+              <span class="tag">DeepFace</span><span class="tag">ArcFace</span><span class="tag">YOLOv8</span><span class="tag">Vue.js</span><span class="tag">PWA</span>
+            </div>
+          </div>
+        </article>
+        <article class="proj reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">NLP · Clasificación riesgos</span>
+            </div>
+            <img src="assets/images/confusion_matrix_event.png" alt="NLP Riesgos" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Predicción de Riesgos Laborales</h3>
+            <p class="proj-desc">API FastAPI con <strong>DistilBERT</strong> que clasifica narrativas (naturaleza, parte del cuerpo, tipo de evento) + Toolbox Talks automáticos de 5 min para SSO en obra.</p>
+            <div class="proj-meta">
+              <span class="tag">FastAPI</span><span class="tag">DistilBERT</span><span class="tag">Hugging Face</span>
+            </div>
+          </div>
+        </article>
+        <article class="proj feat reveal" data-cat="cv">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">EMARC VISIÓN · Demo YouTube</span>
+              <span class="proj-status award"><i data-lucide="play-circle"></i> Video</span>
+            </div>
+            <div class="yt-embed">
+              <iframe src="https://www.youtube.com/embed/K500tgJHRiY?rel=0&modestbranding=1" title="EMARC VISIÓN Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">EMARC VISIÓN · Detección EPP (origen)</h3>
+            <p class="proj-desc">Versión original del sistema EPP que dio origen a Vision Pro PDK. Detección en tiempo real de cascos, chalecos y arnés sobre RTSP IP cam. <em>Predecesor del modelo YOLOv8 actual.</em></p>
+            <div class="proj-meta">
+              <span class="tag">YOLOv5</span><span class="tag">OpenCV</span><span class="tag">Python</span><span class="tag">RTSP</span><span class="tag">YouTube demo</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ INVESTIGACIÓN ============ -->
+        <article class="proj feat reveal" data-cat="research">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Paper · Elsevier Structures</span>
+              <span class="proj-status award"><i data-lucide="file-text"></i> Paper-ready</span>
+            </div>
+            <div class="img-grid-2">
+              <img src="assets/images/GRAPHOS/Figure_3_Performance_Bar.png" alt="MISM-GNN performance bar" loading="lazy">
+              <img src="assets/images/GRAPHOS/Figure_3_Graph_Comparison.png" alt="MISM-GNN graph comparison" loading="lazy">
+            </div>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Artículo MISM-GNN · Puente Junín</h3>
+            <p class="proj-desc">Aplicación de Multi-Input Structural Modal GNN al <strong>Puente Junín</strong> (Lima): arco atirantado, 72 nodos, 123 frames, luz 51 m. <strong>R² = 0.998</strong> vs 0.999 FFNN — con <strong>65× menos parámetros</strong>. 4 tablas + 15 figuras PDF, listo para manuscrito Elsevier <em>Structures</em> (IF 4.1).</p>
+            <div class="proj-meta">
+              <span class="tag">PyTorch Geometric</span><span class="tag">GNN</span><span class="tag">PINN</span><span class="tag">DWT/FFT/CWT</span><span class="tag">OpenSeesPy</span>
+            </div>
+          </div>
+        </article>
+        <article class="proj feat reveal" data-cat="research">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">PROCIENCIA 2026 · S/ 896k</span>
+              <span class="proj-status award"><i data-lucide="award"></i> 36 meses</span>
+            </div>
+            <img src="assets/images/GRAPHOS/figure_2_graph_topology.png" alt="GNN topology G1" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIATECH G1 · Agroecología Andina</h3>
+            <p class="proj-desc">Postulación PROCIENCIA — Agroecología Andina (CONCYTEC × Fundación McKnight) hasta <strong>S/ 896,400</strong>. 5 capas: edge sin internet + IA + satelital + chatbot + marketplace. Alianza INIA Illpa-Puno. Línea base verificable (haba, trigo, avena · 8.5 ha · 30.98 t).</p>
+            <div class="proj-meta">
+              <span class="tag">ESP32-CAM + FPGA</span><span class="tag">Sentinel-2</span><span class="tag">INIA</span><span class="tag">PostGIS</span><span class="tag">LoRa</span>
+            </div>
+          </div>
+        </article>
+        <article class="proj reveal" data-cat="research">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">ProCiencia · FPGA Dual</span>
+            </div>
+            <img src="assets/images/GRAPHOS/Figure_2_Wavelet_Decomposition.png" alt="Wavelet decomposition" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">ProCiencia Tesis 2026 · FPGA Dual + Cercha Bailey</h3>
+            <p class="proj-desc">Maqueta 1:10 + <strong>FPGA dual</strong> (FFT + GNN cuantizada) + 4 tipos de daño estructural. 2 papers esperados. Cierre 19-jun, S/ 30k.</p>
+            <div class="proj-meta">
+              <span class="tag">Cercha Bailey</span><span class="tag">FPGA dual</span><span class="tag">GNN quantized</span><span class="tag">SHM</span>
+            </div>
+          </div>
+        </article>
+        <article class="proj reveal" data-cat="research">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Co-dirección · PINN+GNN</span>
+            </div>
+            <img src="assets/images/GRAPHOS/Fig1-3_graph_comparison_NOTORIO.png" alt="PINN-GNN graph comparison" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Investigación PINN-GNN</h3>
+            <p class="proj-desc">Modelos híbridos <strong>Physics-Informed Neural Networks + Graph Neural Networks</strong> para detección no supervisada de anomalías en infraestructura civil. APA 7 + figuras paper-ready.</p>
+            <div class="proj-meta">
+              <span class="tag">PINN</span><span class="tag">GNN</span><span class="tag">PyTorch</span>
+            </div>
+          </div>
+        </article>
+        <article class="proj reveal" data-cat="research">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">IDI UPC · MEMS + ETL</span>
+            </div>
+            <img src="assets/images/GRAPHOS/Figure_1_Spectral_Dashboard.png" alt="Spectral dashboard IDI" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">IDI UPC · Director Investigaciones IA/SHM</h3>
+            <p class="proj-desc">Equipo multidisciplinario (8 estudiantes) en modelos PINN-GNN. Red de sensores MEMS + RPi. Pipeline ETL + features + dashboards Plotly.</p>
+            <div class="proj-meta">
+              <span class="tag">MEMS</span><span class="tag">Arduino</span><span class="tag">Plotly/Dash</span><span class="tag">ETL</span>
+            </div>
+          </div>
+        </article>
+        <article class="proj reveal" data-cat="research">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Pathology Detector · CNN</span>
+              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> En progreso</span>
+            </div>
+            <img src="assets/images/confusion_matrix.png" alt="Pathology Detector ResNet18" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIATECH Pathology Detector</h3>
+            <p class="proj-desc">Clasificación automática de <strong>12 tipos de patologías</strong> estructurales sobre fotos de campo. <strong>ResNet18 Acc=0.856 / AUC=0.901</strong>. ViT integrado en CNN Cracks (983 MB pesos, 400 imgs). Captura via ESP32-CAM. Pipeline YOLOv8 con bounding boxes en construcción.</p>
+            <div class="proj-meta">
+              <span class="tag">ResNet18</span><span class="tag">ViT</span><span class="tag">YOLOv8</span><span class="tag">ESP32-CAM</span><span class="tag">PyTorch</span>
+            </div>
+          </div>
+        </article>
+        <article class="proj reveal" data-cat="research">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Repair Advisor · cotizador</span>
+              <span class="proj-status live"><i data-lucide="check"></i> Funcional</span>
+            </div>
+            <img src="assets/images/panels/gaiatech-shm-agents.jpg" alt="Repair Advisor cotizador" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIATECH Repair Advisor</h3>
+            <p class="proj-desc">Cotizador automático para <strong>12 patologías</strong> (PEN/USD + IGV 18%). Matriz de prioridad <strong>urgencia × impacto × costo-eficiencia</strong>. Base de datos de <strong>30+ métodos de reparación</strong> + descripción técnica y costos referenciales por m² / m / unidad.</p>
+            <div class="proj-meta">
+              <span class="tag">Streamlit</span><span class="tag">FastAPI</span><span class="tag">30+ métodos</span><span class="tag">Claude API</span>
+            </div>
+          </div>
+        </article>
+        <article class="proj feat reveal" data-cat="research">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Minería · LRAC + Relaves</span>
+              <span class="proj-status award"><i data-lucide="medal"></i> Convocatoria 2026</span>
+            </div>
+            <div class="img-grid-2">
+              <img src="assets/images/panels/bridge-render.png" alt="Render puente GAIATECH" loading="lazy">
+              <img src="assets/images/panels/yolo-epp-obra.png" alt="YOLOv8 EPP en obra" loading="lazy">
+            </div>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">GAIATECH M1.0 · Seguridad minera</h3>
+            <p class="proj-desc">Plataforma de <strong>seguridad minera con IA visual + agentes autónomos + monitoreo estructural</strong> para gran minería del cobre en Apurímac. Integra ConstEdge (EPP + biometría), Vision PDK (11 clases YOLOv8) y VIGÍA (FFT FPGA + LSTM-AE). Caso 1: Sistema LRAC. Caso 2: Gestión de relaves.</p>
+            <div class="proj-meta">
+              <span class="tag">LRAC</span><span class="tag">ICMM Life-saving Rules</span><span class="tag">GISTM Relaves</span><span class="tag">Aecodito Minero</span><span class="tag">DS 024-2016-EM</span>
+            </div>
+          </div>
+        </article>
 
         <!-- ============ AEC & BIM ============ -->
         <article class="proj feat reveal" data-cat="bim">
@@ -1410,7 +1976,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             </div>
           </div>
         </article>
-
         <article class="proj reveal" data-cat="bim">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1426,7 +1991,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             </div>
           </div>
         </article>
-
         <article class="proj reveal" data-cat="bim">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1442,7 +2006,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             </div>
           </div>
         </article>
-
         <article class="proj feat reveal" data-cat="bim">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1464,7 +2027,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             </div>
           </div>
         </article>
-
         <article class="proj reveal" data-cat="bim">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1485,7 +2047,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             </div>
           </div>
         </article>
-
         <article class="proj feat reveal" data-cat="bim">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1507,7 +2068,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             </div>
           </div>
         </article>
-
         <article class="proj reveal" data-cat="bim">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1529,114 +2089,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           </div>
         </article>
 
-        <!-- ============ VISIÓN EPP / OBRA ============ -->
-        <article class="proj feat reveal" data-cat="cv">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Vision Pro PDK · Edge AI obra</span>
-              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
-            </div>
-            <video src="assets/videos/vision-pro-pitch.mp4" autoplay muted loop playsinline poster="assets/images/emarc_vision_detection.png" preload="metadata"></video>
-            <span class="proj-video-tag"><span class="live-dot"></span> Pitch · 75s</span>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Gen+ Vision Pro PDK</h3>
-            <p class="proj-desc">Plataforma multi-rol admin/cliente para monitoreo de obra: detección EPP <strong>YOLOv8 (11 clases · 87.67% mAP · 38 FPS)</strong>, dashboard métricas SVG, alertas sintéticas con filtros, reportes a casillas.</p>
-            <div class="proj-meta">
-              <span class="tag">YOLOv8</span><span class="tag">Jetson Orin Nano Super</span><span class="tag">TensorRT INT8</span><span class="tag">Next.js 16</span><span class="tag">pdk.visionproai.net</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="cv">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Training Pipeline</span>
-              <span class="proj-status live"><i data-lucide="check"></i> Dataset 1182</span>
-            </div>
-            <img src="assets/images/labels_correlogram.jpg" alt="YOLOv8 cascos training" loading="lazy">
-            <span class="proj-video-tag"><span class="live-dot"></span> Roboflow 1182</span>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Vision Pro Cascos · Training</h3>
-            <p class="proj-desc">Fine-tune <strong>YOLO11s</strong> para detección de cascos. Dataset Roboflow 1182 imágenes. Scripts PyCharm, GPU RTX 4060.</p>
-            <div class="proj-meta">
-              <span class="tag">YOLO11s</span><span class="tag">Roboflow</span><span class="tag">PyTorch 2.5</span><span class="tag">CUDA 12</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="cv">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Diseño HW · Edge</span>
-              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> Diseño v3</span>
-            </div>
-            <video src="assets/videos/vision-pro-demo.mp4" autoplay muted loop playsinline preload="metadata"></video>
-            <span class="proj-video-tag"><span class="live-dot"></span> Live demo</span>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Gen+ Cámaras Edge AI</h3>
-            <p class="proj-desc">2 subsistemas (interno Jetson Orin Nano Super + PTZ 4K solar). CAPEX <strong>S/ 27,633</strong> · 47% más barato que Lisual. Versión 3PAG.</p>
-            <div class="proj-meta">
-              <span class="tag">Jetson Orin</span><span class="tag">PTZ 4K</span><span class="tag">Panel solar</span><span class="tag">LTE/LoRa</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj feat reveal" data-cat="cv">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Reconocimiento facial + EPP</span>
-            </div>
-            <video src="assets/videos/vision-pro-demo-b.mp4" autoplay muted loop playsinline poster="assets/images/detecciónfacial.png" preload="metadata"></video>
-            <span class="proj-video-tag"><span class="live-dot"></span> Detect</span>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">ConstEdge — Acceso + EPP</h3>
-            <p class="proj-desc"><strong>DeepFace + ArcFace</strong> + YOLOv8 + 4 marcajes diarios + dashboard Vue.js + app móvil PWA. Reportes Excel con fotos embebidas, alertas tiempo real.</p>
-            <div class="proj-meta">
-              <span class="tag">DeepFace</span><span class="tag">ArcFace</span><span class="tag">YOLOv8</span><span class="tag">Vue.js</span><span class="tag">PWA</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="cv">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">NLP · Clasificación riesgos</span>
-            </div>
-            <img src="assets/images/confusion_matrix_event.png" alt="NLP Riesgos" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Predicción de Riesgos Laborales</h3>
-            <p class="proj-desc">API FastAPI con <strong>DistilBERT</strong> que clasifica narrativas (naturaleza, parte del cuerpo, tipo de evento) + Toolbox Talks automáticos de 5 min para SSO en obra.</p>
-            <div class="proj-meta">
-              <span class="tag">FastAPI</span><span class="tag">DistilBERT</span><span class="tag">Hugging Face</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj feat reveal" data-cat="cv">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">EMARC VISIÓN · Demo YouTube</span>
-              <span class="proj-status award"><i data-lucide="play-circle"></i> Video</span>
-            </div>
-            <div class="yt-embed">
-              <iframe src="https://www.youtube.com/embed/K500tgJHRiY?rel=0&modestbranding=1" title="EMARC VISIÓN Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            </div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">EMARC VISIÓN · Detección EPP (origen)</h3>
-            <p class="proj-desc">Versión original del sistema EPP que dio origen a Vision Pro PDK. Detección en tiempo real de cascos, chalecos y arnés sobre RTSP IP cam. <em>Predecesor del modelo YOLOv8 actual.</em></p>
-            <div class="proj-meta">
-              <span class="tag">YOLOv5</span><span class="tag">OpenCV</span><span class="tag">Python</span><span class="tag">RTSP</span><span class="tag">YouTube demo</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- ============ HARDWARE FPGA & IoT ============ -->
+        <!-- ============ HARDWARE & FPGA ============ -->
         <article class="proj feat reveal" data-cat="hw">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1656,7 +2109,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             </div>
           </div>
         </article>
-
         <article class="proj feat reveal" data-cat="hw">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1674,7 +2126,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             </div>
           </div>
         </article>
-
         <article class="proj reveal" data-cat="hw">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1692,7 +2143,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             </div>
           </div>
         </article>
-
         <article class="proj feat reveal" data-cat="hw">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1708,7 +2158,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             </div>
           </div>
         </article>
-
         <article class="proj reveal" data-cat="hw">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1726,7 +2175,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             </div>
           </div>
         </article>
-
         <article class="proj reveal" data-cat="hw">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1742,7 +2190,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             </div>
           </div>
         </article>
-
         <article class="proj reveal" data-cat="hw">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1758,7 +2205,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             </div>
           </div>
         </article>
-
         <article class="proj reveal" data-cat="hw">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1775,147 +2221,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           </div>
         </article>
 
-        <!-- ============ INVESTIGACIÓN SHM ============ -->
-        <article class="proj feat reveal" data-cat="research">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Paper · Elsevier Structures</span>
-              <span class="proj-status award"><i data-lucide="file-text"></i> Paper-ready</span>
-            </div>
-            <div class="img-grid-2">
-              <img src="assets/images/GRAPHOS/Figure_3_Performance_Bar.png" alt="MISM-GNN performance bar" loading="lazy">
-              <img src="assets/images/GRAPHOS/Figure_3_Graph_Comparison.png" alt="MISM-GNN graph comparison" loading="lazy">
-            </div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Artículo MISM-GNN · Puente Junín</h3>
-            <p class="proj-desc">Aplicación de Multi-Input Structural Modal GNN al <strong>Puente Junín</strong> (Lima): arco atirantado, 72 nodos, 123 frames, luz 51 m. <strong>R² = 0.998</strong> vs 0.999 FFNN — con <strong>65× menos parámetros</strong>. 4 tablas + 15 figuras PDF, listo para manuscrito Elsevier <em>Structures</em> (IF 4.1).</p>
-            <div class="proj-meta">
-              <span class="tag">PyTorch Geometric</span><span class="tag">GNN</span><span class="tag">PINN</span><span class="tag">DWT/FFT/CWT</span><span class="tag">OpenSeesPy</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj feat reveal" data-cat="research">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">PROCIENCIA 2026 · S/ 896k</span>
-              <span class="proj-status award"><i data-lucide="award"></i> 36 meses</span>
-            </div>
-            <img src="assets/images/GRAPHOS/figure_2_graph_topology.png" alt="GNN topology G1" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">GAIATECH G1 · Agroecología Andina</h3>
-            <p class="proj-desc">Postulación PROCIENCIA — Agroecología Andina (CONCYTEC × Fundación McKnight) hasta <strong>S/ 896,400</strong>. 5 capas: edge sin internet + IA + satelital + chatbot + marketplace. Alianza INIA Illpa-Puno. Línea base verificable (haba, trigo, avena · 8.5 ha · 30.98 t).</p>
-            <div class="proj-meta">
-              <span class="tag">ESP32-CAM + FPGA</span><span class="tag">Sentinel-2</span><span class="tag">INIA</span><span class="tag">PostGIS</span><span class="tag">LoRa</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="research">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">ProCiencia · FPGA Dual</span>
-            </div>
-            <img src="assets/images/GRAPHOS/Figure_2_Wavelet_Decomposition.png" alt="Wavelet decomposition" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">ProCiencia Tesis 2026 · FPGA Dual + Cercha Bailey</h3>
-            <p class="proj-desc">Maqueta 1:10 + <strong>FPGA dual</strong> (FFT + GNN cuantizada) + 4 tipos de daño estructural. 2 papers esperados. Cierre 19-jun, S/ 30k.</p>
-            <div class="proj-meta">
-              <span class="tag">Cercha Bailey</span><span class="tag">FPGA dual</span><span class="tag">GNN quantized</span><span class="tag">SHM</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="research">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Co-dirección · PINN+GNN</span>
-            </div>
-            <img src="assets/images/GRAPHOS/Fig1-3_graph_comparison_NOTORIO.png" alt="PINN-GNN graph comparison" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">Investigación PINN-GNN</h3>
-            <p class="proj-desc">Modelos híbridos <strong>Physics-Informed Neural Networks + Graph Neural Networks</strong> para detección no supervisada de anomalías en infraestructura civil. APA 7 + figuras paper-ready.</p>
-            <div class="proj-meta">
-              <span class="tag">PINN</span><span class="tag">GNN</span><span class="tag">PyTorch</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="research">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">IDI UPC · MEMS + ETL</span>
-            </div>
-            <img src="assets/images/GRAPHOS/Figure_1_Spectral_Dashboard.png" alt="Spectral dashboard IDI" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">IDI UPC · Director Investigaciones IA/SHM</h3>
-            <p class="proj-desc">Equipo multidisciplinario (8 estudiantes) en modelos PINN-GNN. Red de sensores MEMS + RPi. Pipeline ETL + features + dashboards Plotly.</p>
-            <div class="proj-meta">
-              <span class="tag">MEMS</span><span class="tag">Arduino</span><span class="tag">Plotly/Dash</span><span class="tag">ETL</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="research">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Pathology Detector · CNN</span>
-              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> En progreso</span>
-            </div>
-            <img src="assets/images/confusion_matrix.png" alt="Pathology Detector ResNet18" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">GAIATECH Pathology Detector</h3>
-            <p class="proj-desc">Clasificación automática de <strong>12 tipos de patologías</strong> estructurales sobre fotos de campo. <strong>ResNet18 Acc=0.856 / AUC=0.901</strong>. ViT integrado en CNN Cracks (983 MB pesos, 400 imgs). Captura via ESP32-CAM. Pipeline YOLOv8 con bounding boxes en construcción.</p>
-            <div class="proj-meta">
-              <span class="tag">ResNet18</span><span class="tag">ViT</span><span class="tag">YOLOv8</span><span class="tag">ESP32-CAM</span><span class="tag">PyTorch</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj reveal" data-cat="research">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Repair Advisor · cotizador</span>
-              <span class="proj-status live"><i data-lucide="check"></i> Funcional</span>
-            </div>
-            <img src="assets/images/panels/gaiatech-shm-agents.jpg" alt="Repair Advisor cotizador" loading="lazy">
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">GAIATECH Repair Advisor</h3>
-            <p class="proj-desc">Cotizador automático para <strong>12 patologías</strong> (PEN/USD + IGV 18%). Matriz de prioridad <strong>urgencia × impacto × costo-eficiencia</strong>. Base de datos de <strong>30+ métodos de reparación</strong> + descripción técnica y costos referenciales por m² / m / unidad.</p>
-            <div class="proj-meta">
-              <span class="tag">Streamlit</span><span class="tag">FastAPI</span><span class="tag">30+ métodos</span><span class="tag">Claude API</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj feat reveal" data-cat="research">
-          <div class="proj-image">
-            <div class="proj-image-tags">
-              <span class="proj-tag">Minería · LRAC + Relaves</span>
-              <span class="proj-status award"><i data-lucide="medal"></i> Convocatoria 2026</span>
-            </div>
-            <div class="img-grid-2">
-              <img src="assets/images/panels/bridge-render.png" alt="Render puente GAIATECH" loading="lazy">
-              <img src="assets/images/panels/yolo-epp-obra.png" alt="YOLOv8 EPP en obra" loading="lazy">
-            </div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-title">GAIATECH M1.0 · Seguridad minera</h3>
-            <p class="proj-desc">Plataforma de <strong>seguridad minera con IA visual + agentes autónomos + monitoreo estructural</strong> para gran minería del cobre en Apurímac. Integra ConstEdge (EPP + biometría), Vision PDK (11 clases YOLOv8) y VIGÍA (FFT FPGA + LSTM-AE). Caso 1: Sistema LRAC. Caso 2: Gestión de relaves.</p>
-            <div class="proj-meta">
-              <span class="tag">LRAC</span><span class="tag">ICMM Life-saving Rules</span><span class="tag">GISTM Relaves</span><span class="tag">Aecodito Minero</span><span class="tag">DS 024-2016-EM</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- ============ INMOBILIARIO + LICITACIONES ============ -->
+        <!-- ============ WEB & PRODUCTO ============ -->
         <article class="proj feat reveal" data-cat="aec-tech">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1933,7 +2239,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
             </div>
           </div>
         </article>
-
         <article class="proj reveal" data-cat="aec-tech">
           <div class="proj-image">
             <div class="proj-image-tags">
@@ -1973,11 +2278,11 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
       </header>
 
       <div class="stack-grid">
+        <div class="stack-card"><h4><i data-lucide="bot"></i> Agentes IA & LLMs</h4>
+          <div class="stack-tags"><span class="tag">Claude Code / Opus</span><span class="tag">MCP</span><span class="tag">n8n avanzado</span><span class="tag">Agent Flow (propio)</span><span class="tag">Evolution API</span><span class="tag">Vercel AI SDK</span><span class="tag">Gemini multimodal</span><span class="tag">RAG + HITL</span></div>
+        </div>
         <div class="stack-card"><h4><i data-lucide="brain-circuit"></i> IA & Computer Vision</h4>
           <div class="stack-tags"><span class="tag">PyTorch</span><span class="tag">YOLOv8/v11</span><span class="tag">SegFormer</span><span class="tag">DeepFace · ArcFace</span><span class="tag">PyTorch Geometric</span><span class="tag">LSTM/GRU</span><span class="tag">Hugging Face</span><span class="tag">TensorRT INT8</span></div>
-        </div>
-        <div class="stack-card"><h4><i data-lucide="bot"></i> Agentes IA & LLMs</h4>
-          <div class="stack-tags"><span class="tag">n8n avanzado</span><span class="tag">Activepieces</span><span class="tag">MCP</span><span class="tag">Evolution API</span><span class="tag">Vercel AI SDK</span><span class="tag">Claude/Gemini/Qwen</span><span class="tag">Mastra</span></div>
         </div>
         <div class="stack-card"><h4><i data-lucide="cpu"></i> Hardware & IoT</h4>
           <div class="stack-tags"><span class="tag">FPGA Gowin GW1NR-9</span><span class="tag">Verilog/VHDL</span><span class="tag">ESP32 / C6</span><span class="tag">Arduino</span><span class="tag">RPi 5 + Hailo-8</span><span class="tag">Jetson Orin Nano Super</span><span class="tag">MEMS</span><span class="tag">LoRa SX1262</span></div>
@@ -2270,7 +2575,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
   });
 
   console.log('%c Emanuel Ancco · Portfolio v4 ', 'background: linear-gradient(135deg, oklch(0.62 0.25 285), oklch(0.80 0.18 165)); color: white; font-weight: 700; padding: 8px 16px; font-size: 13px;');
-  console.log('%c 40+ proyectos · Construyo sistemas de extremo a extremo ', 'color: oklch(0.80 0.18 165); font-family: monospace;');
+  console.log('%c 47 proyectos · IA aplicada a la construccion ', 'color: oklch(0.80 0.18 165); font-family: monospace;');
   console.log('Tip: pulsa T para alternar tema');
 </script>
 

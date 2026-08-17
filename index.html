@@ -1080,6 +1080,44 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
 }
 .footer-social a:hover { background: var(--brand); border-color: var(--brand); color: white; transform: translateY(-3px) rotate(-3deg); }
 
+/* ============ DOCENCIA ============ */
+.course-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem; margin-bottom: 3.5rem;
+}
+.course {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: var(--r-xl); padding: 1.6rem 1.5rem 1.5rem;
+  display: flex; flex-direction: column; gap: 0.6rem;
+  position: relative; overflow: hidden;
+  transition: border-color 300ms, transform 300ms cubic-bezier(0.2,0.8,0.2,1);
+}
+.course::before {
+  content: ''; position: absolute; inset: 0 auto 0 0; width: 3px;
+  background: linear-gradient(180deg, var(--brand), var(--mint));
+  opacity: 0.85;
+}
+.course:hover { border-color: oklch(from var(--brand) l c h / 0.45); transform: translateY(-3px); }
+.course-role {
+  font-family: var(--font-mono); font-size: var(--s--2); font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: oklch(from var(--mint) l c h / 0.95);
+}
+.course h3 { font-size: var(--s-0); line-height: 1.25; margin: 0; }
+.course-org { font-size: var(--s--1); color: var(--text-dim); margin: 0; }
+.course-desc { font-size: var(--s--1); color: var(--text-2); margin: 0.2rem 0 0.6rem; line-height: 1.6; }
+.course .proj-meta { margin-top: auto; }
+.teach-sub {
+  font-size: var(--s-1); margin-bottom: 0.4rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.teach-sub::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+.teach-note { color: var(--text-dim); font-size: var(--s--1); margin-bottom: 1.5rem; max-width: 62ch; }
+#teach-grid .proj-image video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #000; }
+
 /* ============ SCROLL REVEAL ============ */
 .reveal {
   opacity: 0; transform: translateY(28px);
@@ -1132,6 +1170,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
       <a href="#hero">Inicio</a>
       <a href="#highlights">Highlights</a>
       <a href="#proyectos">Proyectos</a>
+      <a href="#docencia">Docencia</a>
       <a href="#stack">Stack</a>
       <a href="#experiencia">Experiencia</a>
       <a href="#contacto">Contacto</a>
@@ -1168,9 +1207,8 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
         </div>
 
         <h1 class="hero-headline">
-          Construyo <span class="serif" style="color: var(--brand);">agentes de IA</span><br>
-          y <span class="serif" style="color: var(--mint);">visión en obra</span><br>
-          sobre la <span class="word">data</span> de la construcción.
+          Construyo <span class="serif" style="color: var(--brand);">IA</span> que
+          trabaja en <span class="word">obra</span>.
         </h1>
 
         <p class="hero-sub">
@@ -1445,7 +1483,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
   <div class="proj-image">
     <div class="proj-image-tags">
       <span class="proj-tag">Gen+ Agent Flow · motor propio</span>
-      <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
     </div>
     <img src="assets/images/panels/genflows-editor.png" alt="Agent Flow: editor de flujos con paleta de piezas" loading="lazy">
   </div>
@@ -1461,7 +1498,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
   <div class="proj-image">
     <div class="proj-image-tags">
       <span class="proj-tag">GAIA FLOW · self-hosted</span>
-      <span class="proj-status live"><i data-lucide="check"></i> En línea</span>
     </div>
     <img src="assets/images/panels/gaiaflow-landing.png" alt="GAIA FLOW: generador de flujos con IA, self-hosted" loading="lazy">
   </div>
@@ -1477,7 +1513,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
   <div class="proj-image">
     <div class="proj-image-tags">
       <span class="proj-tag">Aecodito · arquitectura real</span>
-      <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
     </div>
     <img src="assets/images/panels/aecodito-arquitectura.png" alt="Arquitectura de Aecodito: WhatsApp, n8n, agente Gemini con RAG y TTS" loading="lazy">
   </div>
@@ -1508,7 +1543,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
   <div class="proj-image">
     <div class="proj-image-tags">
       <span class="proj-tag">GAIA DOCS · centro de control</span>
-      <span class="proj-status r-and-d"><i data-lucide="hammer"></i> Piloto</span>
     </div>
     <img src="assets/images/panels/gaiadocs-npci.png" alt="Centro de control: items por progresiva, semaforo de plazos y riesgo acumulado" loading="lazy">
   </div>
@@ -1524,7 +1558,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
   <div class="proj-image">
     <div class="proj-image-tags">
       <span class="proj-tag">War Room · incidencias en vivo</span>
-      <span class="proj-status live"><i data-lucide="check"></i> Usado en evento</span>
     </div>
     <img src="assets/images/panels/tickets-modal.png" alt="War Room: tablero de incidencias y alta de ticket con clasificacion por IA" loading="lazy">
   </div>
@@ -1540,7 +1573,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
   <div class="proj-image">
     <div class="proj-image-tags">
       <span class="proj-tag">Acta Studio · reuniones a acta</span>
-      <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
     </div>
     <img src="assets/images/panels/acta-dashboard.png" alt="Acta Studio: panel de actas automaticas" loading="lazy">
   </div>
@@ -1556,7 +1588,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
   <div class="proj-image">
     <div class="proj-image-tags">
       <span class="proj-tag">Qawari AI · turismo andino</span>
-      <span class="proj-status r-and-d"><i data-lucide="hammer"></i> Producto</span>
     </div>
     <img src="assets/images/panels/qawari-demo.png" alt="Qawari AI: el turismo de Cusco se orquesta por IA" loading="lazy">
   </div>
@@ -1574,7 +1605,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">3D Tour · Inmobiliario</span>
-              <span class="proj-status live"><i data-lucide="check"></i> Entregado</span>
             </div>
             <video src="assets/videos/ainy-inmobiliaria.mp4" autoplay muted loop playsinline preload="metadata"></video>
             <span class="proj-video-tag"><span class="live-dot"></span> Tour 3D</span>
@@ -1591,7 +1621,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">Scraper · Licitaciones SEACE</span>
-              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> v1 build</span>
             </div>
             <img src="assets/images/panels/seace-radar.png" alt="SEACE Radar · panel" loading="lazy">
           </div>
@@ -1607,7 +1636,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
   <div class="proj-image">
     <div class="proj-image-tags">
       <span class="proj-tag">Email Studio · correo del equipo</span>
-      <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
     </div>
     <img src="assets/images/panels/email-certificados.png" alt="Email Studio: generacion y envio de certificados" loading="lazy">
   </div>
@@ -1638,7 +1666,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
   <div class="proj-image">
     <div class="proj-image-tags">
       <span class="proj-tag">Operaciones · dos organizaciones</span>
-      <span class="proj-status r-and-d"><i data-lucide="hammer"></i> Local, deploy pendiente</span>
     </div>
     <img src="assets/images/panels/operaciones-aecode.png" alt="Panel de operaciones en tiempo real" loading="lazy">
   </div>
@@ -1654,7 +1681,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
   <div class="proj-image">
     <div class="proj-image-tags">
       <span class="proj-tag">Coord Studio · panel de coordinación</span>
-      <span class="proj-status live"><i data-lucide="check"></i> Desplegado</span>
     </div>
     <img src="assets/images/panels/coord-studio.png" alt="Coord Studio: tablero de areas y entregables" loading="lazy">
   </div>
@@ -1672,7 +1698,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">Vision Pro PDK · Edge AI obra</span>
-              <span class="proj-status live"><i data-lucide="check"></i> En producción</span>
             </div>
             <video src="assets/videos/vision-pro-pitch.mp4" autoplay muted loop playsinline poster="assets/images/emarc_vision_detection.png" preload="metadata"></video>
             <span class="proj-video-tag"><span class="live-dot"></span> Pitch · 75s</span>
@@ -1689,7 +1714,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">Training Pipeline</span>
-              <span class="proj-status live"><i data-lucide="check"></i> Dataset 1182</span>
             </div>
             <img src="assets/images/labels_correlogram.jpg" alt="YOLOv8 cascos training" loading="lazy">
             <span class="proj-video-tag"><span class="live-dot"></span> Roboflow 1182</span>
@@ -1722,7 +1746,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">Diseño HW · Edge</span>
-              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> Diseño v3</span>
             </div>
             <video src="assets/videos/vision-pro-demo.mp4" autoplay muted loop playsinline preload="metadata"></video>
             <span class="proj-video-tag"><span class="live-dot"></span> Live demo</span>
@@ -1739,7 +1762,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">EMARC VISIÓN · Demo YouTube</span>
-              <span class="proj-status award"><i data-lucide="play-circle"></i> Video</span>
             </div>
             <div class="yt-embed">
               <iframe src="https://www.youtube.com/embed/K500tgJHRiY?rel=0&modestbranding=1" title="EMARC VISIÓN Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
@@ -1774,7 +1796,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">Paper · Elsevier Structures</span>
-              <span class="proj-status award"><i data-lucide="file-text"></i> Paper-ready</span>
             </div>
             <div class="img-grid-2">
               <img src="assets/images/GRAPHOS/Figure_3_Performance_Bar.png" alt="MISM-GNN performance bar" loading="lazy">
@@ -1808,7 +1829,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">PROCIENCIA 2026 · S/ 896k</span>
-              <span class="proj-status award"><i data-lucide="award"></i> 36 meses</span>
             </div>
             <img src="assets/images/GRAPHOS/figure_2_graph_topology.png" alt="GNN topology G1" loading="lazy">
           </div>
@@ -1839,7 +1859,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">Minería · LRAC + Relaves</span>
-              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> En desarrollo</span>
             </div>
             <div class="img-grid-2">
               <img src="assets/images/panels/bridge-render.png" alt="Render puente GAIATECH" loading="lazy">
@@ -1873,7 +1892,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
   <div class="proj-image">
     <div class="proj-image-tags">
       <span class="proj-tag">Estudio · LLM + RAG + validación humana</span>
-      <span class="proj-status r-and-d"><i data-lucide="microscope"></i> Artículo IEEE 2026</span>
     </div>
     <img src="assets/images/panels/paper-npci-figuras.png" alt="Figuras del articulo: arquitectura de 7 agentes, ciclo del hallazgo y cadena de valor" loading="lazy">
   </div>
@@ -1889,7 +1907,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">Pathology Detector · CNN</span>
-              <span class="proj-status r-and-d"><i data-lucide="hammer"></i> En progreso</span>
             </div>
             <img src="assets/images/confusion_matrix.png" alt="Pathology Detector ResNet18" loading="lazy">
           </div>
@@ -1905,7 +1922,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">Repair Advisor · cotizador</span>
-              <span class="proj-status live"><i data-lucide="check"></i> Funcional</span>
             </div>
             <img src="assets/images/panels/gaiatech-shm-agents.jpg" alt="Repair Advisor cotizador" loading="lazy">
           </div>
@@ -1923,7 +1939,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">EMARC BIM Suite · Revit Plugins</span>
-              <span class="proj-status live"><i data-lucide="check"></i> En uso</span>
             </div>
             <div class="img-grid-4">
               <img src="assets/images/revit/plugin-vigas.png" alt="Plugin Vigas" loading="lazy">
@@ -1959,7 +1974,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">Teatro Municipal Yunguyo</span>
-              <span class="proj-status award"><i data-lucide="building"></i> Modelo entregado</span>
             </div>
             <div class="img-grid-4">
               <img src="assets/images/revit/teatro-yunguyo/teatro.png" alt="Teatro Yunguyo 3D" loading="lazy">
@@ -1995,7 +2009,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">Suite Tuberías TGD</span>
-              <span class="proj-status live"><i data-lucide="check"></i> En uso</span>
             </div>
             <div class="img-grid-4">
               <img src="assets/images/tuberias-interfaz-final.png" alt="Tuberías UI" loading="lazy">
@@ -2058,7 +2071,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">GAIATECH SHM 2.0 · Mission Control</span>
-              <span class="proj-status live"><i data-lucide="check"></i> 8/8 nodos online</span>
             </div>
             <div class="img-grid-2">
               <img src="assets/images/panels/gaiatech-shm-hero.jpg" alt="GAIATECH SHM hero" loading="lazy">
@@ -2077,7 +2089,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">SHM Edge · Alert clip</span>
-              <span class="proj-status award"><i data-lucide="trophy"></i> 2° AI Talent 2026</span>
             </div>
             <video src="assets/videos/vision-pro-alert.mp4" autoplay muted loop playsinline poster="assets/images/gaiatech_results.png" preload="metadata"></video>
             <span class="proj-video-tag"><span class="live-dot"></span> Alert WhatsApp</span>
@@ -2094,7 +2105,6 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
           <div class="proj-image">
             <div class="proj-image-tags">
               <span class="proj-tag">GAIATECH Edge-9K · Hardware propio</span>
-              <span class="proj-status award"><i data-lucide="cpu"></i> Rev A1</span>
             </div>
             <video src="assets/videos/gaiatech-bridge.mp4" autoplay muted loop playsinline poster="assets/images/panels/gaiatech-shm-hardware.jpg" preload="metadata"></video>
             <span class="proj-video-tag"><span class="live-dot"></span> Bridge render</span>
@@ -2189,13 +2199,135 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
     </div>
   </section>
 
+  <!-- =================== DOCENCIA =================== -->
+  <section id="docencia">
+    <div class="container">
+      <header class="sec-head">
+        <div>
+          <div class="sec-head-meta">
+            <span class="sec-num">— 03</span>
+            <span class="chip mint">Docencia</span>
+          </div>
+          <h2 class="sec-title">Enseño lo que <span class="mint">construyo</span>.</h2>
+        </div>
+        <p class="sec-desc">
+          Especializaciones en vivo para ingenieros y arquitectos. El material es propio:
+          cuadernos que corren, talleres imprimibles y clases grabadas donde el sistema
+          se arma en pantalla, no en diapositivas.
+        </p>
+      </header>
+
+      <div class="course-grid">
+        <article class="course reveal">
+          <div class="course-role">Instructor</div>
+          <h3>Especialización Python + IA aplicado a la Ingeniería Civil</h3>
+          <p class="course-org">AECODE + Colegio de Ingenieros del Perú</p>
+          <p class="course-desc">100 horas en vivo, 6 módulos: fundamentos, datos y visualización, POO con las APIs de Revit y ETABS, interfaces con FastAPI y Streamlit, machine learning, y visión computacional con chatbots. Método propio <strong>Predice → Corre → Investiga → Modifica → Crea</strong>, pensado para gente que nunca programó.</p>
+          <div class="proj-meta">
+            <span class="tag">100 h</span><span class="tag">En vivo</span><span class="tag">6 módulos</span><span class="tag">Colab → local</span>
+          </div>
+        </article>
+
+        <article class="course reveal">
+          <div class="course-role">Contenido y clases grabadas</div>
+          <h3>Diplomado Internacional de IA en Ingeniería y Construcción</h3>
+          <p class="course-org">AECODE · ediciones Ed_02 y Ed_03</p>
+          <p class="course-desc">Unidades de fundamentos y tipos de modelos, prompt engineering aplicado a AEC y visión computacional. Produzco el deck, el manual, el taller y las <strong>clases grabadas</strong> que se ven abajo, donde cada caso se resuelve de principio a fin con datos de obra.</p>
+          <div class="proj-meta">
+            <span class="tag">Prompt engineering</span><span class="tag">Computer vision</span><span class="tag">Talleres</span><span class="tag">Kahoot</span>
+          </div>
+        </article>
+
+        <article class="course reveal">
+          <div class="course-role">Diseño de sesiones y flujos demo</div>
+          <h3>Especialización en Automatización y Agentes de IA</h3>
+          <p class="course-org">AECODE + CIP · Make, n8n y Zapier</p>
+          <p class="course-desc">100 horas en 16 sábados, 8 unidades de flow engineering hasta arquitectura de agentes. Armo las sesiones, los talleres y los <strong>flujos demo que quedan desplegados y validados</strong> en la instancia del curso, más un proyecto aplicado por alumno.</p>
+          <div class="proj-meta">
+            <span class="tag">100 h</span><span class="tag">16 sesiones</span><span class="tag">n8n Cloud</span><span class="tag">Proyecto por alumno</span>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="teach-sub">Clases grabadas · IA aplicada a obra</h3>
+      <p class="teach-note">Grabadas y editadas por mí para el diplomado. Cada una toma un problema real de obra y lo resuelve en pantalla.</p>
+
+      <div class="proj-grid" id="teach-grid">
+        <article class="proj feat reveal">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Clase · n8n en obra</span>
+            </div>
+            <video src="assets/videos/clase-n8n-obra.mp4" poster="assets/videos/clase-n8n-obra-poster.jpg" controls preload="none" playsinline></video>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Reportes de obra por WhatsApp</h3>
+            <p class="proj-desc">Del parte diario en la hoja de cálculo al reporte que llega solo: disparador de WhatsApp, agente que lee los datos de obra y responde en segundos. Menos planilla, más obra.</p>
+            <div class="proj-meta">
+              <span class="tag">n8n</span><span class="tag">WhatsApp</span><span class="tag">Google Sheets</span><span class="tag">Agente IA</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Clase · Claude + Revit</span>
+            </div>
+            <video src="assets/videos/clase-claude-bim.mp4" poster="assets/videos/clase-claude-bim-poster.jpg" controls preload="none" playsinline></video>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Claude conectado al modelo Revit por MCP</h3>
+            <p class="proj-desc">Pedir en lenguaje natural la volumetría de los elementos del modelo y recibir de vuelta un dashboard interactivo, sin salir del chat ni exportar nada a mano.</p>
+            <div class="proj-meta">
+              <span class="tag">Claude</span><span class="tag">MCP</span><span class="tag">Revit</span><span class="tag">Dashboard</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj feat reveal">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Clase · ML de rendimientos</span>
+            </div>
+            <video src="assets/videos/clase-ml-rendimientos.mp4" poster="assets/videos/clase-ml-rendimientos-poster.jpg" controls preload="none" playsinline></video>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Predecir el rendimiento de las cuadrillas</h3>
+            <p class="proj-desc">Dataset de <strong>2,400 filas calibrado con rendimientos CAPECO</strong> para 6 partidas peruanas, pipeline con OneHotEncoder y XGBoost Regressor. Resultado del modelo en clase: <strong>R² 0.83 y MAPE 7.3 %</strong> estimando el rendimiento real en obra.</p>
+            <div class="proj-meta">
+              <span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">scikit-learn</span><span class="tag">CAPECO</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj-image">
+            <div class="proj-image-tags">
+              <span class="proj-tag">Clase · visión en obra</span>
+            </div>
+            <video src="assets/videos/clase-cv-epp.mp4" poster="assets/videos/clase-cv-epp-poster.jpg" controls preload="none" playsinline></video>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Etiquetar, entrenar y leer la matriz de confusión</h3>
+            <p class="proj-desc">El ciclo completo de visión computacional aplicado a obra: etiquetado en Roboflow, entrenamiento, lectura honesta de la matriz de confusión, detección de EPP con alerta a WhatsApp y daños en pavimento sobre <strong>12,000 imágenes</strong>.</p>
+            <div class="proj-meta">
+              <span class="tag">Roboflow</span><span class="tag">Keras</span><span class="tag">OpenCV</span><span class="tag">Detección de EPP</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
   <!-- =================== STACK =================== -->
   <section id="stack">
     <div class="container">
       <header class="sec-head">
         <div>
           <div class="sec-head-meta">
-            <span class="sec-num">— 03</span>
+            <span class="sec-num">— 04</span>
             <span class="chip brand">Stack técnico</span>
           </div>
           <h2 class="sec-title">Del <span class="mint">silicio</span> al <span class="accent">panel web</span>.</h2>
@@ -2253,7 +2385,7 @@ footer.site { border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; backg
       <header class="sec-head">
         <div>
           <div class="sec-head-meta">
-            <span class="sec-num">— 04</span>
+            <span class="sec-num">— 05</span>
             <span class="chip mint">Trayectoria</span>
           </div>
           <h2 class="sec-title">Experiencia + <span class="amber">reconocimientos</span>.</h2>

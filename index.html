@@ -299,6 +299,10 @@ html[data-theme="dark"] .sec-num{-webkit-text-stroke-color:rgba(155,140,255,.4)}
 .course::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
   background:linear-gradient(90deg,var(--brand),var(--green))}
 .course:hover{transform:translateY(-3px);box-shadow:var(--sh-m);border-color:var(--lilac-line);background:var(--card)}
+.course-media{position:relative;margin:-24px -22px 14px;aspect-ratio:16/9;overflow:hidden;
+  border-bottom:1px solid var(--rule-2);background:var(--paper)}
+.course-media img{width:100%;height:100%;object-fit:cover;object-position:center}
+.course-media.tall img{object-position:center top}
 .course-role{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.13em;
   text-transform:uppercase;color:var(--brand)}
 .course h3{font-size:19px;letter-spacing:-.03em;line-height:1.22}
@@ -708,7 +712,10 @@ footer{background:var(--card);border-top:1px solid var(--rule);padding:34px 0}
 
       <div class="course-grid">
         <article class="course reveal">
-          <div class="course-role">Instructor</div>
+          <div class="course-media">
+          <img src="assets/images/docencia/instructor-python-ia.jpg" alt="Lamina de AECODE: Emanuel Ancco, instructor de hoy" loading="lazy">
+        </div>
+<div class="course-role">Instructor</div>
           <h3>Especialización Python + IA aplicado a la Ingeniería Civil</h3>
           <p class="course-org">AECODE + Colegio de Ingenieros del Perú</p>
           <p class="course-desc">100 horas en vivo, 6 módulos: fundamentos, datos y visualización, POO con las APIs de Revit y ETABS, interfaces con FastAPI y Streamlit, machine learning, y visión computacional con chatbots. Método propio <strong>Predice → Corre → Investiga → Modifica → Crea</strong>, pensado para gente que nunca programó.</p>
@@ -718,7 +725,10 @@ footer{background:var(--card);border-top:1px solid var(--rule);padding:34px 0}
         </article>
 
         <article class="course reveal">
-          <div class="course-role">Contenido y clases grabadas</div>
+          <div class="course-media">
+          <img src="assets/images/docencia/../../videos/clase-cv-epp-poster.jpg" alt="Lamina del Diplomado Internacional de IA en Ingenieria y Construccion" loading="lazy">
+        </div>
+<div class="course-role">Contenido y clases grabadas</div>
           <h3>Diplomado Internacional de IA en Ingeniería y Construcción</h3>
           <p class="course-org">AECODE · ediciones Ed_02 y Ed_03</p>
           <p class="course-desc">Unidades de fundamentos y tipos de modelos, prompt engineering aplicado a AEC y visión computacional. Produzco el deck, el manual, el taller y las <strong>clases grabadas</strong> que se ven abajo, donde cada caso se resuelve de principio a fin con datos de obra.</p>
@@ -728,12 +738,15 @@ footer{background:var(--card);border-top:1px solid var(--rule);padding:34px 0}
         </article>
 
         <article class="course reveal">
-          <div class="course-role">Diseño de sesiones y flujos demo</div>
-          <h3>Especialización en Automatización y Agentes de IA</h3>
-          <p class="course-org">AECODE + CIP · Make, n8n y Zapier</p>
-          <p class="course-desc">100 horas en 16 sábados, 8 unidades de flow engineering hasta arquitectura de agentes. Armo las sesiones, los talleres y los <strong>flujos demo que quedan desplegados y validados</strong> en la instancia del curso, más un proyecto aplicado por alumno.</p>
+          <div class="course-media tall">
+          <img src="assets/images/docencia/especializacion-n8n-agentes.jpg" alt="Flyer de la especializacion en automatizacion de procesos y agentes de IA" loading="lazy">
+        </div>
+<div class="course-role">Diseño de sesiones y flujos demo</div>
+          <h3>Especialización en Automatización de Procesos y Creación de Agentes de IA</h3>
+          <p class="course-org">AECODE + Colegio de Ingenieros del Perú · 100 horas certificadas</p>
+          <p class="course-desc">De principiante a avanzado, sábados de 4 a 7 pm. Armo las sesiones, los talleres y los <strong>flujos demo que quedan desplegados y validados</strong> en la instancia del curso, con un proyecto aplicado por alumno y certificación de AECODE y el CIP.</p>
           <div class="proj-meta">
-            <span class="tag">100 h</span><span class="tag">16 sesiones</span><span class="tag">n8n Cloud</span><span class="tag">Proyecto por alumno</span>
+            <span class="tag">100 h certificadas</span><span class="tag">Sábados 4-7 pm</span><span class="tag">n8n</span><span class="tag">Agentes de IA</span><span class="tag">Proyecto por alumno</span>
           </div>
         </article>
       </div>
@@ -1663,7 +1676,7 @@ footer{background:var(--card);border-top:1px solid var(--rule);padding:34px 0}
           <ul class="exp-bullets">
             <li><strong>Especializaci&oacute;n en Python + IA aplicado a la Ingenier&iacute;a Civil</strong> (100 h en vivo, 6 m&oacute;dulos): fundamentos, datos y visualizaci&oacute;n, POO con las APIs de Revit y ETABS, FastAPI y Streamlit, machine learning y visi&oacute;n computacional. Instructor del programa.</li>
             <li><strong>Diplomado Internacional de IA en Ingenier&iacute;a y Construcci&oacute;n</strong> (Ed_02 y Ed_03): unidades de fundamentos y tipos de modelos, prompt engineering aplicado a AEC y visi&oacute;n computacional. Producci&oacute;n del material y de las clases grabadas.</li>
-            <li><strong>Especializaci&oacute;n en Automatizaci&oacute;n de Procesos y Agentes de IA</strong> con Make, n8n y Zapier (100 h, 16 sesiones): dise&ntilde;o de sesiones, talleres y flujos demo desplegados y validados en la instancia del curso.</li>
+            <li><strong>Especializaci&oacute;n en Automatizaci&oacute;n de Procesos y Creaci&oacute;n de Agentes de IA</strong> (100 h certificadas, s&aacute;bados de 4 a 7 pm): dise&ntilde;o de sesiones, talleres y flujos demo desplegados y validados en la instancia del curso.</li>
           </ul>
         </div>
 
